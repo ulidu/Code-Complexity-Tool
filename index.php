@@ -202,6 +202,51 @@
 </div>
 
 							<!--End::Row-->
+
+                            <!--Begin::Row-->
+                            <div class="row">
+                            <!--begin::Portlet-->
+                            <div class="kt-portlet">
+                                <div class="kt-portlet__head">
+                                    <div class="kt-portlet__head-label">
+                                        <h3 class="kt-portlet__head-title">
+                                            Validation State Examples
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                <!--begin::Form-->
+                                <form class="kt-form kt-form--fit kt-form--label-right">
+                                    <div class="kt-portlet__body">
+                                        <div class="form-group row is-valid">
+
+                                            <label class="col-form-label col-lg-3 col-sm-12">Success State</label>
+                                            <div class="col-lg-9 col-md-9 col-sm-12">
+                                                <textarea name="content" class="form-control" data-provide="markdown" rows="10"></textarea>
+                                                <div class="valid-feedback">Success! You've done it.</div>
+                                                <span class="form-text text-muted">Example help text that remains unchanged.</span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="kt-portlet__foot">
+                                        <div class="row">
+                                            <div class="col-lg-3"></div>
+                                            <div class="col-lg-9">
+                                                <button type="submit" class="btn btn-brand">Submit</button>
+                                                <button type="submit" class="btn btn-secondary">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <!--end::Form-->
+                            </div>
+
+                            </div>        <!--end::Portlet-->
+
+
 							<!--End::Dashboard 3-->
 						</div>
 						<!-- end:: Content -->
