@@ -147,8 +147,70 @@
 							<!--Begin::Dashboard 3-->
 <!--Begin::Row-->
 <div class="row">
-								
-                                
+
+    <!--begin::Portlet-->
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                    Upload a File From Your PC
+                </h3>
+            </div>
+        </div>
+
+        <!--begin::Form-->
+        <form class="kt-form kt-form--label-right">
+            <div class="kt-portlet__body">
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-3 col-sm-12">Single File Upload</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12">
+                        <div class="dropzone dropzone-default" id="kt_dropzone_1">
+                            <div class="dropzone-msg dz-message needsclick">
+                                <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
+                                <span class="dropzone-msg-desc">This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-3 col-sm-12">Multiple File Upload</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12">
+                        <div class="dropzone dropzone-default dropzone-brand" id="kt_dropzone_2">
+                            <div class="dropzone-msg dz-message needsclick">
+                                <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
+                                <span class="dropzone-msg-desc">Upload up to 10 files</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-3 col-sm-12">File Type Validation</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12">
+                        <div class="dropzone dropzone-default dropzone-success" id="kt_dropzone_3">
+                            <div class="dropzone-msg dz-message needsclick">
+                                <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
+                                <span class="dropzone-msg-desc">Only image, pdf and psd files are allowed for upload</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <div class="row">
+                        <div class="col-lg-9 ml-lg-auto">
+                            <button type="reset" class="btn btn-brand">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!--end::Form-->
+    </div>
+
+    <!--end::Portlet-->
                                 
                                 
                                 
