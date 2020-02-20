@@ -205,7 +205,7 @@
                             <div class="row">
 
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-12">
                                 <div class="kt-portlet kt-iconbox kt-iconbox--animate">
                                     <div class="kt-portlet__body">
                                         <div class="kt-iconbox__body">
