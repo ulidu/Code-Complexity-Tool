@@ -46,6 +46,8 @@
 			};
 		</script>
 
+
+
 		<!-- end::Global Config -->
 
 		<!--begin::Global Theme Bundle(used by all pages) -->
@@ -60,8 +62,15 @@
 
 		<!--end::Page Scripts -->
 
-<!--begin::Page Scripts(used by login page) -->
-<script src="assets/js/pages/custom/login/login-general.js" type="text/javascript"></script>
+        <!--begin::Page Scripts(used by login page) -->
+        <script src="assets/js/pages/custom/login/login-general.js" type="text/javascript"></script>
+
+        <!--begin::Page Vendors(used by total complexity page) -->
+        <script src="assets/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+
+        <!--begin::Page Scripts(used by this page) -->
+        <script src="assets/js/pages/crud/datatables/advanced/footer-callback.js" type="text/javascript"></script>
+
 	</body>
 
 	<!-- end::Body -->
