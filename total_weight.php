@@ -7,7 +7,7 @@
 						<div class="kt-subheader  kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-									<h3 class="kt-subheader__title">Total Weight of Your Program</h3>
+									<h3 class="kt-subheader__title">Total Weight of the Program</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 									
 									
@@ -57,8 +57,54 @@
 <div class="row">
 
 
-</div>
 
+
+
+
+    <!--begin::Portlet-->
+    <div class="kt-portlet kt-portlet--skin-solid kt-portlet-- kt-bg-brand">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+												<span class="kt-portlet__head-icon">
+													<i class="flaticon-time-1"></i>
+												</span>
+                <h3 class="kt-portlet__head-title">
+                    Total Weight of the Program
+                </h3>
+            </div>
+
+        </div>
+        <div class="kt-portlet__body">
+
+            <center><h1>8</h1></center>
+
+        </div>
+
+        <div class="kt-portlet__foot">
+            <div class="kt-form__actions">
+                <div class="row">
+
+                    <div class="col-lg-12 ml-lg-auto">
+                        <center>
+                        <button type="submit" class="btn btn-success">Measure Weight from Size</button>
+                        <button type="button" onclick="location.href='index.php'" class="btn btn-dark">Cancel</button>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--end::Portlet-->
+
+
+
+
+
+
+
+</div>
+                            <!--End::Row-->
 
 							<!--End::Dashboard 3-->
 						</div>
