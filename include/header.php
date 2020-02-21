@@ -14,6 +14,9 @@
 
 		<!--end::Fonts -->
 
+        <!--begin::Page Vendors Styles(used by this page) -->
+        <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+
         <!--begin::Page Custom Styles(used by login page) -->
         <link href="assets/css/pages/login/login-5.css" rel="stylesheet" type="text/css" />
 		

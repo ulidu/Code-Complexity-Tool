@@ -149,7 +149,7 @@
                                 </div>
                             </div>
 
-                            <div class="kt-portlet__body">
+                            <div class="kt-portlet__body kt-font-dark">
                                 <!--begin: Datatable -->
                                 <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
                                     <thead>
