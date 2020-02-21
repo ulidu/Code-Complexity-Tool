@@ -198,7 +198,7 @@
 
                                     <tr>
                                         <td>1</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -209,7 +209,7 @@
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>public static void main(String[] args) {</td>
+                                        <td style="text-align: left">public static void main(String[] args) {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -220,7 +220,7 @@
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -231,7 +231,7 @@
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -242,7 +242,7 @@
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -253,7 +253,7 @@
                                     </tr>
                                     <tr>
                                         <td>6</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -264,7 +264,7 @@
                                     </tr>
                                     <tr>
                                         <td>7</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -275,7 +275,7 @@
                                     </tr>
                                     <tr>
                                         <td>8</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -286,7 +286,7 @@
                                     </tr>
                                     <tr>
                                         <td>9</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -297,7 +297,7 @@
                                     </tr>
                                     <tr>
                                         <td>10</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
