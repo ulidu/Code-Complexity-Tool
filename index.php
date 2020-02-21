@@ -163,7 +163,7 @@
         </div>
 
         <!--begin::Form-->
-        <form class="kt-form kt-form--label-right">
+        <form action="total_weight.php" class="kt-form kt-form--label-right">
             <div class="kt-portlet__body">
 
 
@@ -252,7 +252,7 @@
                                 </div>
 
                                 <!--begin::Form-->
-                                <form class="kt-form kt-form--fit kt-form--label-right">
+                                <form action="total_weight.php" class="kt-form kt-form--fit kt-form--label-right">
                                     <div class="kt-portlet__body">
                                         <div class="form-group row is-valid">
 
