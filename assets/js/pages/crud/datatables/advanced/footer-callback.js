@@ -7,7 +7,7 @@ var KTDatatablesAdvancedFooterCalllback = function() {
 		// begin first table
 		table.DataTable({
 			responsive: true,
-			pageLength: 5,
+			pageLength: -1,
 			lengthMenu: [[2, 5, 10, 15, -1], [2, 5, 10, 15, 'All']],
 			footerCallback: function(row, data, start, end, display) {
 
@@ -30,9 +30,9 @@ var KTDatatablesAdvancedFooterCalllback = function() {
 				}, 0);
 
 				// Update footer
-				$(api.column(column).footer()).html(
-					'$' + KTUtil.numberString(pageTotal.toFixed(2)) + '<br/> ( $' + KTUtil.numberString(total.toFixed(2)) + ' total)',
-				);
+				//$(api.column(column).footer()).html(
+				//	'$' + KTUtil.numberString(pageTotal.toFixed(2)) + '<br/> ( $' + KTUtil.numberString(total.toFixed(2)) //+ ' total)',
+				//);
 			},
 		});
 	};
