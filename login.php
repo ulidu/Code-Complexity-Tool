@@ -10,7 +10,7 @@
 					<div class="kt-login__left">
 						<div class="kt-login__wrapper">
 							<div class="kt-login__content">
-								<a class="kt-login__logo" href="#">
+								<a class="kt-login__logo" href="index.php">
 									<img src="assets/media/logos/logo-5.png">
 								</a>
 								<h3 class="kt-login__title">JOIN OUR GREAT COMMUNITY</h3>
@@ -35,10 +35,10 @@
 								<div class="kt-login__form">
 									<form class="kt-form" action="">
 										<div class="form-group">
-											<input class="form-control" type="text" placeholder="Username" name="email" autocomplete="off">
+											<input style="border-radius: 28px; padding-left: 20px;" class="form-control" type="text" placeholder="Username" name="email" autocomplete="off">
 										</div>
 										<div class="form-group">
-											<input class="form-control form-control-last" type="Password" placeholder="Password" name="password">
+											<input style="border-radius: 28px; padding-left: 20px;" class="form-control form-control-last" type="Password" placeholder="Password" name="password">
 										</div>
 										<div class="row kt-login__extra">
 											<div class="col kt-align-left">

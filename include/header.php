@@ -13,6 +13,9 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
 
 		<!--end::Fonts -->
+
+        <!--begin::Page Custom Styles(used by login page) -->
+        <link href="assets/css/pages/login/login-5.css" rel="stylesheet" type="text/css" />
 		
 		<!--begin::Global Theme Styles(used by all pages) -->
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />

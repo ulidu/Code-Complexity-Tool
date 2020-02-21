@@ -59,6 +59,9 @@
 		<script src="assets/js/pages/dashboard.js" type="text/javascript"></script>
 
 		<!--end::Page Scripts -->
+
+<!--begin::Page Scripts(used by login page) -->
+<script src="assets/js/pages/custom/login/login-general.js" type="text/javascript"></script>
 	</body>
 
 	<!-- end::Body -->
