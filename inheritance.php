@@ -7,7 +7,7 @@
 						<div class="kt-subheader  kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-									<h3 class="kt-subheader__title">Total Weight of the Program</h3>
+									<h3 class="kt-subheader__title">Inheritance</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 									
 									
@@ -69,7 +69,7 @@
 													<i class="flaticon-time-1"></i>
 												</span>
                 <h3 class="kt-portlet__head-title kt-font-brand">
-                    Total Complexity of the Program
+                 Complexity of a Program due to Inheritance
                 </h3>
             </div>
 
@@ -94,7 +94,8 @@
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Cpr : 50</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Ci = Total Inheritances</h1></center>
+                                    <center><h2 style="font-family: 'Fira Code'">Total Inheritances = No.of direct Inheritances + No.of indirect Inheritances</h2></center>
 
 
                                 </div>
@@ -123,7 +124,7 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                                     <h3 class="kt-portlet__head-title kt-font-brand">
-                                        Total Complexity of the Program due to All the Factors
+                                        Complexity of the Program due to Inheritance
                                     </h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
@@ -182,15 +183,13 @@
                                 <table style="font-family: 'Fira Code'; text-align: center" class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
                                     <thead>
                                     <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
-                                        <th>Line No</th>
-                                        <th>Program Statements</th>
-                                        <th>Cs</th>
-                                        <th>Cv</th>
-                                        <th>Cm</th>
+                                        <th>Count</th>
+                                        <th>Class Name</th>
+                                        <th>No. of direct inheritances</th>
+                                        <th>No. of indirect inheritances</th>
+                                        <th>Total inheritances</th>
                                         <th>Ci</th>
-                                        <th>Ccp</th>
-                                        <th>Ccs</th>
-                                        <th style="color: white" class="kt-label-bg-color-2">TCps</th>
+                                        
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -198,114 +197,16 @@
 
                                     <tr>
                                         <td>1</td>
-                                        <td>class Pattern {</td>
-                                        <td>2</td>
+                                        <td>Pattern {</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                       
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>public static void main(String[] args) {</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>class Pattern {</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>class Pattern {</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>class Pattern {</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>class Pattern {</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>class Pattern {</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>class Pattern {</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td>class Pattern {</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>class Pattern {</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
+                                   
+                                    
+                                    
 
 
 
@@ -315,17 +216,7 @@
 
                                     </tbody>
                                     <tfoot>
-                                    <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
-
-                                        <th colspan="2">Total</th>
-                                        <th>38</th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>0</th>
-                                        <th>0</th>
-                                        <th>9</th>
-                                        <th style="color: white" class="kt-label-bg-color-2">50</th>
-                                    </tr>
+                                    
                                     </tfoot>
                                 </table>
 
@@ -353,7 +244,7 @@
 
                     <div class="col-lg-12 ml-lg-auto">
                         <center>
-                        <button type="submit" class="btn btn-success">Measure Weight from Size</button>
+                        <button type="submit" class="btn btn-success">Measure </button>
                         <button type="button" onclick="location.href='index.php'" class="btn btn-dark">Cancel</button>
                         </center>
                     </div>
