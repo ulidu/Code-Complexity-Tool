@@ -7,7 +7,7 @@
 						<div class="kt-subheader  kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-									<h3 class="kt-subheader__title">Inheritance</h3>
+									<h3 class="kt-subheader__title">Inheritance Complexity of the Program</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 									
 									
@@ -69,7 +69,7 @@
 													<i class="flaticon-time-1"></i>
 												</span>
                 <h3 class="kt-portlet__head-title kt-font-brand">
-                 Complexity of a Program due to Inheritance
+                 Complexity of the Program due to Inheritance
                 </h3>
             </div>
 
@@ -94,8 +94,7 @@
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Ci = Total Inheritances</h1></center>
-                                    <center><h2 style="font-family: 'Fira Code'">Total Inheritances = No.of direct Inheritances + No.of indirect Inheritances</h2></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Ci : 40</h1></center>
 
 
                                 </div>
@@ -124,7 +123,7 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                                     <h3 class="kt-portlet__head-title kt-font-brand">
-                                        Complexity of the Program due to Inheritance
+                                        Complexity of the Program due to Inheritance by Statement
                                     </h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
@@ -244,8 +243,8 @@
 
                     <div class="col-lg-12 ml-lg-auto">
                         <center>
-                        <button type="submit" class="btn btn-success">Measure </button>
-                        <button type="button" onclick="location.href='index.php'" class="btn btn-dark">Cancel</button>
+
+                        <button type="button" onclick="location.href='index.php'" class="btn btn-dark">Back</button>
                         </center>
                     </div>
                 </div>
@@ -256,7 +255,7 @@
     <!--end::Portlet-->
 
 
-
+</div>
 
 
 

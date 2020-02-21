@@ -69,7 +69,7 @@
 													<i class="flaticon-time-1"></i>
 												</span>
                 <h3 class="kt-portlet__head-title kt-font-brand">
-                    Total Complexity of the Program
+                    Total Complexity of the Program due to All the Factors
                 </h3>
             </div>
 
@@ -123,7 +123,7 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                                     <h3 class="kt-portlet__head-title kt-font-brand">
-                                        Total Complexity of the Program due to All the Factors
+                                        Total Complexity of the Program by Statement
                                     </h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
@@ -210,103 +210,114 @@
                                     <tr>
                                         <td>2</td>
                                         <td style="text-align: left">public static void main(String[] args) {</td>
+                                        <td>4</td>
+                                        <td>0</td>
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">6</td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td style="text-align: left">class Pattern {</td>
+                                        <td style="text-align: left">int rows = 5;</td>
                                         <td>2</td>
+                                        <td>1</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">3</td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td style="text-align: left">class Pattern {</td>
-                                        <td>2</td>
+                                        <td style="text-align: left">for(int i = 1; i <= rows; ++i) {</td>
+                                        <td>8</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                        <td>3</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">11</td>
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td style="text-align: left">class Pattern {</td>
-                                        <td>2</td>
+                                        <td style="text-align: left">for(int j = 1; j <= i; ++j) { </td>
+                                        <td>8</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>6</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">14</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td style="text-align: left">System.out.print(j + " ");</td>
+                                        <td>8</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">8</td>
                                     </tr>
                                     <tr>
                                         <td>6</td>
-                                        <td style="text-align: left">class Pattern {</td>
-                                        <td>2</td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                        <td>0</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
                                     </tr>
                                     <tr>
                                         <td>7</td>
-                                        <td style="text-align: left">class Pattern {</td>
-                                        <td>2</td>
+                                        <td style="text-align: left">System.out.println("");</td>
+                                        <td>6</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">6</td>
                                     </tr>
                                     <tr>
                                         <td>8</td>
-                                        <td style="text-align: left">class Pattern {</td>
-                                        <td>2</td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                        <td>0</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
                                     </tr>
                                     <tr>
                                         <td>9</td>
-                                        <td style="text-align: left">class Pattern {</td>
-                                        <td>2</td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td style="text-align: left">class Pattern {</td>
-                                        <td>2</td>
                                         <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
                                     </tr>
 
+                                    <tr>
+                                        <td>10</td>
+                                        <td style="text-align: left">}</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
+                                    </tr>
 
 
 
@@ -353,8 +364,8 @@
 
                     <div class="col-lg-12 ml-lg-auto">
                         <center>
-                        <button type="submit" class="btn btn-success">Measure Weight from Size</button>
-                        <button type="button" onclick="location.href='index.php'" class="btn btn-dark">Cancel</button>
+
+                        <button type="button" onclick="location.href='index.php'" class="btn btn-dark">Back</button>
                         </center>
                     </div>
                 </div>
