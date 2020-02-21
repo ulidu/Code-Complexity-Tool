@@ -167,7 +167,6 @@
                                             </div>
                                         </div>
 
-
                                     </div>
                                     <div class="kt-portlet__foot">
                                         <div class="kt-form__actions">
