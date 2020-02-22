@@ -11,7 +11,7 @@ var KTDatatablesAdvancedFooterCalllback = function() {
 			lengthMenu: [[2, 5, 10, 15, -1], [2, 5, 10, 15, 'All']],
 			footerCallback: function(row, data, start, end, display) {
 
-				var column = 6;
+				var column = 4;
 				var api = this.api(), data;
 
 				// Remove the formatting to get integer data for summation
