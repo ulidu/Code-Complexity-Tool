@@ -195,7 +195,7 @@
 
                                     <tr>
                                         <td>1</td>
-                                        <td>class Pattern {</td>
+                                        <td style="text-align: left">class Pattern {</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -203,7 +203,7 @@
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>public static void main(String[] args) {</td>
+                                        <td style="text-align: left">public static void main(String[] args) {</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -211,7 +211,7 @@
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>int rows = 5;</td>
+                                        <td style="text-align: left">int rows = 5;</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -220,7 +220,7 @@
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>for(int i = 1;i <= rows; ++i){</td>
+                                        <td style="text-align: left">for(int i = 1;i <= rows; ++i){</td>
                                         <td>3</td>
                                         <td>1</td>
                                         <td>0</td>
@@ -229,7 +229,7 @@
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td> for(int j = 1; j <= i; ++j) {</td>
+                                        <td style="text-align: left"> for(int j = 1; j <= i; ++j) {</td>
                                         <td>3</td>
                                         <td>1</td>
                                         <td>3</td>
@@ -237,8 +237,17 @@
 
                                     </tr>
                                     <tr>
-                                        <td>6</td>
-                                        <td>System.out.print(j + " ");</td>
+                                        <td>5</td>
+                                        <td style="text-align: left">System.out.print(j + " ");</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td >6</td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -247,7 +256,7 @@
                                     </tr>
                                     <tr>
                                         <td>7</td>
-                                        <td>}</td>
+                                        <td style="text-align: left">System.out.println("");</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -256,7 +265,7 @@
                                     </tr>
                                     <tr>
                                         <td>8</td>
-                                        <td>System.out.println("");</td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -265,26 +274,17 @@
                                     </tr>
                                     <tr>
                                         <td>9</td>
-                                        <td>}</td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
 
                                     </tr>
+
                                     <tr>
                                         <td>10</td>
-                                        <td>}</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>11</td>
-                                        <td>}</td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
