@@ -7,7 +7,7 @@
 						<div class="kt-subheader  kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-									<h3 class="kt-subheader__title">Control Structures Complexity of the Program</h3>
+                                    <h3 class="kt-subheader__title">Control Structures Complexity of the Program</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 									
 									
@@ -123,7 +123,7 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                                     <h3 class="kt-portlet__head-title kt-font-brand">
-                                         Complexity of the Program due to the Control Structures by Statement
+                                        Complexity of the Program due to the Control Structures by Statement
                                     </h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
@@ -195,101 +195,101 @@
 
                                     <tr>
                                         <td>1</td>
-                                        <td>class Pattern {</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td style="text-align: left">class Pattern {</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td>0</td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>public static void main(String[] args) {</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td style="text-align: left">public static void main(String[] args) {</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td>0</td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>int rows = 5;</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td style="text-align: left">int rows = 5;</td>
                                         <td>0</td>
-                                       
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>for(int i = 1;i <= rows; ++i){</td>
+                                        <td style="text-align: left">for(int i = 1;i <= rows; ++i){</td>
                                         <td>3</td>
                                         <td>1</td>
                                         <td>0</td>
                                         <td>3</td>
-                                        
+
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td> for(int j = 1; j <= i; ++j) {</td>
+                                        <td style="text-align: left"> for(int j = 1; j <= i; ++j) {</td>
                                         <td>3</td>
                                         <td>1</td>
                                         <td>3</td>
                                         <td>6</td>
-                                        
+
                                     </tr>
                                     <tr>
-                                        <td>6</td>
-                                        <td>System.out.print(j + " ");</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>5</td>
+                                        <td style="text-align: left">System.out.print(j + " ");</td>
                                         <td>0</td>
-                                        
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td >6</td>
+                                        <td style="text-align: left">}</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+
                                     </tr>
                                     <tr>
                                         <td>7</td>
-                                        <td>}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td style="text-align: left">System.out.println("");</td>
                                         <td>0</td>
-                                        
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+
                                     </tr>
                                     <tr>
                                         <td>8</td>
-                                        <td>System.out.println("");</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
-                                        
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+
                                     </tr>
                                     <tr>
                                         <td>9</td>
-                                        <td>}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
-                                        
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+
                                     </tr>
+
                                     <tr>
                                         <td>10</td>
-                                        <td>}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td style="text-align: left">}</td>
                                         <td>0</td>
-                                   
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>11</td>
-                                        <td>}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
                                         <td>0</td>
-                                   
+                                        <td>0</td>
+                                        <td>0</td>
+
                                     </tr>
 
 
@@ -299,18 +299,7 @@
 
 
                                     </tbody>
-                                    <tfoot>
-                                    <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
 
-                                        <th colspan="2">Total</th>
-                                        <th>38</th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                     
-
-                                        <th style="color: white" class="kt-label-bg-color-2">50</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
 
                                 <!--end: Datatable -->
@@ -319,6 +308,10 @@
                     </div>
 
                     <!-- end:: Content -->
+
+
+
+
 
 
 
@@ -333,6 +326,7 @@
 
                     <div class="col-lg-12 ml-lg-auto">
                         <center>
+
                         <button type="button" onclick="location.href='index.php'" class="btn btn-dark">Back</button>
                         </center>
                     </div>
@@ -357,5 +351,5 @@
 						<!-- end:: Content -->
 					</div>
 
-					
+
 <?php include 'include/footer.php'; ?>
