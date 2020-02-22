@@ -176,7 +176,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="kt-portlet__body kt-font-dark">
                                 <!--begin: Datatable -->
                                 <table style="font-family: 'Fira Code'; text-align: center" class="table table-striped- table-bordered table-hover" id="kt_table_1">

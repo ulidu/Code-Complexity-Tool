@@ -184,13 +184,13 @@
                                     <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
                                         <th>Line No</th>
                                         <th>Program Statements</th>
+                                        <th>Nkw</th>
+                                        <th>Nid</th>
+                                        <th>Nop</th>
+                                        <th>Nnv</th>
+                                        <th>Nsl</th>
                                         <th>Cs</th>
-                                        <th>Cv</th>
-                                        <th>Cm</th>
-                                        <th>Ci</th>
-                                        <th>Ccp</th>
-                                        <th>Ccs</th>
-                                        <th style="color: white" class="kt-label-bg-color-2">TCps</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -199,13 +199,13 @@
                                     <tr>
                                         <td>1</td>
                                         <td style="text-align: left">class Pattern {</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">2</td>
+
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -216,51 +216,51 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">6</td>
+
                                     </tr>
                                     <tr>
                                         <td>3</td>
                                         <td style="text-align: left">int rows = 5;</td>
-                                        <td>2</td>
+                                        <td>3</td>
                                         <td>1</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">3</td>
+                                        <td>4</td>
+
                                     </tr>
                                     <tr>
                                         <td>4</td>
                                         <td style="text-align: left">for(int i = 1; i <= rows; ++i) {</td>
-                                        <td>8</td>
                                         <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
+                                        <td>4</td>
                                         <td>3</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">11</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>8</td>
+
                                     </tr>
                                     <tr>
                                         <td>5</td>
                                         <td style="text-align: left">for(int j = 1; j <= i; ++j) { </td>
+                                        <td>0</td>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td>1</td>
+                                        <td>0</td>
                                         <td>8</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>6</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">14</td>
+
                                     </tr>
                                     <tr>
                                         <td>5</td>
                                         <td style="text-align: left">System.out.print(j + " ");</td>
+                                        <td>0</td>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td>0</td>
+                                        <td>1</td>
                                         <td>8</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">8</td>
+
                                     </tr>
                                     <tr>
                                         <td>6</td>
@@ -271,18 +271,18 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
+
                                     </tr>
                                     <tr>
                                         <td>7</td>
                                         <td style="text-align: left">System.out.println("");</td>
+                                        <td>0</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                        <td>0</td>
+                                        <td>1</td>
                                         <td>6</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">6</td>
+
                                     </tr>
                                     <tr>
                                         <td>8</td>
@@ -293,7 +293,7 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
+
                                     </tr>
                                     <tr>
                                         <td>9</td>
@@ -304,7 +304,7 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
+
                                     </tr>
 
                                     <tr>
@@ -316,7 +316,7 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
+
                                     </tr>
 
 
@@ -325,19 +325,7 @@
 
 
                                     </tbody>
-                                    <tfoot>
-                                    <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
 
-                                        <th colspan="2">Total</th>
-                                        <th>38</th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>0</th>
-                                        <th>0</th>
-                                        <th>9</th>
-                                        <th style="color: white" class="kt-label-bg-color-2">50</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
 
                                 <!--end: Datatable -->
