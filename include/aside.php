@@ -56,7 +56,7 @@
                                 
 								<li class="kt-menu__item "><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
                                 
-								<li class="kt-menu__item " ><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center>
+								<li class="kt-menu__item " ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center>
                                     </span></a></li>
                                 
             
