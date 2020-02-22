@@ -179,7 +179,7 @@
 
                             <div class="kt-portlet__body kt-font-dark">
                                 <!--begin: Datatable -->
-                                <table style="font-family: 'Fira Code'; text-align: center" class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
+                                <table style="font-family: 'Fira Code'; text-align: center" class="table table-striped- table-bordered table-hover" id="kt_table_1">
                                     <thead>
                                     <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
                                         <th>Line No</th>
