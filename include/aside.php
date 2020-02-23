@@ -40,25 +40,113 @@
 					<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="" class="kt-aside-menu  kt-aside-menu--dropdown " data-ktmenu-vertical="1" data-ktmenu-dropdown="1" data-ktmenu-scroll="0">
 							<ul class="kt-menu__nav ">
-                                
-                                
-								<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="index.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Add New</span></a></li>
-                                
-								<li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="size.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-arrows"></i><span class="kt-menu__link-text">Size</span></a></li>
-                                
-                                
-								<li class="kt-menu__item"><a href="variables.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-7"></i><span class="kt-menu__link-text">Variables</span></a></li>
-                                
-                                <li class="kt-menu__item "><a href="methods.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Methods</span></a></li>
-                                
-								<li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="inheritance.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-layers"></i><span class="kt-menu__link-text">Inheritance</span></a>
-								</li>
-                                
-								<li class="kt-menu__item "><a href="coupling.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
-                                
-								<li class="kt-menu__item " ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center>
-                                    </span></a></li>
-                                
+
+                                <?php
+
+                                $link = $_SERVER['PHP_SELF'];
+                                $link_array = explode('/',$link);
+                                $page = end($link_array);
+
+                                if ($page == "size.php") { ?>
+
+                                    <li class="kt-menu__item " aria-haspopup="true"><a href="index.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Add New</span></a></li>
+                                    <li class="kt-menu__item kt-menu__item--active" data-ktmenu-submenu-toggle="hover"><a href="size.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-arrows"></i><span class="kt-menu__link-text">Size</span></a></li>
+                                    <li class="kt-menu__item"><a href="variables.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-7"></i><span class="kt-menu__link-text">Variables</span></a></li>
+                                    <li class="kt-menu__item "><a href="methods.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Methods</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="inheritance.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-layers"></i><span class="kt-menu__link-text">Inheritance</span></a></li>
+                                    <li class="kt-menu__item "><a href="coupling.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
+                                    <li class="kt-menu__item " ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center></span></a></li>
+
+
+                                    <?php
+                                }elseif ($page == "variables.php"){ ?>
+
+                                    <li class="kt-menu__item" aria-haspopup="true"><a href="index.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Add New</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="size.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-arrows"></i><span class="kt-menu__link-text">Size</span></a></li>
+                                    <li class="kt-menu__item kt-menu__item--active"><a href="variables.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-7"></i><span class="kt-menu__link-text">Variables</span></a></li>
+                                    <li class="kt-menu__item"><a href="methods.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Methods</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="inheritance.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-layers"></i><span class="kt-menu__link-text">Inheritance</span></a></li>
+                                    <li class="kt-menu__item"><a href="coupling.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
+                                    <li class="kt-menu__item" ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center></span></a></li>
+
+
+                                    <?php
+                                }elseif ($page == "methods.php"){ ?>
+
+                                    <li class="kt-menu__item" aria-haspopup="true"><a href="index.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Add New</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="size.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-arrows"></i><span class="kt-menu__link-text">Size</span></a></li>
+                                    <li class="kt-menu__item"><a href="variables.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-7"></i><span class="kt-menu__link-text">Variables</span></a></li>
+                                    <li class="kt-menu__item kt-menu__item--active"><a href="methods.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Methods</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="inheritance.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-layers"></i><span class="kt-menu__link-text">Inheritance</span></a></li>
+                                    <li class="kt-menu__item"><a href="coupling.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
+                                    <li class="kt-menu__item" ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center></span></a></li>
+
+
+                                    <?php
+                                }
+                                elseif ($page == "inheritance.php"){ ?>
+
+                                    <li class="kt-menu__item" aria-haspopup="true"><a href="index.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Add New</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="size.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-arrows"></i><span class="kt-menu__link-text">Size</span></a></li>
+                                    <li class="kt-menu__item"><a href="variables.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-7"></i><span class="kt-menu__link-text">Variables</span></a></li>
+                                    <li class="kt-menu__item"><a href="methods.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Methods</span></a></li>
+                                    <li class="kt-menu__item kt-menu__item--active" data-ktmenu-submenu-toggle="hover"><a href="inheritance.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-layers"></i><span class="kt-menu__link-text">Inheritance</span></a></li>
+                                    <li class="kt-menu__item "><a href="coupling.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
+                                    <li class="kt-menu__item " ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center></span></a></li>
+
+
+                                    <?php
+                                }elseif ($page == "coupling.php"){ ?>
+
+                                    <li class="kt-menu__item" aria-haspopup="true"><a href="index.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Add New</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="size.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-arrows"></i><span class="kt-menu__link-text">Size</span></a></li>
+                                    <li class="kt-menu__item"><a href="variables.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-7"></i><span class="kt-menu__link-text">Variables</span></a></li>
+                                    <li class="kt-menu__item"><a href="methods.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Methods</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="inheritance.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-layers"></i><span class="kt-menu__link-text">Inheritance</span></a></li>
+                                    <li class="kt-menu__item kt-menu__item--active"><a href="coupling.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
+                                    <li class="kt-menu__item " ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center></span></a></li>
+
+
+                                    <?php
+                                }elseif ($page == "control_structures.php"){ ?>
+
+                                    <li class="kt-menu__item" aria-haspopup="true"><a href="index.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Add New</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="size.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-arrows"></i><span class="kt-menu__link-text">Size</span></a></li>
+                                    <li class="kt-menu__item"><a href="variables.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-7"></i><span class="kt-menu__link-text">Variables</span></a></li>
+                                    <li class="kt-menu__item"><a href="methods.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Methods</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="inheritance.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-layers"></i><span class="kt-menu__link-text">Inheritance</span></a></li>
+                                    <li class="kt-menu__item"><a href="coupling.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
+                                    <li class="kt-menu__item kt-menu__item--active" ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center></span></a></li>
+
+
+                                    <?php
+                                }elseif ($page == "index.php"){ ?>
+
+                                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="index.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Add New</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="size.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-arrows"></i><span class="kt-menu__link-text">Size</span></a></li>
+                                    <li class="kt-menu__item"><a href="variables.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-7"></i><span class="kt-menu__link-text">Variables</span></a></li>
+                                    <li class="kt-menu__item "><a href="methods.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Methods</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="inheritance.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-layers"></i><span class="kt-menu__link-text">Inheritance</span></a></li>
+                                    <li class="kt-menu__item "><a href="coupling.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
+                                    <li class="kt-menu__item " ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center></span></a></li>
+
+
+                                    <?php
+                                }else{ ?>
+
+                                    <li class="kt-menu__item" aria-haspopup="true"><a href="index.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Add New</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="size.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-arrows"></i><span class="kt-menu__link-text">Size</span></a></li>
+                                    <li class="kt-menu__item"><a href="variables.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-interface-7"></i><span class="kt-menu__link-text">Variables</span></a></li>
+                                    <li class="kt-menu__item "><a href="methods.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i><span class="kt-menu__link-text">Methods</span></a></li>
+                                    <li class="kt-menu__item" data-ktmenu-submenu-toggle="hover"><a href="inheritance.php" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-layers"></i><span class="kt-menu__link-text">Inheritance</span></a></li>
+                                    <li class="kt-menu__item "><a href="coupling.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Coupling</span></a></li>
+                                    <li class="kt-menu__item " ><a href="control_structures.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cogwheel-2"></i><span class="kt-menu__link-text"><center>Control <br>Structures</center></span></a></li>
+
+
+                                    <?php
+                                }
+                                ?>
+
             
                                 
 
