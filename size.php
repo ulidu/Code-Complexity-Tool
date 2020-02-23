@@ -94,7 +94,7 @@
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Cs : 30</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Cs : 36</h1></center>
 
 
                                 </div>
@@ -189,7 +189,7 @@
                                         <th>Nop</th>
                                         <th>Nnv</th>
                                         <th>Nsl</th>
-                                        <th>Cs</th>
+                                        <th style="color: white" class="kt-label-bg-color-2">Cs</th>
 
                                     </tr>
                                     </thead>

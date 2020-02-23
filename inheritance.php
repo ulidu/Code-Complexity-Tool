@@ -94,7 +94,7 @@
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Ci : 40</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Ci : 0</h1></center>
 
 
                                 </div>
@@ -187,7 +187,7 @@
                                         <th>No. of direct inheritances</th>
                                         <th>No. of indirect inheritances</th>
                                         <th>Total inheritances</th>
-                                        <th>Ci</th>
+                                        <th style="color: white" class="kt-label-bg-color-2">Ci</th>
                                         
                                     </tr>
                                     </thead>
@@ -196,7 +196,7 @@
 
                                     <tr>
                                         <td>1</td>
-                                        <td>Pattern {</td>
+                                        <td>Pattern</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>

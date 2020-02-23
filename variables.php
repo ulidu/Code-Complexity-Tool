@@ -187,7 +187,7 @@
                                         <th>Wvs</th>
                                         <th>Npdtv</th>
                                         <th>Ncdtv</th>
-                                        <th>Cv</th>
+                                        <th style="color: white" class="kt-label-bg-color-2">Cv</th>
 
 
                                     </tr>

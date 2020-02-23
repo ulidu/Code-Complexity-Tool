@@ -94,7 +94,7 @@
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Ccs : 10</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Ccs : 9</h1></center>
 
 
                                 </div>
