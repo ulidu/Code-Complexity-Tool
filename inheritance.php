@@ -196,7 +196,7 @@
 
                                     <tr>
                                         <td>1</td>
-                                        <td>Pattern</td>
+                                        <td style="text-align: left">Pattern</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
