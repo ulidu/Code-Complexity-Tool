@@ -7,7 +7,7 @@
 						<div class="kt-subheader  kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-                                    <h3 class="kt-subheader__title">Variables Complexity of the Program</h3>
+                                    <h3 class="kt-subheader__title">Coupling Complexity of the Program</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 									
 									
@@ -59,7 +59,7 @@
 
 
 
-
+    <div class="col-lg-12">
 
     <!--begin::Portlet-->
     <div style="background-color: #F4F7FF;" class="kt-portlet kt-portlet--skin-solid kt-portlet--">
@@ -69,7 +69,7 @@
 													<i class="flaticon-time-1"></i>
 												</span>
                 <h3 class="kt-portlet__head-title kt-font-brand">
-                    Complexity of the Program due to Variables
+                    Complexity of the Program due to Coupling
                 </h3>
             </div>
 
@@ -94,7 +94,7 @@
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Cv : 1</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Ccp : 0</h1></center>
 
 
                                 </div>
@@ -123,7 +123,7 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                                     <h3 class="kt-portlet__head-title kt-font-brand">
-                                        Complexity of the Program due to the Variables by Statement
+                                        Complexity of the Program due to the Coupling by Statement
                                     </h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
@@ -184,10 +184,20 @@
                                     <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
                                         <th>Line No</th>
                                         <th>Program Statements</th>
-                                        <th>Wvs</th>
-                                        <th>Npdtv</th>
-                                        <th>Ncdtv</th>
-                                        <th style="color: white" class="kt-label-bg-color-2">Cv</th>
+                                        <th>Nr</th>
+                                        <th>Nmcms</th>
+                                        <th>Nmcmd</th>
+                                        <th>Nmcrms</th>
+                                        <th>Nmcrmd</th>
+                                        <th>Nrmcrms</th>
+                                        <th>Nrmcrmd</th>
+                                        <th>Nrmcms</th>
+                                        <th>Nrmcmd</th>
+                                        <th>Nmrgvs</th>
+                                        <th>Nmrgvd</th>
+                                        <th>Nrmrgvs</th>
+                                        <th>Nrmrgvd</th>
+                                        <th style="color: white" class="kt-label-bg-color-2">Ccp</th>
 
 
                                     </tr>
@@ -202,6 +212,16 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
 
 
                                     </tr>
@@ -212,22 +232,52 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
 
 
                                     </tr>
                                     <tr>
                                         <td>3</td>
                                         <td style="text-align: left">int rows = 5;</td>
-                                        <td>1</td>
-                                        <td>1</td>
                                         <td>0</td>
-                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
 
 
                                     </tr>
                                     <tr>
                                         <td>4</td>
                                         <td style="text-align: left">for(int i = 1; i <= rows; ++i) {</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -242,12 +292,32 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
 
 
                                     </tr>
                                     <tr>
                                         <td>5</td>
                                         <td style="text-align: left">System.out.print(j + " ");</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -262,12 +332,32 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
 
 
                                     </tr>
                                     <tr>
                                         <td>7</td>
                                         <td style="text-align: left">System.out.println("");</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -282,12 +372,32 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
 
 
                                     </tr>
                                     <tr>
                                         <td>9</td>
                                         <td style="text-align: left">}</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -299,6 +409,16 @@
                                     <tr>
                                         <td>10</td>
                                         <td style="text-align: left">}</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
