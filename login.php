@@ -13,10 +13,19 @@
 								<a class="kt-login__logo" href="index.php">
 									<img src="assets/media/logos/logo-5.png">
 								</a>
-								<h3 class="kt-login__title">JOIN OUR GREAT COMMUNITY</h3>
+								<h3 class="kt-login__title">CODE COMPLEXITY MEASURING TOOL</h3>
 								<span class="kt-login__desc">
-									The ultimate Bootstrap & Angular 6 admin theme framework for next generation web apps.
-								</span>
+
+                                Using this Tool, Measure the Complexity Introduced due to
+                                 <br><br><span class="kt-login__desc kt-font-bold">Size, Variables and Methods
+                                 <br>Inheritance
+                                 <br>Coupling
+                                <br>Control Structures
+                                    </span>
+                                    <br><br>
+                                    For C++ or Java Codes
+
+                                </span>
 								<div class="kt-login__actions">
 									<button type="button" id="kt_login_signup" class="btn btn-outline-brand btn-pill">Get An Account</button>
 								</div>
@@ -37,20 +46,11 @@
 										<div class="form-group">
 											<input style="border-radius: 28px; padding-left: 20px;" class="form-control" type="text" placeholder="Username" name="email" autocomplete="off">
 										</div>
+                                        <br>
 										<div class="form-group">
 											<input style="border-radius: 28px; padding-left: 20px;" class="form-control form-control-last" type="Password" placeholder="Password" name="password">
 										</div>
-										<div class="row kt-login__extra">
-											<div class="col kt-align-left">
-												<label class="kt-checkbox">
-													<input type="checkbox" name="remember"> Remember me
-													<span></span>
-												</label>
-											</div>
-											<div class="col kt-align-right">
-												<a href="javascript:;" id="kt_login_forgot" class="kt-link">Forget Password ?</a>
-											</div>
-										</div>
+
 										<div class="kt-login__actions">
 											<button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">Sign In</button>
 										</div>
@@ -59,16 +59,25 @@
 							</div>
 							<div class="kt-login__forgot">
 								<div class="kt-login__head">
-									<h3 class="kt-login__title">Forgotten Password ?</h3>
-									<div class="kt-login__desc">Enter your email to reset your password:</div>
+									<h3 class="kt-login__title">Create An Account</h3>
 								</div>
 								<div class="kt-login__form">
 									<form class="kt-form" action="">
 										<div class="form-group">
-											<input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
+											<input class="form-control" type="text" placeholder="Name" name="name" id="kt_email" autocomplete="off">
 										</div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="email" placeholder="Email" name="email" id="kt_email" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="password" placeholder="Password" name="pw" id="kt_email" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="password" placeholder="Confirm Password" name="pw_cfm" id="kt_email" autocomplete="off">
+                                        </div>
+
 										<div class="kt-login__actions">
-											<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill btn-elevate">Request</button>
+											<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill btn-elevate">Sign Up</button>
 											<button id="kt_login_forgot_cancel" class="btn btn-outline-brand btn-pill">Cancel</button>
 										</div>
 									</form>

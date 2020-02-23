@@ -200,7 +200,7 @@ var KTLoginGeneral = function() {
 	                    signInForm.clearForm();
 	                    signInForm.validate().resetForm();
 
-	                    showErrorMsg(signInForm, 'success', 'Cool! Password recovery instruction has been sent to your email.');
+	                    showErrorMsg(signInForm, 'success', 'Account Created Successfully. Please Log In.');
                 	}, 2000);
                 }
             });
