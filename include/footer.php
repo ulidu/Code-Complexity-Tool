@@ -6,8 +6,8 @@
 							</div>
 							<div class="kt-footer__menu">
                                 
-								<a href="#" class="kt-footer__menu-link kt-link">About</a>
-								<a href="#" class="kt-footer__menu-link kt-link">Team</a>
+
+								<a href="https://github.com/itpmcde/Code-Complexity-Tool" class="kt-footer__menu-link kt-link">Team</a>
 							
 							</div>
 						</div>
@@ -68,8 +68,12 @@
         <!--begin::Page Vendors(used by total complexity page) -->
         <script src="assets/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
 
-        <!--begin::Page Scripts(used by this page) -->
+        <!--begin::Page Scripts(used by tables) -->
         <script src="assets/js/pages/crud/datatables/advanced/footer-callback.js" type="text/javascript"></script>
+
+        <!--begin::Page Scripts(used by this page) -->
+        <script src="assets/js/pages/dashboard.js" type="text/javascript"></script>
+        <script src="assets/js/pages/custom/user/profile.js" type="text/javascript"></script>
 
 	</body>
 
