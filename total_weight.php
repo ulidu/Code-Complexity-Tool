@@ -3,16 +3,14 @@
 
 <?php
 
-$folder_name = 'uploads/';
+    $folder_name = 'uploads/';
 
-if(!empty($_FILES)){
     $temp_file = $_FILES['file']['tmp_name'];
     $location = $folder_name . $_FILES['file']['name'];
     move_uploaded_file($temp_file, $location);
-
-}
-
-echo file_get_contents($folder_name . 'HelloWorld.java');
+    $filename = $_FILES['file']['name'];
+    $content = file_get_contents($folder_name.$location);
+    echo $content;
 
 
 ?>
@@ -26,8 +24,8 @@ echo file_get_contents($folder_name . 'HelloWorld.java');
 								<div class="kt-subheader__main">
 									<h3 class="kt-subheader__title">Total Weight of the Program</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
-									
-									
+
+
 									<div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
 										<input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
 										<span class="kt-input-icon__icon kt-input-icon__icon--right">
@@ -36,8 +34,8 @@ echo file_get_contents($folder_name . 'HelloWorld.java');
 									</div>
 								</div>
 								<div class="kt-subheader__toolbar">
-									
-										
+
+
 										<!--begin: Search -->
 							<div class="kt-header__topbar-item kt-header__topbar-item--search dropdown" id="kt_quick_search_toggle">
 								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
@@ -59,8 +57,8 @@ echo file_get_contents($folder_name . 'HelloWorld.java');
 							</div>
 
 							<!--end: Search -->
-										
-								
+
+
 								</div>
 							</div>
 						</div>
@@ -406,5 +404,4 @@ echo file_get_contents($folder_name . 'HelloWorld.java');
 						<!-- end:: Content -->
 					</div>
 
-					
 <?php include 'include/footer.php'; ?>

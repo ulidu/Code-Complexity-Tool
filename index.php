@@ -1,6 +1,7 @@
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
+
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
 						<!-- begin:: Content Head -->
@@ -67,7 +68,7 @@
         </div>
 
         <!--begin::Form-->
-        <form action="total_weight.php" method="post" class="kt-form kt-form--label-right">
+        <form action="total_weight.php" method="post" enctype="multipart/form-data" class="kt-form kt-form--label-right">
             <div class="kt-portlet__body">
 
 
@@ -192,5 +193,5 @@
 						<!-- end:: Content -->
 					</div>
 
-					
+
 <?php include 'include/footer.php'; ?>
