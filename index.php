@@ -67,7 +67,7 @@
         </div>
 
         <!--begin::Form-->
-        <form action="" method="post" class="kt-form kt-form--label-right">
+        <form action="total_weight.php" method="post" class="kt-form kt-form--label-right">
             <div class="kt-portlet__body">
 
 
@@ -88,8 +88,9 @@
                 <div class="kt-form__actions">
                     <div class="row">
                         <div class="col-lg-7 ml-lg-auto">
-                            <button type="submit" class="btn btn-brand">Upload</button>
-                            <button type="reset" class="btn btn-secondary">Cancel</button>
+
+                            <button type="submit" id="upload" class="btn btn-brand">Upload</button>
+                            <button onclick="location.href='index.php'" type="reset" id="reset" class="btn btn-secondary">Cancel</button>
                         </div>
                     </div>
                 </div>

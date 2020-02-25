@@ -38,7 +38,7 @@ var KTDropzoneDemo = function () {
 
         // file type validation
         $('#kt_dropzone_3').dropzone({
-            url: "upload.php", // Set the url for your upload script location
+            url: "total_weight.php", // Set the url for your upload script location
             paramName: "file", // The name that will be used to transfer the file
             maxFiles: 10,
             maxFilesize: 10, // MB
@@ -46,7 +46,23 @@ var KTDropzoneDemo = function () {
             acceptedFiles: ".java, .cpp",
             accept: function(file, done) {
                     done();
+            },
+            init: function () {
+                var submit = document.getElementById('upload');
+                var reset = document.getElementById('reset');
+
+                submit.disabled = true;
+                reset.disabled = true;
+
+                this.on("complete", function (file) {
+                    submit.disabled = false;
+                });
+
+                this.on("complete", function (file) {
+                    reset.disabled = false;
+                });
             }
+
         });
     }
 
