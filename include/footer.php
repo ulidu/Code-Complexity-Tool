@@ -71,9 +71,12 @@
         <!--begin::Page Scripts(used by tables) -->
         <script src="assets/js/pages/crud/datatables/advanced/footer-callback.js" type="text/javascript"></script>
 
-        <!--begin::Page Scripts(used by this page) -->
+        <!--begin::Page Scripts(used by this profile) -->
         <script src="assets/js/pages/dashboard.js" type="text/javascript"></script>
         <script src="assets/js/pages/custom/user/profile.js" type="text/javascript"></script>
+
+        <!--begin::Page Scripts(used by file upload) -->
+        <script src="assets/js/pages/crud/file-upload/dropzonejs.js" type="text/javascript"></script>
 
 	</body>
 

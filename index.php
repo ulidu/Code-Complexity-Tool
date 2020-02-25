@@ -88,7 +88,7 @@
                 <div class="kt-form__actions">
                     <div class="row">
                         <div class="col-lg-7 ml-lg-auto">
-                            <button type="submit" class="btn btn-brand">Submit</button>
+                            <button type="submit" class="btn btn-brand">Upload</button>
                             <button type="reset" class="btn btn-secondary">Cancel</button>
                         </div>
                     </div>
