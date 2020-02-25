@@ -67,7 +67,7 @@
         </div>
 
         <!--begin::Form-->
-        <form action="total_weight.php" method="post" class="kt-form kt-form--label-right">
+        <form action="" method="post" class="kt-form kt-form--label-right">
             <div class="kt-portlet__body">
 
 
