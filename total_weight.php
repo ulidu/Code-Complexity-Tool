@@ -12,7 +12,7 @@ if(!empty($_FILES)){
 
 }
 
-//echo file_get_contents($folder_name . 'HelloWorld.java');
+echo file_get_contents($folder_name . 'HelloWorld.java');
 
 
 ?>
