@@ -61,6 +61,8 @@ var KTDropzoneDemo = function () {
                 this.on("complete", function (file) {
                     reset.disabled = false;
                 });
+
+
             }
 
         });
