@@ -67,14 +67,14 @@
         </div>
 
         <!--begin::Form-->
-        <form action="total_weight.php" class="kt-form kt-form--label-right">
+        <form action="total_weight.php" method="post" class="kt-form kt-form--label-right">
             <div class="kt-portlet__body">
 
 
                 <div class="form-group row">
 
                     <div class="col-lg-12 col-md-9 col-sm-12">
-                        <div class="dropzone dropzone-default dropzone-success" id="kt_dropzone_1">
+                        <div class="dropzone dropzone-default dropzone-success" id="kt_dropzone_3">
                             <div class="dropzone-msg dz-message needsclick">
                                 <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
                                 <span class="dropzone-msg-desc">Only C++ and Java files are allowed for upload</span>

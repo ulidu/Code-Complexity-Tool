@@ -38,18 +38,13 @@ var KTDropzoneDemo = function () {
 
         // file type validation
         $('#kt_dropzone_3').dropzone({
-            url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-            paramName: "file", // The name that will be used to transfer the file
+            paramName: "fileToUpload", // The name that will be used to transfer the file
             maxFiles: 10,
             maxFilesize: 10, // MB
             addRemoveLinks: true,
-            acceptedFiles: "image/*,application/pdf,.psd",
+            acceptedFiles: ".java, .cpp",
             accept: function(file, done) {
-                if (file.name == "justinbieber.jpg") {
-                    done("Naha, you don't.");
-                } else {
                     done();
-                }
             }
         });
     }
