@@ -7,7 +7,7 @@
 							<div class="kt-footer__menu">
                                 
 
-								<a href="https://github.com/itpmcde/Code-Complexity-Tool" class="kt-footer__menu-link kt-link">Team</a>
+								<a href="https://github.com/itpmcde/Code-Complexity-Tool/graphs/contributors" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
 							
 							</div>
 						</div>

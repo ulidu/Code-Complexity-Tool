@@ -174,7 +174,7 @@
                             <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-tab ">
                                 <ul class="kt-menu__nav ">
 
-                                    <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="index.php" class="kt-menu__link "><span style="font-size: 20px;font-family: 'Fira Code'" class="kt-menu__link-text">Code Complexity Measuring Tool</span></a></li>
+                                    <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="https://github.com/itpmcde/Code-Complexity-Tool" target="_blank" class="kt-menu__link "><span style="font-size: 20px;font-family: 'Fira Code'" class="kt-menu__link-text">Code Complexity Measuring Tool</span></a></li>
                                     <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">C++ and Java</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                                     </li>
 
