@@ -400,7 +400,7 @@
                     <div class="col-lg-12 ml-lg-auto">
                         <center>
 
-                        <button type="button" onclick="location.href='index.php'" class="btn btn-dark">Back</button>
+                        <button id="kt_sweetalert_demo_83" type="button" href="index.php" class="btn btn-dark">Back</button>
                         </center>
                     </div>
                 </div>

@@ -244,7 +244,7 @@
                     <div class="col-lg-12 ml-lg-auto">
                         <center>
 
-                        <button type="button" onclick="location.href='index.php'" class="btn btn-dark">Back</button>
+                            <button type="button" id="kt_sweetalert_demo_84" href="total_weight.php" class="btn btn-dark"><span><i class="flaticon-home"></i></span> Total Complexity of the Program</button>
                         </center>
                     </div>
                 </div>
