@@ -78,6 +78,9 @@
         <!--begin::Page Scripts(used by file upload) -->
         <script src="assets/js/pages/crud/file-upload/dropzonejs.js" type="text/javascript"></script>
 
+        <!--begin::Page Scripts(used by sweetalert) -->
+        <script src="assets/js/pages/components/extended/sweetalert2.js" type="text/javascript"></script>
+
 	</body>
 
 	<!-- end::Body -->
