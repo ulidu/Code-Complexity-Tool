@@ -1,8 +1,26 @@
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
+<?php
 
-<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+//The name of the folder.
+$folder = 'uploads';
+
+//Get a list of all of the file names in the folder.
+$files = glob($folder . '/*');
+
+//Loop through the file list.
+foreach($files as $file){
+    //Make sure that this is a file and not a directory.
+    if(is_file($file)){
+        //Use the unlink function to delete the file.
+        unlink($file);
+    }
+}
+?>
+
+
+<div  class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
 						<!-- begin:: Content Head -->
 						<div class="kt-subheader  kt-grid__item" id="kt_subheader">

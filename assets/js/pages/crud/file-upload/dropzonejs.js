@@ -63,9 +63,12 @@ var KTDropzoneDemo = function () {
                 });
 
 
-            }
+
+            },
+
 
         });
+
     }
 
     var demo2 = function () {
