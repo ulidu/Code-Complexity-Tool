@@ -19,10 +19,15 @@
 
                 $content = file_get_contents('uploads/'.$entry);
 
+                //  Removes single line '//' comments, treats blank characters
+                $single = preg_replace('![ \t]*//.*[ \t]*[\r\n]!', '', $content);
+                $multiple = preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $single);
+
                 $split = preg_split('/(?<=[;{}])/', $content, 0, PREG_SPLIT_NO_EMPTY);
 
                 $_SESSION['split_code'] = $split;
                 $_SESSION['files'] = $entry;
+
 
             }
 
@@ -31,6 +36,27 @@
 }
 
 ?>
+
+
+<?php if (isset($_POST['submit_content'])){
+
+    $paste_contents = $_POST['paste_contents'];
+
+    //  Removes single line '//' comments, treats blank characters
+    $single = preg_replace('![ \t]*//.*[ \t]*[\r\n]!', '', $paste_contents);
+    $multiple = preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $single);
+
+    $split = preg_split('/(?<=[;{}])/', $multiple, 0, PREG_SPLIT_NO_EMPTY);
+
+    $_SESSION['split_code'] = $split;
+    $_SESSION['files'] = $entry;
+
+}
+
+
+
+?>
+
 
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">

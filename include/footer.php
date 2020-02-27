@@ -84,7 +84,7 @@
     let $button = $("#submit_content");
     $button.prop("disabled", true);
 
-    $("#content").keyup(function(){
+    $("#paste_contents").keyup(function(){
         $button.prop("disabled", (this.value === "")? true : false);
     });
 </script>

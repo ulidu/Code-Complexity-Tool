@@ -166,7 +166,7 @@ foreach($files as $file){
 
 
                                             <div class="col-lg-12 col-md-9 col-sm-12">
-                                                <textarea name="content" id="content" class="form-control" data-provide="markdown" rows="20"></textarea>
+                                                <textarea name="paste_contents" id="paste_contents" class="form-control" data-provide="markdown" rows="20"></textarea>
 
                                             </div>
                                         </div>
@@ -177,6 +177,7 @@ foreach($files as $file){
                                             <div class="row">
                                                 <div class="col-lg-7 ml-lg-auto">
                                                     <input type="submit" name="submit_content" id="submit_content" class="btn btn-brand">
+                                                    <input type="hidden" name="submit_content" value="1">
                                                     <button onclick="location.href='index.php'" type="reset" class="btn btn-secondary">Cancel</button>
                                                 </div>
                                             </div>
