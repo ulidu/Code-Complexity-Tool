@@ -10,7 +10,7 @@
   <a href="#">Inheritance</a> |
   <a href="#">Control structures</a>
   <br><br>
-  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
+  <img width=50% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
   <br>
-  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
+  <img width=80% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
 </p>
