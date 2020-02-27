@@ -1,6 +1,8 @@
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
+<?php $split = $_SESSION['split_code']; ?>
+
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
 						<!-- begin:: Content Head -->
@@ -21,27 +23,7 @@
 								<div class="kt-subheader__toolbar">
 									
 										
-										<!--begin: Search -->
-							<div class="kt-header__topbar-item kt-header__topbar-item--search dropdown" id="kt_quick_search_toggle">
-								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
-									<span class="kt-header__topbar-icon"><i class="flaticon2-search-1"></i></span>
-								</div>
-								<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-top-unround dropdown-menu-anim dropdown-menu-lg">
-									<div class="kt-quick-search kt-quick-search--dropdown kt-quick-search--result-compact" id="kt_quick_search_dropdown">
-										<form method="get" class="kt-quick-search__form">
-											<div class="input-group">
-												<div class="input-group-prepend"><span class="input-group-text"><i class="flaticon2-search-1"></i></span></div>
-												<input type="text" class="form-control kt-quick-search__input" placeholder="Search...">
-												<div class="input-group-append"><span class="input-group-text"><i class="la la-close kt-quick-search__close"></i></span></div>
-											</div>
-										</form>
-										<div class="kt-quick-search__wrapper kt-scroll" data-scroll="true" data-height="325" data-mobile-height="200">
-										</div>
-									</div>
-								</div>
-							</div>
 
-							<!--end: Search -->
 										
 								
 								</div>
@@ -190,105 +172,28 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                    $i = 0; //increment to each loop
+                                    $count = 0;
+
+                                    if (!$split==""){
+                                    foreach($split AS $val) { // Traverse the array with FOREACH
+
+                                    $val;
 
 
-                                    <tr>
-                                        <td>1</td>
-                                        <td style="text-align: left">class Pattern {</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td style="text-align: left">public static void main(String[] args) {</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td style="text-align: left">int rows = 5;</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td style="text-align: left">for(int i = 1;i <= rows; ++i){</td>
-                                        <td>3</td>
-                                        <td>1</td>
-                                        <td>0</td>
-                                        <td>3</td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td style="text-align: left"> for(int j = 1; j <= i; ++j) {</td>
-                                        <td>3</td>
-                                        <td>1</td>
-                                        <td>3</td>
-                                        <td>6</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td style="text-align: left">System.out.print(j + " ");</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td >6</td>
-                                        <td style="text-align: left">}</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td style="text-align: left">System.out.println("");</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td style="text-align: left">}</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td style="text-align: left">}</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-
-                                    </tr>
+                                    ?>
 
                                     <tr>
-                                        <td>10</td>
-                                        <td style="text-align: left">}</td>
+                                        <td><?php echo $count=$count+1; ?></td>
+                                        <td style="text-align: left"><?php echo $val;?></td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-
+                                        <?php $i++; }}?>
                                     </tr>
 
 
