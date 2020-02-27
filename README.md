@@ -12,7 +12,7 @@
   <br><br>
   <img width=50% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
   <br><br>
-  <b>Screenshots</b><br>
+  <b>Screenshots</b><br><br>
   <kbd>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/a.png">
   </kbd>
@@ -21,5 +21,6 @@
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/size.png">
   </kbd>
   <br><br>
-  
+  <b>Installation</b><br><br>
+  <p>Just copy the folder into www folder in WAMP Server. (or in any Server)</p>
 </p>
