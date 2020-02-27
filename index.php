@@ -4,6 +4,7 @@
 <?php
 
 session_destroy();
+
 //unset($_SESSION['split_code']);
 //The name of the folder.
 $folder = 'uploads';
