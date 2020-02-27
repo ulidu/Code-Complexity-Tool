@@ -24,5 +24,5 @@
   <b>Installation</b><br>
   <p align=center>Just copy the folder into www folder in WAMP Server. (or in any Server)</p><br>
    <p align=center>2020 © CDE IT Solutions</p>
-
+ <a href="https://github.com/itpmcde/Code-Complexity-Tool/graphs/contributors">Team</a>
 </p>
