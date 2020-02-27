@@ -105,10 +105,9 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                                     <h3 class="kt-portlet__head-title kt-font-brand">
-                                        Complexity of the Program due to the Control Structures by Statement
-                                    </h3>&nbsp;
+                                        Complexity of the Program due to the Control Structures by Statement : </h3>&nbsp;
                                     <h3 class="kt-portlet__head-title kt-font-dark"><?php $file = $_SESSION['filename'];
-                                        echo ' : '.$file; ?>
+                                        echo $file; ?>
                                     </h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
