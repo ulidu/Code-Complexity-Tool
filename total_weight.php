@@ -20,7 +20,7 @@
                 $content = file_get_contents('uploads/'.$entry);
 
                 echo  $content;
-                echo '<pre>', print_r(), '</pre>';
+                echo '<pre>', print_r(preg_split('/(?<=[;{}])/', $content, 0, PREG_SPLIT_NO_EMPTY)), '</pre>';
 
         }
     }
