@@ -12,7 +12,7 @@
   <br><br>
   <img width=50% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
   <br><br>
-  <b>Screenshots</b><br><br>
+  <b>Screenshots</b><br>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/index.png">
   <br><br>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/size.png">
