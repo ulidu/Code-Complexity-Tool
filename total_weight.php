@@ -22,6 +22,7 @@
                 echo  $content;
                 echo '<pre>', print_r(preg_split('/(?<=[;{}])/', $content, 0, PREG_SPLIT_NO_EMPTY)), '</pre>';
 
+
         }
     }
     closedir($handle);
