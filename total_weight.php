@@ -13,28 +13,19 @@
     $targetFile =  $targetPath.$newFileName;  // Create the absolute path of the uploaded file destination.
     move_uploaded_file($tempFile,$targetFile); // Move uploaded file to destination.
 
-
-
     if ($handle = opendir('uploads')) {
+        while (false !== ($entry = readdir($handle))) {
+            if ($entry != "." && $entry != "..") {
+                $pattern = '/[{;]/';
+                $content = file_get_contents('uploads/'.$entry);
 
-    while (false !== ($entry = readdir($handle))) {
-
-        if ($entry != "." && $entry != "..") {
-
-            $pattern = '/[{;]/';
-
-            $content = file_get_contents('uploads/'.$entry);
-
-            echo  $content;
-
-            echo '<pre>', print_r(), '</pre>';
+                echo  $content;
+                echo '<pre>', print_r(), '</pre>';
 
         }
     }
-
     closedir($handle);
 }
-
 
 ?>
 
