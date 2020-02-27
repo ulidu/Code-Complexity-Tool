@@ -23,4 +23,6 @@
   <br><br>
   <b>Installation</b><br>
   <p align=center>Just copy the folder into www folder in WAMP Server. (or in any Server)</p>
+   <p align=center>2020 © CDE IT Solutions</p>
+
 </p>
