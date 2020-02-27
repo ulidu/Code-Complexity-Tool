@@ -19,11 +19,10 @@
                 $pattern = '/[{;]/';
                 $content = file_get_contents('uploads/'.$entry);
 
-                echo  $content;
-                echo '<pre>', print_r(preg_split('/(?<=[;{}])/', $content, 0, PREG_SPLIT_NO_EMPTY)), '</pre>';
+                $split = preg_split('/(?<=[;{}])/', $content, 0, PREG_SPLIT_NO_EMPTY);
 
 
-        }
+            }
     }
     closedir($handle);
 }
@@ -225,10 +224,22 @@
                                     </thead>
                                     <tbody>
 
+                    <?php
+                    $i = 0; //increment to each loop
 
+                    if (!$split==""){
+                    foreach($split AS $val) { // Traverse the array with FOREACH
+
+                        $val;
+
+
+
+
+                    ?>
                                     <tr>
                                         <td>1</td>
-                                        <td style="text-align: left">class Pattern {</td>
+                                        <td style="text-align: left"><?php echo $val; ?></td>
+
                                         <td>2</td>
                                         <td>0</td>
                                         <td>0</td>
@@ -236,119 +247,8 @@
                                         <td>0</td>
                                         <td>0</td>
                                         <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                        <?php $i++; }}?>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td style="text-align: left">public static void main(String[] args) {</td>
-                                        <td>4</td>
-                                        <td>0</td>
-                                        <td>2</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">6</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td style="text-align: left">int rows = 5;</td>
-                                        <td>2</td>
-                                        <td>1</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td style="text-align: left">for(int i = 1; i <= rows; ++i) {</td>
-                                        <td>8</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>3</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">11</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td style="text-align: left">for(int j = 1; j <= i; ++j) { </td>
-                                        <td>8</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>6</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">14</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td style="text-align: left">System.out.print(j + " ");</td>
-                                        <td>8</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">8</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td style="text-align: left">}</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td style="text-align: left">System.out.println("");</td>
-                                        <td>6</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">6</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td style="text-align: left">}</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td style="text-align: left">}</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>10</td>
-                                        <td style="text-align: left">}</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td style="color: white" class="kt-label-bg-color-1">0</td>
-                                    </tr>
-
 
 
 

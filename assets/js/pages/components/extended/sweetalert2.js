@@ -238,6 +238,36 @@ var KTSweetAlert2Demo = function() {
 
         });
 
+        $('#kt_sweetalert_demo_88').click(function(e) {
+
+            var $a;
+
+            $a = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+            if ($a != 'index.php') {
+                swal.fire({
+                    title: 'Are you sure?',
+                    html: "All the uploaded files will be removed.<br> Are you sure you want to continue ?",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, Upload a New File'
+                }).then(function(result) {
+                    if (result.value) {
+                        swal.fire(
+                            'Done!',
+                            'Your uploaded files have been deleted. <br> Now you can add new files.',
+                            'success'
+                        ).then(function() {
+                            window.location = "index.php";
+                        });
+                    }
+                });
+            } else {
+
+            }
+
+        });
+
         $('#kt_sweetalert_demo_9').click(function(e) {
             swal.fire({
                 title: 'Are you sure?',

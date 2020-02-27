@@ -353,7 +353,7 @@
                     <div class="col-lg-12 ml-lg-auto">
                         <center>
 
-                            <button type="button" id="kt_sweetalert_demo_84" href="total_weight.php" class="btn btn-dark"><span><i class="flaticon-home"></i></span> Total Complexity of the Program</button>
+                            <a href="total_weight.php"> <button type="button" href="total_weight.php" class="btn btn-dark"><span><i class="flaticon-home"></i></span> Total Complexity of the Program</button></a>
                         </center>
                     </div>
                 </div>
