@@ -16,11 +16,12 @@
     if ($handle = opendir('uploads')) {
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != "..") {
-                $pattern = '/[{;]/';
+
                 $content = file_get_contents('uploads/'.$entry);
 
                 $split = preg_split('/(?<=[;{}])/', $content, 0, PREG_SPLIT_NO_EMPTY);
 
+                $_SESSION['split_code'] = $split;
 
             }
     }
@@ -226,6 +227,7 @@
 
                     <?php
                     $i = 0; //increment to each loop
+                    $count = 0;
 
                     if (!$split==""){
                     foreach($split AS $val) { // Traverse the array with FOREACH
@@ -237,7 +239,7 @@
 
                     ?>
                                     <tr>
-                                        <td>1</td>
+                                        <td><?php echo $count=$count+1; ?></td>
                                         <td style="text-align: left"><?php echo $val; ?></td>
 
                                         <td>2</td>
