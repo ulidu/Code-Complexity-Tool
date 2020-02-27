@@ -1,6 +1,6 @@
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
-<hi></hi>
+
 <?php
 
 session_destroy();
