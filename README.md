@@ -6,3 +6,12 @@
   <br><br>
   <img style="text-align:center" src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
 </p>
+
+<p align="center">
+  <b>Some Links:</b><br>
+  <a href="#">Link 1</a> |
+  <a href="#">Link 2</a> |
+  <a href="#">Link 3</a>
+  <br><br>
+  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
+</p>
