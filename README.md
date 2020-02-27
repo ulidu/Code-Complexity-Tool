@@ -3,10 +3,11 @@
 
 
 <p align="center">
-  <b>This web-based Code Complexity Measuring Tool can be used to measure the complexity introduced due to Size, Variables, Methods, Inheritance, Coupling, Control structures</b><br>
-  <a href="#">Link 1</a> |
-  <a href="#">Link 2</a> |
-  <a href="#">Link 3</a>
+  <b>This web-based Code Complexity Measuring Tool can be used to measure the complexity introduced due to following factors.</b><br>
+  <a href="#">Size, Variables and Methods</a> |
+  <a href="#">Inheritance</a> |
+  <a href="#">Inheritance</a> |
+  <a href="#">Control structures</a>
   <br><br>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
 </p>
