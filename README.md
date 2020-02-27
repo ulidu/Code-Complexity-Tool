@@ -11,6 +11,6 @@
   <a href="#">Control structures</a>
   <br><br>
   <img width=20% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
-  <br>
-  <img width=80% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
+  <br><br>
+  <img width=50% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
 </p>
