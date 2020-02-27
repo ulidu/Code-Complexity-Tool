@@ -13,9 +13,11 @@
   <img width=50% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
   <br><br>
   <b>Screenshots</b><br>
-  <img style="border-radius: 10%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/a.png">
+  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/a.png">
   <br><br>
-  <img style="border-radius: 10%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/size.png">
+  <kbd>
+  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/size.png">
+  </kbd>
   <br><br>
   
 </p>
