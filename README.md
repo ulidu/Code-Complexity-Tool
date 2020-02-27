@@ -12,10 +12,18 @@
   <br><br>
   <img width=50% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/readme/coding.png">
   <br><br>
-  <b>Screenshots</b><br>
+  <b>Screenshots</b><br><br>
+  <kbd>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/a.png">
+  </kbd>
   <br><br>
+  <kbd>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/size.png">
+  </kbd>
   <br><br>
-  
+  <b>Installation</b><br>
+  <p align=center>Just copy the folder into www folder in WAMP Server. (or in any Server)</p><br>
+   <p align=center>2020 © CDE IT Solutions<br>
+ <a href="https://github.com/itpmcde/Code-Complexity-Tool/graphs/contributors">Team</a>
+  </p>
 </p>
