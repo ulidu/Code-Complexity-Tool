@@ -21,6 +21,6 @@
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/size.png">
   </kbd>
   <br><br>
-  <b>Installation</b><br><br>
-  <p>Just copy the folder into www folder in WAMP Server. (or in any Server)</p>
+  <b>Installation</b><br>
+  <p align=center>Just copy the folder into www folder in WAMP Server. (or in any Server)</p>
 </p>
