@@ -160,13 +160,13 @@ foreach($files as $file){
                                 </div>
 
                                 <!--begin::Form-->
-                                <form action="total_weight.php" class="kt-form kt-form--fit kt-form--label-right">
+                                <form action="total_weight.php" method="post" class="kt-form kt-form--fit kt-form--label-right">
                                     <div class="kt-portlet__body">
                                         <div class="form-group row is-valid">
 
 
                                             <div class="col-lg-12 col-md-9 col-sm-12">
-                                                <textarea name="content" class="form-control" data-provide="markdown" rows="20"></textarea>
+                                                <textarea name="content" id="content" class="form-control" data-provide="markdown" rows="20"></textarea>
 
                                             </div>
                                         </div>
@@ -176,8 +176,8 @@ foreach($files as $file){
                                         <div class="kt-form__actions">
                                             <div class="row">
                                                 <div class="col-lg-7 ml-lg-auto">
-                                                    <button type="submit" class="btn btn-brand">Submit</button>
-                                                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                                                    <input type="submit" name="submit_content" id="submit_content" class="btn btn-brand">
+                                                    <button onclick="location.href='index.php'" type="reset" class="btn btn-secondary">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>

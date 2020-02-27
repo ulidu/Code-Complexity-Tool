@@ -76,7 +76,7 @@
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Cs : 36</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Cs : 0</h1></center>
 
 
                                 </div>

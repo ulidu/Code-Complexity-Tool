@@ -80,7 +80,14 @@
 
         <!--begin::Page Scripts(used by sweetalert) -->
         <script src="assets/js/pages/components/extended/sweetalert2.js" type="text/javascript"></script>
+<script>
+    let $button = $("#submit_content");
+    $button.prop("disabled", true);
 
+    $("#content").keyup(function(){
+        $button.prop("disabled", (this.value === "")? true : false);
+    });
+</script>
 	</body>
 
 	<!-- end::Body -->
