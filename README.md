@@ -9,7 +9,7 @@
   <a href="#">Control structures</a>
   <br><br>
   <img width=20% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
-  <br><br>
+  <br>
   <img width=50% src="https://raw.githubusercontent.com/itpmcde/Code-Complexity-Tool/master/assets/media/readme/code.gif">
   <br><br>
   <b>Screenshots</b><br><br>
