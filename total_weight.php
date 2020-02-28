@@ -146,7 +146,6 @@
             <div class="kt-form__actions">
                 <div class="row">
 
-
                     <!-- begin:: Content -->
                     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
