@@ -10,7 +10,7 @@
   <br><br>
   <img width=20% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
   <br><br>
-  <img width=50% src="https://gfycat.com/mellowpiercinghammerkop">
+  <img width=50% src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgfycat.com%2Fmellowpiercinghammerkop&psig=AOvVaw1qyyJ0Ehrrux9ZPsl39yGU&ust=1582946298802000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODHj9ml8-cCFQAAAAAdAAAAABAQ">
   <br><br>
   <b>Screenshots</b><br><br>
   <kbd>
