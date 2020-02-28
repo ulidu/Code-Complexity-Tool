@@ -1,7 +1,19 @@
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
-<?php $split = $_SESSION['split_code']; ?>
+<?php
+
+$split = $_SESSION['split_code'];
+$trim = $_SESSION['trimmed'];
+$file = $_SESSION['filename'];
+
+?>
+
+<?php
+
+echo substr_count( $trim, 'void' );
+
+?>
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
@@ -106,8 +118,7 @@
 										</span>
                                     <h3 class="kt-portlet__head-title kt-font-brand">
                                         Complexity of the Program due to the Size by Statement : </h3>&nbsp;
-                                    <h3 class="kt-portlet__head-title kt-font-dark"><?php $file = $_SESSION['filename'];
-                                        echo $file; ?>
+                                    <h3 class="kt-portlet__head-title kt-font-dark"><?php echo $file; ?>
                                     </h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
