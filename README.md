@@ -5,7 +5,7 @@
     Complexity of the program can be introduced due to following factors.</b><br><br>
   <a href="#">Size, Variables and Methods</a> |
   <a href="#">Inheritance</a> |
-  <a href="#">Inheritance</a> |
+  <a href="#">Coupling</a> |
   <a href="#">Control structures</a>
   <br><br>
   <img width=20% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
