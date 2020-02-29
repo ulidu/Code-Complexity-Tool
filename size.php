@@ -11,7 +11,22 @@ $file = $_SESSION['filename'];
 
 <?php
 
-echo substr_count( $trim, 'void' );
+$toString = implode(' ', $split);
+$data = array('void');
+
+function substr_count_array($haystack, $needle){
+    $initial = 0;
+    $bits_of_haystack = explode(' ', $haystack);
+    foreach ($needle as $substring) {
+        if(!in_array($substring, $bits_of_haystack))
+            continue; // skip this needle if it doesn't exist as a whole word
+
+        $initial += substr_count($haystack, $substring);
+    }
+    return $initial;
+}
+
+echo substr_count_array($toString, $data);
 
 ?>
 
