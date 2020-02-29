@@ -233,7 +233,7 @@
                     <div class="col-lg-12 ml-lg-auto">
                         <center>
 
-                            <a href="total_weight.php"><button type="button" href="total_weight.php" class="btn btn-dark"><span><i class="flaticon-home"></i></span> Total Complexity of the Program</button></a>
+                            <a href="total_weight.php"><button type="button" href="total_weight.php" class="btn btn-brand"><span><i class="flaticon-home"></i></span> Total Complexity of the Program</button></a>
                         </center>
                     </div>
                 </div>

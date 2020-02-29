@@ -9,27 +9,6 @@ $file = $_SESSION['filename'];
 
 ?>
 
-<?php
-
-$toString = implode(' ', $split);
-$data = array('void');
-
-function substr_count_array($haystack, $needle){
-    $initial = 0;
-    $bits_of_haystack = explode(' ', $haystack);
-    foreach ($needle as $substring) {
-        if(!in_array($substring, $bits_of_haystack))
-            continue; // skip this needle if it doesn't exist as a whole word
-
-        $initial += substr_count($haystack, $substring);
-    }
-    return $initial;
-}
-
-echo substr_count_array($toString, $data);
-
-?>
-
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
 						<!-- begin:: Content Head -->
@@ -213,7 +192,49 @@ echo substr_count_array($toString, $data);
 
                                     $val;
 
+                                    // Weight due to Keywords
+                                    $key_words = array("abstract","assert","break","catch","class","const","continue","default","do","else","enum","extends","final","finally","goto","implements","import","instanceof","interface","native","new","package","private","protected","public","return","static","strictfp","super","synchronized","this","throw","throws","transient","try","void","volatile");
+                                    $keyword_count_total = 0;
+                                    foreach($key_words as $word) {
+                                        $keyword_count = substr_count($val, $word);
+                                        $keyword_count_total = $keyword_count_total + $keyword_count;
 
+                                    }
+                                    $Nkw = $keyword_count_total;
+
+                                    // Weight due to Identifiers
+                                    $matches = array("");
+                                    preg_match('/id=([0-9]+)\?/', $val, $matches);
+
+                                    // Weight due to Operators
+                                    $operators = array("++","--","~"," ! ","*","/","%","+","-","<<",">>",">>>","<",">","<=",">=","instanceof","==","!=","&","^","|","&&","||","?",":","=","+=","-=","*=","/=","%=","&=","^=","|=","<<=",">>=",">>>=");
+                                    $operators_count_total = 0;
+                                    foreach($operators as $word) {
+                                        $operators_count = substr_count($val, $word);
+                                        $operators_count_total = $operators_count_total + $operators_count;
+
+                                    }
+                                    $Nop = $operators_count_total;
+
+                                    // Weight due to Numbers
+                                    $numbers = array("0","1","2","3","4","5","6","7","8","9");
+                                    $numbers_count_total = 0;
+                                    foreach($numbers as $word) {
+                                        $numbers_count = substr_count($val, $word);
+                                        $numbers_count_total = $numbers_count_total + $numbers_count;
+
+                                    }
+                                    $Nnv = $numbers_count_total;
+
+                                    // Weight due to String Literals
+                                    $strings = array("\"\"");
+                                    $strings_count_total = 0;
+                                    foreach($strings as $word) {
+                                        $strings_count = substr_count($val, $word);
+                                        $strings_count_total = $strings_count_total + $strings_count;
+
+                                    }
+                                    $Nsl = $strings_count_total;
 
 
                                     ?>
@@ -221,12 +242,12 @@ echo substr_count_array($toString, $data);
                                     <tr>
                                         <td><?php echo $count=$count+1; ?></td>
                                         <td style="text-align: left"><?php echo $val;?></td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>2</td>
+                                        <td><?php echo $Nkw; ?></td>
+                                        <td><?php echo "In progress"; ?></td>
+                                        <td><?php echo $Nop; ?></td>
+                                        <td><?php echo $Nnv; ?></td>
+                                        <td><?php echo "In progress"; ?></td>
+                                        <td><?php $Cs = $Nkw + $Nop + $Nnv; echo $Cs; ?></td>
                                         <?php $i++; }}?>
                                     </tr>
 
@@ -264,7 +285,7 @@ echo substr_count_array($toString, $data);
                     <div class="col-lg-12 ml-lg-auto">
                         <center>
 
-                            <a href="total_weight.php"> <button type="button" href="total_weight.php" class="btn btn-dark"><span><i class="flaticon-home"></i></span> Total Complexity of the Program</button></a>
+                            <a href="total_weight.php"> <button type="button" href="total_weight.php" class="btn btn-brand"><span><i class="flaticon-home"></i></span> Total Complexity of the Program</button></a>
                         </center>
                     </div>
                 </div>
