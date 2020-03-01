@@ -7,7 +7,7 @@
     $storeFolder = 'uploads';   // Declare a variable for destination folder.
 
     $tempFile = $_FILES['file']['tmp_name'];        // If file is sent to the page, store the file object to a temporary variable.
-    $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  // Create the absolute path of the destination folder.
+    $targetPath = __DIR__ . $ds. $storeFolder . $ds;  // Create the absolute path of the destination folder.
 
     $newFileName = $_FILES['file']['name'];
     $targetFile =  $targetPath.$newFileName;  // Create the absolute path of the uploaded file destination.
