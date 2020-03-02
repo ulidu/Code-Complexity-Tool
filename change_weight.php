@@ -38,7 +38,7 @@
 <!--Begin::Row-->
 <div class="row">
 
-    <div class="col-lg-6">
+    <div class="col-lg-7">
 
     <!--begin::Portlet-->
     <div class="kt-portlet kt-portlet--tabs">
@@ -47,66 +47,391 @@
                 <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-brand nav-tabs-line-2x nav-tabs-line-right nav-tabs-bold" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#kt_portlet_base_demo_3_3_tab_content" role="tab">
-                            <i class="flaticon2-heart-rate-monitor" aria-hidden="true"></i>Size
+                            <i class="flaticon-arrows" aria-hidden="true"></i>Size
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_2_tab_content" role="tab">
-                            <i class="flaticon2-pie-chart-2" aria-hidden="true"></i>Variables
+                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_4_tab_content" role="tab">
+                            <i class="flaticon-interface-7" aria-hidden="true"></i>Variables
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_3_tab_content" role="tab">
-                            <i class="flaticon2-chronometer" aria-hidden="true"></i>Methods
+                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_5_tab_content" role="tab">
+                            <i class="flaticon-map" aria-hidden="true"></i>Methods
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_2_tab_content" role="tab">
-                            <i class="flaticon2-pie-chart-2" aria-hidden="true"></i>Settings
+                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_6_tab_content" role="tab">
+                            <i class="flaticon-layers" aria-hidden="true"></i>Inheritance
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_3_tab_content" role="tab">
-                            <i class="flaticon2-chronometer" aria-hidden="true"></i>Logs
+                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_7_tab_content" role="tab">
+                            <i class="flaticon-list-3" aria-hidden="true"></i>Coupling
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_3_tab_content" role="tab">
-                            <i class="flaticon2-chronometer" aria-hidden="true"></i>Logs
+                        <a class="nav-link" data-toggle="tab" href="#kt_portlet_base_demo_3_8_tab_content" role="tab">
+                            <i class="flaticon-cogwheel-2" aria-hidden="true"></i>Control Structures
                         </a>
                     </li>
                 </ul>
             </div>
+
         </div>
         <div class="kt-portlet__body">
             <div class="tab-content">
                 <div class="tab-pane active" id="kt_portlet_base_demo_3_3_tab_content" role="tabpanel">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+                    <h5 class="kt-font-brand">Weights related to the Size factor</h5>
+                    <hr>
+
+                    <div class="col-lg-8">
+                    <div class="kt-section__content">
+                        <table style="text-align: center;" class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>Program Component</th>
+                                <th>Weight</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
+                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                            </tr>
+                            <tr>
+                                <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
+                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                            </tr>
+                            <tr>
+                                <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
+                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                            </tr>
+                            <tr>
+                                <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
+                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                            </tr>
+                            <tr>
+                                <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
+                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+
+                    <br><hr>
+                                <button type="submit" class="btn btn-brand">Save</button>
+                                <button type="submit" class="btn btn-secondary">Reset to Defaults</button>
+
+
+
                 </div>
-                <div class="tab-pane" id="kt_portlet_base_demo_3_2_tab_content" role="tabpanel">
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+
+
+                <div class="tab-pane" id="kt_portlet_base_demo_3_4_tab_content" role="tabpanel">
+                    <h5 class="kt-font-brand">Weights related to the Variable factor</h5>
+                    <hr>
+
+                    <div class="col-lg-8">
+                        <div class="kt-section__content">
+                            <table style="text-align: center;" class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>Program Component</th>
+                                    <th>Weight</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br><hr>
+                    <button type="submit" class="btn btn-brand">Save</button>
+                    <button type="submit" class="btn btn-secondary">Reset to Defaults</button>
                 </div>
-                <div class="tab-pane" id="kt_portlet_base_demo_3_3_tab_content" role="tabpanel">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+
+
+
+
+                <div class="tab-pane" id="kt_portlet_base_demo_3_5_tab_content" role="tabpanel">
+                    <h5 class="kt-font-brand">Weights related to the Method factor</h5>
+                    <hr>
+
+                    <div class="col-lg-8">
+                        <div class="kt-section__content">
+                            <table style="text-align: center;" class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>Program Component</th>
+                                    <th>Weight</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br><hr>
+                    <button type="submit" class="btn btn-brand">Save</button>
+                    <button type="submit" class="btn btn-secondary">Reset to Defaults</button>
                 </div>
-                <div class="tab-pane" id="kt_portlet_base_demo_3_3_tab_content" role="tabpanel">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+
+
+
+
+
+                <div class="tab-pane" id="kt_portlet_base_demo_3_6_tab_content" role="tabpanel">
+                    <h5 class="kt-font-brand">Weights related to the Inheritance factor</h5>
+                    <hr>
+
+                    <div class="col-lg-8">
+                        <div class="kt-section__content">
+                            <table style="text-align: center;" class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>Program Component</th>
+                                    <th>Weight</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br><hr>
+                    <button type="submit" class="btn btn-brand">Save</button>
+                    <button type="submit" class="btn btn-secondary">Reset to Defaults</button>
                 </div>
-                <div class="tab-pane" id="kt_portlet_base_demo_3_2_tab_content" role="tabpanel">
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+
+
+
+
+
+
+
+
+
+                <div class="tab-pane" id="kt_portlet_base_demo_3_7_tab_content" role="tabpanel">
+                    <h5 class="kt-font-brand">Weights related to the Coupling factor</h5>
+                    <hr>
+
+                    <div class="col-lg-8">
+                        <div class="kt-section__content">
+                            <table style="text-align: center;" class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>Program Component</th>
+                                    <th>Weight</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br><hr>
+                    <button type="submit" class="btn btn-brand">Save</button>
+                    <button type="submit" class="btn btn-secondary">Reset to Defaults</button>
                 </div>
-                <div class="tab-pane" id="kt_portlet_base_demo_3_3_tab_content" role="tabpanel">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+
+
+
+
+
+
+
+                <div class="tab-pane" id="kt_portlet_base_demo_3_8_tab_content" role="tabpanel">
+                    <h5 class="kt-font-brand">Weights related to the Control Structure factor</h5>
+                    <hr>
+
+                    <div class="col-lg-8">
+                        <div class="kt-section__content">
+                            <table style="text-align: center;" class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>Program Component</th>
+                                    <th>Weight</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br><hr>
+                    <button type="submit" class="btn btn-brand">Save</button>
+                    <button type="submit" class="btn btn-secondary">Reset to Defaults</button>
                 </div>
+
+
+
+
             </div>
         </div>
+
     </div>
     </div>
 
     <!--end::Portlet-->
 
     <!--begin::Portlet-->
-        <div class="col-lg-6">
+        <div class="col-lg-5">
     <div class="kt-portlet kt-portlet--skin-solid kt-portlet-- kt-bg-brand">
         <div class="kt-portlet__head">
             <div class="kt-portlet__head-label">
@@ -120,8 +445,9 @@
 
         </div>
         <div class="kt-portlet__body">
-            Lorem Ipsum is simply dummy text of the printing dummy text of the printing dummy text of the printing dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
-        </div>
+            Tip : You can change the default weights allocated for the program components. <br><br>Once you add a new program, the customized weights will be reset to defaults.
+            </div>
+
     </div>
 
     <!--end::Portlet-->
