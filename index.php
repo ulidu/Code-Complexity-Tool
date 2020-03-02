@@ -3,7 +3,9 @@
 
 <?php
 
-session_destroy();
+unset ($_SESSION["split_code"]);
+unset ($_SESSION["trimmed"]);
+unset ($_SESSION["filename"]);
 
 //unset($_SESSION['split_code']);
 //The name of the folder.

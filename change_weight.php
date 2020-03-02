@@ -20,13 +20,16 @@
 										</span>
 									</div>
 								</div>
-								<div class="kt-subheader__toolbar">
+                                <div class="kt-subheader__toolbar">
 
 
 
 
+                                    <a href="index.php" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                                        Add New
+                                    </a>
 
-								</div>
+                                </div>
 							</div>
 						</div>
 
@@ -86,7 +89,7 @@
                     <h5 class="kt-font-brand">Weights related to the Size factor</h5>
                     <hr>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-10">
                     <div class="kt-section__content">
                         <table style="text-align: center;" class="table">
                             <thead class="thead-light">
@@ -143,7 +146,7 @@
                     <h5 class="kt-font-brand">Weights related to the Variable factor</h5>
                     <hr>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-10">
                         <div class="kt-section__content">
                             <table style="text-align: center;" class="table">
                                 <thead class="thead-light">
@@ -193,7 +196,7 @@
                     <h5 class="kt-font-brand">Weights related to the Method factor</h5>
                     <hr>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-10">
                         <div class="kt-section__content">
                             <table style="text-align: center;" class="table">
                                 <thead class="thead-light">
@@ -250,7 +253,7 @@
                     <h5 class="kt-font-brand">Weights related to the Inheritance factor</h5>
                     <hr>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="kt-section__content">
                             <table style="text-align: center;" class="table">
                                 <thead class="thead-light">
@@ -262,28 +265,28 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class with no Inheritance (direct or indirect) </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="0"></td>
+                                    <td class="kt-font-bold"><label>A class with no Inheritance (direct or indirect) </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="0"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class Inheriting (directly or indirectly) from one user-defined class </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label>A class Inheriting (directly or indirectly) from one user-defined class </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="1"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class Inheriting (directly or indirectly) from two user-defined classes              </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+                                    <td class="kt-font-bold"><label>A class Inheriting (directly or indirectly) from two user-defined classes              </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class Inheriting (directly or indirectly) from three user-defined classes</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
+                                    <td class="kt-font-bold"><label>A class Inheriting (directly or indirectly) from three user-defined classes</label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="3"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class Inheriting  (directly or indirectly) from more than three user-defined classes </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="4"></td>
+                                    <td class="kt-font-bold"><label>A class Inheriting  (directly or indirectly) from more than three user-defined classes </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="4"></td>
 
                                 </tr>
 
@@ -311,7 +314,7 @@
                     <h5 class="kt-font-brand">Weights related to the Coupling factor</h5>
                     <hr>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="kt-section__content">
                             <table style="text-align: center;" class="table">
                                 <thead class="thead-light">
@@ -323,76 +326,76 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive call</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+                                    <td class="kt-font-bold"><label>A Recursive call</label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Regular method calling another Regular method in the same file </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+                                    <td class="kt-font-bold"><label>A Regular method calling another Regular method in the same file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Regular method calling another Regular method in a different file </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
+                                    <td class="kt-font-bold"><label>A Regular method calling another Regular method in a different file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="3"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Regular method calling a Recursive method in the same file</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
+                                    <td class="kt-font-bold"><label>A Regular method calling a Recursive method in the same file</label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="3"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Regular method calling a Recursive method in a different file</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="4"></td>
-
-                                </tr>
-
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method calling another Recursive method in the same file </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="4"></td>
+                                    <td class="kt-font-bold"><label>A Regular method calling a Recursive method in a different file</label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="4"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method calling another Recursive method in a different file </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="5"></td>
+                                    <td class="kt-font-bold"><label>A Recursive method calling another Recursive method in the same file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="4"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method calling a  Regular method in the same file </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
+                                    <td class="kt-font-bold"><label>A Recursive method calling another Recursive method in a different file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="5"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method calling a  Regular method in a different file</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="4"></td>
+                                    <td class="kt-font-bold"><label>A Recursive method calling a  Regular method in the same file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="3"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A  Regular method referencing a Global Variable in the same file </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label>A Recursive method calling a  Regular method in a different file</label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="4"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A  Regular method referencing a Global Variable in a different file </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+                                    <td class="kt-font-bold"><label>A  Regular method referencing a Global Variable in the same file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="1"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method referencing a Global Variable in the same file </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label>A  Regular method referencing a Global Variable in a different file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="2"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method referencing a Global Variable in a different file </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+                                    <td class="kt-font-bold"><label>A Recursive method referencing a Global Variable in the same file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="1"></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="kt-font-bold"><label>A Recursive method referencing a Global Variable in a different file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="2"></td>
 
                                 </tr>
 
@@ -416,7 +419,7 @@
                     <h5 class="kt-font-brand">Weights related to the Control Structure factor</h5>
                     <hr>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="kt-section__content">
                             <table style="text-align: center;" class="table">
                                 <thead class="thead-light">
@@ -428,23 +431,23 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Conditional Control structure such as an ‘if’ or ‘else-if’ condition</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+                                    <td class="kt-font-bold"><label>A Conditional Control structure such as an ‘if’ or ‘else-if’ condition</label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">An Iterative Control structure such as a ‘for’, ‘while’, or ‘do-while’ loop </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
+                                    <td class="kt-font-bold"><label>An Iterative Control structure such as a ‘for’, ‘while’, or ‘do-while’ loop </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="3"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">The ‘switch’ statement in a ‘switch-case’ Control structure </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+                                    <td class="kt-font-bold"><label>The ‘switch’ statement in a ‘switch-case’ Control structure </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Each ‘case’ statement in a ‘switch-case’ Control structure </label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label>Each ‘case’ statement in a ‘switch-case’ Control structure </label></td>
+                                    <td align="center"><input type="number" class="col-lg-5 form-control" placeholder="1"></td>
 
                                 </tr>
 
@@ -476,7 +479,7 @@
         <div class="kt-portlet__head">
             <div class="kt-portlet__head-label">
 												<span class="kt-portlet__head-icon">
-													<i class="flaticon-notes"></i>
+													<i class="flaticon2-information"></i>
 												</span>
                 <h3 class="kt-portlet__head-title">
                     Change the Default Weights
@@ -485,7 +488,7 @@
 
         </div>
         <div class="kt-portlet__body">
-            Tip : You can change the default weights allocated for the program components. <br><br>Once you add a new program, the customized weights will be reset to defaults.
+            Tip : You can change the default weights allocated for the program components. <br><br>Once you add a new program again, the customized weights will be reset to defaults.
             </div>
 
     </div>
