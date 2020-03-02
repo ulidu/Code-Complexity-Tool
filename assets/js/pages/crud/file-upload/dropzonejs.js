@@ -43,7 +43,7 @@ var KTDropzoneDemo = function () {
             maxFiles: 10,
             maxFilesize: 10, // MB
             addRemoveLinks: true,
-            acceptedFiles: ".java, .cpp",
+            acceptedFiles: ".java, .cpp, .zip, .rar",
             accept: function(file, done) {
                     done();
             },

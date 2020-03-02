@@ -112,10 +112,12 @@ var KTSweetAlert2Demo = function() {
                     }
                 });
             } else {
+                window.location = "index.php";
 
             }
 
         });
+
 
         $('#kt_sweetalert_demo_81').click(function(e) {
 

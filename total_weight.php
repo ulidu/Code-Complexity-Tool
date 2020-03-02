@@ -13,6 +13,34 @@
     $targetFile =  $targetPath.$newFileName;  // Create the absolute path of the uploaded file destination.
     move_uploaded_file($tempFile,$targetFile); // Move uploaded file to destination.
 
+$path_parts = pathinfo($newFileName);
+
+//file extension
+$fileExtension = $path_parts['extension'];
+echo $fileExtension;
+
+   if ($fileExtension == 'zip'){ // Include and initialize Extractor class
+    require 'Extractor.class.php';
+    $extractor = new Extractor;
+
+    // Path of archive file
+    $archivePath = $targetFile;
+
+    // Destination path
+    $destPath = $storeFolder;
+
+    // Extract archive file
+    $extract = $extractor->extract($archivePath, $storeFolder);
+
+    if($extract){
+        echo $GLOBALS['status']['success'];
+        unlink('uploads/archive.zip');
+    }else{
+        echo $GLOBALS['status']['error'];
+        unlink('uploads/archive.zip');
+    }
+}
+
     if ($handle = opendir('uploads')) {
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != "..") {

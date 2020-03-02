@@ -20,9 +20,7 @@
 
 		<!-- end:: Page -->
 
-		
 
-		
 
 		<!-- begin::Global Config(global config for global JS sciprts) -->
 		<script>
@@ -45,8 +43,6 @@
 				}
 			};
 		</script>
-
-
 
 		<!-- end::Global Config -->
 
@@ -80,38 +76,40 @@
 
         <!--begin::Page Scripts(used by sweetalert) -->
         <script src="assets/js/pages/components/extended/sweetalert2.js" type="text/javascript"></script>
-<script>
-    let $button = $("#submit_content");
-    $button.prop("disabled", true);
 
-    $("#paste_contents").keyup(function(){
-        $button.prop("disabled", (this.value === "")? true : false);
-    });
-</script>
+        <script>
+            let $button = $("#submit_content");
+            $button.prop("disabled", true);
 
-<script>
-function toggleFullScreen() {
-if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-(!document.mozFullScreen && !document.webkitIsFullScreen)) {
-if (document.documentElement.requestFullScreen) {
-document.documentElement.requestFullScreen();
-} else if (document.documentElement.mozRequestFullScreen) {
-document.documentElement.mozRequestFullScreen();
-} else if (document.documentElement.webkitRequestFullScreen) {
-document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-}
-} else {
-if (document.cancelFullScreen) {
-document.cancelFullScreen();
-} else if (document.mozCancelFullScreen) {
-document.mozCancelFullScreen();
-} else if (document.webkitCancelFullScreen) {
-document.webkitCancelFullScreen();
-}
-}
-}
-</script>
-	</body>
+            $("#paste_contents").keyup(function(){
+                $button.prop("disabled", (this.value === "")? true : false);
+            });
+        </script>
+
+        <script>
+        function toggleFullScreen() {
+        if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+        (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+        if (document.documentElement.requestFullScreen) {
+        document.documentElement.requestFullScreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+        document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullScreen) {
+        document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+        }
+        } else {
+        if (document.cancelFullScreen) {
+        document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+        }
+        }
+        }
+        </script>
+
+</body>
 
 	<!-- end::Body -->
 </html>
