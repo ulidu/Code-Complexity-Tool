@@ -1,7 +1,14 @@
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
-<?php $split = $_SESSION['split_code']; ?>
+
+<?php
+
+$split = $_SESSION['split_code'];
+$trim = $_SESSION['trimmed'];
+$file = $_SESSION['filename'];
+
+?>
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
@@ -175,28 +182,52 @@
                                     </thead>
                                     <tbody>
                                     <?php
+
                                     $i = 0; //increment to each loop
                                     $count = 0;
+                                    $Wtcs = 0;
 
                                     if (!$split==""){
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
+                                    $total_ccs = 0;
                                     $val;
+
+
+                                     $conditional_words = array("for","while","do while");
+                                     $conditional_count_total = 0;
+                                    foreach($conditional_words as $word){
+                                        $conditional_count = substr_count($val, $word);
+                                        $conditional_count_total = $conditional_count_total + $conditional_count ;
+
+                                    }
+                                    $Nc = $conditional_count_total;
+
+
+                                    $conditional_words = array("for","while","do while","if","else if","switch");
+
+                                    if (in_array("if", $conditional_words)) {
+                                        $Wtcs=2;
+                                    }else if(in_array("for", $conditional_words)){
+                                        $Wtcs=3;
+                                    }
 
 
 
 
                                     ?>
 
-                                    <tr>
-                                        <td><?php echo $count=$count+1; ?></td>
-                                        <td style="text-align: left"><?php echo $val;?></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <?php $i++; }}?>
-                                    </tr>
+
+
+    <tr>
+        <td><?php echo $count=$count+1; ?></td>
+        <td style="text-align: left"><?php echo $val;?></td>
+        <td><?php echo $Wtcs;?></td>
+        <td><?php echo $Nc;?></td>
+        <td>0</td>
+        <td>0</td>
+        <?php $i++; }}?>
+    </tr>
 
 
 
@@ -204,44 +235,44 @@
 
 
 
-                                    </tbody>
+    </tbody>
 
-                                </table>
+</table>
 
-                                <!--end: Datatable -->
-                            </div>
-                        </div>
-                    </div>
+<!--end: Datatable -->
+</div>
+</div>
+</div>
 
-                    <!-- end:: Content -->
-
-
+<!-- end:: Content -->
 
 
 
 
 
 
-                </div></div></div>
-
-                <div class="kt-portlet__foot">
-                    <div class="kt-form__actions">
-                        <div class="row">
 
 
+</div></div></div>
 
-                    <div class="col-lg-12 ml-lg-auto">
-                        <center>
+<div class="kt-portlet__foot">
+<div class="kt-form__actions">
+<div class="row">
 
-                            <a href="total_weight.php"><button type="button" href="total_weight.php" class="btn btn-brand"><span><i class="flaticon-home"></i></span> Total Complexity of the Program</button></a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        </div>
-    <!--end::Portlet-->
+
+
+<div class="col-lg-12 ml-lg-auto">
+<center>
+
+<a href="total_weight.php"><button type="button" href="total_weight.php" class="btn btn-brand"><span><i class="flaticon-home"></i></span> Total Complexity of the Program</button></a>
+</center>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--end::Portlet-->
 
 
 
@@ -250,12 +281,12 @@
 </div>
 
 
-                            <!--End::Row-->
+<!--End::Row-->
 
-							<!--End::Dashboard 3-->
-						</div>
-						<!-- end:: Content -->
-					</div>
+<!--End::Dashboard 3-->
+</div>
+<!-- end:: Content -->
+</div>
 
 
 <?php include 'include/footer.php'; ?>

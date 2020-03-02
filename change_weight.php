@@ -155,30 +155,26 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Global Variable</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Local Variable</label></td>
                                     <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Primitive data type Variable</label></td>
                                     <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Composite data type Variable</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
 
                                 </tr>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
 
-                                </tr>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                                </tr>
 
                                 </tbody>
                             </table>
@@ -209,28 +205,28 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Method with a Primitive return type</label></td>
                                     <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Method with a Composite return type </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Method with a Void return type </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="0"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Primitive data type parameter</label></td>
                                     <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Composite data type parameter</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
 
                                 </tr>
 
@@ -266,28 +262,28 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class with no Inheritance (direct or indirect) </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="0"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class Inheriting (directly or indirectly) from one user-defined class </label></td>
                                     <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class Inheriting (directly or indirectly) from two user-defined classes              </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class Inheriting (directly or indirectly) from three user-defined classes</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A class Inheriting  (directly or indirectly) from more than three user-defined classes </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="4"></td>
 
                                 </tr>
 
@@ -327,28 +323,76 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive call</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Regular method calling another Regular method in the same file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Regular method calling another Regular method in a different file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Regular method calling a Recursive method in the same file</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Regular method calling a Recursive method in a different file</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="4"></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method calling another Recursive method in the same file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="4"></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method calling another Recursive method in a different file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="5"></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method calling a  Regular method in the same file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method calling a  Regular method in a different file</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="4"></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A  Regular method referencing a Global Variable in the same file </label></td>
                                     <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A  Regular method referencing a Global Variable in a different file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method referencing a Global Variable in the same file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Recursive method referencing a Global Variable in a different file </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
 
                                 </tr>
 
@@ -384,30 +428,26 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">A Conditional Control structure such as an ‘if’ or ‘else-if’ condition</label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">An Iterative Control structure such as a ‘for’, ‘while’, or ‘do-while’ loop </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="3"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">The ‘switch’ statement in a ‘switch-case’ Control structure </label></td>
+                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
 
                                 </tr>
                                 <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
+                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Each ‘case’ statement in a ‘switch-case’ Control structure </label></td>
                                     <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
 
                                 </tr>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
 
-                                </tr>
 
                                 </tbody>
                             </table>
