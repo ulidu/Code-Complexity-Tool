@@ -31,8 +31,8 @@ foreach($files as $file){
 								<div class="kt-subheader__main">
 									<h3 class="kt-subheader__title">Dashboard</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
-									
-									
+
+
 									<div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
 										<input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
 										<span class="kt-input-icon__icon kt-input-icon__icon--right">
@@ -41,11 +41,13 @@ foreach($files as $file){
 									</div>
 								</div>
 								<div class="kt-subheader__toolbar">
-									
-										
 
 
-										
+
+
+                                    <a href="change_weight.php" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                                        Change Default Weights
+                                    </a>
 								
 								</div>
 							</div>
