@@ -62,7 +62,6 @@ foreach($files as $file){
 							<!--Begin::Dashboard 3-->
 <!--Begin::Row-->
 <div class="row">
-
     <!--begin::Portlet-->
     <div class="kt-portlet">
         <div class="kt-portlet__head">
@@ -77,14 +76,17 @@ foreach($files as $file){
         <form action="total_weight.php" method="post" enctype="multipart/form-data" class="kt-form kt-form--label-right">
             <div class="kt-portlet__body">
 
-
+                <!--begin::Form-->
                 <div class="form-group row">
 
                     <div class="col-lg-12 col-md-9 col-sm-12">
-                        <div class="fallback">
-                            <input align="center" style="width: 100%; height: 200px" class="dropzone-brand" accept=".java, .cpp, .zip" id="file" name="file" type="file"  multiple/>
-
+                        <div class="dropzone dropzone-default dropzone-success" id="kt_dropzone_3">
+                            <div class="dropzone-msg dz-message needsclick">
+                                <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
+                                <span class="dropzone-msg-desc">Only C++, Java files or Zip files with C++, Java programs are allowed for uploading</span>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -94,7 +96,7 @@ foreach($files as $file){
                     <div class="row">
                         <div class="col-lg-7 ml-lg-auto">
 
-                            <button type="submit" id="upload" class="btn btn-brand">Upload</button>
+                            <button type="submit" name="upload" id="upload" class="btn btn-brand">Upload</button>
                             <button onclick="location.href='index.php'" type="reset" id="reset" class="btn btn-secondary">Cancel</button>
                         </div>
                     </div>
@@ -104,18 +106,9 @@ foreach($files as $file){
 
         <!--end::Form-->
     </div>
-
-    <!--end::Portlet-->
-                                
-                                
-                                
-                                
-                                
-                                
-                                
 </div>
-
-							<!--End::Row-->
+    <!--end::Portlet-->
+                            <!--End::Row-->
                             <div class="row">
 
 
@@ -197,6 +190,5 @@ foreach($files as $file){
 						</div>
 						<!-- end:: Content -->
 					</div>
-
 
 <?php include 'include/footer.php'; ?>

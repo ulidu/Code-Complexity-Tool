@@ -44,6 +44,15 @@
 			};
 		</script>
 
+
+<!-- Load FilePond library -->
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+<!-- Turn all file input elements into ponds -->
+<script>
+    FilePond.parse(document.body);
+</script>
+
 		<!-- end::Global Config -->
 
 		<!--begin::Global Theme Bundle(used by all pages) -->
@@ -51,7 +60,6 @@
 		<script src="assets/js/scripts.bundle.js" type="text/javascript"></script>
 
 		<!--end::Global Theme Bundle -->
-      
 
 
 		<!--begin::Page Scripts(used by this page) -->
