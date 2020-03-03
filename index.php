@@ -74,7 +74,7 @@ foreach($files as $file){
         </div>
 
         <!--begin::Form-->
-        <form onsubmit="return Validate(this);" action="total_weight.php" method="post" enctype="multipart/form-data" class="kt-form kt-form--label-right">
+        <form action="total_weight.php" method="post" enctype="multipart/form-data" class="kt-form kt-form--label-right">
             <div class="kt-portlet__body">
 
 
@@ -82,23 +82,7 @@ foreach($files as $file){
 
                     <div class="col-lg-12 col-md-9 col-sm-12">
                         <div class="fallback">
-                            <input align="center" style="display:none;width: 100%; height: 200px" class="dropzone dropzone-default dropzone-brand" accept=".java, .cpp, .zip" id="file" name="file" type="file"  multiple/>
-
-
-                            <div class="col-lg-12 col-md-9 col-sm-12">
-                                <div class="dropzone dropzone-default dropzone-brand" id="upfile">
-                                    <div class="dropzone-msg dz-message needsclick">
-                                        <br>
-                                        <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
-
-                                        <br>
-                                        <span id="files_list" class="kt-font-brand">You can only upload Java, C++ files or Zip files that contain Java or C++ program</span><br>
-                                        <span id="files_list" class="kt-font-brand"></span><br>
-
-                                    </div>
-                                </div>
-                            </div>
-
+                            <input align="center" style="width: 100%; height: 200px" class="dropzone-brand" accept=".java, .cpp, .zip" id="file" name="file" type="file"  multiple/>
 
                         </div>
                     </div>

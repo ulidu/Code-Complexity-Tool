@@ -51,6 +51,7 @@
 		<script src="assets/js/scripts.bundle.js" type="text/javascript"></script>
 
 		<!--end::Global Theme Bundle -->
+      
 
 
 		<!--begin::Page Scripts(used by this page) -->
