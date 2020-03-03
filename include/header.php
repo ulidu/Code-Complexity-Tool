@@ -34,8 +34,6 @@
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 
 
-        <!-- Filepond stylesheet -->
-        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 
 
         
