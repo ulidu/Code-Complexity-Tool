@@ -183,6 +183,30 @@ $file = $_SESSION['filename'];
                                     </thead>
                                     <tbody>
 
+                                    <?php
+
+                                    $i = 0; //increment to each loop
+                                    $count = 0;
+
+                                    $Wtcs = 0;
+                                    $NC = 0;
+                                    $Ccspps = 0;
+                                    $Ccs = 0;
+
+                                    //Default Weights
+                                    $weight_if_elseif = 2 ;
+                                    $weight_for_while_dowhile = 3 ;
+                                    $weight_switch = 2 ;
+                                    $weight_case = 1 ;
+
+
+
+
+
+
+
+
+
 
 
 
