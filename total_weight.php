@@ -13,7 +13,6 @@
     $targetFile =  $targetPath.$newFileName;  // Create the absolute path of the uploaded file destination.
     move_uploaded_file($tempFile,$targetFile); // Move uploaded file to destination.
 
-/*
 
     // Include and initialize Extractor class
     require 'Extractor.class.php';
@@ -28,15 +27,18 @@
     // Extract archive file
     $extract = $extractor->extract($archivePath, $storeFolder);
 
+    $dir_name = $storeFolder;
+    $ext = 'zip';
+
     if($extract){
         echo $GLOBALS['status']['success'];
-        unlink('uploads/archive.zip');
+        unlink_recursive($dir_name, $ext);
+
     }else{
         echo $GLOBALS['status']['error'];
-        unlink('uploads/archive.zip');
     }
 
-*/
+
     if ($handle = opendir('uploads')) {
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != "..") {
@@ -58,6 +60,7 @@
 
 
                 $_SESSION['filename'] = $entry;
+
 
             }
 
@@ -183,6 +186,8 @@
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
                 <div class="row">
+
+
 
                     <!-- begin:: Content -->
                     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
@@ -329,6 +334,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div></div></div>
 
                 <div class="kt-portlet__foot">
@@ -363,5 +381,45 @@
 						</div>
 						<!-- end:: Content -->
 					</div>
+<?php
 
+function unlink_recursive($dir_name, $ext) {
+
+    // Exit if there's no such directory
+    if (!file_exists($dir_name)) {
+        return false;
+    }
+
+    // Open the target directory
+    $dir_handle = dir($dir_name);
+
+    // Take entries in the directory one at a time
+    while (false !== ($entry = $dir_handle->read())) {
+
+        if ($entry == '.' || $entry == '..') {
+            continue;
+        }
+
+        $abs_name = "$dir_name/$entry";
+
+        if (is_file($abs_name) && preg_match("/^.+\.$ext$/", $entry)) {
+            if (unlink($abs_name)) {
+                continue;
+            }
+            return false;
+        }
+
+        // Recurse on the children if the current entry happens to be a "directory"
+        if (is_dir($abs_name) || is_link($abs_name)) {
+            unlink_recursive($abs_name, $ext);
+        }
+
+    }
+
+    $dir_handle->close();
+    return true;
+
+}
+
+?>
 <?php include 'include/footer.php'; ?>

@@ -48,6 +48,7 @@ var KTDropzoneDemo = function () {
                     done();
             },
             init: function () {
+
                 var submit = document.getElementById('upload');
                 var reset = document.getElementById('reset');
 

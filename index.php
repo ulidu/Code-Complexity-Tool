@@ -106,8 +106,8 @@ foreach($files as $file){
 
         <!--end::Form-->
     </div>
-</div>
-    <!--end::Portlet-->
+
+    <!--end::Portlet--></div>
                             <!--End::Row-->
                             <div class="row">
 
