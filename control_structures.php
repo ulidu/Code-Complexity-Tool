@@ -169,6 +169,19 @@ $file = $_SESSION['filename'];
                             </div>
                             <div class="kt-portlet__body kt-font-dark">
 
+                                <!--begin: Datatable -->
+                                <table style="font-family: 'Fira Code'; text-align: center" class="table table-striped- table-bordered table-hover" id="kt_table_1">
+                                    <thead>
+                                    <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
+                                        <th>Line No</th>
+                                        <th>Program Statements</th>
+                                        <th>Wtcs</th>
+                                        <th>NC</th>
+                                        <th>Ccspps</th>
+                                        <th style="color: white" class="kt-label-bg-color-2">Ccs</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
 
 
@@ -176,6 +189,7 @@ $file = $_SESSION['filename'];
 
 
 
+                                    </tbody>
 
 </table>
 
