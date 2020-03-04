@@ -228,6 +228,14 @@ $file = $_SESSION['filename'];
                                         }
 
 
+                                    if (preg_match('/\bwhile\b/', $val) !== false){
+
+                                        $while_count = preg_match_all('/\bwhile\b/',$val,$counter);
+                                        $while_weight = $while_count * $weight_for_while_dowhile ;
+
+                                    }
+
+
 
 
 
