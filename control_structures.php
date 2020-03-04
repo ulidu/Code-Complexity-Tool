@@ -168,66 +168,6 @@ $file = $_SESSION['filename'];
                                 </div>
                             </div>
                             <div class="kt-portlet__body kt-font-dark">
-                                <!--begin: Datatable -->
-                                <table style="font-family: 'Fira Code'; text-align: center" class="table table-striped- table-bordered table-hover" id="kt_table_1">
-                                    <thead>
-                                    <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
-                                        <th>Line No</th>
-                                        <th>Program Statements</th>
-                                        <th>Wtcs</th>
-                                        <th>NC</th>
-                                        <th>Ccspps</th>
-                                        <th style="color: white" class="kt-label-bg-color-2">Ccs</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-
-                                    $i = 0; //increment to each loop
-                                    $count = 0;
-                                    $Wtcs = 0;
-
-                                    if (!$split==""){
-                                    foreach($split AS $val) { // Traverse the array with FOREACH
-
-                                    $total_ccs = 0;
-                                    $val;
-
-
-                                     $conditional_words = array("for","while","do while");
-                                     $conditional_count_total = 0;
-                                    foreach($conditional_words as $word){
-                                        $conditional_count = substr_count($val, $word);
-                                        $conditional_count_total = $conditional_count_total + $conditional_count ;
-
-                                    }
-                                    $Nc = $conditional_count_total;
-
-
-                                    $conditional_words = array("for","while","do while","if","else if","switch");
-
-                                    if (in_array("if", $conditional_words)) {
-                                        $Wtcs=2;
-                                    }else if(in_array("for", $conditional_words)){
-                                        $Wtcs=3;
-                                    }
-
-
-
-
-                                    ?>
-
-
-
-    <tr>
-        <td><?php echo $count=$count+1; ?></td>
-        <td style="text-align: left"><?php echo $val;?></td>
-        <td><?php echo $Wtcs;?></td>
-        <td><?php echo $Nc;?></td>
-        <td>0</td>
-        <td>0</td>
-        <?php $i++; }}?>
-    </tr>
 
 
 
@@ -235,7 +175,7 @@ $file = $_SESSION['filename'];
 
 
 
-    </tbody>
+
 
 </table>
 
