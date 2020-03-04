@@ -213,7 +213,12 @@ $file = $_SESSION['filename'];
                                         $conditional_words_count_total += $conditional_words_count;
 
 
+  if (preg_match('/\bif\b/', $val) !== false ){
 
+                                            $if_count = preg_match_all('/\bif\b/',$val,$counter);
+                                            $if_weight = $if_count * $weight_if_elseif;
+
+                                        }
 
 
 
