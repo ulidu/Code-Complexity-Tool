@@ -189,6 +189,15 @@ $file = $_SESSION['filename'];
 
 
 
+                                    <tr>
+                                        <td><?php echo $count=$count+1; ?></td>
+                                        <td style="text-align: left"><?php echo $val;?></td>
+                                        <td><?php echo $Wtcs; ?></td>
+                                        <td><?php echo $NC; ?></td>
+                                        <td><?php echo $Ccspps; ?></td>
+                                        <td><?php echo $Ccs; ?></td>
+                                        <?php $i++; }}?>
+                                    </tr>
                                     </tbody>
 
 </table>
