@@ -242,15 +242,16 @@ $file = $_SESSION['filename'];
 
                                     }
 
+                                        if (preg_match('/\bcase\b/', $val) !== false){
 
+                                            $case_count = preg_match_all('/\bcase\b/',$val,$counter);
+                                            $case_weight = $case_count * $weight_case ;
 
+                                        }
 
+                                        $Ccspps = $Ccs;
 
-
-
-
-
-
+                                    }
 
 
 
