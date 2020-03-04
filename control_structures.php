@@ -235,6 +235,13 @@ $file = $_SESSION['filename'];
 
                                     }
 
+                                    if (preg_match('/\bswitch\b/', $val) !== false){
+
+                                        $switch_count = preg_match_all('/\bswitch\b/',$val,$counter);
+                                        $switch_weight = $switch_count * $weight_switch ;
+
+                                    }
+
 
 
 
