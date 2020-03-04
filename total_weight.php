@@ -48,7 +48,6 @@
                 //  Removes single line '//' comments, treats blank characters
                 $single = preg_replace('![ \t]*//.*[ \t]*[\r\n]!', '', $content);
 
-
                 $multiple = preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $single);
                 $excess = preg_replace('/\s+/', ' ', $multiple);
                 $trim = trim($excess," ");
@@ -57,7 +56,6 @@
                 $_SESSION['split_code'] = $split;
                 $_SESSION['files'] = $entry;
                 $_SESSION['trimmed'] = $trim;
-
 
                 $_SESSION['filename'] = $entry;
 
