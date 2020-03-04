@@ -220,6 +220,12 @@ $file = $_SESSION['filename'];
 
                                         }
 
+                                        if (preg_match('/\bfor\b/', $val) !== false){
+
+                                            $for_count = preg_match_all('/\bfor\b/',$val,$counter);
+                                            $for_weight = $for_count * $weight_for_while_dowhile ;
+
+                                        }
 
 
 
@@ -232,6 +238,18 @@ $file = $_SESSION['filename'];
 
 
 
+
+
+                                    $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight;
+
+                                    $NC = $conditional_words_count_total;
+
+
+
+                                    $Ccs = ($Wtcs * $NC) + $Ccspps ;
+
+
+                                    ?>
 
 
                                     <tr>
