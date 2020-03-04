@@ -199,6 +199,22 @@ $file = $_SESSION['filename'];
                                     $weight_switch = 2 ;
                                     $weight_case = 1 ;
 
+                                     if (!$split==""){
+                                        foreach($split AS $val) { // Traverse the array with FOREACH
+
+                                            $total_ccs = 0;
+                                            $val;
+
+
+                                    $conditional_words = array('if', 'for', 'while', 'switch', 'case');
+                                    $conditional_words_count_total = 0;
+                                    foreach($conditional_words as $word){
+                                        $conditional_words_count = substr_count($val, $word);
+                                        $conditional_words_count_total += $conditional_words_count;
+
+
+
+
 
 
 
