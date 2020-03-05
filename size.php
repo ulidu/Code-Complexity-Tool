@@ -208,7 +208,7 @@ $file = $_SESSION['filename'];
                                         $val;
 
                                     // Weight due to Keywords
-                                    $keywords = [ 'throw', 'throws', 'transient', 'try', 'void', 'volatile'];
+                                    $keywords = ['abstract', 'assert', 'break', 'catch', 'class', 'const', 'continue', 'default', 'do', 'else', 'enum', 'extends', 'final', 'finally', 'goto', 'implements', 'import', 'instanceof', 'interface', 'native', 'new', 'package', 'private', 'protected', 'public', 'return', 'static', 'strictfp', 'super', 'synchronized', 'this', 'throw', 'throws', 'transient', 'try', 'void', 'volatile'];
                                     $keyword_count_total = 0;
 
                                     foreach($keywords as $word) {
@@ -411,51 +411,33 @@ $file = $_SESSION['filename'];
 
                                         }
 
-                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+                                        if (preg_match('/\btransient\b/', $val) !== false ){
 
-                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\bbreak\b/', $val) !== false ){
-
-                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+                                            $transient_count = preg_match_all('/\btransient\b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+                                        if (preg_match('/\btry\b/', $val) !== false ){
 
-                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\bbreak\b/', $val) !== false ){
-
-                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+                                            $try_count = preg_match_all('/\btry\b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+                                        if (preg_match('/\bvoid\b/', $val) !== false ){
 
-                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\bbreak\b/', $val) !== false ){
-
-                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+                                            $void_count = preg_match_all('/\bvoid\b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+                                        if (preg_match('/\bvolatile\b/', $val) !== false ){
 
-                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+                                            $volatile_count = preg_match_all('/\bvolatile\b/',$val,$counter);
 
                                         }
 
                                     }
 
-                                    $Nkw = $abstract_count + $assert_count;
+                                    $Nkw = ( $abstract_count + $assert_count + $break_count + $catch_count + $class_count + $const_count + $continue_count + $default_count + $do_count + $else_count + $enum_count + $extends_count + $final_count + $finally_count + $goto_count + $implements_count + $import_count + $instanceof_count + $interface_count + $native_count + $new_count + $package_count + $private_count + $protected_count + $public_count + $return_count + $static_count + $strictfp_count + $super_count + $synchronized_count + $this_count + $throw_count + $throws_count + $transient_count + $try_count + $void_count + $volatile_count ) * $weight_keyword;
 
                                     // Weight due to Identifiers
 
