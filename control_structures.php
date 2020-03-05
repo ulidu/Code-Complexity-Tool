@@ -202,16 +202,15 @@ $file = $_SESSION['filename'];
                                     if (!$split==""){
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
-
                                     $val;
-
 
                                     $conditional_words = array('if', 'for', 'while', 'switch', 'case');
                                     $conditional_words_count_total = 0;
+
                                     foreach($conditional_words as $word){
+
                                         $conditional_words_count = substr_count($val, $word);
                                         $conditional_words_count_total += $conditional_words_count;
-
 
                                         if (preg_match('/\bif\b/', $val) !== false ){
 
@@ -226,7 +225,6 @@ $file = $_SESSION['filename'];
                                             $for_weight = $for_count * $weight_for_while_dowhile ;
 
                                         }
-
 
                                         if (preg_match('/\bwhile\b/', $val) !== false){
 
@@ -249,8 +247,6 @@ $file = $_SESSION['filename'];
 
                                         }
 
-
-
                                     }
 
                                     $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight;
@@ -258,8 +254,11 @@ $file = $_SESSION['filename'];
                                     $NC = $conditional_words_count_total;
 
                                     if ($NC == 0){
+
                                         $Ccspps = 0;
+
                                     }else{
+
                                         $Ccspps = $Ccs;
 
                                     }
@@ -267,7 +266,6 @@ $file = $_SESSION['filename'];
                                     $Ccs = ($Wtcs * $NC) + $Ccspps ;
 
                                     $total_ccs += $Ccs;
-
 
                                     ?>
 

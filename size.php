@@ -186,26 +186,279 @@ $file = $_SESSION['filename'];
                                     <?php
                                     $i = 0; //increment to each loop
                                     $count = 0;
+                                    $total_cs = 0;
+
+                                    $Nkw = 0;
+                                    $Nid = 0;
+                                    $Nop = 0;
+                                    $Nnv = 0;
+                                    $Nsl = 0;
+                                    $Cs = 0;
+
+                                    //Default Weights
+                                    $weight_keyword = 1;
+                                    $weight_identifier = 1;
+                                    $weight_operator = 1;
+                                    $weight_numerical = 1;
+                                    $weight_string = 1;
 
                                     if (!$split==""){
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
-                                        $total_cs = 0;
                                         $val;
 
                                     // Weight due to Keywords
-                                    $key_words = array("abstract","assert","break","catch","class","const","continue","default","do","else","enum","extends","final","finally","goto","implements","import","instanceof","interface","native","new","package","private","protected","public","return","static","strictfp","super","synchronized","this","throw","throws","transient","try","void","volatile");
+                                    $keywords = [ 'throw', 'throws', 'transient', 'try', 'void', 'volatile'];
                                     $keyword_count_total = 0;
-                                    foreach($key_words as $word) {
-                                        $keyword_count = substr_count($val, $word);
-                                        $keyword_count_total = $keyword_count_total + $keyword_count;
+
+                                    foreach($keywords as $word) {
+
+                                        if (preg_match('/\babstract\b/', $val) !== false ){
+
+                                            $abstract_count = preg_match_all('/\babstract\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bassert\b/', $val) !== false ){
+
+                                            $assert_count = preg_match_all('/\bassert\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+
+                                            $break_count = preg_match_all('/\bbreak\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bcatch\b/', $val) !== false ){
+
+                                            $catch_count = preg_match_all('/\bcatch\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bclass\b/', $val) !== false ){
+
+                                            $class_count = preg_match_all('/\bclass\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bconst\b/', $val) !== false ){
+
+                                            $const_count = preg_match_all('/\bconst\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bcontinue\b/', $val) !== false ){
+
+                                            $continue_count = preg_match_all('/\bcontinue\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bdefault\b/', $val) !== false ){
+
+                                            $default_count = preg_match_all('/\bdefault\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bdo\b/', $val) !== false ){
+
+                                            $do_count = preg_match_all('/\bdo\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\belse\b/', $val) !== false ){
+
+                                            $else_count = preg_match_all('/\belse\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\benum\b/', $val) !== false ){
+
+                                            $enum_count = preg_match_all('/\benum\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bextends\b/', $val) !== false ){
+
+                                            $extends_count = preg_match_all('/\bextends\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bfinal\b/', $val) !== false ){
+
+                                            $final_count = preg_match_all('/\bfinal\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bfinally\b/', $val) !== false ){
+
+                                            $finally_count = preg_match_all('/\bfinally\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bgoto\b/', $val) !== false ){
+
+                                            $goto_count = preg_match_all('/\bgoto\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bimplements\b/', $val) !== false ){
+
+                                            $implements_count = preg_match_all('/\bimplements\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bimport\b/', $val) !== false ){
+
+                                            $import_count = preg_match_all('/\bimport\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\binstanceof\b/', $val) !== false ){
+
+                                            $instanceof_count = preg_match_all('/\binstanceof\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\binterface\b/', $val) !== false ){
+
+                                            $interface_count = preg_match_all('/\binterface\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bnative\b/', $val) !== false ){
+
+                                            $native_count = preg_match_all('/\bnative\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bnew\b/', $val) !== false ){
+
+                                            $new_count = preg_match_all('/\bnew\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bpackage\b/', $val) !== false ){
+
+                                            $package_count = preg_match_all('/\bpackage\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bprivate\b/', $val) !== false ){
+
+                                            $private_count = preg_match_all('/\bprivate\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bprotected\b/', $val) !== false ){
+
+                                            $protected_count = preg_match_all('/\bprotected\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bpublic\b/', $val) !== false ){
+
+                                            $public_count = preg_match_all('/\bpublic\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\breturn\b/', $val) !== false ){
+
+                                            $return_count = preg_match_all('/\breturn\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bstatic\b/', $val) !== false ){
+
+                                            $static_count = preg_match_all('/\bstatic\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bstrictfp\b/', $val) !== false ){
+
+                                            $strictfp_count = preg_match_all('/\bstrictfp\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bsuper\b/', $val) !== false ){
+
+                                            $super_count = preg_match_all('/\bsuper\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bsynchronized\b/', $val) !== false ){
+
+                                            $synchronized_count = preg_match_all('/\bsynchronized\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bthis\b/', $val) !== false ){
+
+                                            $this_count = preg_match_all('/\bthis\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bthrow\b/', $val) !== false ){
+
+                                            $throw_count = preg_match_all('/\bthrow\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bthrows\b/', $val) !== false ){
+
+                                            $throws_count = preg_match_all('/\bthrows\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+
+                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+
+                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+
+                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+
+                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+
+                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+
+                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\bbreak\b/', $val) !== false ){
+
+                                            $assert_count = preg_match_all('/\bbreak\b/',$val,$counter);
+
+                                        }
 
                                     }
-                                    $Nkw = $keyword_count_total;
+
+                                    $Nkw = $abstract_count + $assert_count;
 
                                     // Weight due to Identifiers
-                                    $matches = array("");
-                                    preg_match('/id=([0-9]+)\?/', $val, $matches);
+
 
                                     // Weight due to Operators
                                     $operators = array("++","--","~"," ! ","*","/","%","+","-","<<",">>",">>>","<",">","<=",">=","instanceof","==","!=","&","^","|","&&","||","?",":","=","+=","-=","*=","/=","%=","&=","^=","|=","<<=",">>=",">>>=");
@@ -235,8 +488,8 @@ $file = $_SESSION['filename'];
                                         $strings_count_total = $strings_count_total + $strings_count;
 
                                     }
-                                    $Nsl = $strings_count_total;
 
+                                    $Nsl = $strings_count_total;
 
                                     ?>
 
