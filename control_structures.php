@@ -85,7 +85,6 @@ $file = $_SESSION['filename'];
 
                                     <center><h1 style="font-family: 'Fira Code'">Ccs : <?php echo $total_ccs = $_SESSION['total_ccs']; ?></h1></center>
 
-
                                 </div>
                                 </div>
                             </div>
