@@ -83,7 +83,7 @@ $file = $_SESSION['filename'];
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Ccs : 9</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Ccs : <?php echo $total_ccs = $_SESSION['total_ccs']; ?></h1></center>
 
 
                                 </div>
@@ -187,6 +187,8 @@ $file = $_SESSION['filename'];
                                     $i = 0; //increment to each loop
                                     $count = 0;
 
+                                    $total_ccs = 0;
+
                                     $Wtcs = 0;
                                     $NC = 0;
                                     $Ccspps = 0;
@@ -201,7 +203,7 @@ $file = $_SESSION['filename'];
                                     if (!$split==""){
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
-                                    $total_ccs = 0;
+
                                     $val;
 
 
@@ -265,6 +267,8 @@ $file = $_SESSION['filename'];
 
                                     $Ccs = ($Wtcs * $NC) + $Ccspps ;
 
+                                    $total_ccs += $Ccs;
+
 
                                     ?>
 
@@ -276,7 +280,11 @@ $file = $_SESSION['filename'];
                                         <td><?php echo $NC; ?></td>
                                         <td><?php echo $Ccspps; ?></td>
                                         <td><?php echo $Ccs; ?></td>
-                                        <?php $i++; }}?>
+                                        <?php
+                                        $i++; }
+                                        $_SESSION['total_ccs'] = $total_ccs;
+                                    }
+                                    ?>
                                     </tr>
                                     </tbody>
 

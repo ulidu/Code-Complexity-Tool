@@ -13,8 +13,7 @@
     $targetFile =  $targetPath.$newFileName;  // Create the absolute path of the uploaded file destination.
     move_uploaded_file($tempFile,$targetFile); // Move uploaded file to destination.
 
-
-    // Include and initialize Extractor class
+    // Include and initialize Extractor class (Zip file extracting)
     require 'Extractor.class.php';
     $extractor = new Extractor;
 
@@ -51,7 +50,13 @@
                 $multiple = preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $single);
                 $excess = preg_replace('/\s+/', ' ', $multiple);
                 $trim = trim($excess," ");
-                $split = preg_split('/(?<=[;{}])/', $trim, 0, PREG_SPLIT_NO_EMPTY);
+                $for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
+                $split = preg_split('/(?<=[;{}])/', $for_semicolon, 0, PREG_SPLIT_NO_EMPTY);
+
+
+
+
+
 
                 $_SESSION['split_code'] = $split;
                 $_SESSION['files'] = $entry;
@@ -79,7 +84,8 @@
     $multiple = preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $single);
     $excess = preg_replace('/\s+/', ' ', $multiple);
     $trim = trim($excess," ");
-    $split = preg_split('/(?<=[;{}])/', $trim, 0, PREG_SPLIT_NO_EMPTY);
+    $for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
+    $split = preg_split('/(?<=[;{}])/', $for_semicolon, 0, PREG_SPLIT_NO_EMPTY);
 
     $_SESSION['split_code'] = $split;
     $_SESSION['files'] = $entry;
