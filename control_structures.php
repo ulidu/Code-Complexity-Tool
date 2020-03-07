@@ -254,13 +254,6 @@ $file = $_SESSION['filename'];
                                     }
 
 
-                                    $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight;
-
-                                    $NC = $conditional_words_count_total;
-
-
-
-                                    $Ccs = ($Wtcs * $NC) + $Ccspps ;
 
 
                                     ?>
