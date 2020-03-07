@@ -258,8 +258,6 @@ $file = $_SESSION['filename'];
 
                                     $NC = $conditional_words_count_total;
 
-
-
                                     $Ccs = ($Wtcs * $NC) + $Ccspps ;
 
 
