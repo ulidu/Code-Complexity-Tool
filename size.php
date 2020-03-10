@@ -209,7 +209,6 @@ $file = $_SESSION['filename'];
 
                                     // Weight due to Keywords
                                     $keywords = ['abstract', 'assert', 'break', 'catch', 'class', 'const', 'continue', 'default', 'do', 'else', 'enum', 'extends', 'final', 'finally', 'goto', 'implements', 'import', 'instanceof', 'interface', 'native', 'new', 'package', 'private', 'protected', 'public', 'return', 'static', 'strictfp', 'super', 'synchronized', 'this', 'throw', 'throws', 'transient', 'try', 'void', 'volatile'];
-                                    $keyword_count_total = 0;
 
                                     foreach($keywords as $word) {
 
@@ -443,11 +442,98 @@ $file = $_SESSION['filename'];
 
 
                                     // Weight due to Operators
-                                    $operators = array("++","--","~"," ! ","*","/","%","+","-","<<",">>",">>>","<",">","<=",">=","instanceof","==","!=","&","^","|","&&","||","?",":","=","+=","-=","*=","/=","%=","&=","^=","|=","<<=",">>=",">>>=");
-                                    $operators_count_total = 0;
+                                    $operators = array('+', '-', '*', '/', '%', '++', '--', '==', '!=', '>', '<', '>=', '<=', '&&', '||', '!', '|', '^', '~', '<<', '>>', '>>>', '<<<', ',', '->', '.', '::', '+=', '-=', '*=', '/=', '=', '>>>=', '|=', '&=', '%=', '<<=', '>>=', '^=');
+
                                     foreach($operators as $word) {
-                                        $operators_count = substr_count($val, $word);
-                                        $operators_count_total = $operators_count_total + $operators_count;
+
+                                        if (preg_match('/\b\+\b/', $val) !== false ){
+
+                                            $op1_count = preg_match_all('/\b+\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b-\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b*\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b*\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b/\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b/\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b%\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b%\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b++\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b++\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b--\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b--\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b==\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b==\b/',$val,$counter);
+
+                                        }
+                                        if (preg_match('/\b-\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b-\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b-\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b-\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b-\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b-\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b-\b/', $val) !== false ){
+
+                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+
+                                        }
 
                                     }
                                     $Nop = $operators_count_total;

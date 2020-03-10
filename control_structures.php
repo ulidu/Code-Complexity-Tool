@@ -277,9 +277,13 @@ $file = $_SESSION['filename'];
                                         <td><?php echo $NC; ?></td>
                                         <td><?php echo $Ccspps; ?></td>
                                         <td><?php echo $Ccs; ?></td>
+
                                         <?php
-                                        $i++; }
+
+                                        $i++;
                                         $_SESSION['total_ccs'] = $total_ccs;
+
+                                        }
                                     }
                                     ?>
                                     </tr>
