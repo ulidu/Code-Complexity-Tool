@@ -446,27 +446,27 @@ $file = $_SESSION['filename'];
 
                                     foreach($operators as $word) {
 
-                                        if (preg_match('/\b\+\b|\b \+ \b/', $val) !== false ){
+                                        if (preg_match('/\b \+ \W|\b\+ \W|\b \+ \w|\W\+\b |\b\+\b/', $val) !== false ){
 
-                                            $op1_count = preg_match_all('/\b\+\b|\b \+ \b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b\-\b|\b \- \b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b\-\b|\b \- \b/',$val,$counter);
+                                            $op1_count = preg_match_all('/\b \+ \W|\b\+ \W|\b \+ \w|\W\+\b |\b\+\b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b\*\b|\b \* \b/', $val) !== false ){
+                                        if (preg_match('/\b \- \W|\b\- \W|\b \- \w|\W\-\b |\b\-\b/', $val) !== false ){
 
-                                            $op3_count = preg_match_all('/\b\*\b|\b \* \b/',$val,$counter);
+                                            $op2_count = preg_match_all('/\b \- \W|\b\- \W|\b \- \w|\W\-\b |\b\-\b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b\/\b|\b \/ \b/', $val) !== false ){
+                                        if (preg_match('/\*/', $val) !== false ){
 
-                                            $op4_count = preg_match_all('/\b\/\b|\b \/ \b/',$val,$counter);
+                                            $op3_count = preg_match_all('/\*/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('//', $val) !== false ){
+
+                                            $op4_count = preg_match_all('/\b \/ \W|\b\/ \W|\b \/ \w|\W\/\b |\b\/\b/',$val,$counter);
 
                                         }
 
@@ -499,6 +499,7 @@ $file = $_SESSION['filename'];
                                     }
 
                                     // Weight due to Numbers
+                                    // 0|[1-9][0-9]*
                                     $numbers = array("0","1","2","3","4","5","6","7","8","9");
                                     $numbers_count_total = 0;
                                     foreach($numbers as $word) {
