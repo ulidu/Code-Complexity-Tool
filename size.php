@@ -446,97 +446,56 @@ $file = $_SESSION['filename'];
 
                                     foreach($operators as $word) {
 
-                                        if (preg_match('/\b\+\b/', $val) !== false ){
+                                        if (preg_match('/\b\+\b|\b \+ \b/', $val) !== false ){
 
-                                            $op1_count = preg_match_all('/\b+\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b-\b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+                                            $op1_count = preg_match_all('/\b\+\b|\b \+ \b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b*\b/', $val) !== false ){
+                                        if (preg_match('/\b\-\b|\b \- \b/', $val) !== false ){
 
-                                            $op2_count = preg_match_all('/\b*\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b/\b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b/\b/',$val,$counter);
+                                            $op2_count = preg_match_all('/\b\-\b|\b \- \b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b%\b/', $val) !== false ){
+                                        if (preg_match('/\b\*\b|\b \* \b/', $val) !== false ){
 
-                                            $op2_count = preg_match_all('/\b%\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b++\b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b++\b/',$val,$counter);
+                                            $op3_count = preg_match_all('/\b\*\b|\b \* \b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b--\b/', $val) !== false ){
+                                        if (preg_match('/\b\/\b|\b \/ \b/', $val) !== false ){
 
-                                            $op2_count = preg_match_all('/\b--\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b==\b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b==\b/',$val,$counter);
-
-                                        }
-                                        if (preg_match('/\b-\b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+                                            $op4_count = preg_match_all('/\b\/\b|\b \/ \b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b-\b/', $val) !== false ){
+                                        if (preg_match('/\b\%\b|\b \% \b/', $val) !== false ){
 
-                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b-\b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+                                            $op5_count = preg_match_all('/\b\%\b|\b \% \b/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b-\b/', $val) !== false ){
+                                        if (preg_match('/\b\+\+\b|\b \+\+ \b|\+\+\b|\b\+\+/', $val) !== false ){
 
-                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b-\b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+                                            $op6_count = preg_match_all('/\b\+\+\b|\b \+\+ \b|\+\+\b|\b\+\+/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b-\b/', $val) !== false ){
+                                        if (preg_match('/\b\-\-\b|\b \-\- \b|\-\-\b|\b\-\-/', $val) !== false ){
 
-                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
+                                            $op7_count = preg_match_all('/\b\-\-\b|\b \-\- \b|\-\-\b|\b\-\-/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/\b\=\=\b|\b \=\= \b|\=\=\b|\b\=\=/', $val) !== false ){
+
+                                            $op8_count = preg_match_all('/\b\=\=\b|\b \=\= \b|\=\=\b|\b\=\=/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b-\b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b-\b/',$val,$counter);
-
-                                        }
 
                                     }
-                                    $Nop = $operators_count_total;
 
                                     // Weight due to Numbers
                                     $numbers = array("0","1","2","3","4","5","6","7","8","9");
