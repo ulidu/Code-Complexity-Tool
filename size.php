@@ -494,6 +494,9 @@ $file = $_SESSION['filename'];
 
                                         }
 
+                                        $Nop = $op1_count + $op2_count + $op3_count + $op4_count + $op5_count + $op6_count + $op7_count + $op8_count;
+
+
 
                                     }
 
