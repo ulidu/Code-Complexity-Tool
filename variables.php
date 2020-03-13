@@ -1,7 +1,13 @@
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
-<?php $split = $_SESSION['split_code']; ?>
+<?php
+
+$split = $_SESSION['split_code'];
+$trim = $_SESSION['trimmed'];
+$file = $_SESSION['filename'];
+
+?>
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
