@@ -202,7 +202,8 @@ $file = $_SESSION['filename'];
                                     $weight_numerical = 1;
                                     $weight_string = 1;
 
-                                    if (!$split==""){
+                                    if (!$split==''){
+
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
                                         $val;
@@ -476,15 +477,15 @@ $file = $_SESSION['filename'];
 
                                         }
 
-                                        if (preg_match('/\b\+\+\b|\b \+\+ \b|\+\+\b|\b\+\+/', $val) !== false ){
+                                        if (preg_match('/(\+\+)/', $val) !== false ){
 
-                                            $op6_count = preg_match_all('/\b\+\+\b|\b \+\+ \b|\+\+\b|\b\+\+/',$val,$counter);
+                                            $op6_count = preg_match_all('/(\+\+)/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\b\-\-\b|\b \-\- \b|\-\-\b|\b\-\-/', $val) !== false ){
+                                        if (preg_match('/(\-\-)/', $val) !== false ){
 
-                                            $op7_count = preg_match_all('/\b\-\-\b|\b \-\- \b|\-\-\b|\b\-\-/',$val,$counter);
+                                            $op7_count = preg_match_all('/(\-\-)/',$val,$counter);
 
                                         }
 
