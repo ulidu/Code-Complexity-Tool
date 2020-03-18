@@ -184,6 +184,7 @@ $file = $_SESSION['filename'];
                                     </thead>
                                     <tbody>
                                     <?php
+
                                     $i = 0; //increment to each loop
                                     $count = 0;
                                     $total_cs = 0;
@@ -208,7 +209,8 @@ $file = $_SESSION['filename'];
 
                                         $val;
 
-                                    // Weight due to Keywords
+                                    // -------- Weight due to Keywords - Begin --------
+
                                     $keywords = ['abstract', 'assert', 'break', 'catch', 'class', 'const', 'continue', 'default', 'do', 'else', 'enum', 'extends', 'final', 'finally', 'goto', 'implements', 'import', 'instanceof', 'interface', 'native', 'new', 'package', 'private', 'protected', 'public', 'return', 'static', 'strictfp', 'super', 'synchronized', 'this', 'throw', 'throws', 'transient', 'try', 'void', 'volatile'];
 
                                     foreach($keywords as $word) {
@@ -439,87 +441,73 @@ $file = $_SESSION['filename'];
 
                                     $Nkw = ( $abstract_count + $assert_count + $break_count + $catch_count + $class_count + $const_count + $continue_count + $default_count + $do_count + $else_count + $enum_count + $extends_count + $final_count + $finally_count + $goto_count + $implements_count + $import_count + $instanceof_count + $interface_count + $native_count + $new_count + $package_count + $private_count + $protected_count + $public_count + $return_count + $static_count + $strictfp_count + $super_count + $synchronized_count + $this_count + $throw_count + $throws_count + $transient_count + $try_count + $void_count + $volatile_count ) * $weight_keyword;
 
-                                    // Weight due to Identifiers
+                                    // -------- Weight due to Keywords - End --------
 
 
-                                    // Weight due to Operators
-                                    $operators = array('+', '-', '*', '/', '%', '++', '--', '==', '!=', '>', '<', '>=', '<=', '&&', '||', '!', '|', '^', '~', '<<', '>>', '>>>', '<<<', ',', '->', '.', '::', '+=', '-=', '*=', '/=', '=', '>>>=', '|=', '&=', '%=', '<<=', '>>=', '^=');
+                                    // -------- Weight due to Identifiers - Begin --------
+
+                                    // -------- Weight due to Identifiers - End --------
+
+
+                                    // -------- Weight due to Operators - Begin --------
+
+                                    //$operators = array('+', '-', '*', '/', '%', '++', '--', '==', '!=', '>', '<', '>=', '<=', '&&', '||', '!', '|', '^', '~', '<<', '>>', '>>>', '<<<', ',', '->', '.', '::', '+=', '-=', '*=', '/=', '=', '>>>=', '|=', '&=', '%=', '<<=', '>>=', '^=');
+
+                                    $operators = array('+', '-', '*', '/', '%', '=', '>', '<', '&&', '!', '|', '^', '~', ',', '.', '::' );
 
                                     foreach($operators as $word) {
 
-                                        if (preg_match('/\b \+ \W|\b\+ \W|\b \+ \w|\W\+\b |\b\+\b/', $val) !== false ){
+                                        if (preg_match('/(\<\=)+|(\=\>)+|(\=\<)+|(\>\=)+|(\+)+|(\-)+|(\=)+|(\*)+|(\/)+|(\%)+|(\>)+|(\>)+|(\<)+|(\&\&)+|(\!)+|(\|)+|(\^)+|(\~)+|(\,)+|(\.)+|(\:\:)+/', $val) !== false ){
 
-                                            $op1_count = preg_match_all('/\b \+ \W|\b\+ \W|\b \+ \w|\W\+\b |\b\+\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b \- \W|\b\- \W|\b \- \w|\W\-\b |\b\-\b/', $val) !== false ){
-
-                                            $op2_count = preg_match_all('/\b \- \W|\b\- \W|\b \- \w|\W\-\b |\b\-\b/',$val,$counter);
+                                            $op_count = preg_match_all('/(\<\=)+|(\=\>)+|(\=\<)+|(\>\=)+|(\+)+|(\-)+|(\=)+|(\*)+|(\/)+|(\%)+|(\>)+|(\>)+|(\<)+|(\&\&)+|(\!)+|(\|)+|(\^)+|(\~)+|(\,)+|(\.)+|(\:\:)+/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/\*/', $val) !== false ){
-
-                                            $op3_count = preg_match_all('/\*/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('//', $val) !== false ){
-
-                                            $op4_count = preg_match_all('/\b \/ \W|\b\/ \W|\b \/ \w|\W\/\b |\b\/\b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b\%\b|\b \% \b/', $val) !== false ){
-
-                                            $op5_count = preg_match_all('/\b\%\b|\b \% \b/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/(\+\+)/', $val) !== false ){
-
-                                            $op6_count = preg_match_all('/(\+\+)/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/(\-\-)/', $val) !== false ){
-
-                                            $op7_count = preg_match_all('/(\-\-)/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/\b\=\=\b|\b \=\= \b|\=\=\b|\b\=\=/', $val) !== false ){
-
-                                            $op8_count = preg_match_all('/\b\=\=\b|\b \=\= \b|\=\=\b|\b\=\=/',$val,$counter);
-
-                                        }
-
-                                        $Nop = $op1_count + $op2_count + $op3_count + $op4_count + $op5_count + $op6_count + $op7_count + $op8_count;
+                                        $Nop = $op_count * $weight_operator;
 
                                     }
 
-                                    // Weight due to Numbers
-                                    // 0|[1-9][0-9]*
-                                    $numbers = array("0","1","2","3","4","5","6","7","8","9");
+                                    // -------- Weight due to Operators - End --------
+
+
+                                    // -------- Weight due to Numerical Values - Begin --------
+
+                                    $numbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
                                     $numbers_count_total = 0;
+
                                     foreach($numbers as $word) {
-                                        $numbers_count = substr_count($val, $word);
-                                        $numbers_count_total = $numbers_count_total + $numbers_count;
+
+                                        if (preg_match('/(\d)+/', $val) !== false ){
+
+                                            $numbers_count_total = preg_match_all('/(\d)+/',$val,$counter);
+
+                                        }
+
+                                        $Nnv = $numbers_count_total * $weight_numerical;
 
                                     }
-                                    $Nnv = $numbers_count_total;
 
-                                    // Weight due to String Literals
-                                    $strings = array("\"\"");
+                                    // -------- Weight due to Numerical Values - End --------
+
+
+                                    // -------- Weight due to String Literals - Begin --------
+
+                                    $strings = array(' ');
                                     $strings_count_total = 0;
+
                                     foreach($strings as $word) {
-                                        $strings_count = substr_count($val, $word);
-                                        $strings_count_total = $strings_count_total + $strings_count;
+
+                                        if (preg_match('/(["\'])(?:(?=(\\?))\2.)*?\1/', $val) !== false ){
+
+                                            $strings_count_total = preg_match_all('/(["\'])(?:(?=(\\?))\2.)*?\1/',$val,$counter);
+
+                                        }
+
+                                        $Nsl = $strings_count_total * $weight_string;
 
                                     }
 
-                                    $Nsl = $strings_count_total;
+                                    // -------- Weight due to String Literals - End --------
 
                                     ?>
 
@@ -530,7 +518,7 @@ $file = $_SESSION['filename'];
                                         <td><?php echo "In progress"; ?></td>
                                         <td><?php echo $Nop; ?></td>
                                         <td><?php echo $Nnv; ?></td>
-                                        <td><?php echo "In progress"; ?></td>
+                                        <td><?php echo $Nsl; ?></td>
                                         <td><?php $Cs = $Nkw + $Nop + $Nnv; echo $Cs; ?></td>
                                         <?php $i++; }}?>
                                     </tr>
