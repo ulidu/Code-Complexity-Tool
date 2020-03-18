@@ -6,10 +6,11 @@
 $split = $_SESSION['split_code'];
 $trim = $_SESSION['trimmed'];
 $file = $_SESSION['filename'];
+$row_count = $_SESSION['row_count'];
 
 ?>
 
-<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+<div class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
 						<!-- begin:: Content Head -->
 						<div class="kt-subheader  kt-grid__item" id="kt_subheader">
@@ -82,7 +83,10 @@ $file = $_SESSION['filename'];
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Cs : <?php echo $total_cs; ?></h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Cs : <?php echo $total_cs = $_SESSION['total_cs']; ?>
+
+
+                                        </h1></center>
 
 
                                 </div>
@@ -492,14 +496,13 @@ $file = $_SESSION['filename'];
 
                                     // -------- Weight due to String Literals - Begin --------
 
-                                    $strings = array(' ');
                                     $strings_count_total = 0;
 
-                                    foreach($strings as $word) {
+                                    for($x = 0; $x <= $row_count; $x++){
 
-                                        if (preg_match('/(["\'])(?:(?=(\\?))\2.)*?\1/', $val) !== false ){
+                                        if (preg_match('/"(.*?)"/', $val) !== false ){
 
-                                            $strings_count_total = preg_match_all('/(["\'])(?:(?=(\\?))\2.)*?\1/',$val,$counter);
+                                            $strings_count_total = preg_match_all('/"(.*?)"/',$val,$counter);
 
                                         }
 
@@ -508,6 +511,9 @@ $file = $_SESSION['filename'];
                                     }
 
                                     // -------- Weight due to String Literals - End --------
+                                    $Cs = $Nkw + $Nop + $Nnv + $Nsl;
+
+                                    $total_cs += $Cs;
 
                                     ?>
 
@@ -519,11 +525,18 @@ $file = $_SESSION['filename'];
                                         <td><?php echo $Nop; ?></td>
                                         <td><?php echo $Nnv; ?></td>
                                         <td><?php echo $Nsl; ?></td>
-                                        <td><?php $Cs = $Nkw + $Nop + $Nnv; echo $Cs; ?></td>
-                                        <?php $i++; }}?>
+                                        <td><?php echo $Cs; ?></td>
+                                        <?php
+
+                                        $i++;
+
+                                        $_SESSION['total_cs'] = $total_cs;
+
+                                    }
+
+                                    }
+                                    ?>
                                     </tr>
-
-
 
 
 

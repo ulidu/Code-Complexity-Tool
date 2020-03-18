@@ -183,8 +183,6 @@
                     </div>
                 </div>
 
-
-
         </div>
 
         <div class="kt-portlet__foot">
@@ -304,9 +302,7 @@
                                         <?php $i++; }}?>
                                     </tr>
 
-
-
-
+                                    <?php $_SESSION['row_count'] = $i; ?>
 
                                     </tbody>
                                     <tfoot>
@@ -330,15 +326,6 @@
                     </div>
 
                     <!-- end:: Content -->
-
-
-
-
-
-
-
-
-
 
 
 
