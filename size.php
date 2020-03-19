@@ -450,6 +450,28 @@ $row_count = $_SESSION['row_count'];
 
                                     // -------- Weight due to Identifiers - Begin --------
 
+                                    $identifiers_count_total = 0;
+
+                                    for($x = 0; $x <= $row_count; $x++){
+
+                                        if (preg_match('/class\s*(\w+)/', $val) !== false ){
+
+                                            $count_class = preg_match_all('/class\s*(\w+)/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/class\s*(\w+)/', $val) !== false ){
+
+                                            $count_methods = preg_match_all('/class\s*(\w+)/',$val,$counter);
+
+                                        }
+
+                                        $identifiers_count_total = $count_class + $count_methods;
+
+                                        $Nid = $identifiers_count_total * $weight_identifier;
+
+                                    }
+
                                     // -------- Weight due to Identifiers - End --------
 
 
@@ -511,7 +533,7 @@ $row_count = $_SESSION['row_count'];
                                     }
 
                                     // -------- Weight due to String Literals - End --------
-                                    $Cs = $Nkw + $Nop + $Nnv + $Nsl;
+                                    $Cs = $Nkw + $Nid + $Nop + $Nnv + $Nsl;
 
                                     $total_cs += $Cs;
 
@@ -521,7 +543,7 @@ $row_count = $_SESSION['row_count'];
                                         <td><?php echo $count=$count+1; ?></td>
                                         <td style="text-align: left"><?php echo $val;?></td>
                                         <td><?php echo $Nkw; ?></td>
-                                        <td><?php echo "In progress"; ?></td>
+                                        <td><?php echo $Nid; ?></td>
                                         <td><?php echo $Nop; ?></td>
                                         <td><?php echo $Nnv; ?></td>
                                         <td><?php echo $Nsl; ?></td>
