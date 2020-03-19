@@ -16,6 +16,4 @@ class Pattern{
 
     }
 
-} 
-
-      Puppy myPuppy = new Puppy("tommy" );
+}
