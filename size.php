@@ -460,13 +460,38 @@ $row_count = $_SESSION['row_count'];
 
                                         }
 
-                                        if (preg_match('/class\s*(\w+)/', $val) !== false ){
+                                        if (preg_match('/= new|=new/', $val) !== false ){
 
-                                            $count_methods = preg_match_all('/class\s*(\w+)/',$val,$counter);
+                                            $count_methods = preg_match_all('/= new|=new/',$val,$counter);
 
                                         }
 
-                                        $identifiers_count_total = $count_class + $count_methods;
+                                        if (preg_match('/= new|=new/', $val) !== false ){
+
+                                            $count_objects = preg_match_all('/= new|=new/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/= new|=new/', $val) !== false ){
+
+                                            $count_variables = preg_match_all('/= new|=new/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/= new|=new/', $val) !== false ){
+
+                                            $count_arguments = preg_match_all('/= new|=new/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/= new|=new/', $val) !== false ){
+
+                                            $count_data_structures = preg_match_all('/= new|=new/',$val,$counter);
+
+                                        }
+
+
+                                        $identifiers_count_total = $count_class + $count_objects;
 
                                         $Nid = $identifiers_count_total * $weight_identifier;
 
