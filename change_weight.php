@@ -43,6 +43,8 @@
 
     <div class="col-lg-7">
 
+
+
     <!--begin::Portlet-->
     <div class="kt-portlet kt-portlet--tabs">
         <div class="kt-portlet__head">
@@ -100,6 +102,12 @@
                             </tr>
                             </thead>
                             <tbody>
+
+                            <?php
+
+
+                            ?>
+
                             <tr>
                                 <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
                                 <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>

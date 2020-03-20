@@ -1,3 +1,11 @@
+<?php
+
+if (!isset($_GET['reload'])) {
+    echo '<meta http-equiv=Refresh content="0;url=total_weight.php?reload=1">';
+}
+
+?>
+
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
@@ -178,7 +186,10 @@
 
                                 </div>
                                 </div>
+
                             </div>
+
+
                         </div>
                     </div>
                 </div>

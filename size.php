@@ -1,3 +1,11 @@
+<?php
+
+if (!isset($_GET['reload'])) {
+    echo '<meta http-equiv=Refresh content="0;url=size.php?reload=1">';
+}
+
+?>
+
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
@@ -460,9 +468,9 @@ $row_count = $_SESSION['row_count'];
 
                                         }
 
-                                        if (preg_match('/= new|=new/', $val) !== false ){
+                                        if (preg_match('/public(?:.*)static(?:.*)void(?:.*)(?:main)(?:.*)(?:\()(?:.*)(?:\))/', $val) !== false ){
 
-                                            $count_methods = preg_match_all('/= new|=new/',$val,$counter);
+                                            $count_methods = preg_match_all('/public(?:.*)static(?:.*)void(?:.*)(?:main)(?:.*)(?:\()(?:.*)(?:\))/',$val,$counter);
 
                                         }
 
@@ -491,7 +499,7 @@ $row_count = $_SESSION['row_count'];
                                         }
 
 
-                                        $identifiers_count_total = $count_class + $count_objects;
+                                        $identifiers_count_total = $count_class + $count_objects + $count_methods;
 
                                         $Nid = $identifiers_count_total * $weight_identifier;
 
@@ -565,7 +573,7 @@ $row_count = $_SESSION['row_count'];
                                     ?>
 
                                     <tr>
-                                        <td><?php echo $count=$count+1; ?></td>
+                                        <td><?php echo ++$count; ?></td>
                                         <td style="text-align: left"><?php echo $val;?></td>
                                         <td><?php echo $Nkw; ?></td>
                                         <td><?php echo $Nid; ?></td>
@@ -640,6 +648,7 @@ $row_count = $_SESSION['row_count'];
 						</div>
 						<!-- end:: Content -->
 					</div>
+
 
 
 <?php include 'include/footer.php'; ?>
