@@ -468,15 +468,15 @@ $row_count = $_SESSION['row_count'];
 
                                         }
 
-                                        if (preg_match('/public(?:.*)static(?:.*)void(?:.*)(?:main)(?:.*)(?:\()(?:.*)(?:\))/', $val) !== false ){
+                                        if (preg_match('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s+)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]*\}?/', $val) !== false ){
 
-                                            $count_methods = preg_match_all('/public(?:.*)static(?:.*)void(?:.*)(?:main)(?:.*)(?:\()(?:.*)(?:\))/',$val,$counter);
+                                            $count_methods = preg_match_all('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s+)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]*\}?/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('/= new|=new/', $val) !== false ){
+                                        if (preg_match('/= new (.*?)\((.*?)\);|=new (.*?)\((.*?)\);/', $val) !== false ){
 
-                                            $count_objects = preg_match_all('/= new|=new/',$val,$counter);
+                                            $count_objects = preg_match_all('/= new (.*?)\((.*?)\);|=new (.*?)\((.*?)\);/',$val,$counter);
 
                                         }
 

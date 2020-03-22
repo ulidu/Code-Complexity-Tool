@@ -290,6 +290,9 @@ if (!isset($_GET['reload'])) {
                     $i = 0; //increment to each loop
                     $count = 0;
 
+                    $split = $_SESSION['split_code'];
+                    $trim = $_SESSION['trimmed'];
+
                     if (!$split==""){
                     foreach($split AS $val) { // Traverse the array with FOREACH
 
