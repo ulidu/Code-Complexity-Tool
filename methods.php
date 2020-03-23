@@ -190,6 +190,18 @@ if (!isset($_GET['reload'])) {
                                     $i = 0; //increment to each loop
                                     $count = 0;
 
+                                    $Wmrt = 0;
+                                    $Npdtp = 0;
+                                    $Ncdtp = 0;
+                                    $Cm = 0;
+
+                                    //Default Weights
+                                    $weight_primitive_retuntype = 1;
+                                    $weight_composite_returntype = 2;
+                                    $weight_void_returntype = 0;
+                                    $weight_primitive_datatype_parameter = 1;
+                                    $weight_composite_datatype_parameter = 2;
+
                                     if (!$split==""){
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
