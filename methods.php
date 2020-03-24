@@ -84,7 +84,8 @@ if (!isset($_GET['reload'])) {
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Cm : 2</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Cm : <?php echo $total_Cm = $_SESSION['total_Cm']; ?>
+                                        </h1></center>
 
 
                                 </div>
@@ -187,8 +188,10 @@ if (!isset($_GET['reload'])) {
                                     <tbody>
 
                                     <?php
+
                                     $i = 0; //increment to each loop
                                     $count = 0;
+                                    $total_Cm = 0;
 
                                     $Wmrt = 0;
                                     $Npdtp = 0;
@@ -207,19 +210,62 @@ if (!isset($_GET['reload'])) {
 
                                     $val;
 
+                                    // -------- Weight due to return type - Begin --------
+
+                                    $void_count_total = 0;
+                                    $primitive_retuntype_count_total = 0;
+                                    $composite_retuntype_count_total = 0;
+
+                                    for($x = 0; $x <= $row_count; $x++){
+
+                                        if (preg_match('/void+(.*?){/', $val) !== false ){
+
+                                            $void_count_total = preg_match_all('/void+(.*?){/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('//', $val) !== false ){
+
+                                            $primitive_retuntype_count_total = preg_match_all('//',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('//', $val) !== false ){
+
+                                            $composite_retuntype_count_total = preg_match_all('//',$val,$counter);
+
+                                        }
 
 
+                                        $Wmrt = ($void_count_total*$weight_void_returntype) + ($primitive_retuntype_count_total*$weight_primitive_retuntype) + ($composite_retuntype_count_total*$weight_composite_returntype);
+
+                                    }
+
+                                    // -------- Weight due to return type - End --------
+
+                                    $Cm = $Wmrt + $Npdtp + $Ncdtp;
+
+                                    $total_Cm += $Cm;
 
                                     ?>
 
                                     <tr>
-                                        <td><?php echo $count=$count+1; ?></td>
+                                        <td><?php echo ++$count; ?></td>
                                         <td style="text-align: left"><?php echo $val;?></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <?php $i++; }}?>
+                                        <td><?php echo $Wmrt; ?></td>
+                                        <td><?php echo $Npdtp; ?></td>
+                                        <td><?php echo $Ncdtp; ?></td>
+                                        <td><?php echo $Cm; ?></td>
+                                        <?php
+
+                                        $i++;
+
+                                        $_SESSION['total_Cm'] = $total_Cm;
+
+                                        }
+
+                                        }
+                                        ?>
                                     </tr>
 
 

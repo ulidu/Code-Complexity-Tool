@@ -220,37 +220,37 @@ $file = $_SESSION['filename'];
                                         $conditional_words_count = substr_count($val, $word);
                                         $conditional_words_count_total += $conditional_words_count;
 
-                                        if (preg_match('/\bif\b/', $val) !== false ){
+                                        if (preg_match('/if(.*?)+\((.*?)\)+(.*?){/', $val) !== false ){
 
-                                            $if_count = preg_match_all('/\bif\b/',$val,$counter);
+                                            $if_count = preg_match_all('/if(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
                                             $if_weight = $if_count * $weight_if_elseif;
 
                                         }
 
-                                        if (preg_match('/\bfor\b/', $val) !== false){
+                                        if (preg_match('/for(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
 
-                                            $for_count = preg_match_all('/\bfor\b/',$val,$counter);
+                                            $for_count = preg_match_all('/for(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
                                             $for_weight = $for_count * $weight_for_while_dowhile ;
 
                                         }
 
-                                        if (preg_match('/\bwhile\b/', $val) !== false){
+                                        if (preg_match('/while(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
 
-                                            $while_count = preg_match_all('/\bwhile\b/',$val,$counter);
+                                            $while_count = preg_match_all('/while(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
                                             $while_weight = $while_count * $weight_for_while_dowhile ;
 
                                         }
 
-                                        if (preg_match('/\bswitch\b/', $val) !== false){
+                                        if (preg_match('/switch(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
 
-                                            $switch_count = preg_match_all('/\bswitch\b/',$val,$counter);
+                                            $switch_count = preg_match_all('/switch(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
                                             $switch_weight = $switch_count * $weight_switch ;
 
                                         }
 
-                                        if (preg_match('/\bcase\b/', $val) !== false){
+                                        if (preg_match('/case(.*?)+\:/', $val) !== false){
 
-                                            $case_count = preg_match_all('/\bcase\b/',$val,$counter);
+                                            $case_count = preg_match_all('/case(.*?)+\:/',$val,$counter);
                                             $case_weight = $case_count * $weight_case ;
 
                                         }
