@@ -288,6 +288,7 @@ $file = $_SESSION['filename'];
                                         $_SESSION['total_ccs'] = $total_ccs;
 
                                         }
+
                                     }
                                     ?>
                                     </tr>
