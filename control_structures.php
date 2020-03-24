@@ -273,7 +273,6 @@ $file = $_SESSION['filename'];
 
                                     ?>
 
-
                                     <tr>
                                         <td><?php echo $count=$count+1; ?></td>
                                         <td style="text-align: left"><?php echo $val;?></td>
