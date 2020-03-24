@@ -215,6 +215,7 @@ $file = $_SESSION['filename'];
                                     $conditional_words = array('if(', 'for(', 'while(', 'switch(', 'case(','if (', 'for (', 'while (', 'switch (', 'case (');
                                     $conditional_words_count_total = 0;
 
+
                                     foreach($conditional_words as $word){
 
                                         $conditional_words_count = substr_count($val, $word);
