@@ -237,6 +237,13 @@ $file = $_SESSION['filename'];
 
                                         }
 
+                                        if (preg_match('/while(.*?)+\((.*?)\)+(.*?);/', $val) !== false){
+
+                                            $do_while_count = preg_match_all('/while(.*?)+\((.*?)\)+(.*?);/',$val,$counter);
+                                            $do_while_weight = $do_while_count * $weight_for_while_dowhile ;
+
+                                        }
+
                                         if (preg_match('/switch(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
 
                                             $switch_count = preg_match_all('/switch(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
@@ -253,9 +260,9 @@ $file = $_SESSION['filename'];
 
                                     }
 
-                                    $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight;
+                                    $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight + $do_while_weight;
 
-                                    $NC = $if_count+$for_count+$while_count+$switch_count+$case_count;
+                                    $NC = $if_count + $for_count + $while_count + $switch_count + $case_count + $do_while_count;
 
                                     if ($NC == 0){
 
