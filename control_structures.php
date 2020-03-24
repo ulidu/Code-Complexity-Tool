@@ -212,13 +212,9 @@ $file = $_SESSION['filename'];
 
                                     $val;
 
-                                    $conditional_words = array('if(', 'for(', 'while(', 'switch(', 'case(','if (', 'for (', 'while (', 'switch (', 'case (');
-                                    $conditional_words_count_total = 0;
+                                    $conditional_words = array('if', 'for', 'while', 'switch', 'case');
 
                                     foreach($conditional_words as $word){
-
-                                        $conditional_words_count = substr_count($val, $word);
-                                        $conditional_words_count_total += $conditional_words_count;
 
                                         if (preg_match('/if(.*?)+\((.*?)\)+(.*?){/', $val) !== false ){
 
@@ -259,7 +255,7 @@ $file = $_SESSION['filename'];
 
                                     $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight;
 
-                                    $NC = $conditional_words_count_total;
+                                    $NC = $if_count+$for_count+$while_count+$switch_count+$case_count;
 
                                     if ($NC == 0){
 
