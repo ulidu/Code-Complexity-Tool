@@ -212,7 +212,7 @@ $file = $_SESSION['filename'];
 
                                     $val;
 
-                                    $conditional_words = array('if(', 'for(', 'while(', 'switch(', 'case(','if (', 'for (', 'while (', 'switch (', 'case (');
+                                    $conditional_words = array('if(', 'for(', 'while(', 'switch(', 'case','if (', 'for (', 'while (', 'switch (');
                                     $conditional_words_count_total = 0;
 
 
