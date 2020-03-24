@@ -224,9 +224,9 @@ if (!isset($_GET['reload'])) {
 
                                         }
 
-                                        if (preg_match('//', $val) !== false ){
+                                        if (preg_match('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/', $val) !== false ){
 
-                                            $primitive_retuntype_count_total = preg_match_all('//',$val,$counter);
+                                            $primitive_retuntype_count_total = preg_match_all('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/',$val,$counter);
 
                                         }
 
