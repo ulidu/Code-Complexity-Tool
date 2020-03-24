@@ -1,3 +1,11 @@
+<?php
+
+if (!isset($_GET['reload'])) {
+    echo '<meta http-equiv=Refresh content="0;url=control_structures.php?reload=1">';
+}
+
+?>
+
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
@@ -83,8 +91,7 @@ $file = $_SESSION['filename'];
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Ccs : 9</h1></center>
-
+                                    <center><h1 style="font-family: 'Fira Code'">Ccs : <?php echo $total_ccs = $_SESSION['total_ccs']; ?></h1></center>
 
                                 </div>
                                 </div>
@@ -181,61 +188,114 @@ $file = $_SESSION['filename'];
                                     </tr>
                                     </thead>
                                     <tbody>
+
                                     <?php
 
                                     $i = 0; //increment to each loop
                                     $count = 0;
+
+                                    $total_ccs = 0;
+
                                     $Wtcs = 0;
+                                    $NC = 0;
+                                    $Ccspps = 0;
+                                    $Ccs = 0;
+
+                                    //Default Weights
+                                    $weight_if_elseif = 2 ;
+                                    $weight_for_while_dowhile = 3 ;
+                                    $weight_switch = 2 ;
+                                    $weight_case = 1 ;
 
                                     if (!$split==""){
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
-                                    $total_ccs = 0;
                                     $val;
 
+                                    $conditional_words = array('if', 'for', 'while', 'switch', 'case');
+                                    $conditional_words_count_total = 0;
 
-                                     $conditional_words = array("for","while","do while");
-                                     $conditional_count_total = 0;
                                     foreach($conditional_words as $word){
-                                        $conditional_count = substr_count($val, $word);
-                                        $conditional_count_total = $conditional_count_total + $conditional_count ;
+
+                                        $conditional_words_count = substr_count($val, $word);
+                                        $conditional_words_count_total += $conditional_words_count;
+
+                                        if (preg_match('/if(.*?)+\((.*?)\)+(.*?){/', $val) !== false ){
+
+                                            $if_count = preg_match_all('/if(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
+                                            $if_weight = $if_count * $weight_if_elseif;
+
+                                        }
+
+                                        if (preg_match('/for(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
+
+                                            $for_count = preg_match_all('/for(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
+                                            $for_weight = $for_count * $weight_for_while_dowhile ;
+
+                                        }
+
+                                        if (preg_match('/while(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
+
+                                            $while_count = preg_match_all('/while(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
+                                            $while_weight = $while_count * $weight_for_while_dowhile ;
+
+                                        }
+
+                                        if (preg_match('/switch(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
+
+                                            $switch_count = preg_match_all('/switch(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
+                                            $switch_weight = $switch_count * $weight_switch ;
+
+                                        }
+
+                                        if (preg_match('/case(.*?)+\:/', $val) !== false){
+
+                                            $case_count = preg_match_all('/case(.*?)+\:/',$val,$counter);
+                                            $case_weight = $case_count * $weight_case ;
+
+                                        }
 
                                     }
-                                    $Nc = $conditional_count_total;
 
+                                    $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight;
 
-                                    $conditional_words = array("for","while","do while","if","else if","switch");
+                                    $NC = $conditional_words_count_total;
 
-                                    if (in_array("if", $conditional_words)) {
-                                        $Wtcs=2;
-                                    }else if(in_array("for", $conditional_words)){
-                                        $Wtcs=3;
+                                    if ($NC == 0){
+
+                                        $Ccspps = 0;
+
+                                    }else{
+
+                                        $Ccspps = $Ccs;
+
                                     }
 
+                                    $Ccs = ($Wtcs * $NC) + $Ccspps ;
 
-
+                                    $total_ccs += $Ccs;
 
                                     ?>
 
 
+                                    <tr>
+                                        <td><?php echo $count=$count+1; ?></td>
+                                        <td style="text-align: left"><?php echo $val;?></td>
+                                        <td><?php echo $Wtcs; ?></td>
+                                        <td><?php echo $NC; ?></td>
+                                        <td><?php echo $Ccspps; ?></td>
+                                        <td><?php echo $Ccs; ?></td>
 
-    <tr>
-        <td><?php echo $count=$count+1; ?></td>
-        <td style="text-align: left"><?php echo $val;?></td>
-        <td><?php echo $Wtcs;?></td>
-        <td><?php echo $Nc;?></td>
-        <td>0</td>
-        <td>0</td>
-        <?php $i++; }}?>
-    </tr>
+                                        <?php
 
+                                        $i++;
+                                        $_SESSION['total_ccs'] = $total_ccs;
 
-
-
-
-
-
-    </tbody>
+                                        }
+                                    }
+                                    ?>
+                                    </tr>
+                                    </tbody>
 
 </table>
 

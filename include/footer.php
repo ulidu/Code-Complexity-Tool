@@ -83,8 +83,8 @@
             let $button = $("#submit_content");
             $button.prop("disabled", true);
 
-            $("#paste_contents").keyup(function(){
-                $button.prop("disabled", (this.value === "")? true : false);
+            $('#paste_contents').bind("change keyup input",function() {
+                $button.prop("disabled", (this.value == "")? true : false);
             });
         </script>
 

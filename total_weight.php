@@ -1,3 +1,11 @@
+<?php
+
+if (!isset($_GET['reload'])) {
+    echo '<meta http-equiv=Refresh content="0;url=total_weight.php?reload=1">';
+}
+
+?>
+
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
@@ -13,8 +21,7 @@
     $targetFile =  $targetPath.$newFileName;  // Create the absolute path of the uploaded file destination.
     move_uploaded_file($tempFile,$targetFile); // Move uploaded file to destination.
 
-
-    // Include and initialize Extractor class
+    // Include and initialize Extractor class (Zip file extracting)
     require 'Extractor.class.php';
     $extractor = new Extractor;
 
@@ -48,16 +55,20 @@
                 //  Removes single line '//' comments, treats blank characters
                 $single = preg_replace('![ \t]*//.*[ \t]*[\r\n]!', '', $content);
 
-
                 $multiple = preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $single);
                 $excess = preg_replace('/\s+/', ' ', $multiple);
                 $trim = trim($excess," ");
-                $split = preg_split('/(?<=[;{}])/', $trim, 0, PREG_SPLIT_NO_EMPTY);
+                $for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
+                $split = preg_split('/(?<=[;{}])/', $for_semicolon, 0, PREG_SPLIT_NO_EMPTY);
+
+
+
+
+
 
                 $_SESSION['split_code'] = $split;
                 $_SESSION['files'] = $entry;
                 $_SESSION['trimmed'] = $trim;
-
 
                 $_SESSION['filename'] = $entry;
 
@@ -81,7 +92,8 @@
     $multiple = preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $single);
     $excess = preg_replace('/\s+/', ' ', $multiple);
     $trim = trim($excess," ");
-    $split = preg_split('/(?<=[;{}])/', $trim, 0, PREG_SPLIT_NO_EMPTY);
+    $for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
+    $split = preg_split('/(?<=[;{}])/', $for_semicolon, 0, PREG_SPLIT_NO_EMPTY);
 
     $_SESSION['split_code'] = $split;
     $_SESSION['files'] = $entry;
@@ -174,12 +186,13 @@
 
                                 </div>
                                 </div>
+
                             </div>
+
+
                         </div>
                     </div>
                 </div>
-
-
 
         </div>
 
@@ -277,6 +290,9 @@
                     $i = 0; //increment to each loop
                     $count = 0;
 
+                    $split = $_SESSION['split_code'];
+                    $trim = $_SESSION['trimmed'];
+
                     if (!$split==""){
                     foreach($split AS $val) { // Traverse the array with FOREACH
 
@@ -300,9 +316,7 @@
                                         <?php $i++; }}?>
                                     </tr>
 
-
-
-
+                                    <?php $_SESSION['row_count'] = $i; ?>
 
                                     </tbody>
                                     <tfoot>
@@ -326,15 +340,6 @@
                     </div>
 
                     <!-- end:: Content -->
-
-
-
-
-
-
-
-
-
 
 
 
