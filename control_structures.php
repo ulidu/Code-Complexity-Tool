@@ -216,44 +216,44 @@ $file = $_SESSION['filename'];
 
                                     foreach($conditional_words as $word){
 
-                                        if (preg_match('/if(.*?)+\((.*?)\)+(.*?){/', $val) !== false ){
+                                        if (preg_match('/if |if+\((.*?)\)+(.*?){/', $val) !== false ){
 
-                                            $if_count = preg_match_all('/if(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
+                                            $if_count = preg_match_all('/if |if+\((.*?)\)+(.*?){/',$val,$counter);
                                             $if_weight = $if_count * $weight_if_elseif;
 
                                         }
 
-                                        if (preg_match('/for(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
+                                        if (preg_match('/for |for+\((.*?)\)+(.*?){/', $val) !== false){
 
-                                            $for_count = preg_match_all('/for(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
+                                            $for_count = preg_match_all('/for |for+\((.*?)\)+(.*?){/',$val,$counter);
                                             $for_weight = $for_count * $weight_for_while_dowhile ;
 
                                         }
 
-                                        if (preg_match('/while(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
+                                        if (preg_match('/while |while+\((.*?)\)+(.*?){/', $val) !== false){
 
-                                            $while_count = preg_match_all('/while(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
+                                            $while_count = preg_match_all('/while |while+\((.*?)\)+(.*?){/',$val,$counter);
                                             $while_weight = $while_count * $weight_for_while_dowhile ;
 
                                         }
 
-                                        if (preg_match('/while(.*?)+\((.*?)\)+(.*?);/', $val) !== false){
+                                        if (preg_match('/while |while+\((.*?)\)+(.*?);/', $val) !== false){
 
-                                            $do_while_count = preg_match_all('/while(.*?)+\((.*?)\)+(.*?);/',$val,$counter);
+                                            $do_while_count = preg_match_all('/while |while+\((.*?)\)+(.*?);/',$val,$counter);
                                             $do_while_weight = $do_while_count * $weight_for_while_dowhile ;
 
                                         }
 
-                                        if (preg_match('/switch(.*?)+\((.*?)\)+(.*?){/', $val) !== false){
+                                        if (preg_match('/switch |switch+\((.*?)\)+(.*?){/', $val) !== false){
 
-                                            $switch_count = preg_match_all('/switch(.*?)+\((.*?)\)+(.*?){/',$val,$counter);
+                                            $switch_count = preg_match_all('/switch |switch+\((.*?)\)+(.*?){/',$val,$counter);
                                             $switch_weight = $switch_count * $weight_switch ;
 
                                         }
 
-                                        if (preg_match('/case(.*?)+\:/', $val) !== false){
+                                        if (preg_match('/case (.*?)+\:/', $val) !== false){
 
-                                            $case_count = preg_match_all('/case(.*?)+\:/',$val,$counter);
+                                            $case_count = preg_match_all('/case (.*?)+\:/',$val,$counter);
                                             $case_weight = $case_count * $weight_case ;
 
                                         }
