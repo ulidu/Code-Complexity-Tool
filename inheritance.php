@@ -187,24 +187,116 @@ if (!isset($_GET['reload'])) {
 
                                     <tr>
                                         <td>1</td>
-                                        <td style="text-align: left">Pattern</td>
+                                        <td style="text-align: left"></td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                        
                                     </tr>
-                                   
-                                    
-                                    
-
-
-
-
-
-
-
                                     </tbody>
+
+
+                                    <?php
+
+
+
+                                    $i = 0; //increment to each loop
+                                    $count = 0;
+                                    $total_ci = 0;
+
+                                    $direct = 0;
+                                    $indirect = 0;
+                                    $tot_inheritance = 0;
+                                    $ci = 0;
+
+                                    //Default weights
+                                    $weight_one_ud_class = 1;
+                                    $weight_two_ud_class = 2;
+                                    $weight_three_ud_class = 3;
+                                    $weight_more_ud_class = 4;
+
+                                    if (!$split==''){
+
+                                    foreach ($split AS $val) { // Traverse the array with FOREACH
+
+                                        $val;
+
+                                    // Begin class identification
+
+                                        $keywords = ['class','extends'];
+                                        foreach ($keywords as $word) {
+                                            if (preg_match('/\bclass\b/', $val) !== false) {
+
+
+                                             $class_name = preg_match_all('/\bclass\b/', $val, $counter);
+
+                                            }
+
+                                            if (preg_match('/^(?!enum).*class\b\s\b[A-Za-z_][A-Za-z_0-9]*\b\s*($)?(|:\s*($)?(public|private|protected)\s*($)?\b[^{]*\s*)\s*($)?{',$val) !== false){
+                                                // print_r($val);
+                                            }
+
+                                            $result = $class_name;
+
+                                        }
+
+                                        //End class identification
+
+                                        //Begin Direct Inheritances
+                                        //End Direct Inheritances
+
+                                        //Begin Indirect Inheritances
+                                        //End Indirect Inheritances
+
+
+                                        //Begin Total Inheritances
+                                            // Direct + Indirect;
+                                        //End Total Inheritances
+
+                                        $ci = $tot_inheritance;
+
+
+
+
+
+
+
+                                    }
+
+                                    ?>
+
+                                    <tr>
+                                        <td><?php echo ++$count; ?></td>
+                                        <td style="text-align: left"><?php echo $result; ?></td>
+                                        <td><?php echo $direct; ?></td>
+                                        <td><?php echo $indirect; ?></td>
+                                        <td><?php echo $tot_inheritance; ?></td>
+                                        <td><?php echo $ci; ?></td>
+
+                                        <?php
+                                        $i++;
+
+                                        $_SESSION['total_ci'] = $total_ci;
+
+                                        }
+
+
+
+
+
+
+                                    ?>
+
+
+
+
+                                    </tr>
+
+
+
+
+
                                     <tfoot>
                                     
                                     </tfoot>
