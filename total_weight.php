@@ -59,7 +59,7 @@ if (!isset($_GET['reload'])) {
                 $excess = preg_replace('/\s+/', ' ', $multiple);
                 $trim = trim($excess," ");
                 //$for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
-                $for_semicolon = preg_replace_callback('~\b(?:while|for)\s*(\((?:[^()]++|(?1))*\))~u', static function($m) {
+                $for_semicolon = preg_replace_callback(/** @lang text */ '~\b(?:while|for)\s*(\((?:[^()]++|(?1))*\))~u', static function($m) {
                     return str_replace(';', ';', $m[0]); },
                     $trim);
                 $split = preg_split('/(?<=[;{}])/', $for_semicolon, 0, PREG_SPLIT_NO_EMPTY);
@@ -96,7 +96,7 @@ if (!isset($_GET['reload'])) {
     $excess = preg_replace('/\s+/', ' ', $multiple);
     $trim = trim($excess," ");
     //$for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
-    $for_semicolon = preg_replace_callback('~\b(?:while|for)\s*(\((?:[^()]++|(?1))*\))~u', static function($m) {
+    $for_semicolon = preg_replace_callback(/** @lang text */ '~\b(?:while|for)\s*(\((?:[^()]++|(?1))*\))~u', static function($m) {
         return str_replace(';', ';', $m[0]); },
         $trim);
     $split = preg_split('/(?<=[;{}])/', $for_semicolon, 0, PREG_SPLIT_NO_EMPTY);
