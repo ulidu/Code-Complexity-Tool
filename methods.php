@@ -182,7 +182,6 @@ if (!isset($_GET['reload'])) {
                                         <th>Ncdtp</th>
                                         <th style="color: white" class="kt-label-bg-color-2">Cm</th>
 
-
                                     </tr>
                                     </thead>
                                     <tbody>
