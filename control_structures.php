@@ -260,7 +260,7 @@ $file = $_SESSION['filename'];
 
                                     }
 
-                                    $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight + $do_while_weight;
+                                    $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight + $do_while_weight  ;
 
                                     $NC = $if_count + $for_count + $while_count + $switch_count + $case_count + $do_while_count;
 
