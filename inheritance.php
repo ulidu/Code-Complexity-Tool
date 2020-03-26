@@ -6,6 +6,8 @@ if (!isset($_GET['reload'])) {
 
 ?>
 
+
+
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
 
