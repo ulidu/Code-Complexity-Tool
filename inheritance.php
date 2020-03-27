@@ -210,6 +210,7 @@ if (!isset($_GET['reload'])) {
                                     $tot_inheritance = 0;
                                     $ci = 0;
 
+
                                     //Default weights
                                     $weight_one_ud_class = 1;
                                     $weight_two_ud_class = 2;
