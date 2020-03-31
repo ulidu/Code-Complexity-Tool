@@ -229,9 +229,9 @@ if (!isset($_GET['reload'])) {
                                         foreach ($keywords as $word) {
                                             if (preg_match('/\bclass\b/', $val) !== false) {
 
-                                                if (preg_match("/class\s*(\w*)\extends Some_Other_Class {\"{/i",strip_comments(file_get_contents($file)),$matches)) $classes[] = $matches[1];
-                                                $class_name = preg_match_all('/\bclass\b/', $val, $counter);
-                                                $class_weight = $class_name * $weight_one_ud_class;
+
+                                               // $class_name = preg_match_all('/\bclass\b/', $val, $counter);
+                                               // $class_weight = $class_name * $weight_one_ud_class;
 
                                             }
 
@@ -245,7 +245,7 @@ if (!isset($_GET['reload'])) {
                                                 // print_r($val);
                                             }
 
-                                            $result = $class_name;
+                                            $result = $class_weight;
 
                                         }
 
