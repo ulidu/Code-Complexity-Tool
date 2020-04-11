@@ -284,11 +284,6 @@ $file = $_SESSION['filename'];
 
 
 
-
-
-
-
-
                 </div></div></div>
 
                 <div class="kt-portlet__foot">
