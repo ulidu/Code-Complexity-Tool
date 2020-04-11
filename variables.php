@@ -189,31 +189,86 @@ $file = $_SESSION['filename'];
                                     </tr>
                                     </thead>
                                     <tbody>
-
-
                                     <?php
+
                                     $i = 0; //increment to each loop
                                     $count = 0;
+                                    $total_Cm = 0;
+
+                                    $Wmrt = 0;
+                                    $Npdtp = 0;
+                                    $Ncdtp = 0;
+                                    $Cm = 0;
+
+                                    //Default Weights
+                                    $weight_primitive_retuntype = 1;
+                                    $weight_composite_returntype = 2;
+                                    $weight_void_returntype = 0;
+                                    $weight_primitive_datatype_parameter = 1;
+                                    $weight_composite_datatype_parameter = 2;
 
                                     if (!$split==""){
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
                                     $val;
 
+                                    // -------- Weight due to return type - Begin --------
+
+                                    $void_count_total = 0;
+                                    $primitive_retuntype_count_total = 0;
+                                    $composite_retuntype_count_total = 0;
+
+                                    for($x = 0; $x <= $row_count; $x++){
+
+                                        if (preg_match('/void+(.*?){/', $val) !== false ){
+
+                                            $void_count_total = preg_match_all('/void+(.*?){/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/', $val) !== false ){
+
+                                            $primitive_retuntype_count_total = preg_match_all('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('//', $val) !== false ){
+
+                                            $composite_retuntype_count_total = preg_match_all('//',$val,$counter);
+
+                                        }
 
 
+                                        $Wmrt = ($void_count_total*$weight_void_returntype) + ($primitive_retuntype_count_total*$weight_primitive_retuntype) + ($composite_retuntype_count_total*$weight_composite_returntype);
+
+                                    }
+
+                                    // -------- Weight due to return type - End --------
+
+                                    $Cm = $Wmrt + $Npdtp + $Ncdtp;
+
+                                    $total_Cm += $Cm;
 
                                     ?>
+
 
                                     <tr>
                                         <td><?php echo $count=$count+1; ?></td>
                                         <td style="text-align: left"><?php echo $val; ?></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
+                                        <td><?php echo $Wmrt; ?></td>
+                                        <td><?php echo $Npdtp; ?></td>
+                                        <td><?php echo $Ncdtp; ?></td>
+                                        <td><?php echo $Cm; ?></td>
+                                        <?php
 
-                                        <?php $i++; }}?>
+                                        $i++;
+
+                                        $_SESSION['total_Cm'] = $total_Cm;
+
+                                        }
+
+                                        }
+                                        ?>
                                     </tr>
 
 
