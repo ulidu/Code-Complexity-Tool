@@ -271,15 +271,6 @@ $file = $_SESSION['filename'];
                                         ?>
                                     </tr>
 
-
-
-
-
-
-
-
-
-
                                     </tbody>
 
                                 </table>
