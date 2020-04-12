@@ -185,21 +185,8 @@ if (!isset($_GET['reload'])) {
                                     <tbody>
 
 
-                                    <!--<tr>
-                                        <td>1</td>
-                                        <td style="text-align: left"></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                       
-                                    </tr>
-                                    </tbody>-->
-
 
                                     <?php
-
-
 
                                     $i = 0; //increment to each loop
                                     $count = 0;
@@ -219,45 +206,38 @@ if (!isset($_GET['reload'])) {
 
                                     if (!$split==''){
 
-                                    foreach ($split AS $val) { // Traverse the array with FOREACH
+                                    foreach ($split AS $val) {       // Traverse the array with FOREACH
 
                                         $val;
 
-                                    // Begin class identification
+                                        // Begin class identification
 
-                                        $keywords = ['class','extends'];
+                                        $keywords = ['class', 'extends'];
                                         foreach ($keywords as $word) {
+
                                             if (preg_match('/\bclass\b/', $val) !== false) {
 
-
-                                                $class_name = preg_match_all('/\bclass\b/', $val, $counter);
-                                               //$class_weight = $class_name * $weight_one_ud_class;
+                                                $class_name = preg_match_all('/\bclass\b/', $val);
 
                                             }
 
-                                            if (preg_match("/class\s*(\w*)extends Some_Other_Class {\"i",$val) !== false) {
-                                                $class_name = preg_match_all("/class\s*(\w*)extends Some_Other_Class {\"i", $val, $counter);
-                                               // $class_weight = $class_name * $weight_one_ud_class;
 
-                                            }
+                                    }
+                                         //End class identification
 
-                                            '/class[\s\n]+([a-zA-Z0-9_]+)[\s\na-zA-Z0-9_]+\{/';
-
-                                            if (preg_match('/^(?!enum).*class\b\s\b[A-Za-z_][A-Za-z_0-9]*\b\s*($)?(|:\s*($)?(public|private|protected)\s*($)?\b[^{]*\s*)\s*($)?{',$val) !== false){
-                                                // print_r($val);
-                                            }
-
-                                             if (preg_match("/class[\s\n]+([a-zA-Z0-9_]+)[\s\na-zA-Z0-9_]+\{",$val) !== false) {
-
-                                             }
-
-                                            $result = $class_name;
-
-                                        }
-
-                                        //End class identification
+                                    $result = $class_name;
 
                                         //Begin Direct Inheritances
+
+                                        foreach ($keywords as $word) {
+
+                                            if (preg_match("/class\s*(\w*)extends Some_Other_Class {\"i", $val) !== false) {
+
+                                            $class_name = preg_match_all("/class\s*(\w*)extends Some_Other_Class {\"i", $val, $counter);
+                                            // $class_weight = $class_name * $weight_one_ud_class;
+
+                                        }
+                                    }
                                         //End Direct Inheritances
 
                                         //Begin Indirect Inheritances
@@ -274,9 +254,9 @@ if (!isset($_GET['reload'])) {
 
 
 
-
-
                                     }
+
+
 
                                     ?>
 
@@ -294,9 +274,6 @@ if (!isset($_GET['reload'])) {
                                         $_SESSION['total_ci'] = $total_ci;
 
                                         }
-
-
-
 
 
 
