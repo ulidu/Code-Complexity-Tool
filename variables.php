@@ -88,7 +88,7 @@ $file = $_SESSION['filename'];
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Cv : 1</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Cv : <?php echo $total_Cm = $_SESSION['total_Cm']; ?></h1></center>
 
 
                                 </div>
@@ -195,10 +195,10 @@ $file = $_SESSION['filename'];
                                     $count = 0;
                                     $total_Cm = 0;
 
-                                    $Wmrt = 0;
-                                    $Npdtp = 0;
-                                    $Ncdtp = 0;
-                                    $Cm = 0;
+                                    $Wvs = 0;
+                                    $Npdtv = 0;
+                                    $Ncdtv = 0;
+                                    $Cv = 0;
 
                                     //Default Weights
                                     $weight_primitive_retuntype = 1;
