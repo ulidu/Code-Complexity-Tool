@@ -88,7 +88,7 @@ $file = $_SESSION['filename'];
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Cv : <?php echo $total_Cm = $_SESSION['total_Cm']; ?></h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Cv : <?php echo $total_Cv = $_SESSION['total_Cv']; ?></h1></center>
 
 
                                 </div>
@@ -201,11 +201,10 @@ $file = $_SESSION['filename'];
                                     $Cv = 0;
 
                                     //Default Weights
-                                    $weight_primitive_retuntype = 1;
-                                    $weight_composite_returntype = 2;
-                                    $weight_void_returntype = 0;
-                                    $weight_primitive_datatype_parameter = 1;
-                                    $weight_composite_datatype_parameter = 2;
+                                    $weight_primitive_datatype_variable = 1;
+                                    $weight_composite_datatype_variable = 2;
+                                    $weight_global_variable = 2;
+                                    $weight_local_variable = 1;
 
                                     if (!$split==""){
                                     foreach($split AS $val) { // Traverse the array with FOREACH
@@ -245,25 +244,24 @@ $file = $_SESSION['filename'];
 
                                     // -------- Weight due to return type - End --------
 
-                                    $Cm = $Wmrt + $Npdtp + $Ncdtp;
+                                    $Cv = $Wvs + $Npdtv + $Ncdtv;
 
-                                    $total_Cm += $Cm;
+                                    $total_Cv += $Cv;
 
                                     ?>
-
 
                                     <tr>
                                         <td><?php echo $count=$count+1; ?></td>
                                         <td style="text-align: left"><?php echo $val; ?></td>
-                                        <td><?php echo $Wmrt; ?></td>
-                                        <td><?php echo $Npdtp; ?></td>
-                                        <td><?php echo $Ncdtp; ?></td>
-                                        <td><?php echo $Cm; ?></td>
+                                        <td><?php echo $Wvs; ?></td>
+                                        <td><?php echo $Npdtv; ?></td>
+                                        <td><?php echo $Ncdtv; ?></td>
+                                        <td><?php echo $Cv; ?></td>
                                         <?php
 
                                         $i++;
 
-                                        $_SESSION['total_Cm'] = $total_Cm;
+                                        $_SESSION['total_Cv'] = $total_Cv;
 
                                         }
 
