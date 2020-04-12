@@ -185,7 +185,7 @@ if (!isset($_GET['reload'])) {
                                     <tbody>
 
 
-                                    <tr>
+                                    <!--<tr>
                                         <td>1</td>
                                         <td style="text-align: left"></td>
                                         <td>0</td>
@@ -194,7 +194,7 @@ if (!isset($_GET['reload'])) {
                                         <td>0</td>
                                        
                                     </tr>
-                                    </tbody>
+                                    </tbody>-->
 
 
                                     <?php
@@ -230,22 +230,28 @@ if (!isset($_GET['reload'])) {
                                             if (preg_match('/\bclass\b/', $val) !== false) {
 
 
-                                               // $class_name = preg_match_all('/\bclass\b/', $val, $counter);
-                                               // $class_weight = $class_name * $weight_one_ud_class;
+                                                $class_name = preg_match_all('/\bclass\b/', $val, $counter);
+                                               //$class_weight = $class_name * $weight_one_ud_class;
 
                                             }
 
                                             if (preg_match("/class\s*(\w*)extends Some_Other_Class {\"i",$val) !== false) {
                                                 $class_name = preg_match_all("/class\s*(\w*)extends Some_Other_Class {\"i", $val, $counter);
-                                                $class_weight = $class_name * $weight_one_ud_class;
+                                               // $class_weight = $class_name * $weight_one_ud_class;
 
                                             }
+
+                                            '/class[\s\n]+([a-zA-Z0-9_]+)[\s\na-zA-Z0-9_]+\{/';
 
                                             if (preg_match('/^(?!enum).*class\b\s\b[A-Za-z_][A-Za-z_0-9]*\b\s*($)?(|:\s*($)?(public|private|protected)\s*($)?\b[^{]*\s*)\s*($)?{',$val) !== false){
                                                 // print_r($val);
                                             }
 
-                                            $result = $class_weight;
+                                             if (preg_match("/class[\s\n]+([a-zA-Z0-9_]+)[\s\na-zA-Z0-9_]+\{",$val) !== false) {
+
+                                             }
+
+                                            $result = $class_name;
 
                                         }
 
