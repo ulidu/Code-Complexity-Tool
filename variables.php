@@ -207,6 +207,7 @@ $file = $_SESSION['filename'];
                                     $weight_local_variable = 1;
 
                                     if (!$split==""){
+
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
                                     $val;
@@ -218,58 +219,39 @@ $file = $_SESSION['filename'];
 
                                     for($x = 0; $x <= $row_count; $x++){
 
-                                        if (preg_match('/void+(.*?){/', $val) !== false ){
+                                        if (preg_match('//', $val) !== false ){
 
-                                            $void_count_total = preg_match_all('/void+(.*?){/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/', $val) !== false ){
-
-                                            $primitive_retuntype_count_total = preg_match_all('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/',$val,$counter);
+                                            $global_variable_count_total = preg_match_all('//',$val,$counter);
 
                                         }
 
                                         if (preg_match('//', $val) !== false ){
 
-                                            $composite_retuntype_count_total = preg_match_all('//',$val,$counter);
+                                            $local_variable_count_total = preg_match_all('//',$val,$counter);
 
                                         }
 
 
-                                        $Wvs = ($void_count_total*$weight_void_returntype) + ($primitive_retuntype_count_total*$weight_primitive_retuntype) + ($composite_retuntype_count_total*$weight_composite_returntype);
+                                        $Wvs = ($global_variable_count_total * $weight_global_variable) + ($local_variable_count_total * $weight_local_variable);
 
                                     }
 
                                     // -------- Weight due to scope - End --------
 
+
                                     // -------- Weight due to primitive data type variables - Begin --------
 
-                                    $global_variable_count_total = 0;
-                                    $local_variable_count_total = 0;
+                                    $primitive_datatype_variable_count_total = 0;
 
                                     for($x = 0; $x <= $row_count; $x++){
 
-                                        if (preg_match('/void+(.*?){/', $val) !== false ){
-
-                                            $void_count_total = preg_match_all('/void+(.*?){/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/', $val) !== false ){
-
-                                            $primitive_retuntype_count_total = preg_match_all('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/',$val,$counter);
-
-                                        }
-
                                         if (preg_match('//', $val) !== false ){
 
-                                            $composite_retuntype_count_total = preg_match_all('//',$val,$counter);
+                                            $primitive_datatype_variable_count_total = preg_match_all('//',$val,$counter);
 
                                         }
 
-
-                                        $Npdtv = ($void_count_total*$weight_void_returntype) + ($primitive_retuntype_count_total*$weight_primitive_retuntype) + ($composite_retuntype_count_total*$weight_composite_returntype);
+                                        $Npdtv = ($primitive_datatype_variable_count_total * $weight_primitive_datatype_variable);
 
                                     }
 
@@ -277,31 +259,17 @@ $file = $_SESSION['filename'];
 
                                     // -------- Weight due to composite data type variables - Begin --------
 
-                                    $global_variable_count_total = 0;
-                                    $local_variable_count_total = 0;
+                                    $composite_datatype_variable_count_total = 0;
 
                                     for($x = 0; $x <= $row_count; $x++){
 
-                                        if (preg_match('/void+(.*?){/', $val) !== false ){
-
-                                            $void_count_total = preg_match_all('/void+(.*?){/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/', $val) !== false ){
-
-                                            $primitive_retuntype_count_total = preg_match_all('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/',$val,$counter);
-
-                                        }
-
                                         if (preg_match('//', $val) !== false ){
 
-                                            $composite_retuntype_count_total = preg_match_all('//',$val,$counter);
+                                            $composite_datatype_variable_count_total = preg_match_all('//',$val,$counter);
 
                                         }
 
-
-                                        $Ncdtv = ($void_count_total*$weight_void_returntype) + ($primitive_retuntype_count_total*$weight_primitive_retuntype) + ($composite_retuntype_count_total*$weight_composite_returntype);
+                                        $Ncdtv = ($composite_datatype_variable_count_total * $weight_composite_datatype_variable);
 
                                     }
 
