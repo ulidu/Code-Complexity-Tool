@@ -193,7 +193,7 @@ $file = $_SESSION['filename'];
 
                                     $i = 0; //increment to each loop
                                     $count = 0;
-                                    $total_Cm = 0;
+                                    $total_Cv = 0;
 
                                     $Wvs = 0;
                                     $Npdtv = 0;
@@ -216,6 +216,8 @@ $file = $_SESSION['filename'];
 
                                     $global_variable_count_total = 0;
                                     $local_variable_count_total = 0;
+                                    $primitive_datatype_variable_count_total = 0;
+                                    $composite_datatype_variable_count_total = 0;
 
                                     for($x = 0; $x <= $row_count; $x++){
 
@@ -231,37 +233,11 @@ $file = $_SESSION['filename'];
 
                                         }
 
-
-                                        $Wvs = ($global_variable_count_total * $weight_global_variable) + ($local_variable_count_total * $weight_local_variable);
-
-                                    }
-
-                                    // -------- Weight due to scope - End --------
-
-
-                                    // -------- Weight due to primitive data type variables - Begin --------
-
-                                    $primitive_datatype_variable_count_total = 0;
-
-                                    for($x = 0; $x <= $row_count; $x++){
-
                                         if (preg_match('//', $val) !== false ){
 
                                             $primitive_datatype_variable_count_total = preg_match_all('//',$val,$counter);
 
                                         }
-
-                                        $Npdtv = ($primitive_datatype_variable_count_total * $weight_primitive_datatype_variable);
-
-                                    }
-
-                                    // -------- Weight due primitive data type variables - End --------
-
-                                    // -------- Weight due to composite data type variables - Begin --------
-
-                                    $composite_datatype_variable_count_total = 0;
-
-                                    for($x = 0; $x <= $row_count; $x++){
 
                                         if (preg_match('//', $val) !== false ){
 
@@ -269,11 +245,15 @@ $file = $_SESSION['filename'];
 
                                         }
 
+                                        $Wvs = ($global_variable_count_total * $weight_global_variable) + ($local_variable_count_total * $weight_local_variable);
+
+                                        $Npdtv = ($primitive_datatype_variable_count_total * $weight_primitive_datatype_variable);
+
                                         $Ncdtv = ($composite_datatype_variable_count_total * $weight_composite_datatype_variable);
 
                                     }
 
-                                    // -------- Weight due composite data type variables - End --------
+                                    // -------- Weight due to scope - End --------
 
                                     $Cv = $Wvs + $Npdtv + $Ncdtv;
 
