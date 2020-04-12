@@ -222,27 +222,27 @@ $file = $_SESSION['filename'];
 
                                     for($x = 0; $x <= $row_count; $x++){
 
-                                        if (preg_match('//', $val) !== false ){
+                                        if (preg_match('/(class \w+\{)(.+?)(int)/s', $val) !== false ){
 
-                                            $global_variable_count_total = preg_match_all('//',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('//', $val) !== false ){
-
-                                            $local_variable_count_total = preg_match_all('//',$val,$counter);
+                                            $global_variable_count_total = preg_match_all('/(class \w+\{)(.+?)(int)/s',$val,$counter);
 
                                         }
 
-                                        if (preg_match('//', $val) !== false ){
+                                        if (preg_match('/abc/', $val) !== false ){
 
-                                            $primitive_datatype_variable_count_total = preg_match_all('//',$val,$counter);
+                                            $local_variable_count_total = preg_match_all('/abc/',$val,$counter);
 
                                         }
 
-                                        if (preg_match('//', $val) !== false ){
+                                        if (preg_match('/abc/', $val) !== false ){
 
-                                            $composite_datatype_variable_count_total = preg_match_all('//',$val,$counter);
+                                            $primitive_datatype_variable_count_total = preg_match_all('/abc/',$val,$counter);
+
+                                        }
+
+                                        if (preg_match('/abc/', $val) !== false ){
+
+                                            $composite_datatype_variable_count_total = preg_match_all('/abc/',$val,$counter);
 
                                         }
 
