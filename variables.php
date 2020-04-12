@@ -199,6 +199,7 @@ $file = $_SESSION['filename'];
                                     $Npdtv = 0;
                                     $Ncdtv = 0;
                                     $Cv = 0;
+                                    $beforeCv = 0;
 
                                     //Default Weights
                                     $weight_primitive_datatype_variable = 1;
@@ -255,7 +256,9 @@ $file = $_SESSION['filename'];
 
                                     // -------- Weight due to scope - End --------
 
-                                    $Cv = $Wvs + $Npdtv + $Ncdtv;
+                                    $beforeCv = ($weight_primitive_datatype_variable * $Npdtv) + ($weight_composite_datatype_variable * $Ncdtv);
+
+                                    $Cv = $Wvs * $beforeCv;
 
                                     $total_Cv += $Cv;
 
