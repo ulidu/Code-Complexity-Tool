@@ -10,6 +10,15 @@ if (!isset($_GET['reload'])) {
 
 <?php include 'include/header.php'; ?>
 <?php include 'include/aside.php'; ?>
+<?php
+
+$split = $_SESSION['split_code'];
+$trim = $_SESSION['trimmed'];
+$file = $_SESSION['filename'];
+$row_count = $_SESSION['row_count'];
+
+?>
+
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
@@ -83,7 +92,7 @@ if (!isset($_GET['reload'])) {
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Ci : 0</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Ci : <?php echo $total_ci = $_SESSION['total_ci']; ?></h1></center>
 
 
                                 </div>
@@ -113,8 +122,11 @@ if (!isset($_GET['reload'])) {
 										</span>
                                     <h3 class="kt-portlet__head-title kt-font-brand">
                                         Complexity of the Program due to Inheritance by Statement : </h3>&nbsp;
-                                    <h3 class="kt-portlet__head-title kt-font-dark"><?php $file = $_SESSION['filename'];
+                                    <h3 class="kt-portlet__head-title kt-font-dark">
+
+                                        <?php $file = $_SESSION['filename'];
                                         echo $file; ?>
+
                                     </h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
@@ -204,20 +216,26 @@ if (!isset($_GET['reload'])) {
                                     $weight_three_ud_class = 3;
                                     $weight_more_ud_class = 4;
 
+
+
+
+
+
                                     if (!$split==''){
 
                                     foreach ($split AS $val) {       // Traverse the array with FOREACH
 
-                                        $val;
+                                        $val ;
 
                                         // Begin class identification
 
                                         $keywords = ['class', 'extends'];
+
                                         foreach ($keywords as $word) {
 
                                             if (preg_match('/\bclass\b/', $val) !== false) {
 
-                                                $class_name = preg_match_all('/\bclass\b/', $val);
+                                                $class_name = preg_match_all('/\bclass\b/', $val, $counter);
 
                                             }
 
@@ -231,9 +249,9 @@ if (!isset($_GET['reload'])) {
 
                                         foreach ($keywords as $word) {
 
-                                            if (preg_match("/class\s*(\w*)extends Some_Other_Class {\"i", $val) !== false) {
+                                            if (preg_match("/class\s*(\w*)extends Some_Other_Class {\"i/", $val) !== false) {
 
-                                            $class_name = preg_match_all("/class\s*(\w*)extends Some_Other_Class {\"i", $val, $counter);
+                                            $class_name = preg_match_all("/class\s*(\w*)extends Some_Other_Class {\"i/", $val, $counter);
                                             // $class_weight = $class_name * $weight_one_ud_class;
 
                                         }
@@ -254,7 +272,7 @@ if (!isset($_GET['reload'])) {
 
 
 
-                                    }
+
 
 
 
@@ -262,7 +280,7 @@ if (!isset($_GET['reload'])) {
 
                                     <tr>
                                         <td><?php echo ++$count; ?></td>
-                                        <td style="text-align: left"><?php echo $result; ?></td>
+                                        <td style="text-align: left"><?php echo $val; ?></td>
                                         <td><?php echo $direct; ?></td>
                                         <td><?php echo $indirect; ?></td>
                                         <td><?php echo $tot_inheritance; ?></td>
@@ -275,22 +293,16 @@ if (!isset($_GET['reload'])) {
 
                                         }
 
-
+                                        }
 
                                     ?>
-
-
-
-
                                     </tr>
 
 
 
 
 
-                                    <tfoot>
-                                    
-                                    </tfoot>
+                                    </tbody>>
                                 </table>
 
                                 <!--end: Datatable -->
