@@ -224,7 +224,6 @@ $file = $_SESSION['filename'];
 
                                         echo $a = preg_replace('/\w+\s*\((.*?)\)\s*\{(.|\n|\r|\t)*?\}/', 'aa', $val);
 
-
                                         if (preg_match('/(class \w+\{)(.+?)(int)/s', $val) !== false ){
 
                                             $global_variable_count_total = preg_match_all('/(class \w+\{)(.+?)(int)/s',$val,$counter);
