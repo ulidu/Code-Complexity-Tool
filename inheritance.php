@@ -201,6 +201,7 @@ $row_count = $_SESSION['row_count'];
                                     <?php
 
                                     $i = 0; //increment to each loop
+                                    $line_count = 0;
                                     $count = 0;
                                     $total_ci = 0;
 
@@ -216,6 +217,7 @@ $row_count = $_SESSION['row_count'];
                                     $weight_three_ud_class = 3;
                                     $weight_more_ud_class = 4;
 
+                                    //word, class_name, extend_name, inherit_name
 
 
 
@@ -223,9 +225,33 @@ $row_count = $_SESSION['row_count'];
 
                                     if (!$split==''){
 
+                                        $ci = 0;
+
                                     foreach ($split AS $val) {       // Traverse the array with FOREACH
 
-                                        $val ;
+                                     //$matches =  preg_grep('/^class(\w+)/i',$val);
+
+
+                                     function getBetween($codeLine, $start, $end)
+                                     {
+                                         $codeLine = " " . $codeLine;
+                                         $ini = strpos($codeLine, $start);
+                                         if ($ini == 0)
+                                             return " ";
+                                         $ini += strlen($start);
+                                         $len = strpos($codeLine, $end, $ini) - $ini;
+                                         return substr($codeLine, $ini, $len);
+                                     }
+
+
+
+                                     $val ;
+                                     $arr = $val;
+                                     $parsed = getBetween($arr,"class","extends");
+
+
+
+
 
                                         // Begin class identification
 
@@ -235,15 +261,26 @@ $row_count = $_SESSION['row_count'];
 
                                             if (preg_match('/\bclass\b/', $val) !== false) {
 
-                                                $class_name = preg_match_all('/\bclass\b/', $val, $counter);
+                                                $class_name = preg_match_all('/\bclass\b/ ', $val,$counter);
+                                                $tok = strtok($val, " \n\t");
 
+
+
+                                                while ($tok !== false) {
+
+                                                    $tok = strtok(" \n\t");
+
+
+                                                }
                                             }
 
 
-                                    }
+
+
+                                        }
                                          //End class identification
 
-                                    $result = $class_name;
+                                   $result = $class_name;
 
                                         //Begin Direct Inheritances
 
@@ -280,7 +317,7 @@ $row_count = $_SESSION['row_count'];
 
                                     <tr>
                                         <td><?php echo ++$count; ?></td>
-                                        <td style="text-align: left"><?php echo $val; ?></td>
+                                        <td style="text-align: left"><?php echo $parsed; ?></td>
                                         <td><?php echo $direct; ?></td>
                                         <td><?php echo $indirect; ?></td>
                                         <td><?php echo $tot_inheritance; ?></td>
