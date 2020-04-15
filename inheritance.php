@@ -233,6 +233,9 @@ $row_count = $_SESSION['row_count'];
 
 
 
+
+
+
                                     if (!$split==''){
 
                                         $ci = 0;
@@ -250,9 +253,21 @@ $row_count = $_SESSION['row_count'];
                                      $parsed1 = getBetween($arr,"class","extends") ;
 
 
+                                    if($pos==true) {
+
+                                        $direct++;
+
+                                        $pr = $parsed1;
+                                    }
+                                    else{
+                                        echo  $parsed ;
+                                        $pr = $parsed;
+                                    }
+
+                                    $tot_inheritance = $direct + $indirect;
 
 
-                                        // Begin class identification
+                                    // Begin class identification
 
                                         $keywords = ['class', 'extends'];
 
@@ -304,35 +319,35 @@ $row_count = $_SESSION['row_count'];
 
                                         $ci = $tot_inheritance;
 
-                                   /* if($pos==true) {
 
-
-                                        echo "<br>";
-                                        echo $parsed1;
-                                    }
-                                    else{
-                                        echo $parsed;
-                                    }*/
-
-
-
+                                    $w = 'class';
+                                    $p =strpos($val,$w);
+                                    //echo "<br>";
+                                    //print_r($p);
 
 
                                     ?>
 
+
+                                    <?php
+                                    if($pos == true){
+
+                                     ?>
+
                                     <tr>
                                         <td><?php echo ++$count; ?></td>
                                         <td style="text-align: left"><?php
-                                            if($pos==true) {
-                                                echo $parsed1;
-                                            }
-                                            else{
-                                                echo $parsed;
-                                            } ?></td>
+                                            echo $pr; ?></td>
                                         <td><?php echo $direct; ?></td>
                                         <td><?php echo $indirect; ?></td>
                                         <td><?php echo $tot_inheritance; ?></td>
                                         <td><?php echo $ci; ?></td>
+
+            <?php } ?>
+
+
+
+
 
                                         <?php
                                         $i++;
@@ -350,8 +365,11 @@ $row_count = $_SESSION['row_count'];
 
 
 
-                                    </tbody>>
+                                    </tbody>
                                 </table>
+
+
+
 
                                 <!--end: Datatable -->
                             </div>
