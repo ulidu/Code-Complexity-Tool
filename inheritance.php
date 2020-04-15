@@ -220,6 +220,16 @@ $row_count = $_SESSION['row_count'];
                                     //word, class_name, extend_name, inherit_name
 
 
+                                    function getBetween($codeLine, $start, $end)
+                                    {
+                                        $codeLine = " " . $codeLine;
+                                        $ini = strpos($codeLine, $start);
+                                        if ($ini == 0)
+                                            return " ";
+                                        $ini += strlen($start);
+                                        $len = strpos($codeLine, $end, $ini) - $ini;
+                                        return substr($codeLine, $ini, $len);
+                                    }
 
 
 
@@ -231,24 +241,13 @@ $row_count = $_SESSION['row_count'];
 
                                      //$matches =  preg_grep('/^class(\w+)/i',$val);
 
-
-                                     function getBetween($codeLine, $start, $end)
-                                     {
-                                         $codeLine = " " . $codeLine;
-                                         $ini = strpos($codeLine, $start);
-                                         if ($ini == 0)
-                                             return " ";
-                                         $ini += strlen($start);
-                                         $len = strpos($codeLine, $end, $ini) - $ini;
-                                         return substr($codeLine, $ini, $len);
-                                     }
-
-
+                                    $word='extends';
+                                    $pos =strpos($val,$word);
 
                                      $val ;
                                      $arr = $val;
-                                     $parsed = getBetween($arr,"class","extends");
-
+                                     $parsed = getBetween($arr,"class","{") ;
+                                     $parsed1 = getBetween($arr,"class","extends") ;
 
 
 
@@ -280,7 +279,7 @@ $row_count = $_SESSION['row_count'];
                                         }
                                          //End class identification
 
-                                   $result = $class_name;
+                                   //$result = $class_name;
 
                                         //Begin Direct Inheritances
 
@@ -305,9 +304,15 @@ $row_count = $_SESSION['row_count'];
 
                                         $ci = $tot_inheritance;
 
+                                   /* if($pos==true) {
 
 
-
+                                        echo "<br>";
+                                        echo $parsed1;
+                                    }
+                                    else{
+                                        echo $parsed;
+                                    }*/
 
 
 
@@ -317,7 +322,13 @@ $row_count = $_SESSION['row_count'];
 
                                     <tr>
                                         <td><?php echo ++$count; ?></td>
-                                        <td style="text-align: left"><?php echo $parsed; ?></td>
+                                        <td style="text-align: left"><?php
+                                            if($pos==true) {
+                                                echo $parsed1;
+                                            }
+                                            else{
+                                                echo $parsed;
+                                            } ?></td>
                                         <td><?php echo $direct; ?></td>
                                         <td><?php echo $indirect; ?></td>
                                         <td><?php echo $tot_inheritance; ?></td>
