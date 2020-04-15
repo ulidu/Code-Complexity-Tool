@@ -72,7 +72,8 @@ if (!isset($_GET['reload'])) {
 
                 $classname = pathinfo("$entry", PATHINFO_FILENAME);
 
-               echo shell_exec("cd uploads && javac $entry && java $classname");
+
+               //echo shell_exec("cd uploads && javac $entry && java $classname");
 
             }
 

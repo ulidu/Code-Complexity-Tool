@@ -222,11 +222,11 @@ $file = $_SESSION['filename'];
 
                                     for($x = 0; $x <= $row_count; $x++){
 
-                                        echo $a = preg_replace('/\w+\s*\((.*?)\)\s*\{(.|\n|\r|\t)*?\}/', 'aa', $val);
+                                        //echo $a = preg_replace('/\w+\s*\((.*?)\)\s*\{(.|\n|\r|\t)*?\}/', 'aa', $val);
 
-                                        if (preg_match('/(class \w+\{)(.+?)(int)/s', $val) !== false ){
+                                        if (preg_match('/(int|byte|short|long|float|double|char|String|boolean) \w+ \= \w+\;/', $val) !== false ){
 
-                                            $global_variable_count_total = preg_match_all('/(class \w+\{)(.+?)(int)/s',$val,$counter);
+                                            $global_variable_count_total = preg_match_all('/(int|byte|short|long|float|double|char|String|boolean) \w+ \= \w+\;/',$val,$counter);
 
                                         }
 
