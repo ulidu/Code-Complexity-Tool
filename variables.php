@@ -228,11 +228,14 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
                                     $entireCode = str_replace(';', ';', $entireCodeBeforeSemicolon);
 
+                                    //Matching Methods - Entire Code
                                     $methods = (getContentsBetween($entireCode, '){', '}'));
                                     if (!$methods==""){
                                     foreach($methods AS $method) {
 
                                         $method;
+
+                                        //Matching variables inside methods (Local Variables)
                                         $local_variable_count = preg_match_all('/\w+ \w+ \= \w+\;/', $method,$counter);
                                         $local_variables = $counter;
 
@@ -241,40 +244,53 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
                                     $splitAfterSemicolon = str_replace(';', ';', $split);
 
+                                    //For Printing of the code lines for the table
                                     if (!$splitAfterSemicolon==""){
                                     foreach($splitAfterSemicolon AS $valAfterSemicolonReplace) { // Traverse the array with FOREACH
 
                                         $val = str_replace(';', ';', $valAfterSemicolonReplace);
-
-                                        $val;
 
                                     $global_variable_count_total = 0;
                                     $local_variable_count_total = 0;
                                     $primitive_datatype_variable_count_total = 0;
                                     $composite_datatype_variable_count_total = 0;
 
-                                    for($x = 0; $x <= $row_count; $x++){
+                                    //Converting local variable array into normal lines
+                                    if (!$local_variables==""){
+                                        foreach($local_variables AS $local) {
+                                            if (!$local==""){
+                                                foreach($local AS $local_variable) {
+
+                                                    //Iterate through all rows of code in the table
+                                                    for($x = 0; $x <= $row_count; $x++) {
+
+                                        $local_variables; // The array of local variables
+                                        $splitAfterSemicolon; // The array of code lines
+
+                                        echo $local_variable;// Single lines of local variables
+                                        echo $val;// Single lines of code
 
 
 
-                                        if (preg_match('/abc/', $val) !== false ){
 
-                                            $local_variable_count_total = preg_match_all('/abc/',$val,$counter);
+                                        if (preg_match('/abc/', $val) !== false) {
+
+                                            $local_variable_count_total = preg_match_all('/abc/', $val, $counter);
 
                                         }
 
-                                        if (preg_match('/abc/', $val) !== false ){
+                                        if (preg_match('/abc/', $val) !== false) {
 
-                                            $primitive_datatype_variable_count_total = preg_match_all('/abc/',$val,$counter);
-
-                                        }
-
-                                        if (preg_match('/abc/', $val) !== false ){
-
-                                            $composite_datatype_variable_count_total = preg_match_all('/abc/',$val,$counter);
+                                            $primitive_datatype_variable_count_total = preg_match_all('/abc/', $val, $counter);
 
                                         }
 
+                                        if (preg_match('/abc/', $val) !== false) {
+
+                                            $composite_datatype_variable_count_total = preg_match_all('/abc/', $val, $counter);
+
+                                        }
+                                    }}}}
                                         $Wvs = ($global_variable_count_total * $weight_global_variable) + ($local_variable_count_total * $weight_local_variable);
 
                                         $Npdtv = ($primitive_datatype_variable_count_total * $weight_primitive_datatype_variable);
