@@ -230,6 +230,7 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
                                     //Matching Methods - Entire Code
                                     $methods = (getContentsBetween($entireCode, '){', '}'));
+
                                     if (!$methods==""){
                                     foreach($methods AS $method) {
 
@@ -267,15 +268,19 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                         $local_variables; // The array of local variables
                                         $splitAfterSemicolon; // The array of code lines
 
-                                        echo $local_variable;// Single lines of local variables
-                                        echo $val;// Single lines of code
+                                                        $local_variable;// Single lines of local variables
+                                                        $val;// Single lines of code
 
+                                                        //Checking the code lines if there are matching local variables
+                                                        if (strpos($val, $local_variable) !== false){
 
+                                                            $local_variable_count_total += substr_count($val, $local_variable);
 
+                                                        }
 
                                         if (preg_match('/abc/', $val) !== false) {
 
-                                            $local_variable_count_total = preg_match_all('/abc/', $val, $counter);
+                                            $global_variable_count_total = preg_match_all('/abc/', $val, $counter);
 
                                         }
 
@@ -290,7 +295,11 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                             $composite_datatype_variable_count_total = preg_match_all('/abc/', $val, $counter);
 
                                         }
-                                    }}}}
+                                    }
+                                                }
+                                            }
+                                        }
+
                                         $Wvs = ($global_variable_count_total * $weight_global_variable) + ($local_variable_count_total * $weight_local_variable);
 
                                         $Npdtv = ($primitive_datatype_variable_count_total * $weight_primitive_datatype_variable);
