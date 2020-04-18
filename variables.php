@@ -14,6 +14,7 @@ if (!isset($_GET['reload'])) {
 $split = $_SESSION['split_code'];
 $trim = $_SESSION['trimmed'];
 $file = $_SESSION['filename'];
+$entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
 ?>
 
@@ -207,13 +208,45 @@ $file = $_SESSION['filename'];
                                     $weight_global_variable = 2;
                                     $weight_local_variable = 1;
 
-                                    if (!$split==""){
+                                    function getContentsBetween($str, $startDelimiter, $endDelimiter) {
+                                        $contents = array();
+                                        $startDelimiterLength = strlen($startDelimiter);
+                                        $endDelimiterLength = strlen($endDelimiter);
+                                        $startFrom = $contentStart = $contentEnd = 0;
+                                        while (false !== ($contentStart = strpos($str, $startDelimiter, $startFrom))) {
+                                            $contentStart += $startDelimiterLength;
+                                            $contentEnd = strpos($str, $endDelimiter, $contentStart);
+                                            if (false === $contentEnd) {
+                                                break;
+                                            }
+                                            $contents[] = substr($str, $contentStart, $contentEnd - $contentStart);
+                                            $startFrom = $contentEnd + $endDelimiterLength;
+                                        }
 
-                                    foreach($split AS $val) { // Traverse the array with FOREACH
+                                        return $contents;
+                                    }
 
-                                    $val;
+                                    $entireCode = str_replace(';', ';', $entireCodeBeforeSemicolon);
 
-                                    // -------- Weight due to scope - Begin --------
+                                    $methods = (getContentsBetween($entireCode, '){', '}'));
+                                    if (!$methods==""){
+                                    foreach($methods AS $method) {
+
+                                        $method;
+                                        $local_variable_count = preg_match_all('/\w+ \w+ \= \w+\;/', $method,$counter);
+                                        $local_variables = $counter;
+
+                                        }
+                                    }
+
+                                    $splitAfterSemicolon = str_replace(';', ';', $split);
+
+                                    if (!$splitAfterSemicolon==""){
+                                    foreach($splitAfterSemicolon AS $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+
+                                        $val = str_replace(';', ';', $valAfterSemicolonReplace);
+
+                                        $val;
 
                                     $global_variable_count_total = 0;
                                     $local_variable_count_total = 0;
@@ -222,13 +255,7 @@ $file = $_SESSION['filename'];
 
                                     for($x = 0; $x <= $row_count; $x++){
 
-                                        //echo $a = preg_replace('/\w+\s*\((.*?)\)\s*\{(.|\n|\r|\t)*?\}/', 'aa', $val);
 
-                                        if (preg_match('/(int|byte|short|long|float|double|char|String|boolean) \w+ \= \w+\;/', $val) !== false ){
-
-                                            $global_variable_count_total = preg_match_all('/(int|byte|short|long|float|double|char|String|boolean) \w+ \= \w+\;/',$val,$counter);
-
-                                        }
 
                                         if (preg_match('/abc/', $val) !== false ){
 
@@ -255,8 +282,6 @@ $file = $_SESSION['filename'];
                                         $Ncdtv = ($composite_datatype_variable_count_total * $weight_composite_datatype_variable);
 
                                     }
-
-                                    // -------- Weight due to scope - End --------
 
                                     $beforeCv = ($weight_primitive_datatype_variable * $Npdtv) + ($weight_composite_datatype_variable * $Ncdtv);
 

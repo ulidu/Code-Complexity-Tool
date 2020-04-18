@@ -67,13 +67,10 @@ if (!isset($_GET['reload'])) {
                 $_SESSION['split_code'] = $split;
                 $_SESSION['files'] = $entry;
                 $_SESSION['trimmed'] = $trim;
-
+                $_SESSION['entireCode'] = $trim;
                 $_SESSION['filename'] = $entry;
 
-                $classname = pathinfo("$entry", PATHINFO_FILENAME);
 
-
-               //echo shell_exec("cd uploads && javac $entry && java $classname");
 
             }
 
