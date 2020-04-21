@@ -229,19 +229,7 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                     $entireCode = str_replace(';', ';', $entireCodeBeforeSemicolon);
 
                                     //Matching Methods - Entire Code
-                                    $methods = (getContentsBetween($entireCode, '){', '}'));
-
-                                    if (!$methods==""){
-                                    foreach($methods AS $method) {
-
-                                        $method;
-
-                                        //Matching variables inside methods (Local Variables)
-                                        $local_variable_count = preg_match_all('/\w+ \w+ \= \w+\;/', $method,$counter);
-                                        $local_variables = $counter;
-
-                                        }
-                                    }
+                                    $methods = (getContentsBetween($entireCode, ') {', '}'));
 
                                     $splitAfterSemicolon = str_replace(';', ';', $split);
 
@@ -256,20 +244,32 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                     $primitive_datatype_variable_count_total = 0;
                                     $composite_datatype_variable_count_total = 0;
 
-                                    //Converting local variable array into normal lines
-                                    if (!$local_variables==""){
+
+                                    foreach($methods AS $method) {
+
+                                        $method;
+
+                                        //Matching variables inside methods (Local Variables)
+                                        $local_variable_count = preg_match_all('/\w+ \w+ \= \w+/', $method,$counter);
+                                        $local_variables = $counter;
+
+
+
+                                        //Converting local variable array into normal lines
                                         foreach($local_variables AS $local) {
+
                                             if (!$local==""){
                                                 foreach($local AS $local_variable) {
 
                                                     //Iterate through all rows of code in the table
                                                     for($x = 0; $x <= $row_count; $x++) {
 
-                                        $local_variables; // The array of local variables
-                                        $splitAfterSemicolon; // The array of code lines
+                                                        $local_variables; // The array of local variables
+                                                        $splitAfterSemicolon; // The array of code lines
 
-                                                        $local_variable;// Single lines of local variables
-                                                        $val;// Single lines of code
+                                                        //echo $local_variable;// Single lines of local variables
+                                                        //echo $val;// Single lines of code
+                                                        //echo "<br>";
 
                                                         //Checking the code lines if there are matching local variables
                                                         if (strpos($val, $local_variable) !== false){
@@ -296,7 +296,10 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
                                         }
                                     }
-                                                }
+
+
+                                            }
+
                                             }
                                         }
 
