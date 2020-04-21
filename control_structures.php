@@ -208,6 +208,7 @@ $file = $_SESSION['filename'];
                                     $weight_case = 1 ;
 
                                     if (!$split==""){
+
                                     foreach($split AS $val) { // Traverse the array with FOREACH
 
                                     $val;
@@ -216,10 +217,42 @@ $file = $_SESSION['filename'];
 
                                     foreach($conditional_words as $word){
 
-                                        if (preg_match('/if |if+\((.*?)\)+(.*?){/', $val) !== false ){
+                                        $numberOfParams = 0;
 
-                                            $if_count = preg_match_all('/if |if+\((.*?)\)+(.*?){/',$val,$counter);
+                                        if (preg_match('/if |if+\((.*?)\)+(.*?){|if+\((.*?)\)+(.*?) {/', $val) !== false ){
+
+                                            $if_count = preg_match_all('/if |if+\((.*?)\)+(.*?){|if+\((.*?)\)+(.*?) {/',$val,$counter);
                                             $if_weight = $if_count * $weight_if_elseif;
+
+
+                                            $insideBrackets = preg_match_all('/if \((?<=\().+(?=\))\)/',$val,$counter);
+                                            $contentInsideBrackets = $counter;
+                                            if (!$contentInsideBrackets == "") {
+                                            foreach($contentInsideBrackets AS $contentInside) {
+                                                if (!$contentInside == "") {
+                                                    foreach ($contentInside AS $content) {
+
+                                                        //echo $content;
+                                                        //echo "<br>";
+
+                                                        $countInsideBrackets = preg_match_all('/(&&|\|\|)/',$content,$counter);
+
+                                                        if($countInsideBrackets > 0){
+
+                                                            $numberOfParams = $countInsideBrackets + 1;
+
+                                                        }else{
+
+                                                            $numberOfParams = 1;
+
+                                                        }
+
+                                                    }
+                                                }
+                                            }
+                                            }
+
+
 
                                         }
 
@@ -260,9 +293,10 @@ $file = $_SESSION['filename'];
 
                                     }
 
+
                                     $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight + $do_while_weight;
 
-                                    $NC = $if_count + $for_count + $while_count + $switch_count + $case_count + $do_while_count;
+                                    $NC = $numberOfParams + $for_count + $while_count + $switch_count + $case_count + $do_while_count;
 
                                     if ($NC == 0){
 
