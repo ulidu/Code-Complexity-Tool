@@ -239,10 +239,10 @@ $file = $_SESSION['filename'];
                                                                 if (!$contentInside == "") {
                                                                     foreach ($contentInside as $content) {
 
-                                                                        //echo $content;
-                                                                        //echo "<br>";
+                                                                        echo $content;
+                                                                        echo "<br>";
 
-                                                                        $countInsideBrackets = preg_match_all('/(&&|\|\|)/', $content, $counter);
+                                                                        $countInsideBrackets = preg_match_all('/&&|\|\|/', $content, $counter);
 
                                                                         if ($countInsideBrackets > 0) {
 
