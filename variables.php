@@ -369,7 +369,7 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
                                                                     }
 
-                                                                    if ($Wvs > 0 && $Ncdtv > 0 && preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $val, $counter)){
+                                                                    if ($Wvs > 0 && $Ncdtv > 0 && preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $val, $counter)) {
 
                                                                         $primitive_datatype_variable_count_total = 1;
 
