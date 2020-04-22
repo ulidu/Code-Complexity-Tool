@@ -245,7 +245,7 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 if (!$splitAfterSemicolon == ""){
                                                 foreach ($splitAfterSemicolon
 
-                                                AS $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+                                                as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
 
                                                 $val = str_replace(';', ';', $valAfterSemicolonReplace);
 
@@ -255,7 +255,7 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 $composite_datatype_variable_count_total = 0;
 
 
-                                                foreach ($methods AS $method) {
+                                                foreach ($methods as $method) {
 
                                                     $method;
 
@@ -268,10 +268,10 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                     $global_variables = $counter;
 
                                                     //Converting local variable array into normal lines
-                                                    foreach ($local_variables AS $local) {
+                                                    foreach ($local_variables as $local) {
 
                                                         if (!$local == "") {
-                                                            foreach ($local AS $local_variable) {
+                                                            foreach ($local as $local_variable) {
 
                                                                 //Iterate through all rows of code in the table
                                                                 for ($x = 0; $x <= $row_count; $x++) {
@@ -295,10 +295,10 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                     }
 
                                                     //Converting global variable array into normal lines
-                                                    foreach ($global_variables AS $global) {
+                                                    foreach ($global_variables as $global) {
                                                         $result = array_filter($global);
                                                         if (!$result == "") {
-                                                            foreach ($result AS $global_variable) {
+                                                            foreach ($result as $global_variable) {
 
                                                                 //Iterate through all rows of code in the table
                                                                 for ($x = 0; $x <= $row_count; $x++) {
