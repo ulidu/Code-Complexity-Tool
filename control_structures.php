@@ -247,24 +247,10 @@ $file = $_SESSION['filename'];
 
                                                                         }
                                                                     }
-                                                }
-                                            }
-                                                            $if_val = (preg_match('/if |if+\((.*?)\)+(.*?){|if+\((.*?)\)+(.*?) {/', $val));
-
-                                                            $current_ccs = $Ccs;
-
-                                                            if($if_val != ""){
-
-                                                                $Ccspps = $current_ccs;
-
+                                                                }
                                                             }
-
                                                         }
-
-
-
-
-                                        }
+                                                }
 
 
                                         if (preg_match('/for |for+\((.*?)\)+(.*?){/', $val) !== false){
@@ -279,39 +265,42 @@ $file = $_SESSION['filename'];
                                             $while_count = preg_match_all('/while |while+\((.*?)\)+(.*?){/',$val,$counter);
                                             $while_weight = $while_count * $weight_for_while_dowhile ;
 
+      }
 
-                                    $insideBrackets = preg_match_all('/while |while+\((.*?)\)+(.*?){/',$val,$counter);
-                                    $contentInsideWhileBrackets = $counter;
-                                    if (!$contentInsideWhileBrackets == "") {
-                                        foreach ($contentInsideWhileBrackets AS $contentInsideWhile) {
-                                            if (!$contentInsideWhile == "") {
-                                                foreach ($contentInsideWhile AS $content) {
 
-                                                    //echo $content;
-                                                    //echo "<br>";
-
-                                                    $countInsideBrackets = preg_match_all('/(&&|\|\|)/', $content, $counter);
-
-                                                    if ($countInsideBrackets > 0) {
-
-                                                        $numberOfParams = $countInsideBrackets + 1;
-
-                                                    } else {
-
-                                                        $numberOfParams = 1;
-
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                    }
 
                                         if (preg_match('/while |while+\((.*?)\)+(.*?);/', $val) !== false){
 
                                             $do_while_count = preg_match_all('/while |while+\((.*?)\)+(.*?);/',$val,$counter);
                                             $do_while_weight = $do_while_count * $weight_for_while_dowhile ;
+
+
+                                            $insideWhileBrackets = preg_match_all('/while |while+\((.*?)\)+(.*?){/',$val,$counter);
+                                            $contentInsideBrackets = $counter;
+                                            if (!$contentInsideBrackets == "") {
+                                                foreach($contentInsideBrackets AS $contentInsideWhile) {
+                                                    if (!$contentInsideWhile == "") {
+                                                        foreach ($contentInsideWhile AS $content) {
+
+                                                            //echo $content;
+                                                            //echo "<br>";
+
+                                                            $contentInsideBrackets = preg_match_all('/(&&|\|\|)/', $content, $counter);
+
+                                                            if ($countInsideBrackets > 0) {
+
+                                                                $numberOfParams = $countInsideBrackets + 1;
+
+                                                            } else {
+
+                                                                $numberOfParams = 1;
+
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+
 
                                         }
 
@@ -340,9 +329,14 @@ $file = $_SESSION['filename'];
 
                                         $Ccspps = 0;
 
-                                    }else{
+                                    }else if(!$NC==0) {
+                                        $current_ccs = $Ccs;
 
-                                        $Ccspps = $Ccs;
+                                        if ($if_val = (preg_match('/if |if+\((.*?)\)+(.*?){|if+\((.*?)\)+(.*?) {/', $val))) {
+
+                                            $Ccspps = $current_ccs;
+
+                                        }
 
                                     }
 
