@@ -26,7 +26,6 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                 <h3 class="kt-subheader__title">Variables Complexity of the Program</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
 
-
                 <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
                     <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
                     <span class="kt-input-icon__icon kt-input-icon__icon--right">
