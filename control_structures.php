@@ -240,6 +240,7 @@ $file = $_SESSION['filename'];
                                                                     foreach ($contentInside as $content) {
 
                                                                         echo $content;
+
                                                                         echo "<br>";
 
                                                                         $countInsideBrackets = preg_match_all('/&&|\|\|/', $content, $counter);
