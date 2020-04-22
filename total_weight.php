@@ -64,16 +64,12 @@ if (!isset($_GET['reload'])) {
                     $trim);
                 $split = preg_split('/(?<=[;{}])/', $for_semicolon, 0, PREG_SPLIT_NO_EMPTY);
 
-
-
-
-
-
                 $_SESSION['split_code'] = $split;
                 $_SESSION['files'] = $entry;
                 $_SESSION['trimmed'] = $trim;
-
+                $_SESSION['entireCode'] = $trim;
                 $_SESSION['filename'] = $entry;
+
 
 
             }

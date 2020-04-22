@@ -14,6 +14,7 @@ if (!isset($_GET['reload'])) {
 $split = $_SESSION['split_code'];
 $trim = $_SESSION['trimmed'];
 $file = $_SESSION['filename'];
+$entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
 ?>
 
@@ -88,7 +89,7 @@ $file = $_SESSION['filename'];
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Cv : 1</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Cv : <?php echo $total_Cv = $_SESSION['total_Cv']; ?></h1></center>
 
 
                                 </div>
@@ -189,41 +190,191 @@ $file = $_SESSION['filename'];
                                     </tr>
                                     </thead>
                                     <tbody>
-
-
                                     <?php
+
                                     $i = 0; //increment to each loop
                                     $count = 0;
+                                    $total_Cv = 0;
 
-                                    if (!$split==""){
-                                    foreach($split AS $val) { // Traverse the array with FOREACH
+                                    $Wvs = 0;
+                                    $Npdtv = 0;
+                                    $Ncdtv = 0;
+                                    $Cv = 0;
+                                    $beforeCv = 0;
 
-                                    $val;
+                                    //Default Weights
+                                    $weight_primitive_datatype_variable = 1;
+                                    $weight_composite_datatype_variable = 2;
+                                    $weight_global_variable = 2;
+                                    $weight_local_variable = 1;
+
+                                    function getContentsBetween($str, $startDelimiter, $endDelimiter) {
+                                        $contents = array();
+                                        $startDelimiterLength = strlen($startDelimiter);
+                                        $endDelimiterLength = strlen($endDelimiter);
+                                        $startFrom = $contentStart = $contentEnd = 0;
+                                        while (false !== ($contentStart = strpos($str, $startDelimiter, $startFrom))) {
+                                            $contentStart += $startDelimiterLength;
+                                            $contentEnd = strpos($str, $endDelimiter, $contentStart);
+                                            if (false === $contentEnd) {
+                                                break;
+                                            }
+                                            $contents[] = substr($str, $contentStart, $contentEnd - $contentStart);
+                                            $startFrom = $contentEnd + $endDelimiterLength;
+                                        }
+
+                                        return $contents;
+
+                                    }
+
+                                    $entireCode = str_replace(';', ';', $entireCodeBeforeSemicolon);
+
+                                    //Matching Methods - Entire Code
+                                    $methods = (getContentsBetween($entireCode, ') {', '}'));
+
+                                    //Matching Outside from Methods
+                                    $codeOutsideMethods = str_replace($methods, '', $entireCode);
+
+                                    $splitAfterSemicolon = str_replace(';', ';', $split);
+
+                                    //For Printing of the code lines for the table
+                                    if (!$splitAfterSemicolon==""){
+                                    foreach($splitAfterSemicolon AS $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+
+                                        $val = str_replace(';', ';', $valAfterSemicolonReplace);
+
+                                    $global_variable_count_total = 0;
+                                    $local_variable_count_total = 0;
+                                    $primitive_datatype_variable_count_total = 0;
+                                    $composite_datatype_variable_count_total = 0;
+
+
+                                    foreach($methods AS $method) {
+
+                                        $method;
+
+                                        //Matching variables inside methods (Local Variables)
+                                        $local_variable_count = preg_match_all('/\w+ \w+ \= \w+/', $method,$counter);
+                                        $local_variables = $counter;
+
+
+                                        $global_variable_count = preg_match_all('/(String \w+ \= \w+ \= \"\w+\"\;)|(char \w+ \= \w+ \= \'\w+\'\;)|(\w+ \w+ \= \w+ \= \w+\;)|(\w+ \w+ \= \w+\.\w+\(.*?\)\;)|(\w+ \w+ \= \w+\, \w+ \= \w+\;)|(\w+ \w+\, \w+\;)|(\w+ \w+\;)|(\w+ \w+ \= \w+\;)|(\w+ \w+ \= \w+\(.*?\)\;)/', $codeOutsideMethods,$counter);
+                                        $global_variables = $counter;
+
+                                        //Converting local variable array into normal lines
+                                        foreach($local_variables AS $local) {
+
+                                            if (!$local==""){
+                                                foreach($local AS $local_variable) {
+
+                                                    //Iterate through all rows of code in the table
+                                                    for($x = 0; $x <= $row_count; $x++) {
+
+                                                        $local_variables; // The array of local variables
+                                                        $splitAfterSemicolon; // The array of code lines
+
+                                                        //echo $local_variable;// Single lines of local variables
+                                                        //echo $val;// Single lines of code
+                                                        //echo "<br>";
+
+                                                        //Checking the code lines if there are matching local variables
+                                                        if (strpos($val, $local_variable) !== false) {
+
+                                                            $local_variable_count_total += substr_count($val, $local_variable);
+
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        //Converting global variable array into normal lines
+                                        foreach($global_variables AS $global) {
+
+                                            if (!$global==""){
+                                                foreach($global AS $global_variable) {
+
+                                                    //Iterate through all rows of code in the table
+                                                    for($x = 0; $x <= $row_count; $x++) {
+
+                                                        $global_variables; // The array of local variables
+                                                        $splitAfterSemicolon; // The array of code lines
 
 
 
+                                                        //echo $global_variable;// Single lines of local variables
+                                                        //echo $val;// Single lines of code
+                                                        //echo "<br>";
+
+                                                        //Checking the code lines if there are matching local variables
+                                                        /*
+                                                        if (strpos($val, $global_variable) !== false) {
+
+                                                            $global_variable_count_total += substr_count($val, $global_variable);
+
+                                                        }*/
+                                                    }
+                                                }
+                                            }
+                                        }
+
+
+
+                                        if (preg_match('/abc/', $val) !== false) {
+
+
+                                            $global_variable_count_total = preg_match_all('/abc/', $val, $counter);
+
+                                        }
+
+                                        if (preg_match('/abc/', $val) !== false) {
+
+                                            $primitive_datatype_variable_count_total = preg_match_all('/abc/', $val, $counter);
+
+                                        }
+
+                                        if (preg_match('/abc/', $val) !== false) {
+
+                                            $composite_datatype_variable_count_total = preg_match_all('/abc/', $val, $counter);
+
+                                        }
+
+
+
+                                        $Wvs = ($global_variable_count_total * $weight_global_variable) + ($local_variable_count_total * $weight_local_variable);
+
+                                        $Npdtv = ($primitive_datatype_variable_count_total * $weight_primitive_datatype_variable);
+
+                                        $Ncdtv = ($composite_datatype_variable_count_total * $weight_composite_datatype_variable);
+
+                                    }
+
+                                    $beforeCv = ($weight_primitive_datatype_variable * $Npdtv) + ($weight_composite_datatype_variable * $Ncdtv);
+
+                                    $Cv = $Wvs * $beforeCv;
+
+                                    $total_Cv += $Cv;
 
                                     ?>
 
                                     <tr>
                                         <td><?php echo $count=$count+1; ?></td>
                                         <td style="text-align: left"><?php echo $val; ?></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
+                                        <td><?php echo $Wvs; ?></td>
+                                        <td><?php echo $Npdtv; ?></td>
+                                        <td><?php echo $Ncdtv; ?></td>
+                                        <td><?php echo $Cv; ?></td>
+                                        <?php
 
-                                        <?php $i++; }}?>
+                                        $i++;
+
+                                        $_SESSION['total_Cv'] = $total_Cv;
+
+                                        }
+
+                                        }
+                                        ?>
                                     </tr>
-
-
-
-
-
-
-
-
-
 
                                     </tbody>
 
@@ -235,11 +386,6 @@ $file = $_SESSION['filename'];
                     </div>
 
                     <!-- end:: Content -->
-
-
-
-
-
 
 
 

@@ -7,6 +7,7 @@ unset ($_SESSION["split_code"]);
 unset ($_SESSION["trimmed"]);
 unset ($_SESSION["filename"]);
 unset ($_SESSION["row_count"]);
+unset ($_SESSION["entireCode"]);
 
 //unset($_SESSION['split_code']);
 //The name of the folder.
