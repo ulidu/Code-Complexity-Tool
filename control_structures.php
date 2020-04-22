@@ -239,11 +239,11 @@ $file = $_SESSION['filename'];
                                                                 if (!$contentInside == "") {
                                                                     foreach ($contentInside as $content) {
 
-                                                                        echo $content;
-
-                                                                        echo "<br>";
+                                                                        //echo $content;
+                                                                        //echo "<br>";
 
                                                                         $countInsideBrackets = preg_match_all('/&&|\|\|/', $content, $counter);
+
 
                                                                         if ($countInsideBrackets > 0) {
 
@@ -254,6 +254,9 @@ $file = $_SESSION['filename'];
                                                                             $numberOfParams = 1;
 
                                                                         }
+
+
+
 
                                                                     }
                                                                 }
@@ -312,6 +315,19 @@ $file = $_SESSION['filename'];
                                                 } else {
 
                                                     $Ccspps = $Ccs;
+
+                                                    if ($Wtcs > 0 && preg_match_all('/case 0:/', $val, $counter)) {
+
+                                                        $switchValue = $Ccs;
+
+                                                    }
+
+
+                                                    if ($Wtcs > 0 && preg_match_all('/case/', $val, $counter)) {
+
+                                                        $Ccspps = $switchValue;
+
+                                                    }
 
                                                 }
 
