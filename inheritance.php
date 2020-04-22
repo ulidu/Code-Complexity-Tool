@@ -205,7 +205,7 @@ $row_count = $_SESSION['row_count'];
                                     $count = 0;
                                     $total_ci = 0;
 
-                                    $direct = 0;
+
                                     $indirect = 0;
                                     $tot_inheritance = 0;
                                     $ci = 0;
@@ -219,7 +219,7 @@ $row_count = $_SESSION['row_count'];
 
                                     //word, class_name, extend_name, inherit_name
 
-
+                                    //function to sort the class_name using getBetween function
                                     function getBetween($codeLine, $start, $end)
                                     {
                                         $codeLine = " " . $codeLine;
@@ -234,8 +234,6 @@ $row_count = $_SESSION['row_count'];
 
 
 
-
-
                                     if (!$split==''){
 
                                         $ci = 0;
@@ -244,70 +242,86 @@ $row_count = $_SESSION['row_count'];
 
                                      //$matches =  preg_grep('/^class(\w+)/i',$val);
 
-                                    $word='extends';
-                                    $pos =strpos($val,$word);
 
+
+
+                                    //Calling the two functions of getBetween to sort the class_names
                                      $val ;
                                      $arr = $val;
                                      $parsed = getBetween($arr,"class","{") ;
                                      $parsed1 = getBetween($arr,"class","extends") ;
+                                     $parsed2 = getBetween($arr,"extends","{") ;
+                                        //print_r($parsed2);
+                                        //echo "<br>";
+                                        //print_r($parsed1);
 
+                                    //To find direct inheritance
+                                    $word='extends';
+                                    $pos =strpos($arr,$word);
+                                    $w = "class";
+                                    $pos1 =strpos($arr,$w);
+                                   //// $pos1 = strpos($arr, $parsed);
+                                    $direct = 0;
+                                    if($pos == true &&   $parsed1 == $parsed2) {
 
-                                    if($pos==true) {
+                                             //direct inheritance
 
                                         $direct++;
-
                                         $pr = $parsed1;
-                                    }
-                                    else{
-                                        echo  $parsed ;
+
+                                    }elseif ($pos == true)
+                                    {
+                                        $direct++;
+                                        $pr = $parsed1;
+                                    } else{
+                                        //echo  $parsed ;
+
                                         $pr = $parsed;
                                     }
 
-                                    $tot_inheritance = $direct + $indirect;
+
+
+
+
+
+
+
+
+
+                                    //$y = array( print_r($pr));
+                                    //print_r($y);
+
+                                    //newwww
+
+
+
+
+                                    //$c =preg_match('class\s*(\S+)',$val);
+                                    //echo $c;
+
+                                    //$ss = preg_split("#(\\\\|\\/)#", Class_Name::class,$val);
+                                    //echo $ss;
+                                      //  $class_name = preg_match_all("\s*(public|private)\\s+class\\s+(\\w+)\\s+((extends\\s+\\w+)|(implements\\s+\\w+( ,\\w+)*))?\\s*\{", $val);
+                                        //echo $class_name;
+
+                                   // echo $d;
+
+                                    //$class = substr(get_class($arr), strpos(get_class($arr),'\\')+1);
+                                    //echo $class;
+                                     //$xx = preg_match('\\s*[public][private]\\s*class\\s*(\\w*)\\s*\\{', $val);
+                                    //echo $xx;
+                                    //$x = $arr.get_class_methods();
+                                    //echo $x;
+
+
+
+                                    $tot_inheritance = $direct + $indirect;  //total inheritance
 
 
                                     // Begin class identification
 
-                                        $keywords = ['class', 'extends'];
+                                       $keywords = ['class', 'extends'];
 
-                                        foreach ($keywords as $word) {
-
-                                            if (preg_match('/\bclass\b/', $val) !== false) {
-
-                                                $class_name = preg_match_all('/\bclass\b/ ', $val,$counter);
-                                                $tok = strtok($val, " \n\t");
-
-
-
-                                                while ($tok !== false) {
-
-                                                    $tok = strtok(" \n\t");
-
-
-                                                }
-                                            }
-
-
-
-
-                                        }
-                                         //End class identification
-
-                                   //$result = $class_name;
-
-                                        //Begin Direct Inheritances
-
-                                        foreach ($keywords as $word) {
-
-                                            if (preg_match("/class\s*(\w*)extends Some_Other_Class {\"i/", $val) !== false) {
-
-                                            $class_name = preg_match_all("/class\s*(\w*)extends Some_Other_Class {\"i/", $val, $counter);
-                                            // $class_weight = $class_name * $weight_one_ud_class;
-
-                                        }
-                                    }
-                                        //End Direct Inheritances
 
                                         //Begin Indirect Inheritances
                                         //End Indirect Inheritances
@@ -320,30 +334,40 @@ $row_count = $_SESSION['row_count'];
                                         $ci = $tot_inheritance;
 
 
-                                    $w = 'class';
-                                    $p =strpos($val,$w);
+
+                                   // $w = 'class';
+                                   // $p =strpos($val,$w);
                                     //echo "<br>";
                                     //print_r($p);
 
-
+                                    //if($pos == true)
+                                    //echo $pr
                                     ?>
 
 
-                                    <?php
-                                    if($pos == true){
 
-                                     ?>
+                                    <?php
+                                    if($pos == true || $pos1 == true ){
+
+                                    ?>
 
                                     <tr>
                                         <td><?php echo ++$count; ?></td>
                                         <td style="text-align: left"><?php
-                                            echo $pr; ?></td>
+
+                                                echo $pr;
+                                            ?></td>
                                         <td><?php echo $direct; ?></td>
                                         <td><?php echo $indirect; ?></td>
                                         <td><?php echo $tot_inheritance; ?></td>
                                         <td><?php echo $ci; ?></td>
 
-            <?php } ?>
+
+
+                                        <?php } ?>
+
+
+
 
 
 
@@ -353,8 +377,9 @@ $row_count = $_SESSION['row_count'];
                                         $i++;
 
                                         $_SESSION['total_ci'] = $total_ci;
+                                        $total_ci = $ci++;
 
-                                        }
+                                       }
 
                                         }
 
