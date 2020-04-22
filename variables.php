@@ -260,17 +260,14 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                     $method;
 
                                                     //Matching variables inside methods (Local Variables)
-                                                    $local_variable_count = preg_match_all('/\w+ \w+ \= \w+/', $method, $counter);
+                                                    $local_variable_count = preg_match_all('/byte \w+\;|short \w+\;|int \w+\;|long \w+\;|float \w+\;|double \w+\;|char \w+\;|String \w+\;|boolean \w+\;|\w+ \w+ \= \w+|\w+ \w+\, \w+\;|private \w+ \w+\;/', $method, $counter);
                                                     $local_variables = $counter;
-
-
-                                                    $global_variable_count = preg_match_all('/(String \w+ \= \w+ \= \"\w+\"\;)|(char \w+ \= \w+ \= \'\w+\'\;)|(\w+ \w+ \= \w+ \= \w+\;)|(\w+ \w+ \= \w+\.\w+\(.*?\)\;)|(\w+ \w+ \= \w+\, \w+ \= \w+\;)|(\w+ \w+\, \w+\;)|(\w+ \w+\;)|(\w+ \w+ \= \w+\;)|(\w+ \w+ \= \w+\(.*?\)\;)/', $codeOutsideMethods, $counter);
-                                                    $global_variables = $counter;
 
                                                     //Converting local variable array into normal lines
                                                     foreach ($local_variables as $local) {
 
                                                         if (!$local == "") {
+
                                                             foreach ($local as $local_variable) {
 
                                                                 //Iterate through all rows of code in the table
@@ -283,16 +280,22 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                                     //echo $val;// Single lines of code
                                                                     //echo "<br>";
 
+
                                                                     //Checking the code lines if there are matching local variables
                                                                     if (strpos($val, $local_variable) !== false) {
 
-                                                                        $local_variable_count_total += substr_count($val, $local_variable);
+                                                                        $local_variable_count_total = substr_count($val, $local_variable);
+
 
                                                                     }
                                                                 }
                                                             }
                                                         }
                                                     }
+
+                                                    //Matching variables outside methods (Global Variables)
+                                                    $global_variable_count = preg_match_all('/byte \w+\;|short \w+\;|int \w+\;|long \w+\;|float \w+\;|double \w+\;|char \w+\;|String \w+\;|boolean \w+\;|\w+ \w+ \= \w+|\w+ \w+\, \w+\;|private \w+ \w+\;/', $codeOutsideMethods, $counter);
+                                                    $global_variables = $counter;
 
                                                     //Converting global variable array into normal lines
                                                     foreach ($global_variables as $global) {
@@ -303,18 +306,20 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                                 //Iterate through all rows of code in the table
                                                                 for ($x = 0; $x <= $row_count; $x++) {
 
-                                                                    $global_variables; // The array of local variables
+                                                                    //print_r($global_variables);
+
+                                                                    $global_variables; // The array of global variables
                                                                     $splitAfterSemicolon; // The array of code lines
 
-                                                                    //echo $global_variable;// Single lines of local variables
+                                                                    //echo $global_variable;// Single lines of global variables
                                                                     //echo $val;// Single lines of code
                                                                     //echo "<br>";
 
-                                                                    //Checking the code lines if there are matching local variables
+                                                                    //Checking the code lines if there are matching global variables
 
                                                                     if (strpos($val, $global_variable) !== false) {
 
-                                                                        $global_variable_count_total += substr_count($val, $global_variable);
+                                                                        $global_variable_count_total = substr_count($val, $global_variable);
 
                                                                     }
 
@@ -326,25 +331,86 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
                                                     }
 
+                                                    //Matching primitive variables
+                                                    $total_variable_count = preg_match_all('/byte.*?\;|short .*?\;|int .*?\;|long .*?\;|float .*?\;|double .*?\;|char .*?\;|String .*?\;|boolean .*?\;/', $entireCode, $counter);
+                                                    $all_prem_variables = $counter;
 
-                                                    if (preg_match('/abc/', $val) !== false) {
+                                                    //Converting all variables array into normal lines
+                                                    foreach ($all_prem_variables as $vars) {
+                                                        $result = array_filter($vars);
+                                                        if (!$result == "") {
+                                                            foreach ($result as $all_variable) {
 
-                                                        $primitive_datatype_variable_count_total = preg_match_all('/abc/', $val, $counter);
+                                                                //Iterate through all rows of code in the table
+                                                                for ($x = 0; $x <= $row_count; $x++) {
+
+
+                                                                    //print_r($all_variables);
+
+                                                                    $all_prem_variables; // The array of all variables
+                                                                    $splitAfterSemicolon; // The array of code lines
+
+                                                                    //echo $all_variable;// Single lines of all variables
+                                                                    //echo $val;// Single lines of code
+                                                                    //echo "<br>";
+
+                                                                    //Checking the code lines if there are matching local variables
+
+
+                                                                    if (strpos($val, $all_variable) !== false) {
+
+                                                                        $primitive_datatype_variable_count_total = substr_count($val, $all_variable);
+
+                                                                    }
+
+                                                                    if (preg_match('/private byte \w+, \w+\;|private short \w+, \w+\;|private int \w+, \w+\;|private long \w+, \w+\;|private float \w+, \w+\;|private double \w+, \w+\;|private char \w+, \w+\;|private String \w+, \w+\;|private boolean \w+, \w+\;/', $val)) {
+
+                                                                        $primitive_datatype_variable_count_total = 2;
+
+                                                                    }
+
+                                                                    if ($Wvs > 0 && $Ncdtv > 0 && preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $val, $counter)){
+
+                                                                        $primitive_datatype_variable_count_total = 1;
+
+                                                                    }
+
+                                                                }
+
+                                                            }
+
+                                                        }
 
                                                     }
 
-                                                    if (preg_match('/abc/', $val) !== false) {
+                                                    //Matching composite variables
+                                                    for ($x = 0; $x <= $row_count; $x++) {
 
-                                                        $composite_datatype_variable_count_total = preg_match_all('/abc/', $val, $counter);
+
+                                                        if ($Wvs > 0 && $Npdtv < 1) {
+
+                                                            $composite_datatype_variable_count_total = 1;
+
+                                                        } else {
+
+                                                            $composite_datatype_variable_count_total = 0;
+
+                                                        }
+
+                                                        if ($Wvs > 0 && $Npdtv < 1 && preg_match_all('/\w+ \w+ \w+\, \w+\;/', $val, $counter)) {
+
+                                                            $composite_datatype_variable_count_total = 2;
+
+                                                        }
 
                                                     }
 
 
                                                     $Wvs = ($global_variable_count_total * $weight_global_variable) + ($local_variable_count_total * $weight_local_variable);
 
-                                                    $Npdtv = ($primitive_datatype_variable_count_total * $weight_primitive_datatype_variable);
+                                                    $Npdtv = $primitive_datatype_variable_count_total;
 
-                                                    $Ncdtv = ($composite_datatype_variable_count_total * $weight_composite_datatype_variable);
+                                                    $Ncdtv = $composite_datatype_variable_count_total;
 
                                                 }
 
@@ -359,10 +425,10 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 <tr>
                                                     <td><?php echo $count = $count + 1; ?></td>
                                                     <td style="text-align: left"><?php echo $val; ?></td>
-                                                    <td><?php echo $Wvs; ?></td>
-                                                    <td><?php echo $Npdtv; ?></td>
-                                                    <td><?php echo $Ncdtv; ?></td>
-                                                    <td><?php echo $Cv; ?></td>
+                                                    <td <?php if ($Wvs > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Wvs; ?></td>
+                                                    <td <?php if ($Npdtv > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Npdtv; ?></td>
+                                                    <td <?php if ($Ncdtv > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Ncdtv; ?></td>
+                                                    <td <?php if ($Cv > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Cv; ?></td>
                                                     <?php
 
                                                     $i++;
