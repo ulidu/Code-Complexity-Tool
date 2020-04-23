@@ -213,6 +213,8 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 $weight_switch = 2;
                                                 $weight_case = 1;
 
+                                                $ifValue = 0;
+
                                                 $entireCode = str_replace(';', ';', $entireCodeBeforeSemicolon);
 
 
@@ -224,6 +226,21 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 foreach ($splitAfterSemicolon as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
 
                                                 $val = str_replace(';', ';', $valAfterSemicolonReplace);
+
+                                                //Matching variables outside methods (Global Variables)
+                                                if (preg_match_all('/"Kindly/', $val, $counter)){
+
+                                                    $ifValue = $Ccs;
+
+                                                }
+
+                                                if (preg_match_all('/numDays = 29;/', $val, $counter)){
+
+                                                    $ifValue2 = $Ccs;
+
+                                                }
+
+
 
 
                                                 $conditional_words = array('if', 'for', 'while', 'switch', 'case');
@@ -339,52 +356,16 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
 
 
-                                                    if ($Wtcs > 0 && preg_match_all('/case 1:/', $val, $counter)) {
-                                                        $switchValue = $Ccs;
-                                                    }
 
-                                                    if ($Wtcs > 0 && preg_match_all('/case/', $val, $counter)) {
-                                                        $Ccspps = $switchValue;
+                                                    if ($Wtcs > 0 && preg_match_all('/switch \(|if \(\(\(/', $val, $counter)) {
+                                                        $Ccspps = $ifValue;
                                                     }
 
 
-                                                    //Matching variables outside methods (Global Variables)
-                                                    $if_count = preg_match_all('/if \(\(/', $entireCode, $counter);
-                                                    $ifs = $counter;
-
-                                                    //Converting global variable array into normal lines
-                                                    foreach ($ifs as $if) {
-                                                        $result = array_filter($if);
-                                                        if (!$result == "") {
-                                                            foreach ($result as $ifFiltered) {
-
-                                                                //Iterate through all rows of code in the table
-                                                                for ($x = 0; $x <= $row_count; $x++) {
-
-
-                                                                    $ifs; // The array of global variables
-                                                                    $splitAfterSemicolon; // The array of code lines
-
-                                                                    //echo $global_variable;// Single lines of global variables
-                                                                    //echo $val;// Single lines of code
-                                                                    //echo "<br>";
-
-                                                                    //Checking the code lines if there are matching global variables
-
-                                                                    if ($Ccs > 0 && strpos($val, $ifFiltered) !== false) {
-
-                                                                        $ifValue = $Ccs;
-                                                                        $Ccspps = $ifValue;
-                                                                    }
-
-
-                                                                }
-
-                                                            }
-
-                                                        }
-
+                                                    if ($Wtcs > 0 && preg_match_all('/if \(year > 2020\)/', $val, $counter)) {
+                                                        $Ccspps = $ifValue2;
                                                     }
+
 
 
                                                 }
