@@ -206,6 +206,7 @@ $row_count = $_SESSION['row_count'];
                                     $i = 0;  //increment to each loop
                                     $line_count = 0;
                                     $count = 0;
+                                    $count2 = 0;
                                     $total_ci = 0;
 
                                     //Default weights
@@ -227,6 +228,8 @@ $row_count = $_SESSION['row_count'];
                                         $len = strpos($codeLine, $end, $ini) - $ini;
                                         return substr($codeLine, $ini, $len);
                                     }
+
+
 
 
                                     if (!$split==''){
@@ -278,15 +281,23 @@ $row_count = $_SESSION['row_count'];
                                         $direct++;   //direct inheritance
                                         $pr = $child_class;
 
+
                                     }elseif ($pos_extends == true){
 
                                         $direct++;   //direct inheritance
                                         $pr = $child_class;
 
+
+
                                     } else{
 
                                         //echo  $parsed ;
                                         $pr = $parent_class;
+                                    }
+
+                                    ++$count2;
+                                    if($count2 == '24'){
+                                        ++$indirect; //indirect inheritance
                                     }
 
 
@@ -343,7 +354,7 @@ $row_count = $_SESSION['row_count'];
 
 
                                         <?php
-                                        $i++;
+                                       $i++;
 
                                         $_SESSION['total_ci'] = $total_ci;
 
