@@ -307,13 +307,12 @@ if (!isset($_GET['reload'])) {
 
                                     $Cm = $Wmrt + ($NpdtpBefore * $weight_primitive_datatype_parameter) + ($Ncdtp * $weight_composite_datatype_parameter);
 
+
                                     $total_Cm += $Cm;
-
-
                                     if ($NcdtpBefore == 1){
 
                                         $Cm = $NcdtpBefore * $weight_composite_datatype_parameter;
-
+                                        $total_Cm += $Cm;
                                     }
 
                                     if (preg_match_all('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val, $counter) == 0){
@@ -321,6 +320,8 @@ if (!isset($_GET['reload'])) {
                                         $Cm = null;
 
                                     }
+
+
 
                                     ?>
 
