@@ -243,9 +243,7 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
                                                 //For Printing of the code lines for the table
                                                 if (!$splitAfterSemicolon == ""){
-                                                foreach ($splitAfterSemicolon
-
-                                                as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+                                                foreach ($splitAfterSemicolon as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
 
                                                 $val = str_replace(';', ';', $valAfterSemicolonReplace);
 

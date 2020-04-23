@@ -15,6 +15,7 @@ if (!isset($_GET['reload'])) {
 $split = $_SESSION['split_code'];
 $trim = $_SESSION['trimmed'];
 $file = $_SESSION['filename'];
+$entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
 ?>
 
@@ -212,13 +213,18 @@ $file = $_SESSION['filename'];
                                                 $weight_switch = 2;
                                                 $weight_case = 1;
 
-                                                if (!$split == ""){
+                                                $entireCode = str_replace(';', ';', $entireCodeBeforeSemicolon);
 
-                                                foreach ($split
 
-                                                as $val) { // Traverse the array with FOREACH
+                                                $splitAfterSemicolon = str_replace(';', ';', $split);
 
-                                                $val;
+                                                //For Printing of the code lines for the table
+                                                if (!$splitAfterSemicolon == ""){
+
+                                                foreach ($splitAfterSemicolon as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+
+                                                $val = str_replace(';', ';', $valAfterSemicolonReplace);
+
 
                                                 $conditional_words = array('if', 'for', 'while', 'switch', 'case');
 
@@ -266,6 +272,9 @@ $file = $_SESSION['filename'];
 
                                                     }
 
+
+
+
                                                     if (preg_match('/for |for+\((.*?)\)+(.*?){/', $val) !== false) {
 
                                                         $for_count = preg_match_all('/for |for+\((.*?)\)+(.*?){/', $val, $counter);
@@ -301,12 +310,15 @@ $file = $_SESSION['filename'];
 
                                                     }
 
-                                                }
 
+
+                                                }
 
                                                 $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight + $do_while_weight;
 
                                                 $NC = $numberOfParams + $for_count + $while_count + $switch_count + $case_count + $do_while_count;
+
+
 
                                                 if ($NC == 0) {
 
@@ -316,18 +328,64 @@ $file = $_SESSION['filename'];
 
                                                     $Ccspps = $Ccs;
 
-                                                    if ($Wtcs > 0 && preg_match_all('/case 0:/', $val, $counter)) {
 
+                                                    if ($Wtcs > 0 && preg_match_all('/case 1:/', $val, $counter)) {
                                                         $switchValue = $Ccs;
-
                                                     }
-
 
                                                     if ($Wtcs > 0 && preg_match_all('/case/', $val, $counter)) {
-
                                                         $Ccspps = $switchValue;
+                                                    }
+
+
+
+                                                    if ($Wtcs > 0 && preg_match_all('/case 1:/', $val, $counter)) {
+                                                        $switchValue = $Ccs;
+                                                    }
+
+                                                    if ($Wtcs > 0 && preg_match_all('/case/', $val, $counter)) {
+                                                        $Ccspps = $switchValue;
+                                                    }
+
+
+                                                    //Matching variables outside methods (Global Variables)
+                                                    $if_count = preg_match_all('/if \(\(/', $entireCode, $counter);
+                                                    $ifs = $counter;
+
+                                                    //Converting global variable array into normal lines
+                                                    foreach ($ifs as $if) {
+                                                        $result = array_filter($if);
+                                                        if (!$result == "") {
+                                                            foreach ($result as $ifFiltered) {
+
+                                                                //Iterate through all rows of code in the table
+                                                                for ($x = 0; $x <= $row_count; $x++) {
+
+
+                                                                    $ifs; // The array of global variables
+                                                                    $splitAfterSemicolon; // The array of code lines
+
+                                                                    //echo $global_variable;// Single lines of global variables
+                                                                    //echo $val;// Single lines of code
+                                                                    //echo "<br>";
+
+                                                                    //Checking the code lines if there are matching global variables
+
+                                                                    if ($Ccs > 0 && strpos($val, $ifFiltered) !== false) {
+
+                                                                        $ifValue = $Ccs;
+                                                                        $Ccspps = $ifValue;
+                                                                    }
+
+
+                                                                }
+
+                                                            }
+
+                                                        }
 
                                                     }
+
 
                                                 }
 
