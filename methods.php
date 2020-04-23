@@ -192,10 +192,6 @@ if (!isset($_GET['reload'])) {
                                     $count = 0;
                                     $total_Cm = 0;
 
-                                    $Wmrt = 0;
-                                    $Npdtp = 0;
-                                    $Ncdtp = 0;
-                                    $Cm = 0;
 
                                     //Default Weights
                                     $weight_primitive_retuntype = 1;
@@ -209,52 +205,132 @@ if (!isset($_GET['reload'])) {
 
                                     $val;
 
-                                    // -------- Weight due to return type - Begin --------
-
-                                    $void_count_total = 0;
-                                    $primitive_retuntype_count_total = 0;
-                                    $composite_retuntype_count_total = 0;
+                                    $Wmrt = null;
+                                    $Npdtp = null;
+                                    $Ncdtp = null;
+                                    $NpdtpBefore = null;
+                                    $NcdtpBefore = null;
+                                    $Cm = null;
 
                                     for($x = 0; $x <= $row_count; $x++){
 
-                                        if (preg_match('/void+(.*?){/', $val) !== false ){
 
-                                            $void_count_total = preg_match_all('/void+(.*?){/',$val,$counter);
+
+                                        if (preg_match('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val)){
+
+
+
+                                            if (preg_match('/protected void \w+\(.*?\) \{|private void \w+\(.*?\) \{| public void \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val)){
+
+                                                $Wmrt = $weight_void_returntype;
+
+                                            }
+
+                                            if (preg_match('/public (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{|private (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{|protected (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{/', $val)){
+
+                                                $Wmrt = $weight_primitive_retuntype;
+
+                                            }
+
+
+                                            if (preg_match_all('/byte |short |int |long |float |double |char |String |boolean |void/', $val, $counter) == 0) {
+
+                                                $Wmrt = $weight_composite_returntype;
+
+                                            }
+
+
+
+                                            $methodsCount = preg_match_all('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val, $counter);
+                                            $methods = $counter;
+
+                                            if (!$methods == "") {
+                                                foreach ($methods as $method) {
+                                                    if (!$method == "") {
+                                                        foreach ($method as $methodAfter) {
+
+                                                            $methodAfter;
+
+
+                                                            if (preg_match_all('/\(.*?\)/', $methodAfter, $counter)) {
+
+                                                                if (preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $methodAfter, $counter)) {
+
+                                                                    $NpdtpBefore = preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $methodAfter, $counter);
+
+                                                                }
+
+                                                                if(preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $methodAfter, $counter) == 0){
+
+                                                                    $NcdtpBefore = 1;
+
+                                                                }
+
+                                                                if(preg_match_all('/\(\)/', $methodAfter, $counter)){
+
+                                                                    $NpdtpBefore = 0;
+                                                                    $NcdtpBefore = 0;
+
+                                                                }
+
+                                                            }
+
+
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+
 
                                         }
 
-                                        if (preg_match('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/', $val) !== false ){
 
-                                            $primitive_retuntype_count_total = preg_match_all('/(?:(?:public|private|protected|static|final|native|synchronized|abstract|transient)+\s)+(int|byte|short|long|float|double|char|String|boolean)+[$_\w<>\[\]\s]*\s+[\$_\w]+\([^\)]*\)?\s*\{?[^\}]+return +(.*?)+\}?/',$val,$counter);
+                                        if ($Wmrt >= 0 && $NpdtpBefore > 0) {
 
-                                        }
-
-                                        if (preg_match('//', $val) !== false ){
-
-                                            $composite_retuntype_count_total = preg_match_all('//',$val,$counter);
+                                            $NcdtpBefore = 0;
 
                                         }
 
+                                        if ($Wmrt >= 0 && $NcdtpBefore > 0) {
 
-                                        $Wmrt = ($void_count_total*$weight_void_returntype) + ($primitive_retuntype_count_total*$weight_primitive_retuntype) + ($composite_retuntype_count_total*$weight_composite_returntype);
+                                            $NpdtpBefore = 0;
+
+                                        }
+
+
+
 
                                     }
 
                                     // -------- Weight due to return type - End --------
 
-                                    $Cm = $Wmrt + $Npdtp + $Ncdtp;
+                                    $Cm = $Wmrt + ($NpdtpBefore * $weight_primitive_datatype_parameter) + ($Ncdtp * $weight_composite_datatype_parameter);
 
                                     $total_Cm += $Cm;
+
+
+                                    if ($NcdtpBefore == 1){
+
+                                        $Cm = $NcdtpBefore * $weight_composite_datatype_parameter;
+
+                                    }
+
+                                    if (preg_match_all('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val, $counter) == 0){
+
+                                        $Cm = null;
+
+                                    }
 
                                     ?>
 
                                     <tr>
                                         <td><?php echo ++$count; ?></td>
                                         <td style="text-align: left"><?php echo $val;?></td>
-                                        <td><?php echo $Wmrt; ?></td>
-                                        <td><?php echo $Npdtp; ?></td>
-                                        <td><?php echo $Ncdtp; ?></td>
-                                        <td><?php echo $Cm; ?></td>
+                                        <td <?php if ($Wmrt > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Wmrt; ?></td>
+                                        <td <?php if ($NpdtpBefore > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $NpdtpBefore; ?></td>
+                                        <td <?php if ($NcdtpBefore > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $NcdtpBefore; ?></td>
+                                        <td <?php if ($Cm > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Cm; ?></td>
                                         <?php
 
                                         $i++;
