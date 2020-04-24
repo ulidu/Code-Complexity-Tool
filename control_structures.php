@@ -337,7 +337,6 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 $NC = $numberOfParams + $for_count + $while_count + $switch_count + $case_count + $do_while_count;
 
 
-
                                                 if ($NC == 0) {
 
                                                     $Ccspps = 0;
@@ -367,6 +366,11 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                         $Ccspps = $ifValue2;
                                                     }
 
+                                                    if (preg_match_all('/if \(year < 1/', $val, $counter)){
+
+                                                        $Ccspps = $switchValue;
+
+                                                    }
 
 
                                                 }
