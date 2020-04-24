@@ -201,8 +201,6 @@ $row_count = $_SESSION['row_count'];
 
                                     <?php
 
-
-
                                     $i = 0;  //increment to each loop
                                     $line_count = 0;
                                     $count = 0;
@@ -232,6 +230,9 @@ $row_count = $_SESSION['row_count'];
 
 
 
+
+
+
                                     if (!$split==''){
 
                                         $ci = 0;
@@ -250,11 +251,11 @@ $row_count = $_SESSION['row_count'];
                                      // $parent_class = $parsed;
                                      // $child_class = $parsed1;
                                      // $found_parent = $parsed2;
-                                    $parent_class = getBetween($arr,"class","{") ;
+                                    $parsed = getBetween($arr,"class","{") ;
 
-                                    $child_class = getBetween($arr,"class","extends") ;
+                                    $parsed1 = getBetween($arr,"class","extends") ;
 
-                                    $found_parent = getBetween($arr,"extends","{") ;
+                                    $parsed2 = getBetween($arr,"extends","{") ;
 
                                     //print_r($parsed2);
                                     //echo "<br>";
@@ -266,33 +267,33 @@ $row_count = $_SESSION['row_count'];
                                     //pos_class = pos1;
 
                                     $word_1='extends';
-                                    $pos_extends =strpos($arr,$word_1);
+                                    $pos =strpos($arr,$word_1);
 
                                     $word_2 = "class";
-                                    $pos_class =strpos($arr,$word_2);
+                                    $pos1 =strpos($arr,$word_2);
 
-                                    $pos2 = strpos($arr, $found_parent);
+                                    $pos2 = strpos($arr, $parsed2);
                                    // $pos1 = strpos($arr, $parsed);
 
 
 
-                                    if($pos_extends == true  &&  $child_class == true ) {
+                                    if($pos == true  &&  $parsed1 == true ) {
 
                                         $direct++;   //direct inheritance
-                                        $pr = $child_class;
+                                        $pr = $parsed1;
 
 
-                                    }elseif ($pos_extends == true){
+                                    }elseif ($pos == true){
 
                                         $direct++;   //direct inheritance
-                                        $pr = $child_class;
+                                        $pr = $parsed1;
 
 
 
                                     } else{
 
                                         //echo  $parsed ;
-                                        $pr = $parent_class;
+                                        $pr = $parsed;
                                     }
 
                                     ++$count2;
@@ -301,12 +302,16 @@ $row_count = $_SESSION['row_count'];
                                     }
 
 
+
+
+
                                     // Direct + Indirect;
                                     $tot_inheritance = $direct + $indirect;  //total inheritance
 
                                     $ci = $tot_inheritance;
 
                                     $total_ci += $ci;
+
 
 
 
@@ -334,7 +339,7 @@ $row_count = $_SESSION['row_count'];
 
 
                                     <?php
-                                    if($pos_extends == true || $pos_class == true ){
+                                    if($pos == true || $pos1 == true ){
 
                                     ?>
 
