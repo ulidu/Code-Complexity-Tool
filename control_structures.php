@@ -213,6 +213,7 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 $weight_switch = 2;
                                                 $weight_case = 1;
 
+
                                                 $ifValue = 0;
 
                                                 $entireCode = str_replace(';', ';', $entireCodeBeforeSemicolon);
@@ -367,6 +368,14 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                     }
 
 
+
+                                                }
+
+                                                if ($Wtcs == 0){
+
+                                                    $NC = null;
+                                                    $Wtcs = null;
+                                                    $Ccspps = null;
 
                                                 }
 
