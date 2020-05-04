@@ -86,6 +86,9 @@
         <div class="kt-portlet__body">
             <div class="tab-content">
                 <div class="tab-pane active" id="kt_portlet_base_demo_3_3_tab_content" role="tabpanel">
+
+                    <!-- Start of Size -->
+
                     <?php
 
                     $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
@@ -149,7 +152,7 @@
                         <div class="kt-portlet__foot">
                             <div class="kt-form__actions">
                                 <button type="submit" name="submitSize" id="submitSize" class="btn btn-brand">Save</button>
-                                <button type="button" name="resetSize" id="resetSize" class="btn btn-secondary">Reset to Defaults</button>
+                                <button type="submit" name="resetSize" id="resetSize" class="btn btn-secondary">Reset to Defaults</button>
                             </div>
                         </div>
                     </form>
@@ -158,6 +161,15 @@
 
                 </div>
                 <?php } ?>
+                <?php
+
+                if(isset($_POST['resetSize'])){
+
+                    $resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
+                    mysqli_query($con,$resetWeights);
+                    echo '<meta http-equiv=Refresh content="0;url=change_weight.php?reload=1">';
+
+                } ?>
 
                 <?php
 
@@ -192,59 +204,124 @@
 
 
                 ?>
+                <!-- End of Size -->
 
+
+
+
+
+
+                <!-- Start of Variables -->
 
                 <div class="tab-pane" id="kt_portlet_base_demo_3_4_tab_content" role="tabpanel">
+                    <?php
+
+                    $lastRow = "SELECT * FROM variables ORDER BY VariableID DESC LIMIT 1";
+                    $run_query_last = mysqli_query($con,$lastRow);
+
+                    while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                    $VariableID_last = $lastrow['VariableID'];
+                    $GlobalVariable_last = $lastrow['GlobalVariable'];
+                    $LocalVariable_last = $lastrow['LocalVariable'];
+                    $PrimitiveVariable_last = $lastrow['PrimitiveVariable'];
+                    $CompositeVariable_last = $lastrow['CompositeVariable'];
+
+
+                    ?>
                     <h5 class="kt-font-brand">Weights related to the Variable factor</h5>
                     <hr>
 
-                    <div class="col-lg-10">
-                        <div class="kt-section__content">
-                            <table style="text-align: center;" class="table">
-                                <thead class="thead-light">
-                                <tr>
-                                    <th>Program Component</th>
-                                    <th>Weight</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Global Variable</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Local Variable</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Primitive data type Variable</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="kt-font-bold"><label style="margin-top: 7%;">Composite data type Variable</label></td>
-                                    <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="2"></td>
-
-                                </tr>
+                    <!--begin::Form-->
+                    <div class="col-lg-12">
+                        <form action="" method="post" class="kt-form">
+                            <div class="kt-portlet__body">
 
 
-                                </tbody>
-                            </table>
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">Global Variable</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $GlobalVariable_last; ?>" style="text-align: center" id="GlobalVariable" name="GlobalVariable" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">Local Variable</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $LocalVariable_last; ?>" style="text-align: center" id="LocalVariable" name="LocalVariable" type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">Primitive Variable</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $PrimitiveVariable_last; ?>" style="text-align: center" id="PrimitiveVariable" name="PrimitiveVariable" type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">Composite Variable</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $CompositeVariable_last; ?>" style="text-align: center" id="CompositeVariable" name="CompositeVariable" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+
+
+                            </div>
                             <div class="kt-portlet__foot">
                                 <div class="kt-form__actions">
-                                    <button type="submit" class="btn btn-brand">Submit</button>
-                                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                                    <button type="submit" name="submitVariable" id="submitVariable" class="btn btn-brand">Save</button>
+                                    <button type="submit" name="resetVariable" id="resetVariable" class="btn btn-secondary">Reset to Defaults</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
+                    <!--end::Form-->
 
                 </div>
+            <?php } ?>
+                <?php
+
+                if(isset($_POST['resetVariable'])){
+
+                    $resetWeights= "DELETE FROM variables WHERE VariableID NOT IN ( SELECT * FROM ( SELECT VariableID FROM variables ORDER BY VariableID LIMIT 1) s)";
+                    mysqli_query($con,$resetWeights);
+                    echo '<meta http-equiv=Refresh content="0;url=change_weight.php?reload=1">';
+
+                } ?>
+
+                <?php
+
+                if(isset($_POST['submitVariable'])){
 
 
+                    $GlobalVariable=$_POST['GlobalVariable'];
+                    $LocalVariable=$_POST['LocalVariable'];
+                    $PrimitiveVariable=$_POST['PrimitiveVariable'];
+                    $CompositeVariable=$_POST['CompositeVariable'];
+
+                    $query = "INSERT INTO variables(GlobalVariable,LocalVariable,PrimitiveVariable,CompositeVariable) VALUES('$GlobalVariable','$LocalVariable','$PrimitiveVariable','$CompositeVariable')";
+
+                    $create_query = mysqli_query($con, $query);
+
+                    if ( $create_query ) {
+                        echo " <div class='alert alert-solid-success alert-bold' role='alert'>";
+                        echo " <div class='alert-text'>Successfully Saved.</div>";
+                        echo " </div>";
+                        echo '<meta http-equiv=Refresh content="0;url=change_weight.php?reload=1">';
+
+                    }else{
+                        echo " <div class='alert alert-solid-danger alert-bold' role='alert'>";
+                        echo " <div class='alert-text'>Something went wrong.</div>";
+                        echo " </div>";
+                    }
+
+
+
+                }
+
+
+                ?>
+
+                <!-- End of Variables -->
 
 
                 <div class="tab-pane" id="kt_portlet_base_demo_3_5_tab_content" role="tabpanel">
@@ -543,7 +620,7 @@
 
         </div>
         <div class="kt-portlet__body">
-            Tip : You can change the default weights allocated for the program components. <br><br>Once you add a new program again, the customized weights will be reset to defaults.
+            Tip : You can change the default weights allocated for the program components. <br><br>Customized weights are saved using 🍪 Cookies in your browser.
             </div>
 
     </div>
