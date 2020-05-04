@@ -2,7 +2,6 @@
 <?php include 'include/aside.php'; ?>
 
 
-
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
 						<!-- begin:: Content Head -->
@@ -87,67 +86,112 @@
         <div class="kt-portlet__body">
             <div class="tab-content">
                 <div class="tab-pane active" id="kt_portlet_base_demo_3_3_tab_content" role="tabpanel">
+                    <?php
 
+                    $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
+                    $run_query_last = mysqli_query($con,$lastRow);
+
+                    while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                    $SizeID_last = $lastrow['SizeID'];
+                    $Keyword_last = $lastrow['Keyword'];
+                    $Identifier_last = $lastrow['Identifier'];
+                    $Operator_last = $lastrow['Operator'];
+                    $NumericalValue_last = $lastrow['NumericalValue'];
+                    $StringLiteral_last = $lastrow['StringLiteral'];
+
+                    ?>
                     <h5 class="kt-font-brand">Weights related to the Size factor</h5>
                     <hr>
 
-                    <div class="col-lg-10">
-                    <div class="kt-section__content">
-                        <table style="text-align: center;" class="table">
-                            <thead class="thead-light">
-                            <tr>
-                                <th>Program Component</th>
-                                <th>Weight</th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            <?php
 
 
-                            ?>
-
-                            <tr>
-                                <td class="kt-font-bold"><label style="margin-top: 7%;">Keyword</label></td>
-                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                            </tr>
-                            <tr>
-                                <td class="kt-font-bold"><label style="margin-top: 7%;">Identifier</label></td>
-                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                            </tr>
-                            <tr>
-                                <td class="kt-font-bold"><label style="margin-top: 7%;">Operator</label></td>
-                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                            </tr>
-                            <tr>
-                                <td class="kt-font-bold"><label style="margin-top: 7%;">Numerical Value</label></td>
-                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                            </tr>
-                            <tr>
-                                <td class="kt-font-bold"><label style="margin-top: 7%;">String Literal</label></td>
-                                <td align="center"><input type="number" class="col-lg-4 form-control" placeholder="1"></td>
-
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    </div>
-
-                    <br><hr>
-                                <button type="submit" class="btn btn-brand">Save</button>
-                                <button type="submit" class="btn btn-secondary">Reset to Defaults</button>
+                    <!--begin::Form-->
+                        <div class="col-lg-12">
+                    <form action="" method="post" class="kt-form">
+                        <div class="kt-portlet__body">
 
 
+                            <div class="form-group row">
+                                <label class="col-4 col-form-label">Keyword</label>
+                                <div class="col-5">
+                                <input value="<?php echo $Keyword_last; ?>" style="text-align: center" id="Keyword" name="Keyword" type="number" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-4 col-form-label">Identifier</label>
+                                <div class="col-5">
+                                <input value="<?php echo $Identifier_last; ?>" style="text-align: center" id="Identifier" name="Identifier" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-4 col-form-label">Operator</label>
+                                <div class="col-5">
+                                <input value="<?php echo $Operator_last; ?>" style="text-align: center" id="Operator" name="Operator" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-4 col-form-label">Numerical Value</label>
+                                <div class="col-5">
+                                <input value="<?php echo $NumericalValue_last; ?>" style="text-align: center" id="NumericalValue" name="NumericalValue" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-4 col-form-label">String Literal</label>
+                                <div class="col-5">
+                                <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="kt-portlet__foot">
+                            <div class="kt-form__actions">
+                                <button type="submit" name="submitSize" id="submitSize" class="btn btn-brand">Save</button>
+                                <button type="button" name="resetSize" id="resetSize" class="btn btn-secondary">Reset to Defaults</button>
+                            </div>
+                        </div>
+                    </form>
+                        </div>
+                    <!--end::Form-->
 
                 </div>
+                <?php } ?>
+
+                <?php
+
+                if(isset($_POST['submitSize'])){
 
 
+                    $Keyword=$_POST['Keyword'];
+                    $Identifier=$_POST['Identifier'];
+                    $Operator=$_POST['Operator'];
+                    $NumericalValue=$_POST['NumericalValue'];
+                    $StringLiteral=$_POST['StringLiteral'];
+
+                    $query = "INSERT INTO size(Keyword,Identifier,Operator,NumericalValue,StringLiteral) VALUES('$Keyword','$Identifier','$Operator','$NumericalValue','$StringLiteral')";
+
+                    $create_query = mysqli_query($con, $query);
+
+                    if ( $create_query ) {
+                        echo " <div class='alert alert-solid-success alert-bold' role='alert'>";
+                        echo " <div class='alert-text'>Successfully Saved.</div>";
+                        echo " </div>";
+                        echo '<meta http-equiv=Refresh content="0;url=change_weight.php?reload=1">';
+
+                    }else{
+                        echo " <div class='alert alert-solid-danger alert-bold' role='alert'>";
+                        echo " <div class='alert-text'>Something went wrong.</div>";
+                        echo " </div>";
+                    }
+
+
+
+                }
+
+
+                ?>
 
 
                 <div class="tab-pane" id="kt_portlet_base_demo_3_4_tab_content" role="tabpanel">
@@ -189,12 +233,15 @@
 
                                 </tbody>
                             </table>
+                            <div class="kt-portlet__foot">
+                                <div class="kt-form__actions">
+                                    <button type="submit" class="btn btn-brand">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <br><hr>
-                    <button type="submit" class="btn btn-brand">Save</button>
-                    <button type="submit" class="btn btn-secondary">Reset to Defaults</button>
                 </div>
 
 
@@ -515,5 +562,6 @@
 						</div>
 						<!-- end:: Content -->
 					</div>
+
 
 <?php include 'include/footer.php'; ?>

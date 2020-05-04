@@ -96,7 +96,7 @@ var KTSweetAlert2Demo = function() {
             if ($a != 'index.php') {
                 swal.fire({
                     title: 'Are you sure?',
-                    html: "All the uploaded files will be removed.<br> Are you sure you want to continue ?",
+                    html: "All the uploaded files and custom weights will be removed.<br> Are you sure you want to continue ?",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, Upload a New File'
@@ -128,7 +128,7 @@ var KTSweetAlert2Demo = function() {
             if ($a != 'index.php') {
                 swal.fire({
                     title: 'Are you sure?',
-                    html: "All the uploaded files will be removed.<br> Are you sure you want to continue ?",
+                    html: "All the uploaded files and custom weights will be removed.<br> Are you sure you want to continue ?",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, Upload a New File'
@@ -158,7 +158,7 @@ var KTSweetAlert2Demo = function() {
             if ($a != 'index.php') {
                 swal.fire({
                     title: 'Are you sure?',
-                    html: "All the uploaded files will be removed.<br> Are you sure you want to continue ?",
+                    html: "All the uploaded files and custom weights and custom weights will be removed.<br> Are you sure you want to continue ?",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, Upload a New File'
@@ -189,7 +189,7 @@ var KTSweetAlert2Demo = function() {
             if ($a != 'index.php') {
                 swal.fire({
                     title: 'Are you sure?',
-                    html: "All the uploaded files will be removed.<br> Are you sure you want to continue ?",
+                    html: "All the uploaded files and custom weights will be removed.<br> Are you sure you want to continue ?",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, Upload a New File'
@@ -219,7 +219,7 @@ var KTSweetAlert2Demo = function() {
             if ($a != 'index.php') {
                 swal.fire({
                     title: 'Are you sure?',
-                    html: "All the uploaded files will be removed.<br> Are you sure you want to continue ?",
+                    html: "All the uploaded files and custom weights will be removed.<br> Are you sure you want to continue ?",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, Upload a New File'
@@ -249,7 +249,7 @@ var KTSweetAlert2Demo = function() {
             if ($a != 'index.php') {
                 swal.fire({
                     title: 'Are you sure?',
-                    html: "All the uploaded files will be removed.<br> Are you sure you want to continue ?",
+                    html: "All the uploaded files and custom weights and custom weights will be removed.<br> Are you sure you want to continue ?",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, Upload a New File'

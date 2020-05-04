@@ -111,6 +111,21 @@
         }
         </script>
 
+<script>
+    $(document).ready(function(){
+
+        $("#resetSize").click(function(){
+            $("#Keyword").val("1");
+            $("#Identifier").val("1");
+            $("#Operator").val("1");
+            $("#NumericalValue").val("1");
+            $("#StringLiteral").val("1");
+            $("#submitSize").click();
+        });
+
+    });
+</script>
+
 
 
 </body>
