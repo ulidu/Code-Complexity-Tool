@@ -25,8 +25,12 @@ foreach($files as $file){
     }
 }
 
-$resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
-mysqli_query($con,$resetWeights);
+if (!isset($_COOKIE[$cookie_name])) {
+
+    $resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
+    mysqli_query($con,$resetWeights);
+
+}
 
 ?>
 
