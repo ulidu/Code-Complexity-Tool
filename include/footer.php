@@ -121,6 +121,8 @@
             $("#NumericalValue").val("1");
             $("#StringLiteral").val("1");
             $("#submitSize").click();
+            <?php  $resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
+            mysqli_query($con,$resetWeights); ?>
         });
 
     });
