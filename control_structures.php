@@ -197,6 +197,18 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
                                                 <?php
 
+
+                                                $lastRow = "SELECT * FROM controlstructures ORDER BY ControlStructureID DESC LIMIT 1";
+                                                $run_query_last = mysqli_query($con,$lastRow);
+
+                                                while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                                $ControlStructureID_last = $lastrow['ControlStructureID'];
+                                                $CSif_last = $lastrow['CSif'];
+                                                $CSiterative_last = $lastrow['CSfor'];
+                                                $CSswitch_last = $lastrow['CSswitch'];
+                                                $CScase_last = $lastrow['CScase'];
+
+
                                                 $i = 0; //increment to each loop
                                                 $count = 0;
 
@@ -208,10 +220,10 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 $Ccs = 0;
 
                                                 //Default Weights
-                                                $weight_if_elseif = 2;
-                                                $weight_for_while_dowhile = 3;
-                                                $weight_switch = 2;
-                                                $weight_case = 1;
+                                                $weight_if_elseif = $CSif_last;
+                                                $weight_for_while_dowhile = $CSiterative_last;
+                                                $weight_switch = $CSswitch_last;
+                                                $weight_case = $CScase_last;
 
 
                                                 $ifValue = 0;
@@ -436,6 +448,7 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                     $i++;
                                                     $_SESSION['total_ccs'] = $total_ccs;
 
+                                                    }
                                                     }
                                                     }
                                                     ?>

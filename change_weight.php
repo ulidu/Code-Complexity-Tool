@@ -543,10 +543,10 @@
 
 
                     $NoInheritance=$_POST['NoInheritance'];
-                    $OneUserDefined=$_POST['One'];
-                    $TwoUserDefined=$_POST['Two'];
-                    $ThreeUserDefined=$_POST['Three'];
-                    $MoreUserDefined=$_POST['MoreThree'];
+                    $OneUserDefined=$_POST['OneUserDefined'];
+                    $TwoUserDefined=$_POST['TwoUserDefined'];
+                    $ThreeUserDefined=$_POST['ThreeUserDefined'];
+                    $MoreUserDefined=$_POST['MoreUserDefined'];
 
                     $query = "INSERT INTO inheritance(NoInheritance,One,Two,Three,MoreThree) VALUES('$NoInheritance','$OneUserDefined','$TwoUserDefined','$ThreeUserDefined','$MoreUserDefined')";
 
@@ -783,7 +783,6 @@
                     $CSswitch_last = $lastrow['CSswitch'];
                     $CScase_last = $lastrow['CScase'];
 
-
                     ?>
                     <h5 class="kt-font-brand">Weights related to the Control Structures factor</h5>
                     <hr>
@@ -853,8 +852,8 @@
                 if(isset($_POST['submitCs'])){
 
 
-                    $CSif=$_POST['$CSif'];
-                    $CSiterative=$_POST['CSfor'];
+                    $CSif=$_POST['CSif'];
+                    $CSiterative=$_POST['CSiterative'];
                     $CSswitch=$_POST['CSswitch'];
                     $CScase=$_POST['CScase'];
 
