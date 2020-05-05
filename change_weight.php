@@ -331,16 +331,16 @@
 
                     <?php
 
-                    $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
+                    $lastRow = "SELECT * FROM methods ORDER BY 	MethodID DESC LIMIT 1";
                     $run_query_last = mysqli_query($con,$lastRow);
 
                     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
-                    $SizeID_last = $lastrow['SizeID'];
-                    $Keyword_last = $lastrow['Keyword'];
-                    $Identifier_last = $lastrow['Identifier'];
-                    $Operator_last = $lastrow['Operator'];
-                    $NumericalValue_last = $lastrow['NumericalValue'];
-                    $StringLiteral_last = $lastrow['StringLiteral'];
+                    $MethodID_last = $lastrow['MethodID'];
+                    $PrimitiveReturnType_last = $lastrow['PrimitiveReturnType'];
+                    $CompositeReturnType_last = $lastrow['CompositeReturnType'];
+                    $VoidReturnType_last = $lastrow['VoidReturnType'];
+                    $PrimitiveParameter_last = $lastrow['PrimitiveParameter'];
+                    $CompositeParameter_last = $lastrow['CompositeParameter'];
 
                     ?>
                     <h5 class="kt-font-brand">Weights related to the Methods factor</h5>
@@ -355,34 +355,34 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Keyword</label>
+                                    <label class="col-4 col-form-label">Method with a primitive return type </label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Keyword_last; ?>" style="text-align: center" id="Keyword" name="Keyword" type="number" class="form-control">
+                                        <input value="<?php echo $PrimitiveReturnType_last; ?>" style="text-align: center" id="PrimitiveReturnType" name="PrimitiveReturnType" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Identifier</label>
+                                    <label class="col-4 col-form-label">Method with a composite return type</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Identifier_last; ?>" style="text-align: center" id="Identifier" name="Identifier" type="number" class="form-control">
+                                        <input value="<?php echo $CompositeReturnType_last; ?>" style="text-align: center" id="CompositeReturnType" name="CompositeReturnType" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Operator</label>
+                                    <label class="col-4 col-form-label">Method with a void return type</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Operator_last; ?>" style="text-align: center" id="Operator" name="Operator" type="number" class="form-control">
+                                        <input value="<?php echo $VoidReturnType_last; ?>" style="text-align: center" id="VoidReturnType" name="VoidReturnType" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Numerical Value</label>
+                                    <label class="col-4 col-form-label">Primitive data type parameter</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $NumericalValue_last; ?>" style="text-align: center" id="NumericalValue" name="NumericalValue" type="number" class="form-control">
+                                        <input value="<?php echo $PrimitiveParameter_last; ?>" style="text-align: center" id="PrimitiveParameter" name="PrimitiveParameter" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">String Literal</label>
+                                    <label class="col-4 col-form-label">Composite data type parameter</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                        <input value="<?php echo $CompositeParameter_last; ?>" style="text-align: center" id="CompositeParameter" name="CompositeParameter" type="number" class="form-control">
                                     </div>
                                 </div>
 
@@ -391,8 +391,8 @@
                             </div>
                             <div class="kt-portlet__foot">
                                 <div class="kt-form__actions">
-                                    <button type="submit" name="submitSize" id="submitSize" class="btn btn-brand">Save</button>
-                                    <button type="submit" name="resetSize" id="resetSize" class="btn btn-secondary">Reset to Defaults</button>
+                                    <button type="submit" name="submitMethod" id="submitMethod" class="btn btn-brand">Save</button>
+                                    <button type="submit" name="resetMethod" id="resetMethod" class="btn btn-secondary">Reset to Defaults</button>
                                 </div>
                             </div>
                         </form>
@@ -403,9 +403,9 @@
             <?php } ?>
                 <?php
 
-                if(isset($_POST['resetSize'])){
+                if(isset($_POST['resetMethod'])){
 
-                    $resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
+                    $resetWeights= "DELETE FROM  methods WHERE MethodID NOT IN ( SELECT * FROM ( SELECT MethodID FROM methods ORDER BY MethodID LIMIT 1) s)";
                     mysqli_query($con,$resetWeights);
                     echo '<meta http-equiv=Refresh content="0;url=change_weight.php?reload=1">';
 
@@ -413,16 +413,16 @@
 
                 <?php
 
-                if(isset($_POST['submitSize'])){
+                if(isset($_POST['submitMethod'])){
 
 
-                    $Keyword=$_POST['Keyword'];
-                    $Identifier=$_POST['Identifier'];
-                    $Operator=$_POST['Operator'];
-                    $NumericalValue=$_POST['NumericalValue'];
-                    $StringLiteral=$_POST['StringLiteral'];
+                    $PrimitiveReturnType=$_POST['PrimitiveReturnType'];
+                    $CompositeReturnType=$_POST['CompositeReturnType'];
+                    $VoidReturnType=$_POST['VoidReturnType'];
+                    $PrimitiveParameter=$_POST['PrimitiveParameter'];
+                    $CompositeParameter=$_POST['CompositeParameter'];
 
-                    $query = "INSERT INTO size(Keyword,Identifier,Operator,NumericalValue,StringLiteral) VALUES('$Keyword','$Identifier','$Operator','$NumericalValue','$StringLiteral')";
+                    $query = "INSERT INTO methods(PrimitiveReturnType,CompositeReturnType,VoidReturnType,PrimitiveParameter,CompositeParameter) VALUES('$PrimitiveReturnType','$CompositeReturnType','$VoidReturnType','$PrimitiveParameter','$CompositeParameter')";
 
                     $create_query = mysqli_query($con, $query);
 
@@ -457,16 +457,16 @@
 
                     <?php
 
-                    $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
+                    $lastRow = "SELECT * FROM inheritance ORDER BY InheritanceID DESC LIMIT 1";
                     $run_query_last = mysqli_query($con,$lastRow);
 
                     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
-                    $SizeID_last = $lastrow['SizeID'];
-                    $Keyword_last = $lastrow['Keyword'];
-                    $Identifier_last = $lastrow['Identifier'];
-                    $Operator_last = $lastrow['Operator'];
-                    $NumericalValue_last = $lastrow['NumericalValue'];
-                    $StringLiteral_last = $lastrow['StringLiteral'];
+                    $InheritanceID_last = $lastrow['InheritanceID'];
+                    $NoInheritance_last = $lastrow['NoInheritance'];
+                    $OneUserDefined_last = $lastrow['One'];
+                    $TwoUserDefined_last = $lastrow['Two'];
+                    $ThreeUserDefined_last = $lastrow['Three'];
+                    $MoreUserDefined_last = $lastrow['MoreThree'];
 
                     ?>
                     <h5 class="kt-font-brand">Weights related to the Inheritance factor</h5>
@@ -481,34 +481,34 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Keyword</label>
+                                    <label class="col-4 col-form-label">A class with no inheritance (direct or indirect)</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Keyword_last; ?>" style="text-align: center" id="Keyword" name="Keyword" type="number" class="form-control">
+                                        <input value="<?php echo $NoInheritance_last; ?>" style="text-align: center" id="NoInheritance" name="NoInheritance" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Identifier</label>
+                                    <label class="col-4 col-form-label">A class inheriting (directly or indirectly) from one user-defined class </label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Identifier_last; ?>" style="text-align: center" id="Identifier" name="Identifier" type="number" class="form-control">
+                                        <input value="<?php echo $OneUserDefined_last; ?>" style="text-align: center" id="OneUserDefined" name="OneUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Operator</label>
+                                    <label class="col-4 col-form-label">A class inheriting (directly or indirectly) from two user-defined classes </label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Operator_last; ?>" style="text-align: center" id="Operator" name="Operator" type="number" class="form-control">
+                                        <input value="<?php echo $TwoUserDefined_last; ?>" style="text-align: center" id="TwoUserDefined" name="TwoUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Numerical Value</label>
+                                    <label class="col-4 col-form-label">A class inheriting (directly or indirectly) from three user-defined classes</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $NumericalValue_last; ?>" style="text-align: center" id="NumericalValue" name="NumericalValue" type="number" class="form-control">
+                                        <input value="<?php echo $ThreeUserDefined_last; ?>" style="text-align: center" id="ThreeUserDefined" name="ThreeUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">String Literal</label>
+                                    <label class="col-4 col-form-label">A class inheriting (directly or indirectly) from more than three user-defined classes</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                        <input value="<?php echo $MoreUserDefined_last; ?>" style="text-align: center" id="MoreUserDefined" name="MoreUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
 
@@ -517,8 +517,8 @@
                             </div>
                             <div class="kt-portlet__foot">
                                 <div class="kt-form__actions">
-                                    <button type="submit" name="submitSize" id="submitSize" class="btn btn-brand">Save</button>
-                                    <button type="submit" name="resetSize" id="resetSize" class="btn btn-secondary">Reset to Defaults</button>
+                                    <button type="submit" name="submitInheritance" id="submitInheritance" class="btn btn-brand">Save</button>
+                                    <button type="submit" name="resetInheritance" id="resetInheritance" class="btn btn-secondary">Reset to Defaults</button>
                                 </div>
                             </div>
                         </form>
@@ -529,9 +529,9 @@
             <?php } ?>
                 <?php
 
-                if(isset($_POST['resetSize'])){
+                if(isset($_POST['resetInheritance'])){
 
-                    $resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
+                    $resetWeights= "DELETE FROM inheritance WHERE InheritanceID NOT IN ( SELECT * FROM ( SELECT InheritanceID FROM inheritance ORDER BY InheritanceID LIMIT 1) s)";
                     mysqli_query($con,$resetWeights);
                     echo '<meta http-equiv=Refresh content="0;url=change_weight.php?reload=1">';
 
@@ -539,16 +539,16 @@
 
                 <?php
 
-                if(isset($_POST['submitSize'])){
+                if(isset($_POST['submitInheritance'])){
 
 
-                    $Keyword=$_POST['Keyword'];
-                    $Identifier=$_POST['Identifier'];
-                    $Operator=$_POST['Operator'];
-                    $NumericalValue=$_POST['NumericalValue'];
-                    $StringLiteral=$_POST['StringLiteral'];
+                    $NoInheritance=$_POST['NoInheritance'];
+                    $OneUserDefined=$_POST['One'];
+                    $TwoUserDefined=$_POST['Two'];
+                    $ThreeUserDefined=$_POST['Three'];
+                    $MoreUserDefined=$_POST['MoreThree'];
 
-                    $query = "INSERT INTO size(Keyword,Identifier,Operator,NumericalValue,StringLiteral) VALUES('$Keyword','$Identifier','$Operator','$NumericalValue','$StringLiteral')";
+                    $query = "INSERT INTO inheritance(NoInheritance,One,Two,Three,MoreThree) VALUES('$NoInheritance','$OneUserDefined','$TwoUserDefined','$ThreeUserDefined','$MoreUserDefined')";
 
                     $create_query = mysqli_query($con, $query);
 
@@ -582,16 +582,24 @@
                 <div class="tab-pane" id="kt_portlet_base_demo_3_7_tab_content" role="tabpanel">
                     <?php
 
-                    $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
+                    $lastRow = "SELECT * FROM  coupling ORDER BY CouplingID DESC LIMIT 1";
                     $run_query_last = mysqli_query($con,$lastRow);
 
                     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
-                    $SizeID_last = $lastrow['SizeID'];
-                    $Keyword_last = $lastrow['Keyword'];
-                    $Identifier_last = $lastrow['Identifier'];
-                    $Operator_last = $lastrow['Operator'];
-                    $NumericalValue_last = $lastrow['NumericalValue'];
-                    $StringLiteral_last = $lastrow['StringLiteral'];
+                    $CouplingID_last = $lastrow['CouplingID'];
+                    $RecursiveCall_last = $lastrow['RecursiveCall'];
+                    $Reg_Reg_Same_last = $lastrow['Column2'];
+                    $Reg_Reg_Diff_last = $lastrow['Column3'];
+                    $Reg_Rec_Same_last = $lastrow['Column4'];
+                    $Reg_Rec_Diff_last = $lastrow['Column5'];
+                    $Rec_Rec_Same_last = $lastrow['Column6'];
+                    $Rec_Rec_Diff_last = $lastrow['Column7'];
+                    $Rec_Reg_Same_last = $lastrow['Column8'];
+                    $Rec_Reg_Diff_last = $lastrow['Column9'];
+                    $Reg_Global_Same_last = $lastrow['Column10'];
+                    $Reg_Global_Diff_last = $lastrow['Column11'];
+                    $Rec_Global_Same_last = $lastrow['Column12'];
+                    $Rec_Global_Diff_last = $lastrow['Column13'];
 
                     ?>
                     <h5 class="kt-font-brand">Weights related to the Coupling factor</h5>
@@ -606,32 +614,88 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Keyword</label>
+                                    <label class="col-4 col-form-label">A recursive call </label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Keyword_last; ?>" style="text-align: center" id="Keyword" name="Keyword" type="number" class="form-control">
+                                        <input value="<?php echo $RecursiveCall_last; ?>" style="text-align: center" id="RecursiveCall" name="RecursiveCall" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Identifier</label>
+                                    <label class="col-4 col-form-label">A regular method calling another regular method in the same file</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Identifier_last; ?>" style="text-align: center" id="Identifier" name="Identifier" type="number" class="form-control">
+                                        <input value="<?php echo $Reg_Reg_Same_last; ?>" style="text-align: center" id="Reg_Reg_Same" name="Reg_Reg_Same" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Operator</label>
+                                    <label class="col-4 col-form-label">A regular method calling another regular method in a different file</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Operator_last; ?>" style="text-align: center" id="Operator" name="Operator" type="number" class="form-control">
+                                        <input value="<?php echo $Reg_Reg_Diff_last; ?>" style="text-align: center" id="Reg_Reg_Diff" name="Reg_Reg_Diff" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Numerical Value</label>
+                                    <label class="col-4 col-form-label">A regular method calling a recursive method in the same file</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $NumericalValue_last; ?>" style="text-align: center" id="NumericalValue" name="NumericalValue" type="number" class="form-control">
+                                        <input value="<?php echo $Reg_Rec_Same_last; ?>" style="text-align: center" id="Reg_Rec_Same" name="Reg_Rec_Same" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">String Literal</label>
+                                    <label class="col-4 col-form-label">A regular method calling a recursive method in a different file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $Reg_Rec_Diff_last; ?>" style="text-align: center" id="Reg_Rec_Diff" name="Reg_Rec_Diff" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method calling another recursive method in the same file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $Rec_Rec_Same_last; ?>" style="text-align: center" id="Rec_Rec_Same" name="Rec_Rec_Same" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method calling another recursive method in a different file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $Rec_Rec_Diff_last; ?>" style="text-align: center" id="Rec_Rec_Diff" name="Rec_Rec_Diff" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method calling a regular method in the same file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $Rec_Reg_Same_last; ?>" style="text-align: center" id="Rec_Reg_Same" name="Rec_Reg_Same" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method calling a regular method in a different file </label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A regular method referencing a global variable in the same file </label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A regular method referencing a global variable in a different file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method referencing a global variable in the same file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method referencing a global variable in a different file </label>
                                     <div class="col-5">
                                         <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
                                     </div>
@@ -709,16 +773,16 @@
                 <div class="tab-pane" id="kt_portlet_base_demo_3_8_tab_content" role="tabpanel">
                     <?php
 
-                    $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
+                    $lastRow = "SELECT * FROM controlstructures ORDER BY ControlStructureID DESC LIMIT 1";
                     $run_query_last = mysqli_query($con,$lastRow);
 
                     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
-                    $SizeID_last = $lastrow['SizeID'];
-                    $Keyword_last = $lastrow['Keyword'];
-                    $Identifier_last = $lastrow['Identifier'];
-                    $Operator_last = $lastrow['Operator'];
-                    $NumericalValue_last = $lastrow['NumericalValue'];
-                    $StringLiteral_last = $lastrow['StringLiteral'];
+                    $ControlStructureID_last = $lastrow['ControlStructureID'];
+                    $CSif_last = $lastrow['CSif'];
+                    $CSiterative_last = $lastrow['CSfor'];
+                    $CSswitch_last = $lastrow['CSswitch'];
+                    $CScase_last = $lastrow['CScase'];
+
 
                     ?>
                     <h5 class="kt-font-brand">Weights related to the Control Structures factor</h5>
@@ -733,44 +797,39 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Keyword</label>
+                                    <label class="col-4 col-form-label">A conditional control structure such as an ‘if’ or ‘else-if’ condition</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Keyword_last; ?>" style="text-align: center" id="Keyword" name="Keyword" type="number" class="form-control">
+                                        <input value="<?php echo $CSif_last; ?>" style="text-align: center" id="CSif" name="CSif" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Identifier</label>
+                                    <label class="col-4 col-form-label">An iterative control structure such as a ‘for’, ‘while’, or ‘do-while’ loop</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Identifier_last; ?>" style="text-align: center" id="Identifier" name="Identifier" type="number" class="form-control">
+                                        <input value="<?php echo $CSiterative_last; ?>" style="text-align: center" id="CSiterative" name="CSiterative" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Operator</label>
+                                    <label class="col-4 col-form-label">The ‘switch’ statement in a ‘switch-case’ control structure</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Operator_last; ?>" style="text-align: center" id="Operator" name="Operator" type="number" class="form-control">
+                                        <input value="<?php echo $CSswitch_last; ?>" style="text-align: center" id="CSswitch" name="CSswitch" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Numerical Value</label>
+                                    <label class="col-4 col-form-label">Each ‘case’ statement in a ‘switch-case’ control structure</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $NumericalValue_last; ?>" style="text-align: center" id="NumericalValue" name="NumericalValue" type="number" class="form-control">
+                                        <input value="<?php echo $CScase_last; ?>" style="text-align: center" id="CScase" name="CScase" type="number" class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-4 col-form-label">String Literal</label>
-                                    <div class="col-5">
-                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
-                                    </div>
-                                </div>
+
 
 
 
                             </div>
                             <div class="kt-portlet__foot">
                                 <div class="kt-form__actions">
-                                    <button type="submit" name="submitSize" id="submitSize" class="btn btn-brand">Save</button>
-                                    <button type="submit" name="resetSize" id="resetSize" class="btn btn-secondary">Reset to Defaults</button>
+                                    <button type="submit" name="submitCs" id="submitCs" class="btn btn-brand">Save</button>
+                                    <button type="submit" name="resetCs" id="resetCs" class="btn btn-secondary">Reset to Defaults</button>
                                 </div>
                             </div>
                         </form>
@@ -781,9 +840,9 @@
             <?php } ?>
                 <?php
 
-                if(isset($_POST['resetSize'])){
+                if(isset($_POST['resetCs'])){
 
-                    $resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
+                    $resetWeights= "DELETE FROM controlstructures WHERE ControlStructureID NOT IN ( SELECT * FROM ( SELECT ControlStructureID FROM controlstructures ORDER BY ControlStructureID LIMIT 1) s)";
                     mysqli_query($con,$resetWeights);
                     echo '<meta http-equiv=Refresh content="0;url=change_weight.php?reload=1">';
 
@@ -791,16 +850,16 @@
 
                 <?php
 
-                if(isset($_POST['submitSize'])){
+                if(isset($_POST['submitCs'])){
 
 
-                    $Keyword=$_POST['Keyword'];
-                    $Identifier=$_POST['Identifier'];
-                    $Operator=$_POST['Operator'];
-                    $NumericalValue=$_POST['NumericalValue'];
-                    $StringLiteral=$_POST['StringLiteral'];
+                    $CSif=$_POST['$CSif'];
+                    $CSiterative=$_POST['CSfor'];
+                    $CSswitch=$_POST['CSswitch'];
+                    $CScase=$_POST['CScase'];
 
-                    $query = "INSERT INTO size(Keyword,Identifier,Operator,NumericalValue,StringLiteral) VALUES('$Keyword','$Identifier','$Operator','$NumericalValue','$StringLiteral')";
+
+                    $query = "INSERT INTO controlstructures(CSif,CSfor,CSswitch,CScase) VALUES('$CSif','$CSiterative','$CSswitch','$CScase')";
 
                     $create_query = mysqli_query($con, $query);
 
