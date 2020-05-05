@@ -331,7 +331,7 @@
 
                     <?php
 
-                    $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
+                    $lastRow = "SELECT * FROM methods ORDER BY SizeID DESC LIMIT 1";
                     $run_query_last = mysqli_query($con,$lastRow);
 
                     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
