@@ -1,6 +1,7 @@
 <?php
 $cookie_name = "UID";
-setcookie($cookie_name, time() + (86400), "/"); // 86400 = 1 day
+$cookie_value = "User";
+setcookie($cookie_name, $cookie_value,time() + (86400), "/"); // 86400 = 1 day
 ?>
 
 <?php include 'include/db.php'; ?>
