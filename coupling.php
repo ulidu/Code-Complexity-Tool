@@ -84,7 +84,7 @@ if (!isset($_GET['reload'])) {
                                 <div class="col-lg-12">
                                 <div class="kt-iconbox__desc kt-font-brand">
 
-                                    <center><h1 style="font-family: 'Fira Code'">Ccp : 0</h1></center>
+                                    <center><h1 style="font-family: 'Fira Code'">Ccp : <?php echo $total_ccs = $_SESSION['total_ccp']; ?></h1></center>
 
 
                                 </div>
@@ -178,64 +178,159 @@ if (!isset($_GET['reload'])) {
                                         <th>Program Statements</th>
                                         <th>Nr</th>
                                         <th>Nmcms</th>
-                                        <th>Nmcmd</th>
                                         <th>Nmcrms</th>
-                                        <th>Nmcrmd</th>
                                         <th>Nrmcrms</th>
-                                        <th>Nrmcrmd</th>
                                         <th>Nrmcms</th>
-                                        <th>Nrmcmd</th>
-                                        <th>Nmrgvs</th>
-                                        <th>Nmrgvd</th>
-                                        <th>Nrmrgvs</th>
-                                        <th>Nrmrgvd</th>
-                                        <th style="color: white" class="kt-label-bg-color-2">Ccp</th>
-
 
                                     </tr>
                                     </thead>
                                     <tbody>
 
                                     <?php
-                                    $i = 0; //increment to each loop
-                                    $count = 0;
 
-                                    if (!$split==""){
-                                    foreach($split AS $val) { // Traverse the array with FOREACH
+                                    $lines = array();
+                                    $regularMethods = array();
+                                    $recursiveMethods = array();
+                                    $methods = array();
+                                    $global_var = array();
 
-                                    $val;
+                                    $nr = 0;
+                                    $nmcms = 0;
+                                    $nmcrms = 0;
+                                    $nrmcrms = 0;
+                                    $nrmcms = 0;
+                                    $nmrgvs = 0;
+                                    $nrmrgvs = 0;
+
+                                    $keyword = array('public','protected', 'private', 'static');
 
 
+                                    $handle = fopen("uploads/DaysPerMonth.java", "r");
+                                    if ($handle) {
+                                        while (($line = fgets($handle)) !== false) {
+                                            // process the line read.
+                                            array_push($lines, $line);
+                                        }
+
+                                        fclose($handle);
+                                    } else {
+                                        // error opening the file.
+                                    }
+
+                                    foreach ($lines as $line)  {
+                                    # code...
+
+                                    $nr_line = 0;
+                                    $nmcms_line = 0;
+                                    $nmcrms_line = 0;
+                                    $nrmcrms_line = 0;
+                                    $nrmcms_line = 0;
+                                    $nmrgvs_line = 0;
+                                    $nrmrgvs_line = 0;
+
+                                    foreach ($methods as $method){
+
+                                        if(strpos($line, $method)){
+
+                                            if ($methods[0] == $method){
+
+                                                array_push($recursiveMethods, $method);
+                                                $currentMethodType = 'recursive';
+                                                $nr = $nr+1;
+                                                $nr_line = $nr_line +1;
+
+                                            }elseif (in_array($method, $recursiveMethods) && $currentMethodType == 'regular') {
+                                                # code...
+                                                $nmcrms = $nmcrms +1;
+                                                $nmcrms_line = $nmcrms_line+1;
+
+                                            }elseif (in_array($method, $recursiveMethods) && $currentMethodType == 'recursive') {
+                                                # code...
+                                                $nrmcrms_line = $nrmcrms_line +1;
+                                                $nrmcrms = $nrmcrms+1;
+
+                                            }elseif ($currentMethodType == 'recursive') {
+                                                # code...
+                                                $nrmcms = $nrmcms +1;
+                                                $nrmcms_line = $nrmcms_line+1;
+
+                                            }elseif ($currentMethodType == 'recursive') {
+                                                # code...
+                                                $nmcms = $nmcms+1;
+                                                $nmcms_line = $nmcms_line+1;
+
+                                            }
+                                        }
+                                    }
+
+                                    if (!empty($methods)) {
+                                        # code...
+                                        $space_split_array = explode(" ", $line);
+                                        $character_split_array = preg_split('/[^[:alnum:]]/', $line);
+
+                                        foreach($global_var as $var){
+
+                                            if (in_array($var, $space_split_array) || in_array($var, $character_split_array)) {
+                                                # code...
+                                                if ($currentMethodType == 'regular') {
+                                                    # code...
+                                                    $nmrgvs = $nmrgvs +1;
+                                                    $nmrgvs_line = $nmrgvs_line+1;
+
+                                                }else {
+                                                    # code...
+                                                    $nmrgvs_line = $nmrgvs_line+1;
+                                                    $nmrgvs = $nmrgvs+1;
+
+                                                }
+                                            }
+                                        }
 
 
+                                    }
+
+                                    preg_match('/"[^"]*"|((?=_[a-z_0-9]|[a-z])[a-z_0-9]+(?=\s*=))/', $line, $var);
+
+                                    if(isset($var[0]) && empty($methods)){
+
+                                        array_push($global_var, $var[0]);
+
+                                    }
+
+
+                                    preg_match('/(public|protected|private|static|\s) +[\w\<\>\[\]]+\s+(\w+) *\([^\)]*\) *(\{?|[^;])/', $line, $match);
+
+                                    if (isset($match[1])){
+                                        if(in_array($match[1], $keyword)){
+
+                                            $currentMethodType = 'regular';
+                                            array_push($methods, $match[2]);
+                                            $methods = array_reverse($methods);
+
+                                        }
+
+                                    }
                                     ?>
                                     <tr>
-                                        <td><?php echo $count=$count+1; ?></td>
-                                        <td style="text-align: left"><?php echo $val;?></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <?php $i++; }}?>
+                                        <td><?php echo $count = $count + 1; ?></td>
+                                        <td style="text-align: left"><?php echo($line) ?></td>
+                                        <td><?php echo($nr_line) ?></td>
+                                        <td><?php echo($nmcms_line) ?></td>
+                                        <td><?php echo($nmcrms_line) ?></td>
+                                        <td><?php echo($nrmcrms_line) ?></td>
+                                        <td><?php echo($nrmcms_line) ?></td>
 
                                     </tr>
 
-
-
-
-
-
                                     </tbody>
+
+                                    <?php
+
+                                    }
+
+                                    $ccp = $nr*2 + $nmcms*2 + $nmcrms*3 + $nrmcrms*4 + $nrmcms*3 + $nmrgvs*1 + $nrmrgvs*2;
+                                    $_SESSION['total_ccp'] = $ccp;
+                                    ?>
 
                                 </table>
 

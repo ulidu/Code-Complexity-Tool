@@ -404,11 +404,23 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                     }
 
 
+
+
                                                     $Wvs = ($global_variable_count_total * $weight_global_variable) + ($local_variable_count_total * $weight_local_variable);
 
                                                     $Npdtv = $primitive_datatype_variable_count_total;
 
                                                     $Ncdtv = $composite_datatype_variable_count_total;
+
+                                                }
+
+
+                                                if ($Wvs == 0){
+
+                                                    $Wvs = null;
+                                                    $Npdtv = null;
+                                                    $Ncdtv = null;
+
 
                                                 }
 

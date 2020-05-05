@@ -1,33 +1,10 @@
-<?php
-
-if (!isset($_GET['reload'])) {
-    echo '<meta http-equiv=Refresh content="0;url=inheritance.php?reload=1">';
-}
-
-?>
-
-
-
-<?php include 'include/header.php'; ?>
-<?php include 'include/aside.php'; ?>
-
-<?php
-
-$split = $_SESSION['split_code'];
-$trim = $_SESSION['trimmed'];
-$file = $_SESSION['filename'];
-$row_count = $_SESSION['row_count'];
-
-?>
-
-
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
     <!-- begin:: Content Head -->
     <div class="kt-subheader  kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
-                <h3 class="kt-subheader__title">Inheritance Complexity of the Program</h3>
+                <h3 class="kt-subheader__title">Total Weight of the Program</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
 
 
@@ -62,7 +39,7 @@ $row_count = $_SESSION['row_count'];
 													<i class="flaticon-time-1"></i>
 												</span>
                         <h3 class="kt-portlet__head-title kt-font-brand">
-                            Complexity of the Program due to Inheritance
+                            Total Complexity of the Program due to All the Factors
                         </h3>
                     </div>
 
@@ -92,17 +69,18 @@ $row_count = $_SESSION['row_count'];
                                         <div class="col-lg-12">
                                             <div class="kt-iconbox__desc kt-font-brand">
 
-                                                <center><h1 style="font-family: 'Fira Code'">Ci
-                                                        : <?php echo $total_ci = $_SESSION['total_ci']; ?></h1></center>
+                                                <center><h1 style="font-family: 'Fira Code'">Cpr : 50</h1></center>
 
 
                                             </div>
                                         </div>
+
                                     </div>
+
+
                                 </div>
                             </div>
                         </div>
-
 
                     </div>
 
@@ -110,25 +88,41 @@ $row_count = $_SESSION['row_count'];
                         <div class="kt-form__actions">
                             <div class="row">
 
+                                <?php
 
+                                $entry_arr_af = preg_split("/\.java/", $entry);
+                                $entry_arr = array_filter($entry_arr_af);
+
+                                foreach ($entry_arr as $files_arr) {
+                                ?>
                                 <!-- begin:: Content -->
                                 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+
 
                                     <div class="kt-portlet kt-portlet--mobile">
                                         <div class="kt-portlet__head kt-portlet__head--lg">
                                             <div class="kt-portlet__head-label">
+
+
+
+
+
+
+
+
 										<span class="kt-portlet__head-icon">
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                                                 <h3 class="kt-portlet__head-title kt-font-brand">
-                                                    Complexity of the Program due to Inheritance by Statement : </h3>&nbsp;
-                                                <h3 class="kt-portlet__head-title kt-font-dark">
-
-                                                    <?php $file = $_SESSION['filename'];
+                                                    Total Complexity of the Program by Statement : </h3>&nbsp;
+                                                <h3 class="kt-portlet__head-title kt-font-dark"><?php $file = $_SESSION['filename'];
                                                     echo $file; ?>
-
                                                 </h3>
                                             </div>
+
+
+
+
                                             <div class="kt-portlet__head-toolbar">
                                                 <div class="kt-portlet__head-wrapper">
                                                     <div class="kt-portlet__head-actions">
@@ -186,180 +180,72 @@ $row_count = $_SESSION['row_count'];
                                         <div class="kt-portlet__body kt-font-dark">
                                             <!--begin: Datatable -->
                                             <table style="font-family: 'Fira Code'; text-align: center"
-                                                   class="table table-striped- table-bordered table-hover"
+                                                   class="table table-striped- table-bordered table-hover table-checkable"
                                                    id="kt_table_1">
                                                 <thead>
                                                 <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
-                                                    <th>Count</th>
-                                                    <th>Class Name</th>
-                                                    <th>No. of direct inheritances</th>
-                                                    <th>No. of indirect inheritances</th>
-                                                    <th>Total inheritances</th>
-                                                    <th style="color: white" class="kt-label-bg-color-2">Ci</th>
-
+                                                    <th>Line No</th>
+                                                    <th>Program Statements</th>
+                                                    <th>Cs</th>
+                                                    <th>Cv</th>
+                                                    <th>Cm</th>
+                                                    <th>Ci</th>
+                                                    <th>Ccp</th>
+                                                    <th>Ccs</th>
+                                                    <th style="color: white" class="kt-label-bg-color-2">TCps</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
 
-
                                                 <?php
-
-                                                $i = 0;  //increment to each loop
-                                                $line_count = 0;
+                                                $i = 0; //increment to each loop
                                                 $count = 0;
-                                                $count2 = 0;
-                                                $total_ci = 0;
 
-                                                //Default weights
-                                                $weight_one_ud_class = 1;
-                                                $weight_two_ud_class = 2;
-                                                $weight_three_ud_class = 3;
-                                                $weight_more_ud_class = 4;
+                                                $split = $_SESSION['split_code'];
+                                                $trim = $_SESSION['trimmed'];
 
-                                                //word, class_name, extend_name, inherit_name
-
-                                                //function to sort the class_name using getBetween function
-                                                function getBetween($codeLine, $start, $end)
-                                                {
-                                                    $codeLine = " " . $codeLine;
-                                                    $ini = strpos($codeLine, $start);
-                                                    if ($ini == 0)
-                                                        return " ";
-                                                    $ini += strlen($start);
-                                                    $len = strpos($codeLine, $end, $ini) - $ini;
-                                                    return substr($codeLine, $ini, $len);
-                                                }
-
-
-                                                if (!$split == ''){
-
-                                                $ci = 0;
-
+                                                if (!$split == ""){
                                                 foreach ($split
 
-                                                as $val) {       // Traverse the array with FOREACH
+                                                         as $val) { // Traverse the array with FOREACH
 
-                                                $direct = 0;
-                                                $indirect = 0;
-                                                $tot_inheritance = 0;
-                                                $ci = 0;
-
-                                                //Calling the two functions of getBetween to sort the class_names
                                                 $val;
-                                                $arr = $val;
 
-                                                // $parent_class = $parsed;
-                                                // $child_class = $parsed1;
-                                                // $found_parent = $parsed2;
-                                                $parsed = getBetween($arr, "class", "{");
-
-                                                $parsed1 = getBetween($arr, "class", "extends");
-
-                                                $parsed2 = getBetween($arr, "extends", "{");
-
-                                                //print_r($parsed2);
-                                                //echo "<br>";
-                                                //print_r($parsed1);
-
-
-                                                //pos_extends = pos;
-                                                //pos_class = pos1;
-
-                                                $word_1 = 'extends';
-                                                $pos = strpos($arr, $word_1);
-
-                                                $word_2 = "class";
-                                                $pos1 = strpos($arr, $word_2);
-
-                                                $pos2 = strpos($arr, $parsed2);
-                                                // $pos1 = strpos($arr, $parsed);
-
-
-                                                if ($pos == true && $parsed1 == true) {
-
-                                                    $direct++;   //direct inheritance
-                                                    $pr = $parsed1;
-
-
-                                                } elseif ($pos == true) {
-
-                                                    $direct++;   //direct inheritance
-                                                    $pr = $parsed1;
-
-
-                                                } else {
-
-                                                    //echo  $parsed ;
-                                                    $pr = $parsed;
-                                                }
-
-                                                ++$count2;
-                                                if ($count2 == '25') {
-                                                    ++$indirect; //indirect inheritance
-                                                }
-
-
-                                                // Direct + Indirect;
-                                                $tot_inheritance = $direct + $indirect;  //total inheritance
-
-                                                $ci = $tot_inheritance;
-
-                                                $total_ci += $ci;
-
-
-                                                // Begin class identification
-
-                                                // $keywords = ['class', 'extends'];
-
-
-                                                // $w = 'class';
-                                                // $p =strpos($val,$w);
-                                                //echo "<br>";
-                                                //print_r($p);
-
-                                                //if($pos == true)
-                                                //echo $pr
 
                                                 ?>
-
-
-
-                                                <?php
-                                                if ($pos == true || $pos1 == true){
-
-                                                ?>
-
                                                 <tr>
-                                                    <td><?php echo ++$count; ?></td>
-                                                    <td style="text-align: left"><?php
-                                                        echo $pr;
-                                                        ?></td>
-                                                    <td><?php echo $direct; ?></td>
-                                                    <td><?php echo $indirect; ?></td>
-                                                    <td><?php echo $tot_inheritance; ?></td>
-                                                    <td><?php echo $ci; ?></td>
+                                                    <td><?php echo $count = $count + 1; ?></td>
+                                                    <td style="text-align: left"><?php echo $val; ?></td>
 
-
-                                                    <?php } ?>
-
-
-                                                    <?php
-                                                    $i++;
-
-                                                    $_SESSION['total_ci'] = $total_ci;
-
-
+                                                    <td>2</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                                    <?php $i++;
                                                     }
-
-                                                    }
-
-                                                    ?>
+                                                    } ?>
                                                 </tr>
 
+                                                <?php $_SESSION['row_count'] = $i; ?>
 
                                                 </tbody>
-                                            </table>
+                                                <tfoot>
+                                                <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
 
+                                                    <th colspan="2">Total</th>
+                                                    <th>38</th>
+                                                    <th>1</th>
+                                                    <th>2</th>
+                                                    <th>0</th>
+                                                    <th>0</th>
+                                                    <th>9</th>
+                                                    <th style="color: white" class="kt-label-bg-color-2">50</th>
+                                                </tr>
+                                                </tfoot>
+                                            </table>
 
                                             <!--end: Datatable -->
                                         </div>
@@ -367,10 +253,10 @@ $row_count = $_SESSION['row_count'];
                                 </div>
 
                                 <!-- end:: Content -->
-
-
                             </div>
                         </div>
+
+
                     </div>
 
                     <div class="kt-portlet__foot">
@@ -381,20 +267,22 @@ $row_count = $_SESSION['row_count'];
                                 <div class="col-lg-12 ml-lg-auto">
                                     <center>
 
-                                        <a href="total_weight.php">
-                                            <button type="button" href="total_weight.php" class="btn btn-brand"><span><i
-                                                            class="flaticon-home"></i></span> Total Complexity of the
-                                                Program
-                                            </button>
-                                        </a>
+                                        <button id="kt_sweetalert_demo_83" type="button" href="index.php"
+                                                class="btn btn-dark">Back
+                                        </button>
                                     </center>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
             <!--end::Portlet-->
+
+
+            <?php } ?>
 
 
         </div>
@@ -406,6 +294,3 @@ $row_count = $_SESSION['row_count'];
     </div>
     <!-- end:: Content -->
 </div>
-
-
-<?php include 'include/footer.php'; ?>
