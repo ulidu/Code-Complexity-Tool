@@ -457,16 +457,16 @@
 
                     <?php
 
-                    $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
+                    $lastRow = "SELECT * FROM inheritance ORDER BY InheritanceID DESC LIMIT 1";
                     $run_query_last = mysqli_query($con,$lastRow);
 
                     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
-                    $SizeID_last = $lastrow['SizeID'];
-                    $Keyword_last = $lastrow['Keyword'];
-                    $Identifier_last = $lastrow['Identifier'];
-                    $Operator_last = $lastrow['Operator'];
-                    $NumericalValue_last = $lastrow['NumericalValue'];
-                    $StringLiteral_last = $lastrow['StringLiteral'];
+                    $InheritanceID_last = $lastrow['InheritanceID'];
+                    $NoInheritance_last = $lastrow['NoInheritance'];
+                    $OneUserDefined_last = $lastrow['One'];
+                    $TwoUserDefined_last = $lastrow['Two'];
+                    $ThreeUserDefined_last = $lastrow['Three'];
+                    $MoreUserDefined_last = $lastrow['MoreThree'];
 
                     ?>
                     <h5 class="kt-font-brand">Weights related to the Inheritance factor</h5>
@@ -481,34 +481,34 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Keyword</label>
+                                    <label class="col-4 col-form-label">Class with No Inheritance</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Keyword_last; ?>" style="text-align: center" id="Keyword" name="Keyword" type="number" class="form-control">
+                                        <input value="<?php echo $NoInheritance_last; ?>" style="text-align: center" id="NoInheritance" name="NoInheritance" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Identifier</label>
+                                    <label class="col-4 col-form-label">Inheriting from One User-defined Class</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Identifier_last; ?>" style="text-align: center" id="Identifier" name="Identifier" type="number" class="form-control">
+                                        <input value="<?php echo $OneUserDefined_last; ?>" style="text-align: center" id="OneUserDefined" name="OneUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Operator</label>
+                                    <label class="col-4 col-form-label">Inheriting from Two User-defined Class</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Operator_last; ?>" style="text-align: center" id="Operator" name="Operator" type="number" class="form-control">
+                                        <input value="<?php echo $TwoUserDefined_last; ?>" style="text-align: center" id="TwoUserDefined" name="TwoUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Numerical Value</label>
+                                    <label class="col-4 col-form-label">Inheriting from Three User-defined Class</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $NumericalValue_last; ?>" style="text-align: center" id="NumericalValue" name="NumericalValue" type="number" class="form-control">
+                                        <input value="<?php echo $ThreeUserDefined_last; ?>" style="text-align: center" id="ThreeUserDefined" name="ThreeUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">String Literal</label>
+                                    <label class="col-4 col-form-label">Inheriting from More than Three User-defined Class</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                        <input value="<?php echo $MoreUserDefined_last; ?>" style="text-align: center" id="MoreUserDefined" name="MoreUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
 
@@ -517,8 +517,8 @@
                             </div>
                             <div class="kt-portlet__foot">
                                 <div class="kt-form__actions">
-                                    <button type="submit" name="submitSize" id="submitSize" class="btn btn-brand">Save</button>
-                                    <button type="submit" name="resetSize" id="resetSize" class="btn btn-secondary">Reset to Defaults</button>
+                                    <button type="submit" name="submitInheritance" id="submitInheritance" class="btn btn-brand">Save</button>
+                                    <button type="submit" name="resetInheritance" id="resetInheritance" class="btn btn-secondary">Reset to Defaults</button>
                                 </div>
                             </div>
                         </form>
@@ -529,9 +529,9 @@
             <?php } ?>
                 <?php
 
-                if(isset($_POST['resetSize'])){
+                if(isset($_POST['resetInheritance'])){
 
-                    $resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
+                    $resetWeights= "DELETE FROM inheritance WHERE InheritanceID NOT IN ( SELECT * FROM ( SELECT InheritanceID FROM inheritance ORDER BY InheritanceID LIMIT 1) s)";
                     mysqli_query($con,$resetWeights);
                     echo '<meta http-equiv=Refresh content="0;url=change_weight.php?reload=1">';
 
@@ -539,16 +539,16 @@
 
                 <?php
 
-                if(isset($_POST['submitSize'])){
+                if(isset($_POST['submitInheritance'])){
 
 
-                    $Keyword=$_POST['Keyword'];
-                    $Identifier=$_POST['Identifier'];
-                    $Operator=$_POST['Operator'];
-                    $NumericalValue=$_POST['NumericalValue'];
-                    $StringLiteral=$_POST['StringLiteral'];
+                    $NoInheritance=$_POST['NoInheritance'];
+                    $OneUserDefined=$_POST['One'];
+                    $TwoUserDefined=$_POST['Two'];
+                    $ThreeUserDefined=$_POST['Three'];
+                    $MoreUserDefined=$_POST['MoreThree'];
 
-                    $query = "INSERT INTO size(Keyword,Identifier,Operator,NumericalValue,StringLiteral) VALUES('$Keyword','$Identifier','$Operator','$NumericalValue','$StringLiteral')";
+                    $query = "INSERT INTO inheritance(NoInheritance,One,Two,Three,MoreThree) VALUES('$NoInheritance','$OneUserDefined','$TwoUserDefined','$ThreeUserDefined','$MoreUserDefined')";
 
                     $create_query = mysqli_query($con, $query);
 
@@ -582,16 +582,24 @@
                 <div class="tab-pane" id="kt_portlet_base_demo_3_7_tab_content" role="tabpanel">
                     <?php
 
-                    $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
+                    $lastRow = "SELECT * FROM  coupling ORDER BY CouplingID DESC LIMIT 1";
                     $run_query_last = mysqli_query($con,$lastRow);
 
                     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
-                    $SizeID_last = $lastrow['SizeID'];
-                    $Keyword_last = $lastrow['Keyword'];
-                    $Identifier_last = $lastrow['Identifier'];
-                    $Operator_last = $lastrow['Operator'];
-                    $NumericalValue_last = $lastrow['NumericalValue'];
-                    $StringLiteral_last = $lastrow['StringLiteral'];
+                    $CouplingID_last = $lastrow['CouplingID'];
+                    $RecursiveCall_last = $lastrow['RecursiveCall'];
+                    $Reg_Reg_Same_last = $lastrow['Column2'];
+                    $Reg_Reg_Diff_last = $lastrow['Column3'];
+                    $Reg_Rec_Same_last = $lastrow['Column4'];
+                    $Reg_Rec_Diff_last = $lastrow['Column5'];
+                    $Rec_Rec_Same_last = $lastrow['Column6'];
+                    $Rec_Rec_Diff_last = $lastrow['Column7'];
+                    $Rec_Reg_Same_last = $lastrow['Column8'];
+                    $Rec_Reg_Diff_last = $lastrow['Column9'];
+                    $Reg_Global_Same_last = $lastrow['Column10'];
+                    $Reg_Global_Diff_last = $lastrow['Column11'];
+                    $Rec_Global_Same_last = $lastrow['Column12'];
+                    $Rec_Global_Diff_last = $lastrow['Column13'];
 
                     ?>
                     <h5 class="kt-font-brand">Weights related to the Coupling factor</h5>
@@ -606,7 +614,7 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Keyword</label>
+                                    <label class="col-4 col-form-label">RecursiveCall</label>
                                     <div class="col-5">
                                         <input value="<?php echo $Keyword_last; ?>" style="text-align: center" id="Keyword" name="Keyword" type="number" class="form-control">
                                     </div>
