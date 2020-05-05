@@ -29,7 +29,7 @@ var KTSweetAlert2Demo = function() {
         });
 
         $('#kt_sweetalert_demo_3_4').click(function(e) {
-            swal.fire("Upload a program First!", "First, You need to upload a program to measure complexity.", "info");
+            swal.fire("Add a new program first!", "First, You need to upload a program to measure complexity.", "info");
         });
 
         $('#kt_sweetalert_demo_3_5').click(function(e) {
