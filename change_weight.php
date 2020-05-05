@@ -669,35 +669,35 @@
                                 <div class="form-group row">
                                     <label class="col-4 col-form-label">A recursive method calling a regular method in a different file </label>
                                     <div class="col-5">
-                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                        <input value="<?php echo $Rec_Reg_Diff_last; ?>" style="text-align: center" id="Rec_Reg_Diff" name="Rec_Reg_Diff" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-4 col-form-label">A regular method referencing a global variable in the same file </label>
                                     <div class="col-5">
-                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                        <input value="<?php echo $Reg_Global_Same_last; ?>" style="text-align: center" id="Reg_Global_Same" name="Reg_Global_Same" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-4 col-form-label">A regular method referencing a global variable in a different file</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                        <input value="<?php echo $Reg_Global_Diff_last; ?>" style="text-align: center" id="Reg_Global_Diff" name="Reg_Global_Diff" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-4 col-form-label">A recursive method referencing a global variable in the same file</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                        <input value="<?php echo $Rec_Global_Same_last; ?>" style="text-align: center" id="Rec_Global_Same" name="Rec_Global_Same" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-4 col-form-label">A recursive method referencing a global variable in a different file </label>
                                     <div class="col-5">
-                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                        <input value="<?php echo $Rec_Global_Diff_last; ?>" style="text-align: center" id="Rec_Global_Diff" name="Rec_Global_Diff" type="number" class="form-control">
                                     </div>
                                 </div>
 
@@ -706,8 +706,8 @@
                             </div>
                             <div class="kt-portlet__foot">
                                 <div class="kt-form__actions">
-                                    <button type="submit" name="submitSize" id="submitSize" class="btn btn-brand">Save</button>
-                                    <button type="submit" name="resetSize" id="resetSize" class="btn btn-secondary">Reset to Defaults</button>
+                                    <button type="submit" name="submitCoupling" id="submitCoupling" class="btn btn-brand">Save</button>
+                                    <button type="submit" name="resetCoupling" id="resetCoupling" class="btn btn-secondary">Reset to Defaults</button>
                                 </div>
                             </div>
                         </form>
@@ -718,9 +718,9 @@
             <?php } ?>
                 <?php
 
-                if(isset($_POST['resetSize'])){
+                if(isset($_POST['resetCoupling'])){
 
-                    $resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
+                    $resetWeights= "DELETE FROM coupling WHERE CouplingID NOT IN ( SELECT * FROM ( SELECT CouplingID FROM coupling ORDER BY CouplingID LIMIT 1) s)";
                     mysqli_query($con,$resetWeights);
                     echo '<meta http-equiv=Refresh content="0;url=change_weight.php?reload=1">';
 
@@ -728,16 +728,27 @@
 
                 <?php
 
-                if(isset($_POST['submitSize'])){
+                if(isset($_POST['submitCoupling'])){
 
 
-                    $Keyword=$_POST['Keyword'];
-                    $Identifier=$_POST['Identifier'];
-                    $Operator=$_POST['Operator'];
-                    $NumericalValue=$_POST['NumericalValue'];
-                    $StringLiteral=$_POST['StringLiteral'];
+                    $RecursiveCall=$_POST['RecursiveCall'];
+                    $Reg_Reg_Same=$_POST['Reg_Reg_Same'];
+                    $Reg_Reg_Diff=$_POST['Reg_Reg_Diff'];
+                    $Reg_Rec_Same=$_POST['Reg_Rec_Same'];
+                    $Reg_Rec_Diff=$_POST['Reg_Rec_Diff'];
+                    $Rec_Rec_Same=$_POST['Rec_Rec_Same'];
+                    $Rec_Rec_Diff=$_POST['Rec_Rec_Dif'];
+                    $Rec_Reg_Same=$_POST['Rec_Reg_Same'];
+                    $Rec_Reg_Diff=$_POST['Rec_Reg_Diff'];
+                    $Reg_Global_Same=$_POST['Reg_Global_Same'];
+                    $Reg_Global_Diff=$_POST['Reg_Global_Diff'];
+                    $Rec_Global_Same=$_POST['Rec_Global_Same'];
+                    $Rec_Global_Diff=$_POST['Rec_Global_Diff'];
 
-                    $query = "INSERT INTO size(Keyword,Identifier,Operator,NumericalValue,StringLiteral) VALUES('$Keyword','$Identifier','$Operator','$NumericalValue','$StringLiteral')";
+
+
+
+                    $query = "INSERT INTO coupling(RecursiveCall,Column2,Column3,Column4,Column5,Column6,Column7,Column8,Column9,Column10,Column11,Column12,Column13) VALUES('$RecursiveCall','$Reg_Reg_Same','$Reg_Reg_Diff','$Reg_Rec_Same','$Reg_Rec_Diff','$Rec_Rec_Same','$Rec_Rec_Diff','$Rec_Reg_Same','$Rec_Reg_Diff','$Reg_Global_Same','$Reg_Global_Diff','$Rec_Global_Same','$Rec_Global_Diff')";
 
                     $create_query = mysqli_query($con, $query);
 
