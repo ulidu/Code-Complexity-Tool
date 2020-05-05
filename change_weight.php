@@ -481,32 +481,32 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Class with No Inheritance</label>
+                                    <label class="col-4 col-form-label">A class with no inheritance (direct or indirect)</label>
                                     <div class="col-5">
                                         <input value="<?php echo $NoInheritance_last; ?>" style="text-align: center" id="NoInheritance" name="NoInheritance" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Inheriting from One User-defined Class</label>
+                                    <label class="col-4 col-form-label">A class inheriting (directly or indirectly) from one user-defined class </label>
                                     <div class="col-5">
                                         <input value="<?php echo $OneUserDefined_last; ?>" style="text-align: center" id="OneUserDefined" name="OneUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Inheriting from Two User-defined Class</label>
+                                    <label class="col-4 col-form-label">A class inheriting (directly or indirectly) from two user-defined classes </label>
                                     <div class="col-5">
                                         <input value="<?php echo $TwoUserDefined_last; ?>" style="text-align: center" id="TwoUserDefined" name="TwoUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Inheriting from Three User-defined Class</label>
+                                    <label class="col-4 col-form-label">A class inheriting (directly or indirectly) from three user-defined classes</label>
                                     <div class="col-5">
                                         <input value="<?php echo $ThreeUserDefined_last; ?>" style="text-align: center" id="ThreeUserDefined" name="ThreeUserDefined" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Inheriting from More than Three User-defined Class</label>
+                                    <label class="col-4 col-form-label">A class inheriting (directly or indirectly) from more than three user-defined classes</label>
                                     <div class="col-5">
                                         <input value="<?php echo $MoreUserDefined_last; ?>" style="text-align: center" id="MoreUserDefined" name="MoreUserDefined" type="number" class="form-control">
                                     </div>
@@ -614,32 +614,88 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">RecursiveCall</label>
+                                    <label class="col-4 col-form-label">A recursive call </label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Keyword_last; ?>" style="text-align: center" id="Keyword" name="Keyword" type="number" class="form-control">
+                                        <input value="<?php echo $RecursiveCall_last; ?>" style="text-align: center" id="RecursiveCall" name="RecursiveCall" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Identifier</label>
+                                    <label class="col-4 col-form-label">A regular method calling another regular method in the same file</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Identifier_last; ?>" style="text-align: center" id="Identifier" name="Identifier" type="number" class="form-control">
+                                        <input value="<?php echo $Reg_Reg_Same_last; ?>" style="text-align: center" id="Reg_Reg_Same" name="Reg_Reg_Same" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Operator</label>
+                                    <label class="col-4 col-form-label">A regular method calling another regular method in a different file</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $Operator_last; ?>" style="text-align: center" id="Operator" name="Operator" type="number" class="form-control">
+                                        <input value="<?php echo $Reg_Reg_Diff_last; ?>" style="text-align: center" id="Reg_Reg_Diff" name="Reg_Reg_Diff" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Numerical Value</label>
+                                    <label class="col-4 col-form-label">A regular method calling a recursive method in the same file</label>
                                     <div class="col-5">
-                                        <input value="<?php echo $NumericalValue_last; ?>" style="text-align: center" id="NumericalValue" name="NumericalValue" type="number" class="form-control">
+                                        <input value="<?php echo $Reg_Rec_Same_last; ?>" style="text-align: center" id="Reg_Rec_Same" name="Reg_Rec_Same" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">String Literal</label>
+                                    <label class="col-4 col-form-label">A regular method calling a recursive method in a different file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $Reg_Rec_Diff_last; ?>" style="text-align: center" id="Reg_Rec_Diff" name="Reg_Rec_Diff" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method calling another recursive method in the same file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $Rec_Rec_Same_last; ?>" style="text-align: center" id="Rec_Rec_Same" name="Rec_Rec_Same" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method calling another recursive method in a different file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $Rec_Rec_Diff_last; ?>" style="text-align: center" id="Rec_Rec_Diff" name="Rec_Rec_Diff" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method calling a regular method in the same file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $Rec_Reg_Same_last; ?>" style="text-align: center" id="Rec_Reg_Same" name="Rec_Reg_Same" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method calling a regular method in a different file </label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A regular method referencing a global variable in the same file </label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A regular method referencing a global variable in a different file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method referencing a global variable in the same file</label>
+                                    <div class="col-5">
+                                        <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">A recursive method referencing a global variable in a different file </label>
                                     <div class="col-5">
                                         <input value="<?php echo $StringLiteral_last; ?>" style="text-align: center" id="StringLiteral" name="StringLiteral" type="number" class="form-control">
                                     </div>
@@ -741,26 +797,26 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Condition Control Structure</label>
+                                    <label class="col-4 col-form-label">A conditional control structure such as an ‘if’ or ‘else-if’ condition</label>
                                     <div class="col-5">
                                         <input value="<?php echo $CSif_last; ?>" style="text-align: center" id="CSif" name="CSif" type="number" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Iterative Control Structure</label>
+                                    <label class="col-4 col-form-label">An iterative control structure such as a ‘for’, ‘while’, or ‘do-while’ loop</label>
                                     <div class="col-5">
                                         <input value="<?php echo $CSiterative_last; ?>" style="text-align: center" id="CSiterative" name="CSiterative" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Switch Statement Control Structure</label>
+                                    <label class="col-4 col-form-label">The ‘switch’ statement in a ‘switch-case’ control structure</label>
                                     <div class="col-5">
                                         <input value="<?php echo $CSswitch_last; ?>" style="text-align: center" id="CSswitch" name="CSswitch" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-4 col-form-label">Case Statement Control Structure</label>
+                                    <label class="col-4 col-form-label">Each ‘case’ statement in a ‘switch-case’ control structure</label>
                                     <div class="col-5">
                                         <input value="<?php echo $CScase_last; ?>" style="text-align: center" id="CScase" name="CScase" type="number" class="form-control">
                                     </div>
