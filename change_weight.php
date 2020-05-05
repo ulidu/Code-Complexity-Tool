@@ -737,15 +737,13 @@
                     $Reg_Rec_Same=$_POST['Reg_Rec_Same'];
                     $Reg_Rec_Diff=$_POST['Reg_Rec_Diff'];
                     $Rec_Rec_Same=$_POST['Rec_Rec_Same'];
-                    $Rec_Rec_Diff=$_POST['Rec_Rec_Dif'];
+                    $Rec_Rec_Diff=$_POST['Rec_Rec_Diff'];
                     $Rec_Reg_Same=$_POST['Rec_Reg_Same'];
                     $Rec_Reg_Diff=$_POST['Rec_Reg_Diff'];
                     $Reg_Global_Same=$_POST['Reg_Global_Same'];
                     $Reg_Global_Diff=$_POST['Reg_Global_Diff'];
                     $Rec_Global_Same=$_POST['Rec_Global_Same'];
                     $Rec_Global_Diff=$_POST['Rec_Global_Diff'];
-
-
 
 
                     $query = "INSERT INTO coupling(RecursiveCall,Column2,Column3,Column4,Column5,Column6,Column7,Column8,Column9,Column10,Column11,Column12,Column13) VALUES('$RecursiveCall','$Reg_Reg_Same','$Reg_Reg_Diff','$Reg_Rec_Same','$Reg_Rec_Diff','$Rec_Rec_Same','$Rec_Rec_Diff','$Rec_Reg_Same','$Rec_Reg_Diff','$Reg_Global_Same','$Reg_Global_Diff','$Rec_Global_Same','$Rec_Global_Diff')";
