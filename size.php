@@ -217,12 +217,24 @@ $row_count = $_SESSION['row_count'];
                                                     $Nsl = 0;
                                                     $Cs = 0;
 
+                                                    $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
+                                                    $run_query_last = mysqli_query($con,$lastRow);
+
+                                                    while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                                    $SizeID_last = $lastrow['SizeID'];
+                                                    $Keyword_last = $lastrow['Keyword'];
+                                                    $Identifier_last = $lastrow['Identifier'];
+                                                    $Operator_last = $lastrow['Operator'];
+                                                    $NumericalValue_last = $lastrow['NumericalValue'];
+                                                    $StringLiteral_last = $lastrow['StringLiteral'];
+
+
                                                     //Default Weights
-                                                    $weight_keyword = 1;
-                                                    $weight_identifier = 1;
-                                                    $weight_operator = 1;
-                                                    $weight_numerical = 1;
-                                                    $weight_string = 1;
+                                                    $weight_keyword = $Keyword_last;
+                                                    $weight_identifier = $Identifier_last;
+                                                    $weight_operator = $Operator_last;
+                                                    $weight_numerical = $NumericalValue_last;
+                                                    $weight_string = $StringLiteral_last;
 
                                                     function getContentsBetween($str, $startDelimiter, $endDelimiter)
                                                     {
@@ -686,6 +698,7 @@ $row_count = $_SESSION['row_count'];
 
                                                         }
 
+                                                        }
                                                         }
                                                         ?>
                                                     </tr>

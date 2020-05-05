@@ -195,6 +195,17 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 <tbody>
                                                 <?php
 
+                                                $lastRow = "SELECT * FROM variables ORDER BY VariableID DESC LIMIT 1";
+                                                $run_query_last = mysqli_query($con,$lastRow);
+
+                                                while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                                $VariableID_last = $lastrow['VariableID'];
+                                                $GlobalVariable_last = $lastrow['GlobalVariable'];
+                                                $LocalVariable_last = $lastrow['LocalVariable'];
+                                                $PrimitiveVariable_last = $lastrow['PrimitiveVariable'];
+                                                $CompositeVariable_last = $lastrow['CompositeVariable'];
+
+
                                                 $i = 0; //increment to each loop
                                                 $count = 0;
                                                 $total_Cv = 0;
@@ -206,10 +217,10 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                 $beforeCv = 0;
 
                                                 //Default Weights
-                                                $weight_primitive_datatype_variable = 1;
-                                                $weight_composite_datatype_variable = 2;
-                                                $weight_global_variable = 2;
-                                                $weight_local_variable = 1;
+                                                $weight_primitive_datatype_variable = $GlobalVariable_last;
+                                                $weight_composite_datatype_variable = $LocalVariable_last;
+                                                $weight_global_variable = $PrimitiveVariable_last;
+                                                $weight_local_variable = $CompositeVariable_last;
 
                                                 function getContentsBetween($str, $startDelimiter, $endDelimiter)
                                                 {
@@ -444,6 +455,8 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                     $i++;
 
                                                     $_SESSION['total_Cv'] = $total_Cv;
+
+                                                    }
 
                                                     }
 
