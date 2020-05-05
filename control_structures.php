@@ -305,7 +305,41 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
                                                         $while_count = preg_match_all('/while |while+\((.*?)\)+(.*?){/', $val, $counter);
                                                         $while_weight = $while_count * $weight_for_while_dowhile;
 
+
+                                                        $insideWhileBrackets = preg_match_all('/while |while+\((.*?)\)+(.*?){/', $val, $counter);
+                                                        $contentInsideWhileBrackets = $counter;
+                                                        if (!$contentInsideWhileBrackets == "") {
+                                                            foreach ($contentInsideWhileBrackets as $contentInside) {
+                                                                if (!$contentInside == "") {
+                                                                    foreach ($contentInside as $content) {
+
+                                                                        //echo $content;
+                                                                        //echo "<br>";
+
+                                                                        $countInsideWhileBrackets = preg_match_all('/&&|\|\|/', $content, $counter);
+
+
+                                                                        if ($countInsideWhileBrackets > 0) {
+
+                                                                            $numberOfWhileParams = $countInsideWhileBrackets + 1;
+
+                                                                        } else {
+
+                                                                            $numberOfWhileParams = 1;
+
+                                                                        }
+
+
+
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+
                                                     }
+
 
                                                     if (preg_match('/while |while+\((.*?)\)+(.*?);/', $val) !== false) {
 
@@ -334,7 +368,7 @@ $entireCodeBeforeSemicolon = $_SESSION['entireCode'];
 
                                                 $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight + $do_while_weight;
 
-                                                $NC = $numberOfParams + $for_count + $while_count + $switch_count + $case_count + $do_while_count;
+                                                $NC = $numberOfParams + $for_count + $numberOfWhileParams + $switch_count + $case_count + $do_while_count;
 
 
 
