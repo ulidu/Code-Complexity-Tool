@@ -368,7 +368,7 @@ if ($handle = opendir('uploads')) {
 
                                                                         $ifValue = 0;
 
-                                                                        $entireCode = str_replace(';', ';', $entireCodeBeforeSemicolon);
+                                                                        $entireCode = str_replace(';', ';', $trim);
 
 
                                                                         $splitAfterSemicolon = str_replace(';', ';', $split);
