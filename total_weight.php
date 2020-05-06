@@ -11,6 +11,30 @@ if (!isset($_GET['reload'])) {
 
 
 <?php
+function getContentsBetween($str, $startDelimiter, $endDelimiter)
+{
+    $contents = array();
+    $startDelimiterLength = strlen($startDelimiter);
+    $endDelimiterLength = strlen($endDelimiter);
+    $startFrom = $contentStart = $contentEnd = 0;
+    while (false !== ($contentStart = strpos($str, $startDelimiter, $startFrom))) {
+        $contentStart += $startDelimiterLength;
+        $contentEnd = strpos($str, $endDelimiter, $contentStart);
+        if (false === $contentEnd) {
+            break;
+        }
+        $contents[] = substr($str, $contentStart, $contentEnd - $contentStart);
+        $startFrom = $contentEnd + $endDelimiterLength;
+    }
+
+    return $contents;
+
+}
+
+?>
+
+
+<?php
 
 $ds = DIRECTORY_SEPARATOR;  // Store directory separator (DIRECTORY_SEPARATOR) to a simple variable. This is just a personal preference as we hate to type long variable name.
 $storeFolder = 'uploads';   // Declare a variable for destination folder.
@@ -86,10 +110,17 @@ if ($handle = opendir('uploads')) {
 
 
 
+
+
+
+
+
                 <?php include 'include/total_weight_content.php'; ?>
 
 
 <?php
+
+
 
             }
 
