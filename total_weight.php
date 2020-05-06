@@ -55,6 +55,8 @@ if ($handle = opendir('uploads')) {
             $entry_arr_af = preg_split("/\.java/", $entry);
             $entry_arr = array_filter($entry_arr_af);
 
+
+
             foreach ($entry_arr as $files) {
 
                 $content = file_get_contents('uploads/' . $entry);
@@ -79,7 +81,9 @@ if ($handle = opendir('uploads')) {
                 $_SESSION['filename'] = $entry;
 
 
+
 ?>
+
 
 
                 <?php include 'include/total_weight_content.php'; ?>

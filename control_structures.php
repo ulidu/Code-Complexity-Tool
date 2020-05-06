@@ -378,9 +378,7 @@ if ($handle = opendir('uploads')) {
                                                                         //For Printing of the code lines for the table
                                                                         if (!$splitAfterSemicolon == ""){
 
-                                                                        foreach ($splitAfterSemicolon
-
-                                                                        as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+                                                                        foreach ($splitAfterSemicolon as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
 
                                                                         $val = str_replace(';', ';', $valAfterSemicolonReplace);
 
@@ -389,17 +387,6 @@ if ($handle = opendir('uploads')) {
 
                                                                         foreach ($conditional_words as $word) {
 
-                                                                            if (preg_match_all('/"Kindly/', $val, $counter)) {
-
-                                                                                $ifValue = $Ccs;
-
-                                                                            }
-
-                                                                            if (preg_match_all('/numDays = 29;/', $val, $counter)) {
-
-                                                                                $ifValue2 = $Ccs;
-
-                                                                            }
 
 
 
@@ -568,6 +555,19 @@ if ($handle = opendir('uploads')) {
                                                                         $Ccs = ($Wtcs * $NC) + $Ccspps;
 
                                                                         $total_ccs += $Ccs;
+
+
+                                                                        if (preg_match_all('/if |/', $val, $counter)) {
+
+                                                                            $ifValue = $Ccs;
+
+                                                                        }
+
+                                                                        if (preg_match_all('/numDays = 29;/', $val, $counter)) {
+
+                                                                            $ifValue2 = $Ccs;
+
+                                                                        }
 
                                                                         ?>
 

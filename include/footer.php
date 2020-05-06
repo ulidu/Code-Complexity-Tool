@@ -111,6 +111,11 @@
         }
         </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        $('.removeduplicateelement:eq(1)').remove();
+    }, false);
+</script>
 
 </body>
 
