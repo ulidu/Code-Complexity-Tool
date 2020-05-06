@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 05, 2020 at 10:51 AM
+-- Generation Time: May 06, 2020 at 05:48 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.0
 
@@ -21,6 +21,86 @@ SET time_zone = "+00:00";
 --
 -- Database: `weightcomplexity`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ccp`
+--
+
+DROP TABLE IF EXISTS `ccp`;
+CREATE TABLE IF NOT EXISTS `ccp` (
+  `CcpID` int(200) NOT NULL AUTO_INCREMENT,
+  `CcpValue` double NOT NULL,
+  PRIMARY KEY (`CcpID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ccp`
+--
+
+INSERT INTO `ccp` (`CcpID`, `CcpValue`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ccs`
+--
+
+DROP TABLE IF EXISTS `ccs`;
+CREATE TABLE IF NOT EXISTS `ccs` (
+  `CcsID` int(200) NOT NULL AUTO_INCREMENT,
+  `CcsValue` double NOT NULL,
+  PRIMARY KEY (`CcsID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ccs`
+--
+
+INSERT INTO `ccs` (`CcsID`, `CcsValue`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci`
+--
+
+DROP TABLE IF EXISTS `ci`;
+CREATE TABLE IF NOT EXISTS `ci` (
+  `CiID` int(200) NOT NULL AUTO_INCREMENT,
+  `CiValue` double NOT NULL,
+  PRIMARY KEY (`CiID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ci`
+--
+
+INSERT INTO `ci` (`CiID`, `CiValue`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cm`
+--
+
+DROP TABLE IF EXISTS `cm`;
+CREATE TABLE IF NOT EXISTS `cm` (
+  `CmID` int(200) NOT NULL AUTO_INCREMENT,
+  `CmValue` double NOT NULL,
+  PRIMARY KEY (`CmID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cm`
+--
+
+INSERT INTO `cm` (`CmID`, `CmValue`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -76,6 +156,46 @@ CREATE TABLE IF NOT EXISTS `coupling` (
 
 INSERT INTO `coupling` (`CouplingID`, `RecursiveCall`, `Column2`, `Column3`, `Column4`, `Column5`, `Column6`, `Column7`, `Column8`, `Column9`, `Column10`, `Column11`, `Column12`, `Column13`) VALUES
 (1, 2, 2, 3, 3, 4, 4, 5, 3, 4, 1, 2, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cs`
+--
+
+DROP TABLE IF EXISTS `cs`;
+CREATE TABLE IF NOT EXISTS `cs` (
+  `CsID` int(200) NOT NULL AUTO_INCREMENT,
+  `CsValue` double NOT NULL,
+  PRIMARY KEY (`CsID`)
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cs`
+--
+
+INSERT INTO `cs` (`CsID`, `CsValue`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cv`
+--
+
+DROP TABLE IF EXISTS `cv`;
+CREATE TABLE IF NOT EXISTS `cv` (
+  `CvID` int(200) NOT NULL AUTO_INCREMENT,
+  `CvValue` double NOT NULL,
+  PRIMARY KEY (`CvID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cv`
+--
+
+INSERT INTO `cv` (`CvID`, `CvValue`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -140,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `size` (
   `NumericalValue` int(200) NOT NULL,
   `StringLiteral` int(200) NOT NULL,
   PRIMARY KEY (`SizeID`)
-) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `size`
@@ -163,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `variables` (
   `PrimitiveVariable` int(200) NOT NULL,
   `CompositeVariable` int(200) NOT NULL,
   PRIMARY KEY (`VariableID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `variables`
