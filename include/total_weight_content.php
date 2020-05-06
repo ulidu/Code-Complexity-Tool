@@ -250,6 +250,8 @@
                                                 $Nsl = 0;
                                                 $Cs = 0;
 
+                                                $TCps = 0;
+
                                                 $lastRow = "SELECT * FROM size ORDER BY SizeID DESC LIMIT 1";
                                                 $run_query_last = mysqli_query($con, $lastRow);
 
@@ -692,6 +694,7 @@
 
                                                 $total_cs += $Cs;
 
+                                                $TCps = $Cs;
 
                                                 ?>
                                                 <tr>
@@ -703,16 +706,30 @@
                                                     <td>0</td>
                                                     <td>0</td>
                                                     <td>0</td>
-                                                    <td style="color: white" class="kt-label-bg-color-1">2</td>
+                                                    <td style="color: #2A3746;font-weight: bold;" class="kt-label-bg-color-1"><?php echo $TCps; ?></td>
                                                     <?php $i++;
                                                     }
-                                                    } ?>
+                                                    }
+                                                    $_SESSION['row_count'] = $i;
+                                                ?>
                                                 </tr>
 
-                                                <?php $_SESSION['row_count'] = $i; ?>
+
 
                                                 </tbody>
+                                                <tfoot>
+                                                <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
 
+                                                    <th colspan="2">Total</th>
+                                                    <th><?php echo $total_cs; ?></th>
+                                                    <th>1</th>
+                                                    <th>2</th>
+                                                    <th>0</th>
+                                                    <th>0</th>
+                                                    <th>9</th>
+                                                    <th style="color: white" class="kt-label-bg-color-2">50</th>
+                                                </tr>
+                                                </tfoot>
                                             </table>
 
                                             <!--end: Datatable -->
