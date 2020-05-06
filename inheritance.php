@@ -204,6 +204,18 @@ $row_count = $_SESSION['row_count'];
 
                                                 <?php
 
+                                                $lastRow = "SELECT * FROM inheritance ORDER BY InheritanceID DESC LIMIT 1";
+                                                $run_query_last = mysqli_query($con,$lastRow);
+
+                                                while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                                $InheritanceID_last = $lastrow['InheritanceID'];
+                                                $NoInheritance_last = $lastrow['NoInheritance'];
+                                                $OneUserDefined_last = $lastrow['One'];
+                                                $TwoUserDefined_last = $lastrow['Two'];
+                                                $ThreeUserDefined_last = $lastrow['Three'];
+                                                $MoreUserDefined_last = $lastrow['MoreThree'];
+
+
                                                 $i = 0;  //increment to each loop
                                                 $line_count = 0;
                                                 $count = 0;
@@ -211,10 +223,10 @@ $row_count = $_SESSION['row_count'];
                                                 $total_ci = 0;
 
                                                 //Default weights
-                                                $weight_one_ud_class = 1;
-                                                $weight_two_ud_class = 2;
-                                                $weight_three_ud_class = 3;
-                                                $weight_more_ud_class = 4;
+                                                $weight_one_ud_class = $OneUserDefined_last;
+                                                $weight_two_ud_class = $TwoUserDefined_last;
+                                                $weight_three_ud_class = $ThreeUserDefined_last;
+                                                $weight_more_ud_class = $MoreUserDefined_last;
 
                                                 //word, class_name, extend_name, inherit_name
 
@@ -353,6 +365,7 @@ $row_count = $_SESSION['row_count'];
 
                                                     }
 
+                                                    }
                                                     ?>
                                                 </tr>
 

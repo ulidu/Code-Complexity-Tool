@@ -188,6 +188,25 @@ if (!isset($_GET['reload'])) {
 
                                     <?php
 
+                                    $lastRow = "SELECT * FROM  coupling ORDER BY CouplingID DESC LIMIT 1";
+                                    $run_query_last = mysqli_query($con,$lastRow);
+
+                                    while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                    $CouplingID_last = $lastrow['CouplingID'];
+                                    $RecursiveCall_last = $lastrow['RecursiveCall'];
+                                    $Reg_Reg_Same_last = $lastrow['Column2'];
+                                    $Reg_Reg_Diff_last = $lastrow['Column3'];
+                                    $Reg_Rec_Same_last = $lastrow['Column4'];
+                                    $Reg_Rec_Diff_last = $lastrow['Column5'];
+                                    $Rec_Rec_Same_last = $lastrow['Column6'];
+                                    $Rec_Rec_Diff_last = $lastrow['Column7'];
+                                    $Rec_Reg_Same_last = $lastrow['Column8'];
+                                    $Rec_Reg_Diff_last = $lastrow['Column9'];
+                                    $Reg_Global_Same_last = $lastrow['Column10'];
+                                    $Reg_Global_Diff_last = $lastrow['Column11'];
+                                    $Rec_Global_Same_last = $lastrow['Column12'];
+                                    $Rec_Global_Diff_last = $lastrow['Column13'];
+
                                     $lines = array();
                                     $regularMethods = array();
                                     $recursiveMethods = array();
@@ -330,6 +349,7 @@ if (!isset($_GET['reload'])) {
 
                                     $ccp = $nr*2 + $nmcms*2 + $nmcrms*3 + $nrmcrms*4 + $nrmcms*3 + $nmrgvs*1 + $nrmrgvs*2;
                                     $_SESSION['total_ccp'] = $ccp;
+                                    }
                                     ?>
 
                                 </table>
