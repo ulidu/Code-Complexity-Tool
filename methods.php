@@ -188,17 +188,27 @@ if (!isset($_GET['reload'])) {
 
                                     <?php
 
+                                    $lastRow = "SELECT * FROM methods ORDER BY 	MethodID DESC LIMIT 1";
+                                    $run_query_last = mysqli_query($con,$lastRow);
+
+                                    while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                    $MethodID_last = $lastrow['MethodID'];
+                                    $PrimitiveReturnType_last = $lastrow['PrimitiveReturnType'];
+                                    $CompositeReturnType_last = $lastrow['CompositeReturnType'];
+                                    $VoidReturnType_last = $lastrow['VoidReturnType'];
+                                    $PrimitiveParameter_last = $lastrow['PrimitiveParameter'];
+                                    $CompositeParameter_last = $lastrow['CompositeParameter'];
+
                                     $i = 0; //increment to each loop
                                     $count = 0;
                                     $total_Cm = 0;
 
-
                                     //Default Weights
-                                    $weight_primitive_retuntype = 1;
-                                    $weight_composite_returntype = 2;
-                                    $weight_void_returntype = 0;
-                                    $weight_primitive_datatype_parameter = 1;
-                                    $weight_composite_datatype_parameter = 2;
+                                    $weight_primitive_retuntype = $PrimitiveReturnType_last;
+                                    $weight_composite_returntype = $CompositeReturnType_last;
+                                    $weight_void_returntype = $VoidReturnType_last;
+                                    $weight_primitive_datatype_parameter = $PrimitiveParameter_last;
+                                    $weight_composite_datatype_parameter = $CompositeParameter_last;
 
                                     if (!$split==""){
                                     foreach($split AS $val) { // Traverse the array with FOREACH
@@ -337,6 +347,8 @@ if (!isset($_GET['reload'])) {
                                         $i++;
 
                                         $_SESSION['total_Cm'] = $total_Cm;
+
+                                        }
 
                                         }
 

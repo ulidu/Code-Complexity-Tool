@@ -543,10 +543,10 @@
 
 
                     $NoInheritance=$_POST['NoInheritance'];
-                    $OneUserDefined=$_POST['One'];
-                    $TwoUserDefined=$_POST['Two'];
-                    $ThreeUserDefined=$_POST['Three'];
-                    $MoreUserDefined=$_POST['MoreThree'];
+                    $OneUserDefined=$_POST['OneUserDefined'];
+                    $TwoUserDefined=$_POST['TwoUserDefined'];
+                    $ThreeUserDefined=$_POST['ThreeUserDefined'];
+                    $MoreUserDefined=$_POST['MoreUserDefined'];
 
                     $query = "INSERT INTO inheritance(NoInheritance,One,Two,Three,MoreThree) VALUES('$NoInheritance','$OneUserDefined','$TwoUserDefined','$ThreeUserDefined','$MoreUserDefined')";
 
@@ -737,15 +737,13 @@
                     $Reg_Rec_Same=$_POST['Reg_Rec_Same'];
                     $Reg_Rec_Diff=$_POST['Reg_Rec_Diff'];
                     $Rec_Rec_Same=$_POST['Rec_Rec_Same'];
-                    $Rec_Rec_Diff=$_POST['Rec_Rec_Dif'];
+                    $Rec_Rec_Diff=$_POST['Rec_Rec_Diff'];
                     $Rec_Reg_Same=$_POST['Rec_Reg_Same'];
                     $Rec_Reg_Diff=$_POST['Rec_Reg_Diff'];
                     $Reg_Global_Same=$_POST['Reg_Global_Same'];
                     $Reg_Global_Diff=$_POST['Reg_Global_Diff'];
                     $Rec_Global_Same=$_POST['Rec_Global_Same'];
                     $Rec_Global_Diff=$_POST['Rec_Global_Diff'];
-
-
 
 
                     $query = "INSERT INTO coupling(RecursiveCall,Column2,Column3,Column4,Column5,Column6,Column7,Column8,Column9,Column10,Column11,Column12,Column13) VALUES('$RecursiveCall','$Reg_Reg_Same','$Reg_Reg_Diff','$Reg_Rec_Same','$Reg_Rec_Diff','$Rec_Rec_Same','$Rec_Rec_Diff','$Rec_Reg_Same','$Rec_Reg_Diff','$Reg_Global_Same','$Reg_Global_Diff','$Rec_Global_Same','$Rec_Global_Diff')";
@@ -793,7 +791,6 @@
                     $CSiterative_last = $lastrow['CSfor'];
                     $CSswitch_last = $lastrow['CSswitch'];
                     $CScase_last = $lastrow['CScase'];
-
 
                     ?>
                     <h5 class="kt-font-brand">Weights related to the Control Structures factor</h5>
@@ -864,8 +861,8 @@
                 if(isset($_POST['submitCs'])){
 
 
-                    $CSif=$_POST['$CSif'];
-                    $CSiterative=$_POST['CSfor'];
+                    $CSif=$_POST['CSif'];
+                    $CSiterative=$_POST['CSiterative'];
                     $CSswitch=$_POST['CSswitch'];
                     $CScase=$_POST['CScase'];
 
