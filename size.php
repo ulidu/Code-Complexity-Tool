@@ -133,10 +133,22 @@ $_SESSION['filename'] = $entry;
     <!-- end:: Content Head -->
     <?php
 
+
+
     $entry_arr_af = preg_split("/\.java/", $entry);
     $entry_arr = array_filter($entry_arr_af);
 
     foreach ($entry_arr as $files_arr) {
+
+        $fi = new FilesystemIterator($storeFolder, FilesystemIterator::SKIP_DOTS);
+        $limit = (iterator_count($fi));
+
+        $lastRow = "SELECT * FROM ( SELECT * FROM cs ORDER BY CsID DESC LIMIT $limit) result ORDER BY CsID ASC";
+        $run_query_last = mysqli_query($con,$lastRow);
+
+        while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+            $CsID_last = $lastrow['CsID'];
+            $CsValue_last = $lastrow['CsValue'];
 
         ?>
     <!-- begin:: Content -->
@@ -189,7 +201,7 @@ $_SESSION['filename'] = $entry;
                                                 <div class="kt-iconbox__desc kt-font-brand">
 
                                                     <center><h1 style="font-family: 'Fira Code'">Cs
-                                                            : <?php echo $total_cs = $_SESSION['total_cs']; ?>
+                                                            : <?php echo $CsValue_last ?>
 
 
                                                         </h1></center>
@@ -783,6 +795,10 @@ $_SESSION['filename'] = $entry;
                                                             }
                                                             }
                                                             $_SESSION['total_cs'] = $total_cs;
+
+                                                            $query_disp_total = "INSERT INTO cs(CsValue) VALUES('$total_cs')";
+                                                            mysqli_query($con, $query_disp_total);
+
                                                             ?>
                                                         </tr>
 
@@ -844,13 +860,15 @@ $_SESSION['filename'] = $entry;
 
     }
 
-
+    }
     }
 
     }
     }
     closedir($handle);
     }
+
+
 
     ?>
 

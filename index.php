@@ -32,6 +32,9 @@ if (!isset($_COOKIE[$cookie_name])) {
 
 }
 
+$resetCs= "DELETE FROM cs WHERE CsID NOT IN ( SELECT * FROM ( SELECT CsID FROM cs ORDER BY CsID LIMIT 1) s)";
+mysqli_query($con,$resetCs);
+
 ?>
 
 
