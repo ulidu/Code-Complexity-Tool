@@ -102,7 +102,6 @@ if ($handle = opendir('uploads')) {
                 $_SESSION['entireCode'] = $trim;
                 $_SESSION['filename'] = $entry;
 
-
                 ?>
 
 
@@ -117,7 +116,8 @@ if ($handle = opendir('uploads')) {
 
 
                             <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
-                                <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
+                                <input type="text" class="form-control" placeholder="Search order..."
+                                       id="generalSearch">
                                 <span class="kt-input-icon__icon kt-input-icon__icon--right">
 											<span><i class="flaticon2-search-1"></i></span>
 										</span>
@@ -134,7 +134,6 @@ if ($handle = opendir('uploads')) {
                 <?php
 
 
-
                 $entry_arr_af = preg_split("/\.java/", $entry);
                 $entry_arr = array_filter($entry_arr_af);
 
@@ -144,7 +143,7 @@ if ($handle = opendir('uploads')) {
                     $limit = (iterator_count($fi));
 
                     $lastRow = "SELECT * FROM ( SELECT * FROM ccs ORDER BY CcsID DESC LIMIT $limit) result ORDER BY CcsID ASC";
-                    $run_query_last = mysqli_query($con,$lastRow);
+                    $run_query_last = mysqli_query($con, $lastRow);
 
                     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
                         $CcsID_last = $lastrow['CcsID'];
@@ -162,7 +161,8 @@ if ($handle = opendir('uploads')) {
 
 
                                     <!--begin::Portlet-->
-                                    <div style="background-color: #F4F7FF;" class="kt-portlet kt-portlet--skin-solid kt-portlet--">
+                                    <div style="background-color: #F4F7FF;"
+                                         class="kt-portlet kt-portlet--skin-solid kt-portlet--">
                                         <div class="kt-portlet__head">
                                             <div class="kt-portlet__head-label">
 												<span class="kt-portlet__head-icon kt-font-brand">
@@ -185,10 +185,12 @@ if ($handle = opendir('uploads')) {
                                                             <div class="kt-iconbox__body">
                                                                 <div class="kt-iconbox__icon">
                                                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                         width="24px"
                                                                          height="24px" viewBox="0 0 24 24" version="1.1"
                                                                          class="kt-svg-icon">
-                                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                                           fill-rule="evenodd">
                                                                             <rect x="0" y="0" width="24" height="24"/>
                                                                             <path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z"
                                                                                   fill="#000000" opacity="0.3"/>
@@ -218,8 +220,6 @@ if ($handle = opendir('uploads')) {
                                             </div>
 
 
-
-
                                             <div class="kt-portlet__foot">
                                                 <div class="kt-form__actions">
                                                     <div class="row">
@@ -235,7 +235,8 @@ if ($handle = opendir('uploads')) {
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                                                                         <h3 class="kt-portlet__head-title kt-font-brand">
-                                                                            Complexity of the Program due to the Control Structures by Statement
+                                                                            Complexity of the Program due to the Control
+                                                                            Structures by Statement
                                                                             : </h3>&nbsp;
                                                                         <h3 class="kt-portlet__head-title kt-font-dark"><?php echo $entry; ?>
                                                                         </h3>
@@ -246,9 +247,11 @@ if ($handle = opendir('uploads')) {
                                                                                 <div class="dropdown dropdown-inline">
                                                                                     <button type="button"
                                                                                             class="btn btn-default btn-icon-sm dropdown-toggle"
-                                                                                            data-toggle="dropdown" aria-haspopup="true"
+                                                                                            data-toggle="dropdown"
+                                                                                            aria-haspopup="true"
                                                                                             aria-expanded="false">
-                                                                                        <i class="la la-download"></i> Export
+                                                                                        <i class="la la-download"></i>
+                                                                                        Export
                                                                                     </button>
                                                                                     <div class="dropdown-menu dropdown-menu-right">
                                                                                         <ul class="kt-nav">
@@ -256,31 +259,36 @@ if ($handle = opendir('uploads')) {
                                                                                                 <span class="kt-nav__section-text">Choose an option</span>
                                                                                             </li>
                                                                                             <li class="kt-nav__item">
-                                                                                                <a href="#" class="kt-nav__link">
+                                                                                                <a href="#"
+                                                                                                   class="kt-nav__link">
                                                                                                     <i class="kt-nav__link-icon la la-print"></i>
                                                                                                     <span class="kt-nav__link-text">Print</span>
                                                                                                 </a>
                                                                                             </li>
                                                                                             <li class="kt-nav__item">
-                                                                                                <a href="#" class="kt-nav__link">
+                                                                                                <a href="#"
+                                                                                                   class="kt-nav__link">
                                                                                                     <i class="kt-nav__link-icon la la-copy"></i>
                                                                                                     <span class="kt-nav__link-text">Copy</span>
                                                                                                 </a>
                                                                                             </li>
                                                                                             <li class="kt-nav__item">
-                                                                                                <a href="#" class="kt-nav__link">
+                                                                                                <a href="#"
+                                                                                                   class="kt-nav__link">
                                                                                                     <i class="kt-nav__link-icon la la-file-excel-o"></i>
                                                                                                     <span class="kt-nav__link-text">Excel</span>
                                                                                                 </a>
                                                                                             </li>
                                                                                             <li class="kt-nav__item">
-                                                                                                <a href="#" class="kt-nav__link">
+                                                                                                <a href="#"
+                                                                                                   class="kt-nav__link">
                                                                                                     <i class="kt-nav__link-icon la la-file-text-o"></i>
                                                                                                     <span class="kt-nav__link-text">CSV</span>
                                                                                                 </a>
                                                                                             </li>
                                                                                             <li class="kt-nav__item">
-                                                                                                <a href="#" class="kt-nav__link">
+                                                                                                <a href="#"
+                                                                                                   class="kt-nav__link">
                                                                                                     <i class="kt-nav__link-icon la la-file-pdf-o"></i>
                                                                                                     <span class="kt-nav__link-text">PDF</span>
                                                                                                 </a>
@@ -300,13 +308,16 @@ if ($handle = opendir('uploads')) {
                                                                            class="table table-striped- table-bordered table-hover"
                                                                            id="kt_table_1">
                                                                         <thead>
-                                                                        <tr class="kt-label-bg-color-1" style="font-family: 'Fira Code Medium'">
+                                                                        <tr class="kt-label-bg-color-1"
+                                                                            style="font-family: 'Fira Code Medium'">
                                                                             <th>Line No</th>
                                                                             <th>Program Statements</th>
                                                                             <th>Wtcs</th>
                                                                             <th>NC</th>
                                                                             <th>Ccspps</th>
-                                                                            <th style="color: white" class="kt-label-bg-color-2">Ccs</th>
+                                                                            <th style="color: white"
+                                                                                class="kt-label-bg-color-2">Ccs
+                                                                            </th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -315,7 +326,7 @@ if ($handle = opendir('uploads')) {
 
 
                                                                         $lastRow = "SELECT * FROM controlstructures ORDER BY ControlStructureID DESC LIMIT 1";
-                                                                        $run_query_last = mysqli_query($con,$lastRow);
+                                                                        $run_query_last = mysqli_query($con, $lastRow);
 
                                                                         while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
                                                                         $ControlStructureID_last = $lastrow['ControlStructureID'];
@@ -324,6 +335,19 @@ if ($handle = opendir('uploads')) {
                                                                         $CSswitch_last = $lastrow['CSswitch'];
                                                                         $CScase_last = $lastrow['CScase'];
 
+
+
+
+                                                                        foreach ($split as $codeLine) {
+
+                                                                            if (preg_match_all('/if /', $codeLine, $counter)) {
+
+
+
+                                                                            }
+
+
+                                                                        }
 
                                                                         $i = 0; //increment to each loop
                                                                         $count = 0;
@@ -352,29 +376,31 @@ if ($handle = opendir('uploads')) {
                                                                         //For Printing of the code lines for the table
                                                                         if (!$splitAfterSemicolon == ""){
 
-                                                                        foreach ($splitAfterSemicolon as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+                                                                        foreach ($splitAfterSemicolon
+
+                                                                        as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
 
                                                                         $val = str_replace(';', ';', $valAfterSemicolonReplace);
-
-                                                                        //Matching variables outside methods (Global Variables)
-                                                                        if (preg_match_all('/"Kindly/', $val, $counter)){
-
-                                                                            $ifValue = $Ccs;
-
-                                                                        }
-
-                                                                        if (preg_match_all('/numDays = 29;/', $val, $counter)){
-
-                                                                            $ifValue2 = $Ccs;
-
-                                                                        }
-
-
 
 
                                                                         $conditional_words = array('if', 'for', 'while', 'switch', 'case');
 
                                                                         foreach ($conditional_words as $word) {
+
+                                                                            if (preg_match_all('/"Kindly/', $val, $counter)) {
+
+                                                                                $ifValue = $Ccs;
+
+                                                                            }
+
+                                                                            if (preg_match_all('/numDays = 29;/', $val, $counter)) {
+
+                                                                                $ifValue2 = $Ccs;
+
+                                                                            }
+
+
+
 
                                                                             $numberOfParams = 0;
 
@@ -408,8 +434,6 @@ if ($handle = opendir('uploads')) {
                                                                                                 }
 
 
-
-
                                                                                             }
                                                                                         }
                                                                                     }
@@ -417,8 +441,6 @@ if ($handle = opendir('uploads')) {
 
 
                                                                             }
-
-
 
 
                                                                             if (preg_match('/for |for+\((.*?)\)+(.*?){/', $val) !== false) {
@@ -458,8 +480,6 @@ if ($handle = opendir('uploads')) {
                                                                                                 }
 
 
-
-
                                                                                             }
                                                                                         }
                                                                                     }
@@ -467,6 +487,7 @@ if ($handle = opendir('uploads')) {
 
 
                                                                             }
+
 
 
                                                                             if (preg_match('/while |while+\((.*?)\)+(.*?);/', $val) !== false) {
@@ -489,7 +510,6 @@ if ($handle = opendir('uploads')) {
                                                                                 $case_weight = $case_count * $weight_case;
 
                                                                             }
-
 
 
                                                                         }
@@ -517,8 +537,6 @@ if ($handle = opendir('uploads')) {
                                                                             }
 
 
-
-
                                                                             if ($Wtcs > 0 && preg_match_all('/switch \(|if \(\(\(/', $val, $counter)) {
                                                                                 $Ccspps = $ifValue;
                                                                             }
@@ -528,7 +546,7 @@ if ($handle = opendir('uploads')) {
                                                                                 $Ccspps = $ifValue2;
                                                                             }
 
-                                                                            if (preg_match_all('/if \(year < 1/', $val, $counter)){
+                                                                            if (preg_match_all('/if \(year < 1/', $val, $counter)) {
 
                                                                                 $Ccspps = $switchValue;
 
@@ -537,7 +555,7 @@ if ($handle = opendir('uploads')) {
 
                                                                         }
 
-                                                                        if ($Wtcs == 0){
+                                                                        if ($Wtcs == 0) {
 
                                                                             $NC = null;
                                                                             $Wtcs = null;
@@ -564,7 +582,6 @@ if ($handle = opendir('uploads')) {
                                                                             $i++;
 
 
-
                                                                             }
 
                                                                             }
@@ -588,7 +605,6 @@ if ($handle = opendir('uploads')) {
                                                         </div>
 
 
-
                                                         <!-- end:: Content -->
                                                     </div>
                                                 </div>
@@ -605,8 +621,10 @@ if ($handle = opendir('uploads')) {
                                                             <center>
 
                                                                 <a href="total_weight.php">
-                                                                    <button type="button" href="total_weight.php" class="btn btn-brand">
-                                                                        <span><i class="flaticon-home"></i></span> Total Complexity of the
+                                                                    <button type="button" href="total_weight.php"
+                                                                            class="btn btn-brand">
+                                                                        <span><i class="flaticon-home"></i></span> Total
+                                                                        Complexity of the
                                                                         Program
                                                                     </button>
                                                                 </a>
@@ -632,8 +650,8 @@ if ($handle = opendir('uploads')) {
                         <!-- end:: Content -->
                         </div>
                         <?php
+                                                                        }
 
-                    }
 
                 }
             }
@@ -642,7 +660,6 @@ if ($handle = opendir('uploads')) {
     }
     closedir($handle);
 }
-
 
 
 ?>
