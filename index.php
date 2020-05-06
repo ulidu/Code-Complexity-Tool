@@ -27,13 +27,35 @@ foreach($files as $file){
 
 if (!isset($_COOKIE[$cookie_name])) {
 
-    $resetWeights= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
-    mysqli_query($con,$resetWeights);
+    $resetWeights_size= "DELETE FROM size WHERE SizeID NOT IN ( SELECT * FROM ( SELECT SizeID FROM size ORDER BY SizeID LIMIT 1) s)";
+    $resetWeights_variables= "DELETE FROM variables WHERE VariableID NOT IN ( SELECT * FROM ( SELECT VariableID FROM variables ORDER BY VariableID LIMIT 1) s)";
+    $resetWeights_methods= "DELETE FROM methods WHERE MethodID NOT IN ( SELECT * FROM ( SELECT MethodID FROM methods ORDER BY MethodID LIMIT 1) s)";
+    $resetWeights_inheritance= "DELETE FROM inheritance WHERE InheritanceID NOT IN ( SELECT * FROM ( SELECT InheritanceID FROM inheritance ORDER BY InheritanceID LIMIT 1) s)";
+    $resetWeights_coupling= "DELETE FROM coupling WHERE CouplingID NOT IN ( SELECT * FROM ( SELECT CouplingID FROM coupling ORDER BY CouplingID LIMIT 1) s)";
+    $resetWeights_controlStructures= "DELETE FROM controlstructures WHERE ControlStructureID NOT IN ( SELECT * FROM ( SELECT ControlStructureID FROM controlstructures ORDER BY ControlStructureID LIMIT 1) s)";
+
+    mysqli_query($con,$resetWeights_size);
+    mysqli_query($con,$resetWeights_variables);
+    mysqli_query($con,$resetWeights_methods);
+    mysqli_query($con,$resetWeights_inheritance);
+    mysqli_query($con,$resetWeights_coupling);
+    mysqli_query($con,$resetWeights_controlStructures);
 
 }
 
 $resetCs= "DELETE FROM cs WHERE CsID NOT IN ( SELECT * FROM ( SELECT CsID FROM cs ORDER BY CsID LIMIT 1) s)";
+$resetCv= "DELETE FROM cv WHERE CvID NOT IN ( SELECT * FROM ( SELECT CvID FROM cs ORDER BY CvID LIMIT 1) s)";
+$resetCm= "DELETE FROM cm WHERE CmID NOT IN ( SELECT * FROM ( SELECT CmID FROM cs ORDER BY CmID LIMIT 1) s)";
+$resetCi= "DELETE FROM ci WHERE CiID NOT IN ( SELECT * FROM ( SELECT CiID FROM cs ORDER BY CiID LIMIT 1) s)";
+$resetCcp= "DELETE FROM ccp WHERE CcpID NOT IN ( SELECT * FROM ( SELECT CcpID FROM cs ORDER BY CcpID LIMIT 1) s)";
+$resetCcs= "DELETE FROM ccs WHERE CcsID NOT IN ( SELECT * FROM ( SELECT CcsID FROM cs ORDER BY CcsID LIMIT 1) s)";
+
 mysqli_query($con,$resetCs);
+mysqli_query($con,$resetCv);
+mysqli_query($con,$resetCm);
+mysqli_query($con,$resetCi);
+mysqli_query($con,$resetCcp);
+mysqli_query($con,$resetCcs);
 
 ?>
 
