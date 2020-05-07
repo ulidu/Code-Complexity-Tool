@@ -17,7 +17,6 @@
             </div>
             <div class="kt-subheader__toolbar">
 
-
             </div>
         </div>
     </div>
