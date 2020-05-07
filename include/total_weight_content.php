@@ -25,6 +25,8 @@
     <!-- end:: Content Head -->
     <?php
 
+    $total_CsValue = 0;
+
     $entry_arr_af = preg_split("/\.java/", $entry);
     $entry_arr = array_filter($entry_arr_af);
 
@@ -40,6 +42,8 @@
     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
     $CsID_last = $lastrow['CsID'];
     $CsValue_last = $lastrow['CsValue'];
+
+    $total_CsValue += $CsValue_last;
 
     ?>
     <!-- begin:: Content -->
@@ -116,9 +120,14 @@
                                             <div class="kt-iconbox__desc kt-font-brand">
 
                                                 <?php
+                                                $lastRow = "SELECT * FROM ( SELECT * FROM totalcomplexity ORDER BY totalcomplexityID DESC LIMIT $limit) result ORDER BY totalcomplexityID ASC";
+                                                $run_query_last = mysqli_query($con,$lastRow);
 
+                                                while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                                $totalcomplexityID_last = $lastrow['totalcomplexityID'];
+                                                $totalcomplexityValue_last = $lastrow['totalcomplexityValue'];
                                                 ?>
-                                                <center><h1 style="font-family: 'Fira Code'">Cpr : <?php echo $CsValue_last ?></h1></center>
+                                                <center><h1 style="font-family: 'Fira Code'">Cpr : <?php echo $totalcomplexityValue_last ?></h1></center>
 
 
                                             </div>
@@ -777,7 +786,7 @@
             <!--end::Portlet-->
 
 
-            <?php }}} ?>
+            <?php }}}} ?>
 
 
         </div>
