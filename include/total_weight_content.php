@@ -23,7 +23,25 @@
     </div>
 
     <!-- end:: Content Head -->
+    <?php
 
+    $entry_arr_af = preg_split("/\.java/", $entry);
+    $entry_arr = array_filter($entry_arr_af);
+
+    foreach ($entry_arr as $files_arr) {
+
+
+    $fi = new FilesystemIterator($storeFolder, FilesystemIterator::SKIP_DOTS);
+    $limit = (iterator_count($fi));
+
+    $lastRow = "SELECT * FROM ( SELECT * FROM cs ORDER BY CsID DESC LIMIT $limit) result ORDER BY CsID ASC";
+    $run_query_last = mysqli_query($con,$lastRow);
+
+    while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+    $CsID_last = $lastrow['CsID'];
+    $CsValue_last = $lastrow['CsValue'];
+
+    ?>
     <!-- begin:: Content -->
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         <!--Begin::Dashboard 3-->
@@ -97,7 +115,10 @@
                                         <div class="col-lg-12">
                                             <div class="kt-iconbox__desc kt-font-brand">
 
-                                                <center><h1 style="font-family: 'Fira Code'">Cpr : 50</h1></center>
+                                                <?php
+
+                                                ?>
+                                                <center><h1 style="font-family: 'Fira Code'">Cpr : <?php echo $CsValue_last ?></h1></center>
 
 
                                             </div>
@@ -116,25 +137,7 @@
                         <div class="kt-form__actions">
                             <div class="row">
 
-                                <?php
 
-                                $entry_arr_af = preg_split("/\.java/", $entry);
-                                $entry_arr = array_filter($entry_arr_af);
-
-                                foreach ($entry_arr as $files_arr) {
-
-
-                                $fi = new FilesystemIterator($storeFolder, FilesystemIterator::SKIP_DOTS);
-                                $limit = (iterator_count($fi));
-
-                                $lastRow = "SELECT * FROM ( SELECT * FROM cs ORDER BY CsID DESC LIMIT $limit) result ORDER BY CsID ASC";
-                                $run_query_last = mysqli_query($con,$lastRow);
-
-                                while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
-                                $CsID_last = $lastrow['CsID'];
-                                $CsValue_last = $lastrow['CsValue'];
-
-                                ?>
                                 <!-- begin:: Content -->
                                 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
@@ -696,6 +699,8 @@
 
                                                 $TCps = $Cs;
 
+                                                $total_TCps += $TCps;
+
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $count = $count + 1; ?></td>
@@ -727,11 +732,16 @@
                                                     <th>0</th>
                                                     <th>0</th>
                                                     <th>9</th>
-                                                    <th style="color: white" class="kt-label-bg-color-2">50</th>
+                                                    <th style="font-weight: bold; font-size: x-large;" class="bg-dark kt-font-brand"><?php echo $total_TCps; ?></th>
                                                 </tr>
                                                 </tfoot>
                                             </table>
+                                            <?php
 
+                                            $query_disp_total_comp = "INSERT INTO totalcomplexity(totalcomplexityValue) VALUES('$total_TCps')";
+                                            mysqli_query($con, $query_disp_total_comp);
+
+                                            ?>
                                             <!--end: Datatable -->
                                         </div>
                                     </div>
