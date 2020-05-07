@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 06, 2020 at 05:48 AM
+-- Generation Time: May 07, 2020 at 09:36 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.0
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `ccs` (
   `CcsID` int(200) NOT NULL AUTO_INCREMENT,
   `CcsValue` double NOT NULL,
   PRIMARY KEY (`CcsID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `ccs`
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `cm` (
   `CmID` int(200) NOT NULL AUTO_INCREMENT,
   `CmValue` double NOT NULL,
   PRIMARY KEY (`CmID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cm`
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `cs` (
   `CsID` int(200) NOT NULL AUTO_INCREMENT,
   `CsValue` double NOT NULL,
   PRIMARY KEY (`CsID`)
-) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cs`
@@ -188,13 +188,33 @@ CREATE TABLE IF NOT EXISTS `cv` (
   `CvID` int(200) NOT NULL AUTO_INCREMENT,
   `CvValue` double NOT NULL,
   PRIMARY KEY (`CvID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cv`
 --
 
 INSERT INTO `cv` (`CvID`, `CvValue`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `finaltotal`
+--
+
+DROP TABLE IF EXISTS `finaltotal`;
+CREATE TABLE IF NOT EXISTS `finaltotal` (
+  `FinalTotalID` int(200) NOT NULL AUTO_INCREMENT,
+  `FinalTotalValue` double NOT NULL,
+  PRIMARY KEY (`FinalTotalID`)
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `finaltotal`
+--
+
+INSERT INTO `finaltotal` (`FinalTotalID`, `FinalTotalValue`) VALUES
 (1, 1);
 
 -- --------------------------------------------------------
@@ -260,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `size` (
   `NumericalValue` int(200) NOT NULL,
   `StringLiteral` int(200) NOT NULL,
   PRIMARY KEY (`SizeID`)
-) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `size`
@@ -268,6 +288,26 @@ CREATE TABLE IF NOT EXISTS `size` (
 
 INSERT INTO `size` (`SizeID`, `Keyword`, `Identifier`, `Operator`, `NumericalValue`, `StringLiteral`) VALUES
 (1, 1, 1, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `totalcomplexity`
+--
+
+DROP TABLE IF EXISTS `totalcomplexity`;
+CREATE TABLE IF NOT EXISTS `totalcomplexity` (
+  `totalcomplexityID` int(200) NOT NULL AUTO_INCREMENT,
+  `totalcomplexityValue` double NOT NULL,
+  PRIMARY KEY (`totalcomplexityID`)
+) ENGINE=MyISAM AUTO_INCREMENT=137 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `totalcomplexity`
+--
+
+INSERT INTO `totalcomplexity` (`totalcomplexityID`, `totalcomplexityValue`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -283,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `variables` (
   `PrimitiveVariable` int(200) NOT NULL,
   `CompositeVariable` int(200) NOT NULL,
   PRIMARY KEY (`VariableID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `variables`

@@ -2,7 +2,7 @@
 <div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
 						<div class="kt-container  kt-container--fluid ">
 							<div class="kt-footer__copyright">
-								2020&nbsp;&copy;&nbsp;<a class="kt-link">CDE IT Solutions</a>
+								2020&nbsp;&copy;&nbsp;<a href="https://github.com/itpmcde/Code-Complexity-Tool/graphs/contributors" target="_blank" class="kt-link">CDE IT Solutions</a>
 							</div>
 							<div class="kt-footer__menu">
                                 
@@ -111,6 +111,11 @@
         }
         </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        $('.removeduplicateelement:eq(1)').remove();
+    }, false);
+</script>
 
 </body>
 

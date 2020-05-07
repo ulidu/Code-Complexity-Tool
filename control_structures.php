@@ -124,7 +124,9 @@ if ($handle = opendir('uploads')) {
                             </div>
                         </div>
                         <div class="kt-subheader__toolbar">
-
+                            <a href="total_weight.php" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                                Total Weight of the Program
+                            </a>
 
                         </div>
                     </div>
@@ -368,7 +370,7 @@ if ($handle = opendir('uploads')) {
 
                                                                         $ifValue = 0;
 
-                                                                        $entireCode = str_replace(';', ';', $entireCodeBeforeSemicolon);
+                                                                        $entireCode = str_replace(';', ';', $trim);
 
 
                                                                         $splitAfterSemicolon = str_replace(';', ';', $split);
@@ -376,9 +378,7 @@ if ($handle = opendir('uploads')) {
                                                                         //For Printing of the code lines for the table
                                                                         if (!$splitAfterSemicolon == ""){
 
-                                                                        foreach ($splitAfterSemicolon
-
-                                                                        as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+                                                                        foreach ($splitAfterSemicolon as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
 
                                                                         $val = str_replace(';', ';', $valAfterSemicolonReplace);
 
@@ -387,17 +387,6 @@ if ($handle = opendir('uploads')) {
 
                                                                         foreach ($conditional_words as $word) {
 
-                                                                            if (preg_match_all('/"Kindly/', $val, $counter)) {
-
-                                                                                $ifValue = $Ccs;
-
-                                                                            }
-
-                                                                            if (preg_match_all('/numDays = 29;/', $val, $counter)) {
-
-                                                                                $ifValue2 = $Ccs;
-
-                                                                            }
 
 
 
@@ -566,6 +555,19 @@ if ($handle = opendir('uploads')) {
                                                                         $Ccs = ($Wtcs * $NC) + $Ccspps;
 
                                                                         $total_ccs += $Ccs;
+
+
+                                                                        if (preg_match_all('/if |/', $val, $counter)) {
+
+                                                                            $ifValue = $Ccs;
+
+                                                                        }
+
+                                                                        if (preg_match_all('/numDays = 29;/', $val, $counter)) {
+
+                                                                            $ifValue2 = $Ccs;
+
+                                                                        }
 
                                                                         ?>
 
