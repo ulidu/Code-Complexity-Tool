@@ -84,12 +84,12 @@
                                 <?php $lastRow_final = "SELECT * FROM ( SELECT * FROM finaltotal ORDER BY FinalTotalID DESC LIMIT 1) result ORDER BY FinalTotalID ASC";
                                 $run_query_last_final = mysqli_query($con, $lastRow_final);
 
-                                while ($lastrow = mysqli_fetch_assoc($run_query_last_final)) {
-                                    $totalcomplexityID_last = $lastrow['totalcomplexityID'];
-                                    $totalcomplexityValue_last = $lastrow['totalcomplexityValue']; ?>
+                                while ($lastrow_final_t = mysqli_fetch_assoc($run_query_last_final)) {
+                                    $finaltotalID = $lastrow_final_t['finaltotal'];
+                                    $FinalTotalValue_last = $lastrow_final_t['FinalTotalValue']; ?>
 
                                     <center><h1 style="font-family: 'Fira Code'">Total Complexity
-                                            : <?php echo $final_total; ?></h1></center>
+                                            : <?php echo $FinalTotalValue_last; ?></h1></center>
 
                                 <?php } ?>
                             </div>

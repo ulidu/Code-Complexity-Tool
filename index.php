@@ -51,6 +51,7 @@ $resetCcp= "DELETE FROM ccp WHERE CcpID NOT IN ( SELECT * FROM ( SELECT CcpID FR
 $resetCcs= "DELETE FROM ccs WHERE CcsID NOT IN ( SELECT * FROM ( SELECT CcsID FROM ccs ORDER BY CcsID LIMIT 1) s)";
 
 $resetTotalComp= "DELETE FROM totalcomplexity WHERE totalcomplexityID NOT IN ( SELECT * FROM ( SELECT totalcomplexityID FROM totalcomplexity ORDER BY totalcomplexityID LIMIT 1) s)";
+$resetFinalComp= "DELETE FROM totalcomplexity WHERE totalcomplexityID NOT IN ( SELECT * FROM ( SELECT totalcomplexityID FROM totalcomplexity ORDER BY totalcomplexityID LIMIT 1) s)";
 
 mysqli_query($con,$resetCs);
 mysqli_query($con,$resetCv);
@@ -60,6 +61,7 @@ mysqli_query($con,$resetCcp);
 mysqli_query($con,$resetCcs);
 
 mysqli_query($con,$resetTotalComp);
+mysqli_query($con,$resetFinalComp);
 
 ?>
 
