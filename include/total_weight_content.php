@@ -42,7 +42,7 @@
     $CsID_last = $lastrow['CsID'];
     $CsValue_last = $lastrow['CsValue'];
 
-    $total_CsValue += $CsValue_last;
+
 
     ?>
     <!-- begin:: Content -->
@@ -65,7 +65,7 @@
                         <div class="col-lg-12">
                             <div class="kt-iconbox__desc kt-font-success">
 
-                                <center><h1 style="font-family: 'Fira Code'">Total Complexity : 1000</h1></center>
+                                <center><h1 style="font-family: 'Fira Code'">Total Complexity : <?php echo $total_CsValue; ?></h1></center>
 
 
                             </div>
@@ -709,6 +709,8 @@
 
                                                 $total_TCps += $TCps;
 
+                                                $total_CsValue += $total_TCps;
+
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $count = $count + 1; ?></td>
@@ -745,6 +747,8 @@
                                                 </tfoot>
                                             </table>
                                             <?php
+
+                                            echo $total_CsValue;
 
                                             $query_disp_total_comp = "INSERT INTO totalcomplexity(totalcomplexityValue) VALUES('$total_TCps')";
                                             mysqli_query($con, $query_disp_total_comp);
