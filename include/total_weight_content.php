@@ -81,10 +81,10 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="kt-iconbox__desc kt-font-success">
-                                <?php $lastRow = "SELECT * FROM ( SELECT * FROM totalcomplexity ORDER BY totalcomplexityID DESC LIMIT $limit) result ORDER BY totalcomplexityID ASC";
-                                $run_query_last = mysqli_query($con, $lastRow);
+                                <?php $lastRow_final = "SELECT * FROM ( SELECT * FROM finaltotal ORDER BY FinalTotalID DESC LIMIT 1) result ORDER BY FinalTotalID ASC";
+                                $run_query_last_final = mysqli_query($con, $lastRow_final);
 
-                                while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                while ($lastrow = mysqli_fetch_assoc($run_query_last_final)) {
                                     $totalcomplexityID_last = $lastrow['totalcomplexityID'];
                                     $totalcomplexityValue_last = $lastrow['totalcomplexityValue']; ?>
 
