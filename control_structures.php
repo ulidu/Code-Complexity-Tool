@@ -558,7 +558,6 @@ if ($handle = opendir('uploads')) {
                                                                         mysqli_query($con, $queryvalcs);
 
 
-
                                                                         ?>
 
                                                                         <tr>
@@ -624,14 +623,6 @@ if ($handle = opendir('uploads')) {
                                                                                 if ($noOfArrays <= $firstNoOfArrays) {
 
 
-
-
-
-
-
-
-
-
                                                                                     $matching_array;
                                                                                     $count_rows;
 
@@ -647,11 +638,11 @@ if ($handle = opendir('uploads')) {
                                                                                         $Ccs_last = $lastrows['Ccs'];
 
 
-
                                                                                         foreach ($matching_array as $cs_content) {
 
                                                                                             if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
 
+                                                                                                $if_content_array = $counter;
                                                                                                 $line_where_cs = end($counter);
 
                                                                                                 foreach ($line_where_cs as $line_cs) {
@@ -663,18 +654,25 @@ if ($handle = opendir('uploads')) {
                                                                                                         $queryvalcsnested = "INSERT INTO csnestedvalues(lineVal,Ccspps,Ccs) VALUES('$csTableVal_last','$Ccspps_last','$Ccs_last')";
                                                                                                         mysqli_query($con, $queryvalcsnested);
 
-                                                                                                        if (preg_match_all('/switch (.*?)\{(?s).*\}/', $cs_content, $counter)) {
+                                                                                                        foreach ($if_content_array as $if_content_arr) {
+                                                                                                            foreach ($if_content_arr as $if_content) {
 
-                                                                                                            foreach ($counter as $switch) {
-                                                                                                            foreach ($switch as $switch_content) {
+                                                                                                                if (preg_match_all('/switch \(/', $if_content, $counter)) {
 
-                                                                                                                echo $switch_content;
+                                                                                                                    foreach ($counter as $switchline_array) {
+                                                                                                                        foreach ($switchline_array as $switchline) {
 
+                                                                                                                            echo $switchline;
+                                                                                                                            echo $Ccs;
 
-                                                                                                            }}
+                                                                                                                        }
+                                                                                                                    }
+
+                                                                                                                }
+
+                                                                                                            }
 
                                                                                                         }
-
 
                                                                                                     }
 
@@ -687,15 +685,6 @@ if ($handle = opendir('uploads')) {
                                                                                     }
 
                                                                                     $firstNoOfArrays = $noOfArrays;
-
-
-
-
-
-
-
-
-
 
 
                                                                                 } elseif ($noOfArrays > $firstNoOfArrays) {
