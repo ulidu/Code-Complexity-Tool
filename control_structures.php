@@ -659,11 +659,32 @@ if ($handle = opendir('uploads')) {
 
                                                                                                                 if (preg_match_all('/switch \(/', $if_content, $counter)) {
 
+
+
+
                                                                                                                     foreach ($counter as $switchline_array) {
                                                                                                                         foreach ($switchline_array as $switchline) {
 
-                                                                                                                            echo $switchline;
-                                                                                                                            echo $Ccs;
+
+
+                                                                                                                            $lastRows = "SELECT * FROM csnestedvalues where lineVal='$csTableVal_last'";
+                                                                                                                            $run_query_sw = mysqli_query($con, $lastRows);
+
+                                                                                                                            while ($lastrows = mysqli_fetch_assoc($run_query_sw)) {
+                                                                                                                                $CSnestedValuesID = $lastrows['CSnestedValuesID'];
+                                                                                                                                $lineVal = $lastrows['lineVal'];
+                                                                                                                                $Ccspps_sw = $lastrows['Ccspps'];
+                                                                                                                                $Ccs_sw = $lastrows['Ccs'];
+
+
+
+                                                                                                                                echo $lineVal;
+                                                                                                                                echo $Ccs_sw;
+
+
+                                                                                                                            }
+
+
 
                                                                                                                         }
                                                                                                                     }
