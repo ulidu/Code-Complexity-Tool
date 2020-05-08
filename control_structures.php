@@ -615,9 +615,25 @@ if ($handle = opendir('uploads')) {
 
                                                                                 if ($noOfArrays <= $firstNoOfArrays) {
 
-                                                                                    print_r($matching_array);
+                                                                                    $matching_array;
+
+                                                                                    foreach ($matching_array as $cs_content){
+
+                                                                                        if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
+
+                                                                                            $line_where_cs = end($counter);
+
+                                                                                            foreach ($line_where_cs as $line_cs){
+
+                                                                                                print_r($line_cs);
 
 
+                                                                                            }
+
+                                                                                        }
+
+
+                                                                                    }
 
 
 
@@ -628,7 +644,22 @@ if ($handle = opendir('uploads')) {
                                                                                     if ($icount == 2) {
 
                                                                                         $result = array_diff($matching_array, $firstMatchingArray);
-                                                                                        print_r($result);
+
+
+                                                                                        foreach ($result as $cs_content){
+
+                                                                                            if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
+
+                                                                                                print_r($counter);
+                                                                                                print_r("<br>");
+
+                                                                                            }
+
+
+                                                                                        }
+
+
+
 
                                                                                     } elseif ($icount == 3) {
 
