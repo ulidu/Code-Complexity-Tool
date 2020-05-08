@@ -85,13 +85,13 @@ if ($handle = opendir('uploads')) {
 
                 $content = file_get_contents('uploads/' . $entry);
 
-//  Removes single line '//' comments, treats blank characters
+                //  Removes single line '//' comments, treats blank characters
                 $single = preg_replace('![ \t]*//.*[ \t]*[\r\n]!', '', $content);
 
                 $multiple = preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $single);
                 $excess = preg_replace('/\s+/', ' ', $multiple);
                 $trim = trim($excess, " ");
-//$for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
+                //$for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
                 $for_semicolon = preg_replace_callback(/** @lang text */ '~\b(?:while|for)\s*(\((?:[^()]++|(?1))*\))~u', static function ($m) {
                     return str_replace(';', ';', $m[0]);
                 },
@@ -103,6 +103,8 @@ if ($handle = opendir('uploads')) {
                 $_SESSION['trimmed'] = $trim;
                 $_SESSION['entireCode'] = $trim;
                 $_SESSION['filename'] = $entry;
+
+                $count_rows = count($split);
 
 
                 ?>
@@ -555,6 +557,8 @@ if ($handle = opendir('uploads')) {
                                                                         $queryvalcs = "INSERT INTO cstablevalues(csTableVal,Wtcs,NC,Ccspps,Ccs) VALUES('$val','$Wtcs','$NC','$Ccspps','$Ccs')";
                                                                         mysqli_query($con, $queryvalcs);
 
+
+
                                                                         ?>
 
                                                                         <tr>
@@ -616,23 +620,54 @@ if ($handle = opendir('uploads')) {
 
                                                                                 $noOfArrays = count($matching_array);
 
+
                                                                                 if ($noOfArrays <= $firstNoOfArrays) {
 
+
+
+
+
+
+
+
+
+
                                                                                     $matching_array;
+                                                                                    $count_rows;
 
-                                                                                    foreach ($matching_array as $cs_content){
+                                                                                    $lastRows = "SELECT * FROM ( SELECT * FROM cstablevalues ORDER BY cstableID DESC LIMIT $count_rows) result ORDER BY cstableID ASC";
+                                                                                    $run_query_last = mysqli_query($con, $lastRows);
 
-                                                                                        if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
+                                                                                    while ($lastrows = mysqli_fetch_assoc($run_query_last)) {
+                                                                                        $cstableID_last = $lastrows['cstableID'];
+                                                                                        $csTableVal_last = $lastrows['csTableVal'];
+                                                                                        $Wtcs_last = $lastrows['Wtcs'];
+                                                                                        $NC_last = $lastrows['NC'];
+                                                                                        $Ccspps_last = $lastrows['Ccspps'];
+                                                                                        $Ccs_last = $lastrows['Ccs'];
 
-                                                                                            $line_where_cs = end($counter);
-
-                                                                                            foreach ($line_where_cs as $line_cs){
 
 
-                                                                                                if (strpos($line_cs, $val)) {
+                                                                                        foreach ($matching_array as $cs_content) {
 
-                                                                                                    echo $val;
+                                                                                            if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
 
+                                                                                                $line_where_cs = end($counter);
+
+                                                                                                foreach ($line_where_cs as $line_cs) {
+
+                                                                                                    if (strpos($csTableVal_last, $line_cs)) {
+
+                                                                                                        $ifValueNew = $Ccs_last;
+
+                                                                                                        if ($Wtcs > 0 && preg_match_all('/switch \(/', $cs_content, $counter)) {
+
+                                                                                                            $Ccspps = $ifValue;
+
+                                                                                                        }
+
+
+                                                                                                    }
 
                                                                                                 }
 
@@ -644,6 +679,16 @@ if ($handle = opendir('uploads')) {
 
                                                                                     $firstNoOfArrays = $noOfArrays;
 
+
+
+
+
+
+
+
+
+
+
                                                                                 } elseif ($noOfArrays > $firstNoOfArrays) {
 
                                                                                     if ($icount == 2) {
@@ -651,20 +696,45 @@ if ($handle = opendir('uploads')) {
                                                                                         $result = array_diff($matching_array, $firstMatchingArray);
 
 
-                                                                                        foreach ($result as $cs_content){
+                                                                                        $count_rows;
 
-                                                                                            if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
+                                                                                        $lastRows = "SELECT * FROM ( SELECT * FROM cstablevalues ORDER BY cstableID DESC LIMIT $count_rows) result ORDER BY cstableID ASC";
+                                                                                        $run_query_last = mysqli_query($con, $lastRows);
 
-                                                                                                print_r($counter);
-                                                                                                print_r("<br>");
+                                                                                        while ($lastrows = mysqli_fetch_assoc($run_query_last)) {
+                                                                                            $cstableID_last = $lastrows['cstableID'];
+                                                                                            $csTableVal_last = $lastrows['csTableVal'];
+                                                                                            $Wtcs_last = $lastrows['Wtcs'];
+                                                                                            $NC_last = $lastrows['NC'];
+                                                                                            $Ccspps_last = $lastrows['Ccspps'];
+                                                                                            $Ccs_last = $lastrows['Ccs'];
+
+                                                                                            echo $csTableVal_last;
+                                                                                            echo "<br>";
+
+                                                                                            foreach ($result as $cs_content) {
+
+                                                                                                if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
+
+                                                                                                    $line_where_cs = end($counter);
+
+                                                                                                    foreach ($line_where_cs as $line_cs) {
+
+
+                                                                                                        if (strpos($line_cs, $val)) {
+
+                                                                                                            //echo $val;
+
+
+                                                                                                        }
+
+                                                                                                    }
+
+                                                                                                }
 
                                                                                             }
 
-
                                                                                         }
-
-
-
 
                                                                                     } elseif ($icount == 3) {
 
