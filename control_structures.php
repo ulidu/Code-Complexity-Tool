@@ -70,9 +70,10 @@ if ($extract) {
 
 
 if ($handle = opendir('uploads')) {
-
+    $firstNoOfArrays = 1000000000;
     while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
+
 
             $entry_arr_af = preg_split("/\.java/", $entry);
             $entry_arr = array_filter($entry_arr_af);
@@ -101,6 +102,8 @@ if ($handle = opendir('uploads')) {
                 $_SESSION['trimmed'] = $trim;
                 $_SESSION['entireCode'] = $trim;
                 $_SESSION['filename'] = $entry;
+
+
 
                 ?>
 
@@ -135,6 +138,8 @@ if ($handle = opendir('uploads')) {
 
                 <!-- end:: Content Head -->
                 <?php
+
+
 
 
                 $entry_arr_af = preg_split("/\.java/", $entry);
@@ -338,16 +343,6 @@ if ($handle = opendir('uploads')) {
                                                                         $CSswitch_last = $lastrow['CSswitch'];
                                                                         $CScase_last = $lastrow['CScase'];
 
-
-                                                                        foreach ($split as $codeLine) {
-
-                                                                            if (preg_match_all('/if /', $codeLine, $counter)) {
-
-
-                                                                            }
-
-
-                                                                        }
 
                                                                         $i = 0; //increment to each loop
                                                                         $count = 0;
@@ -553,11 +548,7 @@ if ($handle = opendir('uploads')) {
                                                                         $total_ccs += $Ccs;
 
 
-                                                                        if (preg_match_all('/if |/', $val, $counter)) {
 
-                                                                            $ifValue = $Ccs;
-
-                                                                        }
 
                                                                         if (preg_match_all('/numDays = 29;/', $val, $counter)) {
 
@@ -579,11 +570,56 @@ if ($handle = opendir('uploads')) {
 
                                                                             $i++;
 
+                                                                            }
+
+                                                                            if ((preg_match_all('/\{(?:[^{}]+|(?R))*+\}/', $entireCode, $counter))) {
+
+                                                                                //$ifValue = $Ccs;
+                                                                                $match_string = 'if ';
+
+                                                                                foreach ($counter as $bracketsArray) {
+                                                                                    foreach ($bracketsArray as $bracketsCont) {
+                                                                                        if (strpos($bracketsCont, $match_string) !== FALSE) {
+                                                                                            $matching_array[] = $bracketsCont;
+
+                                                                                        }
+                                                                                    }
+
+                                                                                }
+
+                                                                                print_r($matching_array);
+                                                                                print_r("<br>");
+                                                                                print_r("<br>");
+
+                                                                                $firstMatchingArray = $matching_array;
+
+                                                                                $noOfArrays = count($matching_array);
+
+                                                                                if ($noOfArrays <= $firstNoOfArrays){
+
+                                                                                    echo "same no";
+                                                                                    $firstNoOfArrays = $noOfArrays;
+
+                                                                                }elseif ($noOfArrays > $firstNoOfArrays){
+
+                                                                                    echo "substract";
+                                                                                    $firstNoOfArrays = $noOfArrays;
+
+                                                                                }
+
+
+
+
+
+                                                                                //print_r($counter);
+                                                                                //print_r("<br>");
 
                                                                             }
 
                                                                             }
+
                                                                             }
+
                                                                             $_SESSION['total_ccs'] = $total_ccs;
 
                                                                             $query_disp_total = "INSERT INTO ccs(CcsValue) VALUES('$total_ccs')";
