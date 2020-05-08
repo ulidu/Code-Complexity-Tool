@@ -124,7 +124,8 @@ if ($handle = opendir('uploads')) {
                             </div>
                         </div>
                         <div class="kt-subheader__toolbar">
-                            <a href="total_weight.php" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                            <a href="total_weight.php"
+                               class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
                                 Total Weight of the Program
                             </a>
 
@@ -338,12 +339,9 @@ if ($handle = opendir('uploads')) {
                                                                         $CScase_last = $lastrow['CScase'];
 
 
-
-
                                                                         foreach ($split as $codeLine) {
 
                                                                             if (preg_match_all('/if /', $codeLine, $counter)) {
-
 
 
                                                                             }
@@ -378,7 +376,9 @@ if ($handle = opendir('uploads')) {
                                                                         //For Printing of the code lines for the table
                                                                         if (!$splitAfterSemicolon == ""){
 
-                                                                        foreach ($splitAfterSemicolon as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+                                                                        foreach ($splitAfterSemicolon
+
+                                                                        as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
 
                                                                         $val = str_replace(';', ';', $valAfterSemicolonReplace);
 
@@ -386,9 +386,6 @@ if ($handle = opendir('uploads')) {
                                                                         $conditional_words = array('if', 'for', 'while', 'switch', 'case');
 
                                                                         foreach ($conditional_words as $word) {
-
-
-
 
 
                                                                             $numberOfParams = 0;
@@ -476,7 +473,6 @@ if ($handle = opendir('uploads')) {
 
 
                                                                             }
-
 
 
                                                                             if (preg_match('/while |while+\((.*?)\)+(.*?);/', $val) !== false) {
@@ -652,7 +648,7 @@ if ($handle = opendir('uploads')) {
                         <!-- end:: Content -->
                         </div>
                         <?php
-                                                                        }
+                    }
 
 
                 }
