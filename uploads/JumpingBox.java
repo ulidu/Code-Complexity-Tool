@@ -85,8 +85,11 @@ public class JumpingBox extends java.applet.Applet implements MouseListener, Mou
             play(getCodeBase(), "sounds/thin.bell.au");
             onaroll = 0;
         }
+    
+        
         repaint();
     }
+
 
     public void mouseReleased(MouseEvent e) {}
 

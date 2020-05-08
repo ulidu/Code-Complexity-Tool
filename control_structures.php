@@ -71,6 +71,7 @@ if ($extract) {
 
 if ($handle = opendir('uploads')) {
     $firstNoOfArrays = 1000000000;
+    $icount = 0;
     while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
 
@@ -102,7 +103,6 @@ if ($handle = opendir('uploads')) {
                 $_SESSION['trimmed'] = $trim;
                 $_SESSION['entireCode'] = $trim;
                 $_SESSION['filename'] = $entry;
-
 
 
                 ?>
@@ -138,8 +138,6 @@ if ($handle = opendir('uploads')) {
 
                 <!-- end:: Content Head -->
                 <?php
-
-
 
 
                 $entry_arr_af = preg_split("/\.java/", $entry);
@@ -548,8 +546,6 @@ if ($handle = opendir('uploads')) {
                                                                         $total_ccs += $Ccs;
 
 
-
-
                                                                         if (preg_match_all('/numDays = 29;/', $val, $counter)) {
 
                                                                             $ifValue2 = $Ccs;
@@ -587,28 +583,78 @@ if ($handle = opendir('uploads')) {
 
                                                                                 }
 
-                                                                                print_r($matching_array);
-                                                                                print_r("<br>");
-                                                                                print_r("<br>");
+                                                                                //print_r($matching_array);
+                                                                                //print_r("<br>");
+                                                                                //print_r("<br>");
 
-                                                                                $firstMatchingArray = $matching_array;
+
+                                                                                if ($icount == 0) {
+                                                                                    $firstMatchingArray = $matching_array;
+                                                                                    $icount++;
+                                                                                } elseif ($icount == 1) {
+                                                                                    $secondMatchingArray = $matching_array;
+                                                                                    $icount++;
+                                                                                } elseif ($icount == 2) {
+                                                                                    $thirdMatchingArray = $matching_array;
+                                                                                    $icount++;
+                                                                                } elseif ($icount == 3) {
+                                                                                    $fourthMatchingArray = $matching_array;
+                                                                                    $icount++;
+                                                                                } elseif ($icount == 4) {
+                                                                                    $fifthMatchingArray = $matching_array;
+                                                                                    $icount++;
+                                                                                } elseif ($icount == 5) {
+                                                                                    $sixthMatchingArray = $matching_array;
+                                                                                    $icount++;
+                                                                                } elseif ($icount == 6) {
+                                                                                    $seventhMatchingArray = $matching_array;
+                                                                                    $icount++;
+                                                                                }
 
                                                                                 $noOfArrays = count($matching_array);
 
-                                                                                if ($noOfArrays <= $firstNoOfArrays){
+                                                                                if ($noOfArrays <= $firstNoOfArrays) {
 
-                                                                                    echo "same no";
+                                                                                    print_r($matching_array);
+
+
+
+
+
                                                                                     $firstNoOfArrays = $noOfArrays;
 
-                                                                                }elseif ($noOfArrays > $firstNoOfArrays){
+                                                                                } elseif ($noOfArrays > $firstNoOfArrays) {
 
-                                                                                    echo "substract";
+                                                                                    if ($icount == 2) {
+
+                                                                                        $result = array_diff($matching_array, $firstMatchingArray);
+                                                                                        print_r($result);
+
+                                                                                    } elseif ($icount == 3) {
+
+                                                                                        $result = array_diff($matching_array, $secondMatchingArray);
+                                                                                        print_r($result);
+
+                                                                                    } elseif ($icount == 4) {
+
+                                                                                        $result = array_diff($matching_array, $thirdMatchingArray);
+                                                                                        print_r($result);
+
+                                                                                    } elseif ($icount == 5) {
+
+                                                                                        $result = array_diff($matching_array, $fourthMatchingArray);
+                                                                                        print_r($result);
+
+                                                                                    } elseif ($icount == 6) {
+
+                                                                                        $result = array_diff($matching_array, $fifthMatchingArray);
+                                                                                        print_r($result);
+
+                                                                                    }
+
                                                                                     $firstNoOfArrays = $noOfArrays;
 
                                                                                 }
-
-
-
 
 
                                                                                 //print_r($counter);
