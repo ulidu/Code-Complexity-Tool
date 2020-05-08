@@ -660,9 +660,18 @@ if ($handle = opendir('uploads')) {
 
                                                                                                         $ifValueNew = $Ccs_last;
 
-                                                                                                        if ($Wtcs > 0 && preg_match_all('/switch \(/', $cs_content, $counter)) {
+                                                                                                        $queryvalcsnested = "INSERT INTO csnestedvalues(lineVal,Ccspps,Ccs) VALUES('$csTableVal_last','$Ccspps_last','$Ccs_last')";
+                                                                                                        mysqli_query($con, $queryvalcsnested);
 
-                                                                                                            $Ccspps = $ifValue;
+                                                                                                        if (preg_match_all('/switch (.*?)\{(?s).*\}/', $cs_content, $counter)) {
+
+                                                                                                            foreach ($counter as $switch) {
+                                                                                                            foreach ($switch as $switch_content) {
+
+                                                                                                                echo $switch_content;
+
+
+                                                                                                            }}
 
                                                                                                         }
 
