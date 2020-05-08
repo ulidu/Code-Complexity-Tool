@@ -552,6 +552,9 @@ if ($handle = opendir('uploads')) {
 
                                                                         }
 
+                                                                        $queryvalcs = "INSERT INTO cstablevalues(csTableVal,Wtcs,NC,Ccspps,Ccs) VALUES('$val','$Wtcs','$NC','$Ccspps','$Ccs')";
+                                                                        mysqli_query($con, $queryvalcs);
+
                                                                         ?>
 
                                                                         <tr>
@@ -625,17 +628,19 @@ if ($handle = opendir('uploads')) {
 
                                                                                             foreach ($line_where_cs as $line_cs){
 
-                                                                                                print_r($line_cs);
 
+                                                                                                if (strpos($line_cs, $val)) {
+
+                                                                                                    echo $val;
+
+
+                                                                                                }
 
                                                                                             }
 
                                                                                         }
 
-
                                                                                     }
-
-
 
                                                                                     $firstNoOfArrays = $noOfArrays;
 
