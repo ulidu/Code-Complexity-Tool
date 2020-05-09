@@ -558,6 +558,24 @@ if ($handle = opendir('uploads')) {
                                                                         mysqli_query($con, $queryvalcs);
 
 
+                                                                        $lastRows = "SELECT * FROM csfinal";
+                                                                        $run_query_final = mysqli_query($con, $lastRows);
+
+                                                                        while ($lastrows = mysqli_fetch_assoc($run_query_final)) {
+                                                                            $csfinalID = $lastrows['csfinalID'];
+                                                                            $lineValfinal = $lastrows['csfinalLineVal'];
+                                                                            $Ccspps_final = $lastrows['Ccspps'];
+                                                                            $Ccs_final = $lastrows['Ccs'];
+
+
+                                                                            if (preg_match_all('/switch \(/', $val, $counter)) {
+
+
+
+                                                                            }
+                                                                        }
+
+
                                                                         ?>
 
                                                                         <tr>
@@ -573,6 +591,7 @@ if ($handle = opendir('uploads')) {
                                                                             $i++;
 
                                                                             }
+
 
                                                                             if ((preg_match_all('/\{(?:[^{}]+|(?R))*+\}/', $entireCode, $counter))) {
 
@@ -660,11 +679,8 @@ if ($handle = opendir('uploads')) {
                                                                                                                 if (preg_match_all('/switch \(/', $if_content, $counter)) {
 
 
-
-
                                                                                                                     foreach ($counter as $switchline_array) {
                                                                                                                         foreach ($switchline_array as $switchline) {
-
 
 
                                                                                                                             $lastRows = "SELECT * FROM csnestedvalues where lineVal='$csTableVal_last'";
@@ -676,14 +692,11 @@ if ($handle = opendir('uploads')) {
                                                                                                                                 $Ccspps_sw = $lastrows['Ccspps'];
                                                                                                                                 $Ccs_sw = $lastrows['Ccs'];
 
-
-
-                                                                                                                                echo $lineVal;
-                                                                                                                                echo $Ccs_sw;
+                                                                                                                                $queryfinal = "INSERT INTO csfinal(csfinalLineVal,Ccspps,Ccs) VALUES('$lineVal','$Ccspps_sw','$Ccs_sw')";
+                                                                                                                                mysqli_query($con, $queryfinal);
 
 
                                                                                                                             }
-
 
 
                                                                                                                         }
