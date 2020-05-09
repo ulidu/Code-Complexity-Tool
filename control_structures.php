@@ -558,19 +558,19 @@ if ($handle = opendir('uploads')) {
                                                                         mysqli_query($con, $queryvalcs);
 
 
-                                                                        $lastRows = "SELECT * FROM csfinal";
-                                                                        $run_query_final = mysqli_query($con, $lastRows);
+                                                                        if (preg_match_all('/switch \(/', $val, $counter)) {
 
-                                                                        while ($lastrows = mysqli_fetch_assoc($run_query_final)) {
-                                                                            $csfinalID = $lastrows['csfinalID'];
-                                                                            $lineValfinal = $lastrows['csfinalLineVal'];
-                                                                            $Ccspps_final = $lastrows['Ccspps'];
-                                                                            $Ccs_final = $lastrows['Ccs'];
+                                                                            $lastRows = "SELECT * FROM csfinal where csfinalLineVal=''";
+                                                                            $run_query_final = mysqli_query($con, $lastRows);
+
+                                                                            while ($lastrows = mysqli_fetch_assoc($run_query_final)) {
+                                                                                $csfinalID = $lastrows['csfinalID'];
+                                                                                $lineValfinal = $lastrows['csfinalLineVal'];
+                                                                                $Ccspps_final = $lastrows['Ccspps'];
+                                                                                $Ccs_final = $lastrows['Ccs'];
 
 
-                                                                            if (preg_match_all('/switch \(/', $val, $counter)) {
-
-
+                                                                                $Ccspps = $Ccs_final;
 
                                                                             }
                                                                         }
@@ -611,7 +611,6 @@ if ($handle = opendir('uploads')) {
                                                                                 //print_r($matching_array);
                                                                                 //print_r("<br>");
                                                                                 //print_r("<br>");
-
 
                                                                                 if ($icount == 0) {
                                                                                     $firstMatchingArray = $matching_array;
@@ -698,8 +697,8 @@ if ($handle = opendir('uploads')) {
 
                                                                                                                             }
 
-
                                                                                                                         }
+
                                                                                                                     }
 
                                                                                                                 }
@@ -748,15 +747,52 @@ if ($handle = opendir('uploads')) {
 
                                                                                                 if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
 
+                                                                                                    $if_content_array = $counter;
                                                                                                     $line_where_cs = end($counter);
 
                                                                                                     foreach ($line_where_cs as $line_cs) {
 
+                                                                                                        if (strpos($csTableVal_last, $line_cs)) {
 
-                                                                                                        if (strpos($line_cs, $val)) {
+                                                                                                            $ifValueNew = $Ccs_last;
 
-                                                                                                            //echo $val;
+                                                                                                            $queryvalcsnested = "INSERT INTO csnestedvalues(lineVal,Ccspps,Ccs) VALUES('$csTableVal_last','$Ccspps_last','$Ccs_last')";
+                                                                                                            mysqli_query($con, $queryvalcsnested);
 
+                                                                                                            foreach ($if_content_array as $if_content_arr) {
+                                                                                                                foreach ($if_content_arr as $if_content) {
+
+                                                                                                                    if (preg_match_all('/switch \(/', $if_content, $counter)) {
+
+
+                                                                                                                        foreach ($counter as $switchline_array) {
+                                                                                                                            foreach ($switchline_array as $switchline) {
+
+
+                                                                                                                                $lastRows = "SELECT * FROM csnestedvalues where lineVal='$csTableVal_last'";
+                                                                                                                                $run_query_sw = mysqli_query($con, $lastRows);
+
+                                                                                                                                while ($lastrows = mysqli_fetch_assoc($run_query_sw)) {
+                                                                                                                                    $CSnestedValuesID = $lastrows['CSnestedValuesID'];
+                                                                                                                                    $lineVal = $lastrows['lineVal'];
+                                                                                                                                    $Ccspps_sw = $lastrows['Ccspps'];
+                                                                                                                                    $Ccs_sw = $lastrows['Ccs'];
+
+                                                                                                                                    $queryfinal = "INSERT INTO csfinal(csfinalLineVal,Ccspps,Ccs) VALUES('$lineVal','$Ccspps_sw','$Ccs_sw')";
+                                                                                                                                    mysqli_query($con, $queryfinal);
+
+
+                                                                                                                                }
+
+                                                                                                                            }
+
+                                                                                                                        }
+
+                                                                                                                    }
+
+                                                                                                                }
+
+                                                                                                            }
 
                                                                                                         }
 

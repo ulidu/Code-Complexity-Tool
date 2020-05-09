@@ -61,6 +61,7 @@ $resetFinalComp= "DELETE FROM finaltotal WHERE FinalTotalID NOT IN ( SELECT * FR
 
 $resetcsvaltable= "DELETE FROM cstablevalues WHERE cstableID NOT IN ( SELECT * FROM ( SELECT cstableID FROM cstablevalues ORDER BY cstableID LIMIT 0) s)";
 $resetcsnested= "DELETE FROM csnestedvalues WHERE CSnestedValuesID NOT IN ( SELECT * FROM ( SELECT CSnestedValuesID FROM csnestedvalues ORDER BY CSnestedValuesID LIMIT 0) s)";
+$resetfinal= "DELETE FROM csfinal WHERE csfinalID NOT IN ( SELECT * FROM ( SELECT csfinalID FROM csfinal ORDER BY csfinalID LIMIT 0) s)";
 
 
 mysqli_query($con,$resetCs);
@@ -75,6 +76,7 @@ mysqli_query($con,$resetFinalComp);
 
 mysqli_query($con,$resetcsvaltable);
 mysqli_query($con,$resetcsnested);
+mysqli_query($con,$resetfinal);
 
 ?>
 
