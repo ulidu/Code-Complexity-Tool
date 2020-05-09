@@ -360,10 +360,15 @@ if ($handle = opendir('uploads')) {
                                                                         $case_val = "case";
                                                                         $while_val = "while";
                                                                         $for_val = "for";
+                                                                        $else_val = "else";
                                                                         $end_curlyBrace = "}";
 
 
                                                                         $arrCCS = [];
+                                                                        $arr2 = [];
+                                                                        $elseArr = [];
+                                                                        $inElse = false;
+                                                                        $elseCount = 0;
 
 
                                                                         //Default Weights
@@ -520,7 +525,6 @@ if ($handle = opendir('uploads')) {
                                                                         $Ccs = ($Wtcs * $NC);
 
 
-
                                                                         if ($NC == 0) {
 
                                                                             $Ccspps = 0;
@@ -548,8 +552,12 @@ if ($handle = opendir('uploads')) {
                                                                             } else {
                                                                                 $var = $Ccs;
                                                                             }
-
                                                                             array_push($arrCCS, $var);
+
+                                                                            if (!$inElse) {
+                                                                                array_push($arr2, $var);
+                                                                            }
+
                                                                             $currentCCS = $arrCCS[sizeof($arrCCS) - 1];
 
                                                                             if (sizeof($arrCCS) >= 2) {
@@ -558,10 +566,37 @@ if ($handle = opendir('uploads')) {
 
                                                                         }
 
-
                                                                         if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
                                                                             $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
                                                                             $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                                        }
+
+                                                                        if (stripos($val, $else_val) !== false) {
+                                                                            $inElse = true;
+
+                                                                        }
+                                                                        if ((stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false || stripos($val, $while_val) !== false) && $inElse) {
+                                                                            if (sizeof($elseArr) >= 1) {
+                                                                                $var = $Ccs + $elseArr[sizeof($elseArr) - 1];
+                                                                            } else {
+                                                                                $var = $Ccs + $arr2[sizeof($arr2) - 1];
+                                                                            }
+                                                                            array_push($elseArr, $var);
+                                                                        }
+                                                                        if (sizeof($elseArr) >= 1 && stripos($val, $case_val) !== false && $inElse) {
+
+                                                                            $previousCCS = $elseArr[sizeof($elseArr) - 1];
+                                                                            $currentCCS = $Ccs + $elseArr[sizeof($elseArr) - 1];
+                                                                        }
+
+                                                                        if ($inElse && stripos($val, $switch_val) !== false) {
+                                                                            $previousCCS = $arr2[sizeof($arr2) - 1];
+                                                                            $currentCCS = $Ccs + $previousCCS;
+
+                                                                            if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
+                                                                                $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
+                                                                                $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                                            }
                                                                         }
 
 
@@ -582,10 +617,24 @@ if ($handle = opendir('uploads')) {
                                                                             $i++;
 
 
+                                                                            if (stripos($val, $end_curlyBrace) !== false && $inElse && sizeof($elseArr) >= 1) {
+
+                                                                                array_pop($elseArr);
+
+                                                                                if (sizeof($elseArr) == 0) {
+
+                                                                                    $inElse = false;
+
+                                                                                }
+
+                                                                            }
+
                                                                             if (stripos($val, $end_curlyBrace) !== false) {
 
                                                                                 if (!is_null($arrCCS)) {
+
                                                                                     array_pop($arrCCS);
+
                                                                                 }
 
                                                                             }
