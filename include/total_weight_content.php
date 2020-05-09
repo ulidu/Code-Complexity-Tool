@@ -405,6 +405,123 @@
 
                                                 $val;
 
+                                                $Wmrt = null;
+                                                $Npdtp = null;
+                                                $Ncdtp = null;
+                                                $NpdtpBefore = null;
+                                                $NcdtpBefore = null;
+                                                $Cm = null;
+
+                                                for($x = 0; $x <= $row_count; $x++){
+
+
+
+                                                    if (preg_match('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val)){
+
+
+
+                                                        if (preg_match('/protected void \w+\(.*?\) \{|private void \w+\(.*?\) \{| public void \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val)){
+
+                                                            $Wmrt = $weight_void_returntype;
+
+                                                        }
+
+                                                        if (preg_match('/public (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{|private (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{|protected (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{/', $val)){
+
+                                                            $Wmrt = $weight_primitive_retuntype;
+
+                                                        }
+
+
+                                                        if (preg_match_all('/byte |short |int |long |float |double |char |String |boolean |void/', $val, $counter) == 0) {
+
+                                                            $Wmrt = $weight_composite_returntype;
+
+                                                        }
+
+
+
+                                                        $methodsCount = preg_match_all('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val, $counter);
+                                                        $methods_methods = $counter;
+
+                                                        if (!$methods_methods == "") {
+                                                            foreach ($methods_methods as $method_method) {
+                                                                if (!$method_method == "") {
+                                                                    foreach ($method_method as $methodAfter) {
+
+                                                                        $methodAfter;
+
+
+                                                                        if (preg_match_all('/\(.*?\)/', $methodAfter, $counter)) {
+
+                                                                            if (preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $methodAfter, $counter)) {
+
+                                                                                $NpdtpBefore = preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $methodAfter, $counter);
+
+                                                                            }
+
+                                                                            if(preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $methodAfter, $counter) == 0){
+
+                                                                                $NcdtpBefore = 1;
+
+                                                                            }
+
+                                                                            if(preg_match_all('/\(\)/', $methodAfter, $counter)){
+
+                                                                                $NpdtpBefore = 0;
+                                                                                $NcdtpBefore = 0;
+
+                                                                            }
+
+                                                                        }
+
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+
+
+                                                    }
+
+
+                                                    if ($Wmrt >= 0 && $NpdtpBefore > 0) {
+
+                                                        $NcdtpBefore = 0;
+
+                                                    }
+
+                                                    if ($Wmrt >= 0 && $NcdtpBefore > 0) {
+
+                                                        $NpdtpBefore = 0;
+
+                                                    }
+
+
+
+
+                                                }
+
+                                                // -------- Weight due to return type - End --------
+
+                                                $Cm = $Wmrt + ($NpdtpBefore * $weight_primitive_datatype_parameter) + ($Ncdtp * $weight_composite_datatype_parameter);
+
+
+                                                $total_Cm += $Cm;
+                                                if ($NcdtpBefore == 1){
+
+                                                    $Cm = $NcdtpBefore * $weight_composite_datatype_parameter;
+                                                    $total_Cm += $Cm;
+                                                }
+
+                                                if (preg_match_all('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val, $counter) == 0){
+
+                                                    $Cm = 0;
+
+                                                }
+
+
 
                                                 $global_variable_count_total = 0;
                                                 $local_variable_count_total = 0;
@@ -1007,7 +1124,7 @@
 
                                                 $total_cs += $Cs;
 
-                                                $TCps = $Cs + $Cv;
+                                                $TCps = $Cs + $Cv + $Cm;
 
                                                 $total_TCps += $TCps;
 
@@ -1041,7 +1158,7 @@
                                                     <td style="text-align: left"><?php echo $val; ?></td>
                                                     <td <?php if ($Cs > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Cs; ?></td>
                                                     <td <?php if ($Cv > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Cv; ?></td>
-                                                    <td>0</td>
+                                                    <td <?php if ($Cm > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Cm; ?></td>
                                                     <td>0</td>
                                                     <td>0</td>
                                                     <td>0</td>
@@ -1063,10 +1180,10 @@
                                                     <th colspan="2">Total</th>
                                                     <th><?php echo $total_cs; ?></th>
                                                     <th><?php echo $total_Cv; ?></th>
-                                                    <th>2</th>
+                                                    <th><?php echo $total_Cm; ?></th>
                                                     <th>0</th>
                                                     <th>0</th>
-                                                    <th>9</th>
+                                                    <th>0</th>
                                                     <th style="font-weight: bold; font-size: x-large;"
                                                         class="bg-dark kt-font-brand"><?php echo $total_TCps; ?></th>
                                                 </tr>
