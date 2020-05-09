@@ -77,6 +77,20 @@
 
     ?>
 
+    <?php
+
+    $fi = new FilesystemIterator($storeFolder, FilesystemIterator::SKIP_DOTS);
+    $limit = (iterator_count($fi));
+
+    $lastRow = "SELECT * FROM ( SELECT * FROM ccs ORDER BY CcsID DESC LIMIT $limit) result ORDER BY CcsID ASC";
+    $run_query_last = mysqli_query($con, $lastRow);
+
+    while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+    $CcsID_last = $lastrow['CcsID'];
+    $CcsValue_last = $lastrow['CcsValue'];
+
+    ?>
+
 
 
     <?php
@@ -298,6 +312,57 @@
 
                                                 <?php
 
+
+
+
+
+                                                $lastRow = "SELECT * FROM controlstructures ORDER BY ControlStructureID DESC LIMIT 1";
+                                                $run_query_last = mysqli_query($con, $lastRow);
+
+                                                while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                                $ControlStructureID_last = $lastrow['ControlStructureID'];
+                                                $CSif_last = $lastrow['CSif'];
+                                                $CSiterative_last = $lastrow['CSfor'];
+                                                $CSswitch_last = $lastrow['CSswitch'];
+                                                $CScase_last = $lastrow['CScase'];
+
+
+                                                $i = 0; //increment to each loop
+                                                $count = 0;
+
+                                                $total_ccs = 0;
+
+                                                $Wtcs = 0;
+                                                $NC = 0;
+                                                $Ccspps = 0;
+                                                $Ccs = 0;
+
+
+                                                $if_val = "if";
+                                                $switch_val = "switch";
+                                                $case_val = "case";
+                                                $while_val = "while";
+                                                $for_val = "for";
+                                                $end_curlyBrace = "}";
+
+
+                                                $arrCCS = [];
+
+
+                                                //Default Weights
+                                                $weight_if_elseif = $CSif_last;
+                                                $weight_for_while_dowhile = $CSiterative_last;
+                                                $weight_switch = $CSswitch_last;
+                                                $weight_case = $CScase_last;
+
+                                                $ifValue = 0;
+
+
+
+
+
+
+
                                                 $lastRow = "SELECT * FROM variables ORDER BY VariableID DESC LIMIT 1";
                                                 $run_query_last = mysqli_query($con,$lastRow);
 
@@ -397,6 +462,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
                                                 if (!$split == ''){
 
                                                 foreach ($split
@@ -404,6 +479,19 @@
                                                 as $val) { // Traverse the array with FOREACH
 
                                                 $val;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                                 $Wmrt = null;
                                                 $Npdtp = null;
@@ -1120,25 +1208,202 @@
                                                 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+                                                $previousCCS = 0;
+                                                $currentCCS = 0;
+
+
+
+
+
+                                                $conditional_words = array('if', 'for', 'while', 'switch', 'case');
+
+                                                foreach ($conditional_words as $word) {
+
+
+                                                    $numberOfParams = 0;
+
+
+                                                    if (preg_match('/if |if+\((.*?)\)+(.*?){|if+\((.*?)\)+(.*?) {/', $val) !== false) {
+
+                                                        $if_count = preg_match_all('/if |if+\((.*?)\)+(.*?){|if+\((.*?)\)+(.*?) {/', $val, $counter);
+                                                        $if_weight = $if_count * $weight_if_elseif;
+
+
+                                                        $insideBrackets = preg_match_all('/if \((?<=\().+(?=\))\)/', $val, $counter);
+                                                        $contentInsideBrackets = $counter;
+                                                        if (!$contentInsideBrackets == "") {
+                                                            foreach ($contentInsideBrackets as $contentInside) {
+                                                                if (!$contentInside == "") {
+                                                                    foreach ($contentInside as $content) {
+
+                                                                        //echo $content;
+                                                                        //echo "<br>";
+
+                                                                        $countInsideBrackets = preg_match_all('/&&|\|\|/', $content, $counter);
+
+
+                                                                        if ($countInsideBrackets > 0) {
+
+                                                                            $numberOfParams = $countInsideBrackets + 1;
+
+                                                                        } else {
+
+                                                                            $numberOfParams = 1;
+
+                                                                        }
+
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+
+                                                    }
+
+
+                                                    if (preg_match('/for |for+\((.*?)\)+(.*?){/', $val) !== false) {
+
+                                                        $for_count = preg_match_all('/for |for+\((.*?)\)+(.*?){/', $val, $counter);
+                                                        $for_weight = $for_count * $weight_for_while_dowhile;
+
+                                                    }
+
+                                                    if (preg_match('/while |while+\((.*?)\)+(.*?){/', $val) !== false) {
+
+                                                        $while_count = preg_match_all('/while |while+\((.*?)\)+(.*?){/', $val, $counter);
+                                                        $while_weight = $while_count * $weight_for_while_dowhile;
+
+
+                                                        $insideWhileBrackets = preg_match_all('/while |while+\((.*?)\)+(.*?){/', $val, $counter);
+                                                        $contentInsideWhileBrackets = $counter;
+                                                        if (!$contentInsideWhileBrackets == "") {
+                                                            foreach ($contentInsideWhileBrackets as $contentInside) {
+                                                                if (!$contentInside == "") {
+                                                                    foreach ($contentInside as $content) {
+
+                                                                        //echo $content;
+                                                                        //echo "<br>";
+
+                                                                        $countInsideWhileBrackets = preg_match_all('/&&|\|\|/', $content, $counter);
+
+
+                                                                        if ($countInsideWhileBrackets > 0) {
+
+                                                                            $numberOfWhileParams = $countInsideWhileBrackets + 1;
+
+                                                                        } else {
+
+                                                                            $numberOfWhileParams = 1;
+
+                                                                        }
+
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+
+                                                    }
+
+
+                                                    if (preg_match('/while |while+\((.*?)\)+(.*?);/', $val) !== false) {
+
+                                                        $do_while_count = preg_match_all('/while |while+\((.*?)\)+(.*?);/', $val, $counter);
+                                                        $do_while_weight = $do_while_count * $weight_for_while_dowhile;
+
+                                                    }
+
+                                                    if (preg_match('/switch |switch+\((.*?)\)+(.*?){/', $val) !== false) {
+
+                                                        $switch_count = preg_match_all('/switch |switch+\((.*?)\)+(.*?){/', $val, $counter);
+                                                        $switch_weight = $switch_count * $weight_switch;
+
+                                                    }
+
+                                                    if (preg_match('/case (.*?)+\:/', $val) !== false) {
+
+                                                        $case_count = preg_match_all('/case (.*?)+\:/', $val, $counter);
+                                                        $case_weight = $case_count * $weight_case;
+
+                                                    }
+
+
+                                                }
+
+                                                $Wtcs = $for_weight + $if_weight + $while_weight + $switch_weight + $case_weight + $do_while_weight;
+
+                                                $NC = $numberOfParams + $for_count + $numberOfWhileParams + $switch_count + $case_count + $do_while_count;
+
+
+                                                $Ccs = ($Wtcs * $NC);
+
+
+
+                                                if ($NC == 0) {
+
+                                                    $Ccspps = 0;
+
+                                                } else {
+
+                                                    $Ccspps = $Ccs;
+
+                                                }
+
+                                                if ($Wtcs == 0) {
+
+                                                    $NC = null;
+                                                    $Wtcs = null;
+                                                    $previousCCS = null;
+                                                    $currentCCS = 0;
+
+                                                }
+
+
+                                                if (stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false || stripos($val, $while_val) !== false) {
+
+                                                    if (sizeof($arrCCS) >= 1) {
+                                                        $var = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                    } else {
+                                                        $var = $Ccs;
+                                                    }
+
+                                                    array_push($arrCCS, $var);
+                                                    $currentCCS = $arrCCS[sizeof($arrCCS) - 1];
+
+                                                    if (sizeof($arrCCS) >= 2) {
+                                                        $previousCCS = $arrCCS[sizeof($arrCCS) - 2];
+                                                    }
+
+                                                }
+
+
+                                                if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
+                                                    $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
+                                                    $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                }
+
                                                 $Cs = $Nkw + $Nid + $Nop + $Nnv + $Nsl;
 
                                                 $total_cs += $Cs;
 
-                                                $TCps = $Cs + $Cv + $Cm;
+                                                $TCps = $Cs + $Cv + $Cm + $currentCCS;
 
                                                 $total_TCps += $TCps;
 
-
-
-
-
-
-
-
-
-
-
-
+                                                $total_ccs += $currentCCS;
 
 
 
@@ -1161,12 +1426,20 @@
                                                     <td <?php if ($Cm > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Cm; ?></td>
                                                     <td>0</td>
                                                     <td>0</td>
-                                                    <td>0</td>
+                                                    <td <?php if ($currentCCS > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $currentCCS; ?></td>
                                                     <td style="color: #2A3746;font-weight: bold;"
                                                         class="kt-label-bg-color-1"><?php echo $TCps; ?></td>
                                                     <?php $i++;
+
+                                                    if (stripos($val, $end_curlyBrace) !== false) {
+
+                                                        if (!is_null($arrCCS)) {
+                                                            array_pop($arrCCS);
+                                                        }
+
                                                     }
-                                                    }}}
+                                                    }
+                                                    }}}}
                                                     }
                                                     $_SESSION['row_count'] = $i;
                                                     ?>
@@ -1183,7 +1456,7 @@
                                                     <th><?php echo $total_Cm; ?></th>
                                                     <th>0</th>
                                                     <th>0</th>
-                                                    <th>0</th>
+                                                    <th><?php echo $total_ccs; ?></th>
                                                     <th style="font-weight: bold; font-size: x-large;"
                                                         class="bg-dark kt-font-brand"><?php echo $total_TCps; ?></th>
                                                 </tr>
@@ -1234,7 +1507,7 @@
             }
             }
             }}
-
+            }
             $query_disp_final_tot = "INSERT INTO finaltotal(FinalTotalValue) VALUES('$final_total')";
             mysqli_query($con, $query_disp_final_tot);
 
