@@ -59,11 +59,6 @@ $resetCcs= "DELETE FROM ccs WHERE CcsID NOT IN ( SELECT * FROM ( SELECT CcsID FR
 $resetTotalComp= "DELETE FROM totalcomplexity WHERE totalcomplexityID NOT IN ( SELECT * FROM ( SELECT totalcomplexityID FROM totalcomplexity ORDER BY totalcomplexityID LIMIT 1) s)";
 $resetFinalComp= "DELETE FROM finaltotal WHERE FinalTotalID NOT IN ( SELECT * FROM ( SELECT FinalTotalID FROM finaltotal ORDER BY FinalTotalID LIMIT 1) s)";
 
-$resetcsvaltable= "DELETE FROM cstablevalues WHERE cstableID NOT IN ( SELECT * FROM ( SELECT cstableID FROM cstablevalues ORDER BY cstableID LIMIT 0) s)";
-$resetcsnested= "DELETE FROM csnestedvalues WHERE CSnestedValuesID NOT IN ( SELECT * FROM ( SELECT CSnestedValuesID FROM csnestedvalues ORDER BY CSnestedValuesID LIMIT 0) s)";
-$resetfinal= "DELETE FROM csfinal WHERE csfinalID NOT IN ( SELECT * FROM ( SELECT csfinalID FROM csfinal ORDER BY csfinalID LIMIT 0) s)";
-
-
 mysqli_query($con,$resetCs);
 mysqli_query($con,$resetCv);
 mysqli_query($con,$resetCm);
@@ -73,10 +68,6 @@ mysqli_query($con,$resetCcs);
 
 mysqli_query($con,$resetTotalComp);
 mysqli_query($con,$resetFinalComp);
-
-mysqli_query($con,$resetcsvaltable);
-mysqli_query($con,$resetcsnested);
-mysqli_query($con,$resetfinal);
 
 ?>
 

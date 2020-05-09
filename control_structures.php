@@ -354,6 +354,18 @@ if ($handle = opendir('uploads')) {
                                                                         $Ccspps = 0;
                                                                         $Ccs = 0;
 
+
+                                                                        $if_val = "if";
+                                                                        $switch_val = "switch";
+                                                                        $case_val = "case";
+                                                                        $while_val = "while";
+                                                                        $for_val = "for";
+                                                                        $end_curlyBrace = "}";
+
+
+                                                                        $arrCCS = [];
+
+
                                                                         //Default Weights
                                                                         $weight_if_elseif = $CSif_last;
                                                                         $weight_for_while_dowhile = $CSiterative_last;
@@ -375,6 +387,11 @@ if ($handle = opendir('uploads')) {
 
                                                                         as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
 
+
+                                                                        $previousCCS = 0;
+                                                                        $currentCCS = 0;
+
+
                                                                         $val = str_replace(';', ';', $valAfterSemicolonReplace);
 
 
@@ -384,6 +401,7 @@ if ($handle = opendir('uploads')) {
 
 
                                                                             $numberOfParams = 0;
+
 
                                                                             if (preg_match('/if |if+\((.*?)\)+(.*?){|if+\((.*?)\)+(.*?) {/', $val) !== false) {
 
@@ -499,6 +517,10 @@ if ($handle = opendir('uploads')) {
                                                                         $NC = $numberOfParams + $for_count + $numberOfWhileParams + $switch_count + $case_count + $do_while_count;
 
 
+                                                                        $Ccs = ($Wtcs * $NC);
+
+
+
                                                                         if ($NC == 0) {
 
                                                                             $Ccspps = 0;
@@ -513,49 +535,60 @@ if ($handle = opendir('uploads')) {
 
                                                                             $NC = null;
                                                                             $Wtcs = null;
-                                                                            $Ccspps = null;
-
-                                                                        }
-
-                                                                        $Ccs = ($Wtcs * $NC) + $Ccspps;
-                                                                        $total_ccs += $Ccs;
-
-
-                                                                        if (preg_match_all('/if \(/', $val, $counter)) {
-
-                                                                            $ifValueNew = $Ccs;
-
-
-
-
-                                                                        }
-                                                                        if (preg_match_all('/if \(/', $val, $counter)) {
-
-                                                                            //$Ccspps = $ifValueNew;
-
-                                                                        }
-
-                                                                        if (preg_match_all('/switch \(/', $val, $counter)) {
-                                                                            //$Ccspps = $ifValueNew;
-                                                                            //$Ccs += $Ccspps;
+                                                                            $previousCCS = null;
+                                                                            $currentCCS = null;
 
                                                                         }
 
 
+                                                                        if (stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false || stripos($val, $while_val) !== false) {
+
+                                                                            if (sizeof($arrCCS) >= 1) {
+                                                                                $var = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                                            } else {
+                                                                                $var = $Ccs;
+                                                                            }
+
+                                                                            array_push($arrCCS, $var);
+                                                                            $currentCCS = $arrCCS[sizeof($arrCCS) - 1];
+
+                                                                            if (sizeof($arrCCS) >= 2) {
+                                                                                $previousCCS = $arrCCS[sizeof($arrCCS) - 2];
+                                                                            }
+
+                                                                        }
+
+
+                                                                        if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
+                                                                            $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
+                                                                            $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                                        }
+
+
+                                                                        $total_ccs += $currentCCS;
 
                                                                         ?>
 
                                                                         <tr>
-                                                                            <td><?php echo $count = $count + 1; ?></td>
+                                                                            <td><?php echo ++$count; ?></td>
                                                                             <td style="text-align: left"><?php echo $val; ?></td>
                                                                             <td <?php if ($Wtcs > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Wtcs; ?></td>
                                                                             <td <?php if ($NC > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $NC; ?></td>
-                                                                            <td <?php if ($Ccspps > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Ccspps; ?></td>
-                                                                            <td <?php if ($Ccs > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Ccs; ?></td>
+                                                                            <td <?php if ($previousCCS > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $previousCCS; ?></td>
+                                                                            <td <?php if ($currentCCS > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $currentCCS; ?></td>
 
                                                                             <?php
 
                                                                             $i++;
+
+
+                                                                            if (stripos($val, $end_curlyBrace) !== false) {
+
+                                                                                if (!is_null($arrCCS)) {
+                                                                                    array_pop($arrCCS);
+                                                                                }
+
+                                                                            }
 
                                                                             }
 
@@ -564,6 +597,9 @@ if ($handle = opendir('uploads')) {
                                                                             }
 
                                                                             $_SESSION['total_ccs'] = $total_ccs;
+
+                                                                            $query_disp_total = "INSERT INTO ccs(CcsValue) VALUES('$total_ccs')";
+                                                                            mysqli_query($con, $query_disp_total);
 
                                                                             ?>
                                                                         </tr>
