@@ -63,6 +63,20 @@
 
     ?>
 
+    <?php
+
+    $fi = new FilesystemIterator($storeFolder, FilesystemIterator::SKIP_DOTS);
+    $limit = (iterator_count($fi));
+
+    $lastRow = "SELECT * FROM ( SELECT * FROM cm ORDER BY CmID DESC LIMIT $limit) result ORDER BY CmID ASC";
+    $run_query_last = mysqli_query($con,$lastRow);
+
+    while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+    $CmID_last = $lastrow['CmID'];
+    $CmValue_last = $lastrow['CmValue'];
+
+    ?>
+
 
 
     <?php
@@ -309,6 +323,33 @@
                                                 $weight_composite_datatype_variable = $CompositeVariable_last;
                                                 $weight_global_variable = $GlobalVariable_last;
                                                 $weight_local_variable = $LocalVariable_last;
+
+
+
+
+                                                $lastRow = "SELECT * FROM methods ORDER BY 	MethodID DESC LIMIT 1";
+                                                $run_query_last = mysqli_query($con,$lastRow);
+
+                                                while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                                $MethodID_last = $lastrow['MethodID'];
+                                                $PrimitiveReturnType_last = $lastrow['PrimitiveReturnType'];
+                                                $CompositeReturnType_last = $lastrow['CompositeReturnType'];
+                                                $VoidReturnType_last = $lastrow['VoidReturnType'];
+                                                $PrimitiveParameter_last = $lastrow['PrimitiveParameter'];
+                                                $CompositeParameter_last = $lastrow['CompositeParameter'];
+
+                                                $i = 0; //increment to each loop
+                                                $count = 0;
+                                                $total_Cm = 0;
+
+                                                //Default Weights
+                                                $weight_primitive_retuntype = $PrimitiveReturnType_last;
+                                                $weight_composite_returntype = $CompositeReturnType_last;
+                                                $weight_void_returntype = $VoidReturnType_last;
+                                                $weight_primitive_datatype_parameter = $PrimitiveParameter_last;
+                                                $weight_composite_datatype_parameter = $CompositeParameter_last;
+
+
 
 
 
@@ -1008,7 +1049,7 @@
                                                         class="kt-label-bg-color-1"><?php echo $TCps; ?></td>
                                                     <?php $i++;
                                                     }
-                                                    }}
+                                                    }}}
                                                     }
                                                     $_SESSION['row_count'] = $i;
                                                     ?>
@@ -1075,7 +1116,7 @@
             <?php }
             }
             }
-            }
+            }}
 
             $query_disp_final_tot = "INSERT INTO finaltotal(FinalTotalValue) VALUES('$final_total')";
             mysqli_query($con, $query_disp_final_tot);

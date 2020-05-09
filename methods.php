@@ -125,7 +125,7 @@ if ($handle = opendir('uploads')) {
                         </div>
                         <div class="kt-subheader__toolbar">
                             <a href="total_weight.php" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
-                                Total Weight of the Program
+                                Total Complexity of the Program
                             </a>
 
                         </div>
@@ -378,12 +378,12 @@ if ($handle = opendir('uploads')) {
 
 
                                                                                 $methodsCount = preg_match_all('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val, $counter);
-                                                                                $methods = $counter;
+                                                                                $methods_methods = $counter;
 
-                                                                                if (!$methods == "") {
-                                                                                    foreach ($methods as $method) {
-                                                                                        if (!$method == "") {
-                                                                                            foreach ($method as $methodAfter) {
+                                                                                if (!$methods_methods == "") {
+                                                                                    foreach ($methods_methods as $method_method) {
+                                                                                        if (!$method_method == "") {
+                                                                                            foreach ($method_method as $methodAfter) {
 
                                                                                                 $methodAfter;
 

@@ -131,7 +131,7 @@ if ($handle = opendir('uploads')) {
                         <div class="kt-subheader__toolbar">
                             <a href="total_weight.php"
                                class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
-                                Total Weight of the Program
+                                Total Complexity of the Program
                             </a>
 
                         </div>
