@@ -369,7 +369,7 @@ if ($handle = opendir('uploads')) {
                                                                         $splitAfterSemicolon = str_replace(';', ';', $split);
 
                                                                         //For Printing of the code lines for the table
-                                                                        if (!$splitAfterSemicolon == ""){
+                                                                        if (!$splitAfterSemicolon == "") {
 
                                                                         foreach ($splitAfterSemicolon
 
@@ -507,32 +507,6 @@ if ($handle = opendir('uploads')) {
 
                                                                             $Ccspps = $Ccs;
 
-
-                                                                            if ($Wtcs > 0 && preg_match_all('/case 1:/', $val, $counter)) {
-                                                                                $switchValue = $Ccs;
-                                                                            }
-
-                                                                            if ($Wtcs > 0 && preg_match_all('/case/', $val, $counter)) {
-                                                                                $Ccspps = $switchValue;
-                                                                            }
-
-
-                                                                            if ($Wtcs > 0 && preg_match_all('/switch \(|if \(\(\(/', $val, $counter)) {
-                                                                                $Ccspps = $ifValue;
-                                                                            }
-
-
-                                                                            if ($Wtcs > 0 && preg_match_all('/if \(year > 2020\)/', $val, $counter)) {
-                                                                                $Ccspps = $ifValue2;
-                                                                            }
-
-                                                                            if (preg_match_all('/if \(year < 1/', $val, $counter)) {
-
-                                                                                $Ccspps = $switchValue;
-
-                                                                            }
-
-
                                                                         }
 
                                                                         if ($Wtcs == 0) {
@@ -544,36 +518,29 @@ if ($handle = opendir('uploads')) {
                                                                         }
 
                                                                         $Ccs = ($Wtcs * $NC) + $Ccspps;
-
                                                                         $total_ccs += $Ccs;
 
 
-                                                                        if (preg_match_all('/numDays = 29;/', $val, $counter)) {
+                                                                        if (preg_match_all('/if \(/', $val, $counter)) {
 
-                                                                            $ifValue2 = $Ccs;
+                                                                            $ifValueNew = $Ccs;
+
+
+
 
                                                                         }
+                                                                        if (preg_match_all('/if \(/', $val, $counter)) {
 
-                                                                        $queryvalcs = "INSERT INTO cstablevalues(csTableVal,Wtcs,NC,Ccspps,Ccs) VALUES('$val','$Wtcs','$NC','$Ccspps','$Ccs')";
-                                                                        mysqli_query($con, $queryvalcs);
+                                                                            //$Ccspps = $ifValueNew;
 
+                                                                        }
 
                                                                         if (preg_match_all('/switch \(/', $val, $counter)) {
+                                                                            //$Ccspps = $ifValueNew;
+                                                                            //$Ccs += $Ccspps;
 
-                                                                            $lastRows = "SELECT * FROM csfinal where csfinalLineVal=''";
-                                                                            $run_query_final = mysqli_query($con, $lastRows);
-
-                                                                            while ($lastrows = mysqli_fetch_assoc($run_query_final)) {
-                                                                                $csfinalID = $lastrows['csfinalID'];
-                                                                                $lineValfinal = $lastrows['csfinalLineVal'];
-                                                                                $Ccspps_final = $lastrows['Ccspps'];
-                                                                                $Ccs_final = $lastrows['Ccs'];
-
-
-                                                                                $Ccspps = $Ccs_final;
-
-                                                                            }
                                                                         }
+
 
 
                                                                         ?>
@@ -592,258 +559,11 @@ if ($handle = opendir('uploads')) {
 
                                                                             }
 
-
-                                                                            if ((preg_match_all('/\{(?:[^{}]+|(?R))*+\}/', $entireCode, $counter))) {
-
-                                                                                //$ifValue = $Ccs;
-                                                                                $match_string = 'if ';
-
-                                                                                foreach ($counter as $bracketsArray) {
-                                                                                    foreach ($bracketsArray as $bracketsCont) {
-                                                                                        if (strpos($bracketsCont, $match_string) !== FALSE) {
-                                                                                            $matching_array[] = $bracketsCont;
-
-                                                                                        }
-                                                                                    }
-
-                                                                                }
-
-                                                                                //print_r($matching_array);
-                                                                                //print_r("<br>");
-                                                                                //print_r("<br>");
-
-                                                                                if ($icount == 0) {
-                                                                                    $firstMatchingArray = $matching_array;
-                                                                                    $icount++;
-                                                                                } elseif ($icount == 1) {
-                                                                                    $secondMatchingArray = $matching_array;
-                                                                                    $icount++;
-                                                                                } elseif ($icount == 2) {
-                                                                                    $thirdMatchingArray = $matching_array;
-                                                                                    $icount++;
-                                                                                } elseif ($icount == 3) {
-                                                                                    $fourthMatchingArray = $matching_array;
-                                                                                    $icount++;
-                                                                                } elseif ($icount == 4) {
-                                                                                    $fifthMatchingArray = $matching_array;
-                                                                                    $icount++;
-                                                                                } elseif ($icount == 5) {
-                                                                                    $sixthMatchingArray = $matching_array;
-                                                                                    $icount++;
-                                                                                } elseif ($icount == 6) {
-                                                                                    $seventhMatchingArray = $matching_array;
-                                                                                    $icount++;
-                                                                                }
-
-                                                                                $noOfArrays = count($matching_array);
-
-
-                                                                                if ($noOfArrays <= $firstNoOfArrays) {
-
-
-                                                                                    $matching_array;
-                                                                                    $count_rows;
-
-                                                                                    $lastRows = "SELECT * FROM ( SELECT * FROM cstablevalues ORDER BY cstableID DESC LIMIT $count_rows) result ORDER BY cstableID ASC";
-                                                                                    $run_query_last = mysqli_query($con, $lastRows);
-
-                                                                                    while ($lastrows = mysqli_fetch_assoc($run_query_last)) {
-                                                                                        $cstableID_last = $lastrows['cstableID'];
-                                                                                        $csTableVal_last = $lastrows['csTableVal'];
-                                                                                        $Wtcs_last = $lastrows['Wtcs'];
-                                                                                        $NC_last = $lastrows['NC'];
-                                                                                        $Ccspps_last = $lastrows['Ccspps'];
-                                                                                        $Ccs_last = $lastrows['Ccs'];
-
-
-                                                                                        foreach ($matching_array as $cs_content) {
-
-                                                                                            if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
-
-                                                                                                $if_content_array = $counter;
-                                                                                                $line_where_cs = end($counter);
-
-                                                                                                foreach ($line_where_cs as $line_cs) {
-
-                                                                                                    if (strpos($csTableVal_last, $line_cs)) {
-
-                                                                                                        $ifValueNew = $Ccs_last;
-
-                                                                                                        $queryvalcsnested = "INSERT INTO csnestedvalues(lineVal,Ccspps,Ccs) VALUES('$csTableVal_last','$Ccspps_last','$Ccs_last')";
-                                                                                                        mysqli_query($con, $queryvalcsnested);
-
-                                                                                                        foreach ($if_content_array as $if_content_arr) {
-                                                                                                            foreach ($if_content_arr as $if_content) {
-
-                                                                                                                if (preg_match_all('/switch \(/', $if_content, $counter)) {
-
-
-                                                                                                                    foreach ($counter as $switchline_array) {
-                                                                                                                        foreach ($switchline_array as $switchline) {
-
-
-                                                                                                                            $lastRows = "SELECT * FROM csnestedvalues where lineVal='$csTableVal_last'";
-                                                                                                                            $run_query_sw = mysqli_query($con, $lastRows);
-
-                                                                                                                            while ($lastrows = mysqli_fetch_assoc($run_query_sw)) {
-                                                                                                                                $CSnestedValuesID = $lastrows['CSnestedValuesID'];
-                                                                                                                                $lineVal = $lastrows['lineVal'];
-                                                                                                                                $Ccspps_sw = $lastrows['Ccspps'];
-                                                                                                                                $Ccs_sw = $lastrows['Ccs'];
-
-                                                                                                                                $queryfinal = "INSERT INTO csfinal(csfinalLineVal,Ccspps,Ccs) VALUES('$lineVal','$Ccspps_sw','$Ccs_sw')";
-                                                                                                                                mysqli_query($con, $queryfinal);
-
-
-                                                                                                                            }
-
-                                                                                                                        }
-
-                                                                                                                    }
-
-                                                                                                                }
-
-                                                                                                            }
-
-                                                                                                        }
-
-                                                                                                    }
-
-                                                                                                }
-
-                                                                                            }
-
-                                                                                        }
-
-                                                                                    }
-
-                                                                                    $firstNoOfArrays = $noOfArrays;
-
-
-                                                                                } elseif ($noOfArrays > $firstNoOfArrays) {
-
-                                                                                    if ($icount == 2) {
-
-                                                                                        $result = array_diff($matching_array, $firstMatchingArray);
-
-
-                                                                                        $count_rows;
-
-                                                                                        $lastRows = "SELECT * FROM ( SELECT * FROM cstablevalues ORDER BY cstableID DESC LIMIT $count_rows) result ORDER BY cstableID ASC";
-                                                                                        $run_query_last = mysqli_query($con, $lastRows);
-
-                                                                                        while ($lastrows = mysqli_fetch_assoc($run_query_last)) {
-                                                                                            $cstableID_last = $lastrows['cstableID'];
-                                                                                            $csTableVal_last = $lastrows['csTableVal'];
-                                                                                            $Wtcs_last = $lastrows['Wtcs'];
-                                                                                            $NC_last = $lastrows['NC'];
-                                                                                            $Ccspps_last = $lastrows['Ccspps'];
-                                                                                            $Ccs_last = $lastrows['Ccs'];
-
-                                                                                            echo $csTableVal_last;
-                                                                                            echo "<br>";
-
-                                                                                            foreach ($result as $cs_content) {
-
-                                                                                                if ((preg_match_all('/if (.*?)\{(?s).*\}/', $cs_content, $counter))) {
-
-                                                                                                    $if_content_array = $counter;
-                                                                                                    $line_where_cs = end($counter);
-
-                                                                                                    foreach ($line_where_cs as $line_cs) {
-
-                                                                                                        if (strpos($csTableVal_last, $line_cs)) {
-
-                                                                                                            $ifValueNew = $Ccs_last;
-
-                                                                                                            $queryvalcsnested = "INSERT INTO csnestedvalues(lineVal,Ccspps,Ccs) VALUES('$csTableVal_last','$Ccspps_last','$Ccs_last')";
-                                                                                                            mysqli_query($con, $queryvalcsnested);
-
-                                                                                                            foreach ($if_content_array as $if_content_arr) {
-                                                                                                                foreach ($if_content_arr as $if_content) {
-
-                                                                                                                    if (preg_match_all('/switch \(/', $if_content, $counter)) {
-
-
-                                                                                                                        foreach ($counter as $switchline_array) {
-                                                                                                                            foreach ($switchline_array as $switchline) {
-
-
-                                                                                                                                $lastRows = "SELECT * FROM csnestedvalues where lineVal='$csTableVal_last'";
-                                                                                                                                $run_query_sw = mysqli_query($con, $lastRows);
-
-                                                                                                                                while ($lastrows = mysqli_fetch_assoc($run_query_sw)) {
-                                                                                                                                    $CSnestedValuesID = $lastrows['CSnestedValuesID'];
-                                                                                                                                    $lineVal = $lastrows['lineVal'];
-                                                                                                                                    $Ccspps_sw = $lastrows['Ccspps'];
-                                                                                                                                    $Ccs_sw = $lastrows['Ccs'];
-
-                                                                                                                                    $queryfinal = "INSERT INTO csfinal(csfinalLineVal,Ccspps,Ccs) VALUES('$lineVal','$Ccspps_sw','$Ccs_sw')";
-                                                                                                                                    mysqli_query($con, $queryfinal);
-
-
-                                                                                                                                }
-
-                                                                                                                            }
-
-                                                                                                                        }
-
-                                                                                                                    }
-
-                                                                                                                }
-
-                                                                                                            }
-
-                                                                                                        }
-
-                                                                                                    }
-
-                                                                                                }
-
-                                                                                            }
-
-                                                                                        }
-
-                                                                                    } elseif ($icount == 3) {
-
-                                                                                        $result = array_diff($matching_array, $secondMatchingArray);
-                                                                                        print_r($result);
-
-                                                                                    } elseif ($icount == 4) {
-
-                                                                                        $result = array_diff($matching_array, $thirdMatchingArray);
-                                                                                        print_r($result);
-
-                                                                                    } elseif ($icount == 5) {
-
-                                                                                        $result = array_diff($matching_array, $fourthMatchingArray);
-                                                                                        print_r($result);
-
-                                                                                    } elseif ($icount == 6) {
-
-                                                                                        $result = array_diff($matching_array, $fifthMatchingArray);
-                                                                                        print_r($result);
-
-                                                                                    }
-
-                                                                                    $firstNoOfArrays = $noOfArrays;
-
-                                                                                }
-
-
-                                                                                //print_r($counter);
-                                                                                //print_r("<br>");
-
-                                                                            }
-
                                                                             }
 
                                                                             }
 
                                                                             $_SESSION['total_ccs'] = $total_ccs;
-
-                                                                            $query_disp_total = "INSERT INTO ccs(CcsValue) VALUES('$total_ccs')";
-                                                                            mysqli_query($con, $query_disp_total);
 
                                                                             ?>
                                                                         </tr>
