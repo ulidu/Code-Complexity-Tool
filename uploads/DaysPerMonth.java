@@ -1,6 +1,7 @@
 import java.util.Scanner;
- class Years{
-   public int getYear(){
+public int getMonth(int a) {
+ class Years {
+   public int getYear() {
 	int year;
 	String enteredYear;
 	Scanner sc = new Scanner(System.in);
@@ -11,8 +12,8 @@ import java.util.Scanner;
    }
  }
 //------------------------------------------------------------------------------------------------------------------------------------
- class Months extends Years{
-   public int getMonth(){
+ class Months extends Years {
+   public int getMonth() {
 	int month;
 	String enteredMonthNumber;
 	Scanner sc = new Scanner(System.in);
@@ -23,14 +24,14 @@ import java.util.Scanner;
    }
  }
 //------------------------------------------------------------------------------------------------------------------------------------
-class DaysPerMonth extends Months{ 
+class DaysPerMonth extends Months { 
  static int numDays = 0;
  public static void main(String[] args) {
    int year;
    Months m = new Months();
    int month = m.getMonth();
    
-   if((month < 1) || (month > 12)){ 
+   if ((month < 1) || (month > 12)) { 
      System.out.println("Kindly enter a number between 0 to 13.");
    }
    else {
@@ -54,13 +55,13 @@ class DaysPerMonth extends Months{
        break;
       case 2:
        year = m.getYear();
-       if(year < 1) {
+       if (year < 1) {
         System.out.println("Kindly enter a valid year.");
        }
        else{
-        if(((year % 4 == 0) &&  !(year % 100 == 0)) || (year % 400 == 0)){
+        if (((year % 4 == 0) &&  !(year % 100 == 0)) || (year % 400 == 0)) {
          numDays = 29;
-		 if(year > 2020){
+		 if (year > 2020) {
 		  System.out.println("In year " + year + " month " + month + " will consist of " + numDays + " days.");
          }
          else{
@@ -69,7 +70,7 @@ class DaysPerMonth extends Months{
         }//if at line 61
         else{
          numDays = 28;
-         if (year > 2020){
+         if (year > 2020) {
           System.out.println("In year " + year + " month " + month + " will consist of " + numDays + " days.");
          }
          else{
@@ -81,4 +82,4 @@ class DaysPerMonth extends Months{
     }//switch at line 37
    }//else at line 36
   }//method
- }//class
+}

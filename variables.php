@@ -126,7 +126,7 @@ if ($handle = opendir('uploads')) {
                         </div>
                         <div class="kt-subheader__toolbar">
                             <a href="total_weight.php" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
-                                Total Weight of the Program
+                                Total Complexity of the Program
                             </a>
 
                         </div>
@@ -339,10 +339,10 @@ if ($handle = opendir('uploads')) {
                                                                         $beforeCv = 0;
 
                                                                         //Default Weights
-                                                                        $weight_primitive_datatype_variable = $GlobalVariable_last;
-                                                                        $weight_composite_datatype_variable = $LocalVariable_last;
-                                                                        $weight_global_variable = $PrimitiveVariable_last;
-                                                                        $weight_local_variable = $CompositeVariable_last;
+                                                                        $weight_primitive_datatype_variable = $PrimitiveVariable_last;
+                                                                        $weight_composite_datatype_variable = $CompositeVariable_last;
+                                                                        $weight_global_variable = $GlobalVariable_last;
+                                                                        $weight_local_variable = $LocalVariable_last;
 
 
                                                                         $entireCode = str_replace(';', ';', $trim);
@@ -530,12 +530,16 @@ if ($handle = opendir('uploads')) {
 
 
                                                                         if ($Wvs == 0){
-
                                                                             $Wvs = null;
                                                                             $Npdtv = null;
                                                                             $Ncdtv = null;
+                                                                        }
 
-
+                                                                        if ($Ncdtv == 0){
+                                                                            $Ncdtv = null;
+                                                                        }
+                                                                        if ($Npdtv == 0){
+                                                                            $Npdtv = null;
                                                                         }
 
                                                                         $beforeCv = ($weight_primitive_datatype_variable * $Npdtv) + ($weight_composite_datatype_variable * $Ncdtv);
