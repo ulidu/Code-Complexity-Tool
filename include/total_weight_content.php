@@ -833,6 +833,12 @@
                                                 $tokenNumber = "";
                                                 $tokenString = "";
 
+                                                $count_methods_2 = 0;
+                                                $count_methods_3 = 0;
+                                                $count_methods_4 = 0;
+                                                $count_methods_5 = 0;
+
+
 
                                                 foreach ($keywords as $word) {
 
@@ -1067,6 +1073,73 @@
 
                                                 for ($x = 0; $x <= $row_count; $x++) {
 
+
+
+
+
+                                                    //Matching Classes
+                                                    $method_names_2 = (getContentsBetween($val, 'void', ') {'));
+                                                    foreach ($method_names_2 as $methods_2) {
+                                                        if (strpos($val, $methods_2)) {
+
+
+
+                                                            $count_methods_2 = substr_count($val,$methods_2);
+
+
+
+                                                        }
+
+                                                    }
+                                                    $method_names_3 = (getContentsBetween($val, 'int', ') {'));
+                                                    foreach ($method_names_3 as $methods_3) {
+                                                        if (strpos($val, $methods_3)) {
+
+
+
+                                                            $count_methods_3 = substr_count($val,$methods_3);
+
+
+
+                                                        }
+
+                                                    }
+
+                                                    $method_names_4 = (getContentsBetween($val, 'String', ') {'));
+                                                    foreach ($method_names_4 as $methods_4) {
+                                                        if (strpos($val, $methods_4)) {
+
+
+
+                                                            $count_methods_4 = substr_count($val,$methods_4);
+
+
+
+                                                        }
+
+                                                    }
+
+                                                    $method_names_5 = (getContentsBetween($val, 'double', ') {'));
+                                                    foreach ($method_names_5 as $methods_5) {
+                                                        if (strpos($val, $methods_5)) {
+
+
+
+                                                            $count_methods_5 = substr_count($val,$methods_5);
+
+
+
+                                                        }
+
+                                                    }
+
+
+
+
+
+
+
+
                                                     if (preg_match('/class\s*(\w+)/', $val) !== false) {
 
                                                         $count_class = preg_match_all('/class\s*(\w+)/', $val, $counter);
@@ -1104,14 +1177,13 @@
                                                     }
 
 
-                                                    $identifiers_count_total = $count_class + $count_objects + $count_methods;
+                                                    $identifiers_count_total = $count_class + $count_objects + $count_methods + $count_methods_2 + $count_methods_3 + $count_methods_4 + $count_methods_5;
 
                                                     $Nid = $identifiers_count_total * $weight_identifier;
 
                                                 }
 
                                                 // -------- Weight due to Identifiers - End --------
-
 
                                                 // -------- Weight due to Operators - Begin --------
 
