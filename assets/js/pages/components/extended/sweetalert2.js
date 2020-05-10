@@ -133,7 +133,6 @@ var KTSweetAlert2Demo = function() {
 
         });
 
-
         $('#kt_sweetalert_demo_81').click(function(e) {
 
             var $a;

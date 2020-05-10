@@ -46,8 +46,63 @@ setcookie($cookie_name, $cookie_value,time() + (86400), "/"); // 86400 = 1 day
         
         <style>
             @import url('https://fonts.googleapis.com/css?family=Fira+Code&display=swap');
-        </style>
 
+
+            .overlay {
+                height: 0%;
+                width: 100%;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0, 0.9);
+                overflow-y: hidden;
+                transition: 0.5s;
+            }
+
+            .overlay-content {
+                position: relative;
+                top: 25%;
+                width: 120%;
+                padding-left: 10%;
+                padding-right: 20%;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            .overlay a {
+                padding: 8px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
+            }
+
+            .overlay a:hover, .overlay a:focus {
+                color: #f1f1f1;
+            }
+
+            .overlay .closebtn {
+                position: relative;
+                top: 0px;
+
+                font-size: 30px;
+            }
+
+            @media screen and (max-height: 450px) {
+                .overlay {overflow-y: auto;}
+                .overlay a {font-size: 20px}
+                .overlay .closebtn {
+                    font-size: 40px;
+                    top: 15px;
+                    right: 35px;
+                }
+            }
+
+
+        </style>
 
 
 

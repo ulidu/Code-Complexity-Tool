@@ -70,9 +70,11 @@ if ($extract) {
 
 
 if ($handle = opendir('uploads')) {
-
+    $firstNoOfArrays = 1000000000;
+    $icount = 0;
     while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
+
 
             $entry_arr_af = preg_split("/\.java/", $entry);
             $entry_arr = array_filter($entry_arr_af);
@@ -83,13 +85,13 @@ if ($handle = opendir('uploads')) {
 
                 $content = file_get_contents('uploads/' . $entry);
 
-//  Removes single line '//' comments, treats blank characters
+                //  Removes single line '//' comments, treats blank characters
                 $single = preg_replace('![ \t]*//.*[ \t]*[\r\n]!', '', $content);
 
                 $multiple = preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $single);
                 $excess = preg_replace('/\s+/', ' ', $multiple);
                 $trim = trim($excess, " ");
-//$for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
+                //$for_semicolon = preg_replace('/;(?=((?!\().)*?\))/', ';', $trim);
                 $for_semicolon = preg_replace_callback(/** @lang text */ '~\b(?:while|for)\s*(\((?:[^()]++|(?1))*\))~u', static function ($m) {
                     return str_replace(';', ';', $m[0]);
                 },
@@ -101,6 +103,9 @@ if ($handle = opendir('uploads')) {
                 $_SESSION['trimmed'] = $trim;
                 $_SESSION['entireCode'] = $trim;
                 $_SESSION['filename'] = $entry;
+
+                $count_rows = count($split);
+
 
                 ?>
 
@@ -124,8 +129,9 @@ if ($handle = opendir('uploads')) {
                             </div>
                         </div>
                         <div class="kt-subheader__toolbar">
-                            <a href="total_weight.php" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
-                                Total Weight of the Program
+                            <a href="total_weight.php"
+                               class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                                Total Complexity of the Program
                             </a>
 
                         </div>
@@ -338,19 +344,6 @@ if ($handle = opendir('uploads')) {
                                                                         $CScase_last = $lastrow['CScase'];
 
 
-
-
-                                                                        foreach ($split as $codeLine) {
-
-                                                                            if (preg_match_all('/if /', $codeLine, $counter)) {
-
-
-
-                                                                            }
-
-
-                                                                        }
-
                                                                         $i = 0; //increment to each loop
                                                                         $count = 0;
 
@@ -360,6 +353,23 @@ if ($handle = opendir('uploads')) {
                                                                         $NC = 0;
                                                                         $Ccspps = 0;
                                                                         $Ccs = 0;
+
+
+                                                                        $if_val = "if";
+                                                                        $switch_val = "switch";
+                                                                        $case_val = "case";
+                                                                        $while_val = "while";
+                                                                        $for_val = "for";
+                                                                        $else_val = "else";
+                                                                        $end_curlyBrace = "}";
+
+
+                                                                        $arrCCS = [];
+                                                                        $arr2 = [];
+                                                                        $elseArr = [];
+                                                                        $inElse = false;
+                                                                        $elseCount = 0;
+
 
                                                                         //Default Weights
                                                                         $weight_if_elseif = $CSif_last;
@@ -376,9 +386,16 @@ if ($handle = opendir('uploads')) {
                                                                         $splitAfterSemicolon = str_replace(';', ';', $split);
 
                                                                         //For Printing of the code lines for the table
-                                                                        if (!$splitAfterSemicolon == ""){
+                                                                        if (!$splitAfterSemicolon == "") {
 
-                                                                        foreach ($splitAfterSemicolon as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+                                                                        foreach ($splitAfterSemicolon
+
+                                                                        as $valAfterSemicolonReplace) { // Traverse the array with FOREACH
+
+
+                                                                        $previousCCS = 0;
+                                                                        $currentCCS = 0;
+
 
                                                                         $val = str_replace(';', ';', $valAfterSemicolonReplace);
 
@@ -388,10 +405,8 @@ if ($handle = opendir('uploads')) {
                                                                         foreach ($conditional_words as $word) {
 
 
-
-
-
                                                                             $numberOfParams = 0;
+
 
                                                                             if (preg_match('/if |if+\((.*?)\)+(.*?){|if+\((.*?)\)+(.*?) {/', $val) !== false) {
 
@@ -478,7 +493,6 @@ if ($handle = opendir('uploads')) {
                                                                             }
 
 
-
                                                                             if (preg_match('/while |while+\((.*?)\)+(.*?);/', $val) !== false) {
 
                                                                                 $do_while_count = preg_match_all('/while |while+\((.*?)\)+(.*?);/', $val, $counter);
@@ -508,6 +522,9 @@ if ($handle = opendir('uploads')) {
                                                                         $NC = $numberOfParams + $for_count + $numberOfWhileParams + $switch_count + $case_count + $do_while_count;
 
 
+                                                                        $Ccs = ($Wtcs * $NC);
+
+
                                                                         if ($NC == 0) {
 
                                                                             $Ccspps = 0;
@@ -516,78 +533,118 @@ if ($handle = opendir('uploads')) {
 
                                                                             $Ccspps = $Ccs;
 
-
-                                                                            if ($Wtcs > 0 && preg_match_all('/case 1:/', $val, $counter)) {
-                                                                                $switchValue = $Ccs;
-                                                                            }
-
-                                                                            if ($Wtcs > 0 && preg_match_all('/case/', $val, $counter)) {
-                                                                                $Ccspps = $switchValue;
-                                                                            }
-
-
-                                                                            if ($Wtcs > 0 && preg_match_all('/switch \(|if \(\(\(/', $val, $counter)) {
-                                                                                $Ccspps = $ifValue;
-                                                                            }
-
-
-                                                                            if ($Wtcs > 0 && preg_match_all('/if \(year > 2020\)/', $val, $counter)) {
-                                                                                $Ccspps = $ifValue2;
-                                                                            }
-
-                                                                            if (preg_match_all('/if \(year < 1/', $val, $counter)) {
-
-                                                                                $Ccspps = $switchValue;
-
-                                                                            }
-
-
                                                                         }
 
                                                                         if ($Wtcs == 0) {
 
                                                                             $NC = null;
                                                                             $Wtcs = null;
-                                                                            $Ccspps = null;
+                                                                            $previousCCS = null;
+                                                                            $currentCCS = null;
 
                                                                         }
 
-                                                                        $Ccs = ($Wtcs * $NC) + $Ccspps;
 
-                                                                        $total_ccs += $Ccs;
+                                                                        if (stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false || stripos($val, $while_val) !== false) {
 
+                                                                            if (sizeof($arrCCS) >= 1) {
+                                                                                $var = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                                            } else {
+                                                                                $var = $Ccs;
+                                                                            }
+                                                                            array_push($arrCCS, $var);
 
-                                                                        if (preg_match_all('/if |/', $val, $counter)) {
+                                                                            if (!$inElse) {
+                                                                                array_push($arr2, $var);
+                                                                            }
 
-                                                                            $ifValue = $Ccs;
+                                                                            $currentCCS = $arrCCS[sizeof($arrCCS) - 1];
+
+                                                                            if (sizeof($arrCCS) >= 2) {
+                                                                                $previousCCS = $arrCCS[sizeof($arrCCS) - 2];
+                                                                            }
 
                                                                         }
 
-                                                                        if (preg_match_all('/numDays = 29;/', $val, $counter)) {
+                                                                        if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
+                                                                            $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
+                                                                            $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                                        }
 
-                                                                            $ifValue2 = $Ccs;
+                                                                        if (stripos($val, $else_val) !== false) {
+                                                                            $inElse = true;
 
                                                                         }
+                                                                        if ((stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false || stripos($val, $while_val) !== false) && $inElse) {
+                                                                            if (sizeof($elseArr) >= 1) {
+                                                                                $var = $Ccs + $elseArr[sizeof($elseArr) - 1];
+                                                                            } else {
+                                                                                $var = $Ccs + $arr2[sizeof($arr2) - 1];
+                                                                            }
+                                                                            array_push($elseArr, $var);
+                                                                        }
+                                                                        if (sizeof($elseArr) >= 1 && stripos($val, $case_val) !== false && $inElse) {
+
+                                                                            $previousCCS = $elseArr[sizeof($elseArr) - 1];
+                                                                            $currentCCS = $Ccs + $elseArr[sizeof($elseArr) - 1];
+                                                                        }
+
+                                                                        if ($inElse && stripos($val, $switch_val) !== false) {
+                                                                            $previousCCS = $arr2[sizeof($arr2) - 1];
+                                                                            $currentCCS = $Ccs + $previousCCS;
+
+                                                                            if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
+                                                                                $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
+                                                                                $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                                            }
+                                                                        }
+
+
+                                                                        $total_ccs += $currentCCS;
 
                                                                         ?>
 
                                                                         <tr>
-                                                                            <td><?php echo $count = $count + 1; ?></td>
+                                                                            <td><?php echo ++$count; ?></td>
                                                                             <td style="text-align: left"><?php echo $val; ?></td>
                                                                             <td <?php if ($Wtcs > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Wtcs; ?></td>
                                                                             <td <?php if ($NC > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $NC; ?></td>
-                                                                            <td <?php if ($Ccspps > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Ccspps; ?></td>
-                                                                            <td <?php if ($Ccs > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Ccs; ?></td>
+                                                                            <td <?php if ($previousCCS > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $previousCCS; ?></td>
+                                                                            <td <?php if ($currentCCS > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $currentCCS; ?></td>
 
                                                                             <?php
 
                                                                             $i++;
 
 
+                                                                            if (stripos($val, $end_curlyBrace) !== false && $inElse && sizeof($elseArr) >= 1) {
+
+                                                                                array_pop($elseArr);
+
+                                                                                if (sizeof($elseArr) == 0) {
+
+                                                                                    $inElse = false;
+
+                                                                                }
+
+                                                                            }
+
+                                                                            if (stripos($val, $end_curlyBrace) !== false) {
+
+                                                                                if (!is_null($arrCCS)) {
+
+                                                                                    array_pop($arrCCS);
+
+                                                                                }
+
                                                                             }
 
                                                                             }
+
                                                                             }
+
+                                                                            }
+
                                                                             $_SESSION['total_ccs'] = $total_ccs;
 
                                                                             $query_disp_total = "INSERT INTO ccs(CcsValue) VALUES('$total_ccs')";
@@ -652,7 +709,7 @@ if ($handle = opendir('uploads')) {
                         <!-- end:: Content -->
                         </div>
                         <?php
-                                                                        }
+                    }
 
 
                 }

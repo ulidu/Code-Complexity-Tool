@@ -3,6 +3,12 @@
 
 <?php
 
+if (!is_dir('uploads')) {
+    if (!mkdir('uploads', 0777, true) && !is_dir('uploads')) {
+        throw new \RuntimeException(sprintf('Directory "%s" was not created', 'uploads'));
+    }
+}
+
 unset ($_SESSION["split_code"]);
 unset ($_SESSION["trimmed"]);
 unset ($_SESSION["filename"]);
