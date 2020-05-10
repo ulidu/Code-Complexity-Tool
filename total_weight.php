@@ -31,6 +31,89 @@ function getContentsBetween($str, $startDelimiter, $endDelimiter)
 
 }
 
+//function to sort the class_name using getBetween function
+function getBetween($codeLine, $start, $end)
+{
+    $codeLine = " " . $codeLine;
+    $ini = strpos($codeLine, $start);
+    if ($ini == 0)
+        return " ";
+    $ini += strlen($start);
+    $len = strpos($codeLine, $end, $ini) - $ini;
+    return substr($codeLine, $ini, $len);
+}
+
+//To sort out the classes
+class inheri
+{
+    public $name;
+    public $indirect;
+    public $superClass;
+
+    function __construct()
+    {
+        $this->name = "";
+        $this->indirect = 0;
+        $this->superClass = null;
+    }
+
+    function set_name($name)
+    {
+        $this->name = $name;
+    }
+
+    function set_indirect($indirect)
+    {
+        $this->indirect = $indirect;
+    }
+
+    function set_extends($var)
+    {
+        $this->superClass = $var;
+    }
+
+    function get_extends()
+    {
+        return $this->superClass;
+    }
+
+    function get_name()
+    {
+        return $this->name;
+    }
+
+    function get_direct()
+    {
+        if (is_string($this->superClass)) {
+            $ix = 1;
+        } else {
+            $ix = 0;
+        }
+        return $ix;
+    }
+
+    function get_indirect()
+    {
+        return $this->indirect;
+    }
+}
+
+//Function to find NIDI
+function findNidi($extend)
+{
+    global $classes;
+    global $cnt;
+    foreach ($classes as $key) {
+        if ($key->get_name() == $extend) {
+            $name1 = $key->get_extends();
+            if (!empty($name1)) {
+                $cnt++;
+                findNidi($name1);
+            }
+        }
+    }
+}
+
 ?>
 
 

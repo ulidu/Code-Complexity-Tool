@@ -21,8 +21,8 @@ function getBetween($codeLine, $start, $end)
     $len = strpos($codeLine, $end, $ini) - $ini;
     return substr($codeLine, $ini, $len);
 }
-//To sort out the classes
-class inheri
+//To sort out the classes, direct inheritances and indirect inheritances using OOP
+class inheritance
 {
     public $name;
     public $indirect;
@@ -55,19 +55,22 @@ class inheri
     }
     function get_direct()
     {
+        global $weight_no_ud_class; //weight due to zero user-defined class
+        global $weight_one_ud_class;//weight due to one user-defined class
         if (is_string($this->superClass)) {
-            $ix = 1;
+            $ix = $weight_one_ud_class;
         } else {
-            $ix = 0;
+            $ix = $weight_no_ud_class;
         }
         return $ix;
     }
     function get_indirect()
     {
-        return $this->indirect;
+        global $weight_one_ud_class;//weight due to one user-defined class
+        return $this->indirect * $weight_one_ud_class   ;
     }
 }
-//Function to find NIDI
+//Function to find No Of Indirect Inheritances
 function findNidi($extend)
 {
     global $classes;
@@ -369,17 +372,6 @@ if ($handle = opendir('uploads')) {
                                                                         <tbody>
                                                                         <?php
 
-                                                                       /* $i = 0; //increment to each loop
-                                                                        $count = 0;
-                                                                        $total_cs = 0;
-
-                                                                       $Nkw = 0;
-                                                                       $Nid = 0;
-                                                                        $Nop = 0;
-                                                                        $Nnv = 0;
-                                                                        $Nsl = 0;
-                                                                        $Cs = 0;*/
-
                                                                         $lastRow = "SELECT * FROM inheritance ORDER BY InheritanceID DESC LIMIT 1";
                                                                         $run_query_last = mysqli_query($con, $lastRow);
 
@@ -399,15 +391,11 @@ if ($handle = opendir('uploads')) {
                                                                         $total_ci = 0;
 
                                                                         //Default weights
-                                                                        global $weight_no_ud_class;
                                                                         $weight_no_ud_class = $NoInheritance_last;
                                                                         $weight_one_ud_class = $OneUserDefined_last;
                                                                         $weight_two_ud_class = $TwoUserDefined_last;
                                                                         $weight_three_ud_class = $ThreeUserDefined_last;
                                                                         $weight_more_ud_class = $MoreUserDefined_last;
-
-
-
 
 
                                                                         // sorting classes end
@@ -421,8 +409,6 @@ if ($handle = opendir('uploads')) {
                                                                         $pos1=null;
                                                                         $indirect = 0;
                                                                         $tot_inheritance = 0;
-
-
 
 
 
@@ -460,45 +446,8 @@ if ($handle = opendir('uploads')) {
                                                                         $pos2 = strpos($arr, $parsed2);
 
 
-                                                                        // $pos1 = strpos($arr, $parsed);
-
-                                                                        /*Aruni--------
-                                                    if ($pos == true && $parsed1 == true) {
-
-                                                        $direct++;   //direct inheritance
-                                                        $pr = $parsed1;
-
-
-                                                    } elseif ($pos == true) {
-
-                                                        $direct++;   //direct inheritance
-                                                        $pr = $parsed1;
-
-
-                                                    } else {
-
-                                                        //echo  $parsed ;
-                                                        $pr = $parsed;
-                                                    }
-
-                                                    ++$count2;
-                                                    if ($count2 == '25') {
-                                                        ++$indirect; //indirect inheritance
-                                                    }
-
-
-                                                    // Direct + Indirect;
-                                                    $tot_inheritance = $direct + $indirect;  //total inheritance
-
-                                                    $ci = $tot_inheritance;
-
-                                                    $total_ci += $ci;
-                                                    Aruni ends*/
-                                                                           // $direct = 0;
-                                                                           // $indirect = 0;
                                                                             //To check the classes and push classes as objects into an array
                                                                             if (is_integer($pos1)) {
-
 
 
                                                                                 if (is_integer($pos)&& is_string($parsed1)) {
@@ -518,13 +467,13 @@ if ($handle = opendir('uploads')) {
 
                                                                                 foreach ($classes as $key) {
                                                                                     if ($key->get_name() == $className) {
-                                                                                        $inClasses = true;
+                                                                                        $inClasses = true; //inClasses is the array where the class objects are stored
                                                                                     }
                                                                                 }
 
                                                                                 if (!$inClasses) {
 
-                                                                                    $classObj = new inheri;
+                                                                                    $classObj = new inheritance;
                                                                                     $classObj->set_name($className);
 
                                                                                     array_push($classes, $classObj);
@@ -540,15 +489,13 @@ if ($handle = opendir('uploads')) {
                                                                                 }
                                                                                 //pushing ends
 
-                                                                               // $ci = $tot_inheritance;
-
                                                                             }
                                                                         }
 
                                                                             $i = 0;
                                                                             $cnt = 0;
 
-                                                                            //Call NIDI function recursively and set NIDI of the class object
+                                                                            //Call NIDI function recursively and set No Of Indirect Inheritances of the class object
                                                                             foreach ($classes as $key) {
                                                                                 $firstName = $key->get_name();
                                                                                 $name = $key->get_extends();
@@ -561,18 +508,18 @@ if ($handle = opendir('uploads')) {
                                                                             }
 
 
-
-
                                                                         ?>
 
                                                                         <?php
                                                                         foreach ($classes as $key) {
-                                                                        $tot_inheritance = $key->get_direct() * $weight_one_ud_class + $key->get_indirect();
+                                                                        $tot_inheritance = $key->get_direct()  + $key->get_indirect() ; //Total inheritances = NoOfDirect + NoOfIndirect
                                                                         $i++;
 
+
+                                                                        //If Ti value is less than or equal to three, then Ci = Ti.
                                                                         if ($tot_inheritance <=3 ){
                                                                             $ci = $tot_inheritance;
-                                                                        }else{
+                                                                        }else{ //If the Ti value is greater than three, then Ci = 4
                                                                             $ci = 4;
                                                                         }
                                                                         $total_ci = $total_ci + $ci;
@@ -585,8 +532,8 @@ if ($handle = opendir('uploads')) {
                                                                             <td style="text-align: left"><?php
                                                                                 echo $key->get_name();
                                                                                 ?></td>
-                                                                            <td><?php echo $key->get_direct() * $weight_one_ud_class; ?></td>
-                                                                            <td><?php echo $key->get_indirect(); ?></td>
+                                                                            <td><?php echo $key->get_direct() ; ?></td>
+                                                                            <td><?php echo $key->get_indirect() ; ?></td>
                                                                             <td><?php echo $tot_inheritance; ?></td>
                                                                             <td><?php echo $ci; ?></td>
 

@@ -52,6 +52,10 @@
     as $files_arr) {
 
 
+        shell_exec('php include/inheritance_total.php');
+
+
+
     $fi = new FilesystemIterator($storeFolder, FilesystemIterator::SKIP_DOTS);
     $limit = (iterator_count($fi));
 
