@@ -380,6 +380,11 @@ if ($handle = opendir('uploads')) {
                                                                         $tokenNumber = "";
                                                                         $tokenString = "";
 
+                                                                        $count_methods_2 = 0;
+                                                                        $count_methods_3 = 0;
+                                                                        $count_methods_4 = 0;
+                                                                        $count_methods_5 = 0;
+
 
                                                                         foreach ($keywords as $word) {
 
@@ -614,6 +619,73 @@ if ($handle = opendir('uploads')) {
 
                                                                         for ($x = 0; $x <= $row_count; $x++) {
 
+
+
+
+
+                                                                                //Matching Classes
+                                                                                $method_names_2 = (getContentsBetween($val, 'void', ') {'));
+                                                                                foreach ($method_names_2 as $methods_2) {
+                                                                                    if (strpos($val, $methods_2)) {
+
+
+
+                                                                                        $count_methods_2 = substr_count($val,$methods_2);
+
+
+
+                                                                                    }
+
+                                                                                }
+                                                                            $method_names_3 = (getContentsBetween($val, 'int', ') {'));
+                                                                            foreach ($method_names_3 as $methods_3) {
+                                                                                if (strpos($val, $methods_3)) {
+
+
+
+                                                                                    $count_methods_3 = substr_count($val,$methods_3);
+
+
+
+                                                                                }
+
+                                                                            }
+
+                                                                            $method_names_4 = (getContentsBetween($val, 'String', ') {'));
+                                                                            foreach ($method_names_4 as $methods_4) {
+                                                                                if (strpos($val, $methods_4)) {
+
+
+
+                                                                                    $count_methods_4 = substr_count($val,$methods_4);
+
+
+
+                                                                                }
+
+                                                                            }
+
+                                                                            $method_names_5 = (getContentsBetween($val, 'double', ') {'));
+                                                                            foreach ($method_names_5 as $methods_5) {
+                                                                                if (strpos($val, $methods_5)) {
+
+
+
+                                                                                    $count_methods_5 = substr_count($val,$methods_5);
+
+
+
+                                                                                }
+
+                                                                            }
+
+
+
+
+
+
+
+
                                                                             if (preg_match('/class\s*(\w+)/', $val) !== false) {
 
                                                                                 $count_class = preg_match_all('/class\s*(\w+)/', $val, $counter);
@@ -651,7 +723,7 @@ if ($handle = opendir('uploads')) {
                                                                             }
 
 
-                                                                            $identifiers_count_total = $count_class + $count_objects + $count_methods;
+                                                                            $identifiers_count_total = $count_class + $count_objects + $count_methods + $count_methods_2 + $count_methods_3 + $count_methods_4 + $count_methods_5;
 
                                                                             $Nid = $identifiers_count_total * $weight_identifier;
 
@@ -1288,11 +1360,56 @@ if ($handle = opendir('uploads')) {
 
                                                                         for ($x = 0; $x <= $row_count; $x++) {
                                                                             //Matching Classes
-                                                                            $method_names = (getContentsBetween($val, 'void', '{'));
+                                                                            $method_names = (getContentsBetween($val, 'void', ') {'));
                                                                             foreach ($method_names as $methods) {
                                                                                 if (strpos($val, $methods)) {
 
+
                                                                                     $method_name = $methods;
+
+                                                                                }
+
+                                                                            }
+
+                                                                        }
+
+                                                                        for ($x = 0; $x <= $row_count; $x++) {
+                                                                            //Matching Classes
+                                                                            $method_names11 = (getContentsBetween($val, 'int', ') {'));
+                                                                            foreach ($method_names11 as $methods11) {
+                                                                                if (strpos($val, $methods11)) {
+
+
+                                                                                    $method_name11 = $methods11;
+
+                                                                                }
+
+                                                                            }
+
+                                                                        }
+
+                                                                        for ($x = 0; $x <= $row_count; $x++) {
+                                                                            //Matching Classes
+                                                                            $method_names22 = (getContentsBetween($val, 'String', ') {'));
+                                                                            foreach ($method_names22 as $methods22) {
+                                                                                if (strpos($val, $methods22)) {
+
+                                                                                    $method_name22 = $methods22;
+
+                                                                                }
+
+                                                                            }
+
+                                                                        }
+
+                                                                        for ($x = 0; $x <= $row_count; $x++) {
+                                                                            //Matching Classes
+                                                                            $method_names33 = (getContentsBetween($val, 'double', ') {'));
+                                                                            foreach ($method_names33 as $methods33) {
+                                                                                if (strpos($val, $methods33)) {
+
+
+                                                                                    $method_name33 = $methods33;
 
                                                                                 }
 
@@ -1365,6 +1482,9 @@ if ($handle = opendir('uploads')) {
                                                                                 echo $void_kw . " ";
                                                                                 echo $volatile_kw . " ";
                                                                                 echo $method_name . " ";
+                                                                                echo $method_name11 . " ";
+                                                                                echo $method_name22 . " ";
+                                                                                echo $method_name33 . " ";
                                                                                 echo "<br>"; ?><?php echo $tokenOp;
                                                                                 echo "<br>"; ?><?php echo $tokenClass;
                                                                                 echo "<br>"; ?><?php echo $tokenNumber;
@@ -1417,6 +1537,9 @@ if ($handle = opendir('uploads')) {
                                                                             $void_kw = "";
                                                                             $volatile_kw = "";
                                                                             $method_name = "";
+                                                                            $method_name11 = "";
+                                                                            $method_name22 = "";
+                                                                            $method_name33 = "";
 
                                                                             }
 

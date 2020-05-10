@@ -23,11 +23,11 @@
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="flaticon-cancel"></i></a>
                         <a class="text-warning">Important !</a>
                         <a class="text-white-50">Open curly brace of a <b>method name</b> should be followed by a <b>whitespace</b> after the parentheses</a>
-                        <a class="text-white-50" style="font-size: 20px">Eg : <img style="width:20%;border-radius: 6px" src="assets/media/bg/method.png"></a>
+                        <a class="text-white-50" style="font-size: 20px">Eg : <img style="width:20%;border-radius: 2px" src="assets/media/bg/method.png"></a>
 
 <br>
                         <a class="text-white-50">Open curly brace of a <b>class</b> should be followed by a <b>whitespace</b> after the name of the class</a>
-                        <a class="text-white-50" style="font-size: 20px">Eg : <img style="width:20%;border-radius: 6px" src="assets/media/bg/class.png"></a>
+                        <a class="text-white-50" style="font-size: 20px">Eg : <img style="width:20%;border-radius: 2px" src="assets/media/bg/class.png"></a>
 
                     </div>
                 </div>
