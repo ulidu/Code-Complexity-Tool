@@ -336,6 +336,7 @@
                                                 $NC = 0;
                                                 $Ccspps = 0;
                                                 $Ccs = 0;
+                                                $total_TCps = 0;
 
 
                                                 $if_val = "if";
@@ -343,10 +344,15 @@
                                                 $case_val = "case";
                                                 $while_val = "while";
                                                 $for_val = "for";
+                                                $else_val = "else";
                                                 $end_curlyBrace = "}";
 
 
                                                 $arrCCS = [];
+                                                $arr2 = [];
+                                                $elseArr = [];
+                                                $inElse = false;
+                                                $elseCount = 0;
 
 
                                                 //Default Weights
@@ -1379,8 +1385,12 @@
                                                     } else {
                                                         $var = $Ccs;
                                                     }
-
                                                     array_push($arrCCS, $var);
+
+                                                    if (!$inElse) {
+                                                        array_push($arr2, $var);
+                                                    }
+
                                                     $currentCCS = $arrCCS[sizeof($arrCCS) - 1];
 
                                                     if (sizeof($arrCCS) >= 2) {
@@ -1389,15 +1399,43 @@
 
                                                 }
 
-
                                                 if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
                                                     $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
                                                     $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
                                                 }
 
+                                                if (stripos($val, $else_val) !== false) {
+                                                    $inElse = true;
+
+                                                }
+                                                if ((stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false || stripos($val, $while_val) !== false) && $inElse) {
+                                                    if (sizeof($elseArr) >= 1) {
+                                                        $var = $Ccs + $elseArr[sizeof($elseArr) - 1];
+                                                    } else {
+                                                        $var = $Ccs + $arr2[sizeof($arr2) - 1];
+                                                    }
+                                                    array_push($elseArr, $var);
+                                                }
+                                                if (sizeof($elseArr) >= 1 && stripos($val, $case_val) !== false && $inElse) {
+
+                                                    $previousCCS = $elseArr[sizeof($elseArr) - 1];
+                                                    $currentCCS = $Ccs + $elseArr[sizeof($elseArr) - 1];
+                                                }
+
+                                                if ($inElse && stripos($val, $switch_val) !== false) {
+                                                    $previousCCS = $arr2[sizeof($arr2) - 1];
+                                                    $currentCCS = $Ccs + $previousCCS;
+
+                                                    if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
+                                                        $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
+                                                        $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                    }
+                                                }
+
                                                 $Cs = $Nkw + $Nid + $Nop + $Nnv + $Nsl;
 
                                                 $total_cs += $Cs;
+
 
                                                 $TCps = $Cs + $Cv + $Cm + $currentCCS;
 
@@ -1431,13 +1469,28 @@
                                                         class="kt-label-bg-color-1"><?php echo $TCps; ?></td>
                                                     <?php $i++;
 
-                                                    if (stripos($val, $end_curlyBrace) !== false) {
+                                                    if (stripos($val, $end_curlyBrace) !== false && $inElse && sizeof($elseArr) >= 1) {
 
-                                                        if (!is_null($arrCCS)) {
-                                                            array_pop($arrCCS);
+                                                        array_pop($elseArr);
+
+                                                        if (sizeof($elseArr) == 0) {
+
+                                                            $inElse = false;
+
                                                         }
 
                                                     }
+
+                                                    if (stripos($val, $end_curlyBrace) !== false) {
+
+                                                        if (!is_null($arrCCS)) {
+
+                                                            array_pop($arrCCS);
+
+                                                        }
+
+                                                    }
+
                                                     }
                                                     }}}}
                                                     }
