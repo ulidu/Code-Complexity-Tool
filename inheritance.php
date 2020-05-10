@@ -10,26 +10,78 @@ if (!isset($_GET['reload'])) {
 <?php include 'include/aside.php'; ?>
 
 <?php
-function getContentsBetween($str, $startDelimiter, $endDelimiter)
+//function to sort the class_name using getBetween function
+function getBetween($codeLine, $start, $end)
 {
-    $contents = array();
-    $startDelimiterLength = strlen($startDelimiter);
-    $endDelimiterLength = strlen($endDelimiter);
-    $startFrom = $contentStart = $contentEnd = 0;
-    while (false !== ($contentStart = strpos($str, $startDelimiter, $startFrom))) {
-        $contentStart += $startDelimiterLength;
-        $contentEnd = strpos($str, $endDelimiter, $contentStart);
-        if (false === $contentEnd) {
-            break;
-        }
-        $contents[] = substr($str, $contentStart, $contentEnd - $contentStart);
-        $startFrom = $contentEnd + $endDelimiterLength;
-    }
-
-    return $contents;
-
+    $codeLine = " " . $codeLine;
+    $ini = strpos($codeLine, $start);
+    if ($ini == 0)
+        return " ";
+    $ini += strlen($start);
+    $len = strpos($codeLine, $end, $ini) - $ini;
+    return substr($codeLine, $ini, $len);
 }
-
+//To sort out the classes
+class inheri
+{
+    public $name;
+    public $indirect;
+    public $superClass;
+    function __construct()
+    {
+        $this->name = "";
+        $this->indirect = 0;
+        $this->superClass = null;
+    }
+    function set_name($name)
+    {
+        $this->name = $name;
+    }
+    function set_indirect($indirect)
+    {
+        $this->indirect = $indirect;
+    }
+    function set_extends($var)
+    {
+        $this->superClass = $var;
+    }
+    function get_extends()
+    {
+        return $this->superClass;
+    }
+    function get_name()
+    {
+        return $this->name;
+    }
+    function get_direct()
+    {
+        if (is_string($this->superClass)) {
+            $ix = 1;
+        } else {
+            $ix = 0;
+        }
+        return $ix;
+    }
+    function get_indirect()
+    {
+        return $this->indirect;
+    }
+}
+//Function to find NIDI
+function findNidi($extend)
+{
+    global $classes;
+    global $cnt;
+    foreach ($classes as $key) {
+        if ($key->get_name() == $extend) {
+            $name1 = $key->get_extends();
+            if (!empty($name1)) {
+                $cnt++;
+                findNidi($name1);
+            }
+        }
+    }
+}
 ?>
 
 <?php
@@ -117,16 +169,14 @@ if ($handle = opendir('uploads')) {
 
 
                             <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
-                                <input type="text" class="form-control" placeholder="Search order..."
-                                       id="generalSearch">
+                                <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
                                 <span class="kt-input-icon__icon kt-input-icon__icon--right">
 											<span><i class="flaticon2-search-1"></i></span>
 										</span>
                             </div>
                         </div>
                         <div class="kt-subheader__toolbar">
-                            <a href="total_weight.php"
-                               class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                            <a href="total_weight.php" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
                                 Total Weight of the Program
                             </a>
 
@@ -138,6 +188,7 @@ if ($handle = opendir('uploads')) {
                 <?php
 
 
+
                 $entry_arr_af = preg_split("/\.java/", $entry);
                 $entry_arr = array_filter($entry_arr_af);
 
@@ -147,8 +198,9 @@ if ($handle = opendir('uploads')) {
                     $limit = (iterator_count($fi));
 
                     $lastRow = "SELECT * FROM ( SELECT * FROM ci ORDER BY CiID DESC LIMIT $limit) result ORDER BY CiID ASC";
-                    $run_query_last = mysqli_query($con, $lastRow);
+                    $run_query_last = mysqli_query($con,$lastRow);
 
+                    
                     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
                         $CiID_last = $lastrow['CiID'];
                         $CiValue_last = $lastrow['CiValue'];
@@ -219,6 +271,8 @@ if ($handle = opendir('uploads')) {
 
 
                                             </div>
+
+
 
 
                                             <div class="kt-portlet__foot">
@@ -315,6 +369,16 @@ if ($handle = opendir('uploads')) {
                                                                         <tbody>
                                                                         <?php
 
+                                                                       /* $i = 0; //increment to each loop
+                                                                        $count = 0;
+                                                                        $total_cs = 0;
+
+                                                                       $Nkw = 0;
+                                                                       $Nid = 0;
+                                                                        $Nop = 0;
+                                                                        $Nnv = 0;
+                                                                        $Nsl = 0;
+                                                                        $Cs = 0;*/
 
                                                                         $lastRow = "SELECT * FROM inheritance ORDER BY InheritanceID DESC LIMIT 1";
                                                                         $run_query_last = mysqli_query($con, $lastRow);
@@ -335,99 +399,32 @@ if ($handle = opendir('uploads')) {
                                                                         $total_ci = 0;
 
                                                                         //Default weights
+                                                                        global $weight_no_ud_class;
+                                                                        $weight_no_ud_class = $NoInheritance_last;
                                                                         $weight_one_ud_class = $OneUserDefined_last;
                                                                         $weight_two_ud_class = $TwoUserDefined_last;
                                                                         $weight_three_ud_class = $ThreeUserDefined_last;
                                                                         $weight_more_ud_class = $MoreUserDefined_last;
 
-                                                                        function getBetween($codeLine, $start, $end)
-                                                                        {
-                                                                            $codeLine = " " . $codeLine;
-                                                                            $ini = strpos($codeLine, $start);
-                                                                            if ($ini == 0)
-                                                                                return " ";
-                                                                            $ini += strlen($start);
-                                                                            $len = strpos($codeLine, $end, $ini) - $ini;
-                                                                            return substr($codeLine, $ini, $len);
-                                                                        }
 
-                                                                        //P Code
-                                                                        class inheri
-                                                                        {
-                                                                            public $name;
-                                                                            public $direct;
-                                                                            public $indirect;
-                                                                            public $superClass;
 
-                                                                            function __construct()
-                                                                            {
-                                                                                $this->name = "";
-                                                                                $this->direct = 0;
-                                                                                $this->indirect = 0;
-                                                                                $this->superClass = null;
-                                                                            }
 
-                                                                            function set_name($name)
-                                                                            {
-                                                                                $this->name = $name;
-                                                                            }
 
-                                                                            function set_direct($direct)
-                                                                            {
-                                                                                $this->direct = $direct;
-                                                                            }
-
-                                                                            function set_indirect($indirect)
-                                                                            {
-                                                                                $this->indirect = $indirect;
-                                                                            }
-
-                                                                            function set_extends($var)
-                                                                            {
-                                                                                $this->superClass = $var;
-                                                                            }
-
-                                                                            function get_extends()
-                                                                            {
-                                                                                return $this->superClass;
-                                                                            }
-
-                                                                            function get_name()
-                                                                            {
-                                                                                return $this->name;
-                                                                            }
-
-                                                                            function get_direct()
-                                                                            {
-                                                                                if (is_string($this->superClass)) {
-                                                                                    $i = 1;
-                                                                                } else {
-                                                                                    $i = 0;
-                                                                                }
-                                                                                return $i;
-                                                                            }
-
-                                                                            function get_indirect()
-                                                                            {
-                                                                                return $this->indirect;
-                                                                            }
-                                                                        }
-
-                                                                        //P Code end
+                                                                        // sorting classes end
                                                                         $count = 0;
-                                                                        $classes = [];
+                                                                        $classes = [];  //array to store class objects
                                                                         $inClasses = false;
                                                                         $parsed1 = null;
-                                                                        $parsed1 = null;
-                                                                        $parsed2 = null;
-                                                                        $pos = null;
-                                                                        $pos1 = null;
+                                                                        $parsed1=null;
+                                                                        $parsed2=null;
+                                                                        $pos=null;
+                                                                        $pos1=null;
                                                                         $indirect = 0;
                                                                         $tot_inheritance = 0;
 
 
-                                                                        if (!$split == '') {
-                                                                        $ci = 0;
+
+
 
                                                                         foreach ($split
 
@@ -451,11 +448,6 @@ if ($handle = opendir('uploads')) {
 
                                                                         $parsed2 = getBetween($arr, "extends", "{");
 
-                                                                        //print_r($parsed2);
-                                                                        //echo "<br>";
-                                                                        //print_r($parsed1);
-
-
                                                                         //pos_extends = pos;
                                                                         //pos_class = pos1;
 
@@ -466,167 +458,151 @@ if ($handle = opendir('uploads')) {
                                                                         $pos1 = strpos($arr, $word_2);
 
                                                                         $pos2 = strpos($arr, $parsed2);
+
+
                                                                         // $pos1 = strpos($arr, $parsed);
 
                                                                         /*Aruni--------
-                                                                        if ($pos == true && $parsed1 == true) {
+                                                    if ($pos == true && $parsed1 == true) {
 
-                                                                            $direct++;   //direct inheritance
-                                                                            $pr = $parsed1;
-
-
-                                                                        } elseif ($pos == true) {
-
-                                                                            $direct++;   //direct inheritance
-                                                                            $pr = $parsed1;
+                                                        $direct++;   //direct inheritance
+                                                        $pr = $parsed1;
 
 
-                                                                        } else {
+                                                    } elseif ($pos == true) {
 
-                                                                            //echo  $parsed ;
-                                                                            $pr = $parsed;
-                                                                        }
-
-                                                                        ++$count2;
-                                                                        if ($count2 == '25') {
-                                                                            ++$indirect; //indirect inheritance
-                                                                        }
+                                                        $direct++;   //direct inheritance
+                                                        $pr = $parsed1;
 
 
-                                                                        // Direct + Indirect;
-                                                                        $tot_inheritance = $direct + $indirect;  //total inheritance
+                                                    } else {
 
-                                                                        $ci = $tot_inheritance;
+                                                        //echo  $parsed ;
+                                                        $pr = $parsed;
+                                                    }
 
-                                                                        $total_ci += $ci;
-                                                                        Aruni ends*/
-
-                                                                        $direct = 0;
-                                                                        $indirect = 0;
-
-                                                                        //P Code
-                                                                        if (is_integer($pos1) || is_integer($pos1)) {
+                                                    ++$count2;
+                                                    if ($count2 == '25') {
+                                                        ++$indirect; //indirect inheritance
+                                                    }
 
 
-                                                                            if (is_integer($pos) && is_string($parsed1)) {
-                                                                                $p = $parsed1;
+                                                    // Direct + Indirect;
+                                                    $tot_inheritance = $direct + $indirect;  //total inheritance
 
-                                                                            } elseif (is_integer($pos) && is_string($parsed)) {
-                                                                                $p = $parsed;
-                                                                            } else if (is_integer($pos1) && is_string($parsed)) {
-                                                                                $p = $parsed;
+                                                    $ci = $tot_inheritance;
 
-                                                                            }
+                                                    $total_ci += $ci;
+                                                    Aruni ends*/
+                                                                           // $direct = 0;
+                                                                           // $indirect = 0;
+                                                                            //To check the classes and push classes as objects into an array
+                                                                            if (is_integer($pos1)) {
 
-                                                                            $className = $p;
 
-                                                                            foreach ($classes as $key) {
-                                                                                if ($key->get_name() == $className) {
-                                                                                    $inClasses = true;
+
+                                                                                if (is_integer($pos)&& is_string($parsed1)) {
+                                                                                    $p = $parsed1 ;
+
                                                                                 }
-                                                                            }
+                                                                                elseif(is_integer($pos) && is_string($parsed)){
+                                                                                    $p = $parsed;
+                                                                                }
 
-                                                                            if (!$inClasses) {
+                                                                                else if(is_integer($pos1)&& is_string($parsed)){
+                                                                                    $p = $parsed ;
 
-                                                                                $classObj = new inheri;
-                                                                                $classObj->set_name($className);
+                                                                                }
 
-                                                                                array_push($classes, $classObj);
-                                                                            }
+                                                                                $className = $p;
 
-
-                                                                            if ($pos == true && is_string($parsed1)) {
                                                                                 foreach ($classes as $key) {
-                                                                                    if ($key->get_name() == $parsed1) {
-                                                                                        $key->set_extends($parsed2);
+                                                                                    if ($key->get_name() == $className) {
+                                                                                        $inClasses = true;
                                                                                     }
                                                                                 }
+
+                                                                                if (!$inClasses) {
+
+                                                                                    $classObj = new inheri;
+                                                                                    $classObj->set_name($className);
+
+                                                                                    array_push($classes, $classObj);
+                                                                                }
+
+
+                                                                                if ($pos == true && is_string($parsed1)) {
+                                                                                    foreach ($classes as $key) {
+                                                                                        if ($key->get_name() == $parsed1) {
+                                                                                            $key->set_extends($parsed2);
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                                //pushing ends
+
+                                                                               // $ci = $tot_inheritance;
+
                                                                             }
-                                                                            //P Code ends
-
-                                                                            $ci = $tot_inheritance;
-
                                                                         }
 
-                                                                        //P Code
-                                                                        $i = 0;
-                                                                        $cnt = 0;
-                                                                        //Function to find NIDI
-                                                                        function findNidi($extend)
-                                                                        {
-                                                                            global $classes;
-                                                                            global $cnt;
+                                                                            $i = 0;
+                                                                            $cnt = 0;
+
+                                                                            //Call NIDI function recursively and set NIDI of the class object
                                                                             foreach ($classes as $key) {
-                                                                                if ($key->get_name() == $extend) {
-                                                                                    $name1 = $key->get_extends();
-                                                                                    if (!empty($name1)) {
-                                                                                        $cnt++;
-                                                                                        findNidi($name1);
-                                                                                    }
+                                                                                $firstName = $key->get_name();
+                                                                                $name = $key->get_extends();
+                                                                                if (!empty($name)) {
+                                                                                    $cnt ++;
+                                                                                    findNidi($name);
+                                                                                    $key->set_indirect($cnt-1);
                                                                                 }
+
                                                                             }
-                                                                        }
-
-                                                                        //Call NIDI function recursively and set NIDI of the class object
-                                                                        foreach ($classes as $key) {
-                                                                            $firstName = $key->get_name();
-                                                                            $name = $key->get_extends();
-                                                                            if (!empty($name)) {
-                                                                                $cnt++;
-                                                                                findNidi($name);
-                                                                            }
-                                                                            $key->set_indirect($cnt);
-                                                                        }
 
 
-                                                                        // Begin class identification
-
-                                                                        // $keywords = ['class', 'extends'];
-
-
-                                                                        // $w = 'class';
-                                                                        // $p =strpos($val,$w);
-                                                                        //echo "<br>";
-                                                                        //print_r($p);
-
-                                                                        //if($pos == true)
-                                                                        //echo $pr
-                                                                        //
-
-
-                                                                        $total_ci += $ci;
 
 
                                                                         ?>
+
                                                                         <?php
                                                                         foreach ($classes as $key) {
-                                                                        $tot_inheritance = $key->get_direct() + $key->get_indirect();
+                                                                        $tot_inheritance = $key->get_direct() * $weight_one_ud_class + $key->get_indirect();
                                                                         $i++;
+
+                                                                        if ($tot_inheritance <=3 ){
+                                                                            $ci = $tot_inheritance;
+                                                                        }else{
+                                                                            $ci = 4;
+                                                                        }
+                                                                        $total_ci = $total_ci + $ci;
+
 
                                                                         ?>
 
-                                                                        <tr>
-                                                                            <td><?php echo $i; ?></td>
+                                                                            <tr>
+                                                                            <td><?php echo $i ; ?></td>
                                                                             <td style="text-align: left"><?php
                                                                                 echo $key->get_name();
                                                                                 ?></td>
-                                                                            <td><?php echo $key->get_direct(); ?></td>
+                                                                            <td><?php echo $key->get_direct() * $weight_one_ud_class; ?></td>
                                                                             <td><?php echo $key->get_indirect(); ?></td>
                                                                             <td><?php echo $tot_inheritance; ?></td>
                                                                             <td><?php echo $ci; ?></td>
 
-                                                                            <?php } ?>
+
+                                                                        <?php } ?>
 
                                                                             <?php
 
                                                                             $i++;
 
 
-                                                                            }
 
 
+
                                                                             }
-                                                                            }
+
                                                                             $_SESSION['total_ci'] = $total_ci;
 
                                                                             $query_disp_total = "INSERT INTO ci(CiValue) VALUES('$total_ci')";
@@ -644,6 +620,7 @@ if ($handle = opendir('uploads')) {
                                                                 </div>
                                                             </div>
                                                         </div>
+
 
 
                                                         <!-- end:: Content -->
@@ -698,8 +675,8 @@ if ($handle = opendir('uploads')) {
         }
     }
     closedir($handle);
-
 }
+
 
 
 ?>
