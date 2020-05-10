@@ -20,19 +20,25 @@
                 <div id="myNav" class="overlay">
 
                     <div class="overlay-content">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="flaticon-cancel"></i></a>
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i
+                                    class="flaticon-cancel"></i></a>
                         <a class="text-warning">Important !</a>
-                        <a class="text-white-50">Open curly brace of a <b>method name</b> should be followed by a <b>whitespace</b> after the parentheses</a>
-                        <a class="text-white-50" style="font-size: 20px">Eg : <img style="width:20%;border-radius: 2px" src="assets/media/bg/method.png"></a>
+                        <a class="text-white-50">Open curly brace of a <b>method name</b> should be followed by a <b>whitespace</b>
+                            after the parentheses</a>
+                        <a class="text-white-50" style="font-size: 20px">Eg : <img style="width:20%;border-radius: 2px"
+                                                                                   src="assets/media/bg/method.png"></a>
 
-<br>
-                        <a class="text-white-50">Open curly brace of a <b>class</b> should be followed by a <b>whitespace</b> after the name of the class</a>
-                        <a class="text-white-50" style="font-size: 20px">Eg : <img style="width:20%;border-radius: 2px" src="assets/media/bg/class.png"></a>
+                        <br>
+                        <a class="text-white-50">Open curly brace of a <b>class</b> should be followed by a <b>whitespace</b>
+                            after the name of the class</a>
+                        <a class="text-white-50" style="font-size: 20px">Eg : <img style="width:20%;border-radius: 2px"
+                                                                                   src="assets/media/bg/class.png"></a>
 
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-warning" onclick="openNav()">This tool will work only under following Coding Conventions
+                <button type="button" class="btn btn-warning" onclick="openNav()">This tool will work only under
+                    following Coding Conventions
                 </button>
 
             </div>
@@ -52,8 +58,16 @@
     as $files_arr) {
 
 
-        shell_exec('php include/inheritance_total.php');
+    $fi = new FilesystemIterator($storeFolder, FilesystemIterator::SKIP_DOTS);
+    $limit = (iterator_count($fi));
 
+    $lastRow = "SELECT * FROM ( SELECT * FROM ci ORDER BY CiID DESC LIMIT $limit) result ORDER BY CiID ASC";
+    $run_query_last = mysqli_query($con, $lastRow);
+
+
+    while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+    $CiID_last = $lastrow['CiID'];
+    $CiValue_last = $lastrow['CiValue'];
 
 
     $fi = new FilesystemIterator($storeFolder, FilesystemIterator::SKIP_DOTS);
@@ -77,7 +91,7 @@
     $limit = (iterator_count($fi));
 
     $lastRow = "SELECT * FROM ( SELECT * FROM cv ORDER BY CvID DESC LIMIT $limit) result ORDER BY CvID ASC";
-    $run_query_last = mysqli_query($con,$lastRow);
+    $run_query_last = mysqli_query($con, $lastRow);
 
     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
     $CvID_last = $lastrow['CvID'];
@@ -91,7 +105,7 @@
     $limit = (iterator_count($fi));
 
     $lastRow = "SELECT * FROM ( SELECT * FROM cm ORDER BY CmID DESC LIMIT $limit) result ORDER BY CmID ASC";
-    $run_query_last = mysqli_query($con,$lastRow);
+    $run_query_last = mysqli_query($con, $lastRow);
 
     while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
     $CmID_last = $lastrow['CmID'];
@@ -334,8 +348,161 @@
 
                                                 <?php
 
+                                                $lastRow = "SELECT * FROM inheritance ORDER BY InheritanceID DESC LIMIT 1";
+                                                $run_query_last = mysqli_query($con, $lastRow);
+
+                                                while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
+                                                    $InheritanceID_last = $lastrow['InheritanceID'];
+                                                    $NoInheritance_last = $lastrow['NoInheritance'];
+                                                    $OneUserDefined_last = $lastrow['One'];
+                                                    $TwoUserDefined_last = $lastrow['Two'];
+                                                    $ThreeUserDefined_last = $lastrow['Three'];
+                                                    $MoreUserDefined_last = $lastrow['MoreThree'];
 
 
+                                                    $i = 0;  //increment to each loop
+                                                    $line_count = 0;
+                                                    $count = 0;
+                                                    $count2 = 0;
+                                                    $total_ci = 0;
+
+//Default weights
+                                                    global $weight_no_ud_class;
+                                                    $weight_no_ud_class = $NoInheritance_last;
+                                                    $weight_one_ud_class = $OneUserDefined_last;
+                                                    $weight_two_ud_class = $TwoUserDefined_last;
+                                                    $weight_three_ud_class = $ThreeUserDefined_last;
+                                                    $weight_more_ud_class = $MoreUserDefined_last;
+
+
+// sorting classes end
+                                                    $count = 0;
+                                                    $classes = [];  //array to store class objects
+                                                    $inClasses = false;
+                                                    $parsed1 = null;
+                                                    $parsed2 = null;
+                                                    $pos = null;
+                                                    $pos1 = null;
+                                                    $indirect = 0;
+                                                    $tot_inheritance = 0;
+
+
+                                                    foreach ($split as $val) { // Traverse the array with FOREACH
+
+                                                        $direct = 0;
+                                                        $indirect = 0;
+                                                        $tot_inheritance = 0;
+                                                        $ci = 0;
+
+                                                        //Calling the two functions of getBetween to sort the class_names
+                                                        $val;
+                                                        $arr = $val;
+
+                                                        // $parent_class = $parsed;
+                                                        // $child_class = $parsed1;
+                                                        // $found_parent = $parsed2;
+                                                        $parsed = getBetween($arr, "class", "{");
+
+                                                        $parsed1 = getBetween($arr, "class", "extends");
+
+                                                        $parsed2 = getBetween($arr, "extends", "{");
+
+                                                        //pos_extends = pos;
+                                                        //pos_class = pos1;
+
+                                                        $word_1 = 'extends';
+                                                        $pos = strpos($arr, $word_1);
+
+                                                        $word_2 = "class";
+                                                        $pos1 = strpos($arr, $word_2);
+
+                                                        $pos2 = strpos($arr, $parsed2);
+
+
+                                                        //To check the classes and push classes as objects into an array
+                                                        if (is_integer($pos1)) {
+
+
+                                                            if (is_integer($pos) && is_string($parsed1)) {
+                                                                $p = $parsed1;
+
+                                                            } elseif (is_integer($pos) && is_string($parsed)) {
+                                                                $p = $parsed;
+                                                            } else if (is_integer($pos1) && is_string($parsed)) {
+                                                                $p = $parsed;
+
+                                                            }
+
+                                                            $className = $p;
+
+                                                            foreach ($classes as $key) {
+                                                                if ($key->get_name() == $className) {
+                                                                    $inClasses = true; //inClasses is the array where the class objects are stored
+                                                                }
+                                                            }
+
+                                                            if (!$inClasses) {
+
+                                                                $classObj = new inheritance;
+                                                                $classObj->set_name($className);
+
+                                                                array_push($classes, $classObj);
+                                                            }
+
+
+                                                            if ($pos == true && is_string($parsed1)) {
+                                                                foreach ($classes as $key) {
+                                                                    if ($key->get_name() == $parsed1) {
+                                                                        $key->set_extends($parsed2);
+                                                                    }
+                                                                }
+                                                            }
+                                                            //pushing ends
+
+                                                        }
+                                                    }
+
+                                                    $i = 0;
+                                                    $cnt = 0;
+
+                                                    //Call NIDI function recursively and set No Of Indirect Inheritances of the class object
+                                                    foreach ($classes as $key) {
+                                                        $firstName = $key->get_name();
+                                                        $name = $key->get_extends();
+                                                        if (!empty($name)) {
+                                                            $cnt++;
+                                                            findNidi($name);
+                                                            $key->set_indirect($cnt - 1);
+                                                        }
+
+                                                    }
+
+                                                    foreach ($classes as $key) {
+                                                        $tot_inheritance = $key->get_direct() + $key->get_indirect(); //Total inheritances = NoOfDirect + NoOfIndirect
+                                                        $i++;
+
+
+                                                        //If Ti value is less than or equal to three, then Ci = Ti.
+                                                        if ($tot_inheritance <= 3) {
+                                                            $ci = $tot_inheritance;
+                                                        } else { //If the Ti value is greater than three, then Ci = 4
+                                                            $ci = 4;
+                                                        }
+                                                        $total_ci += $ci;
+
+                                                        $printinval = $key->get_name();
+
+                                                        $queryinherit = "INSERT INTO inheritancetotal(inheritanceWord, Ci_tot) VALUES('$printinval','$ci')";
+                                                        $create_queryinherit = mysqli_query($con, $queryinherit);
+
+
+
+                                                    }
+                                                    $queryinherit = "INSERT INTO inheritancefinaltotal(cifinaltotal) VALUES('$total_ci')";
+                                                    $create_queryinherit = mysqli_query($con, $queryinherit);
+
+
+                                                }
 
 
                                                 $lastRow = "SELECT * FROM controlstructures ORDER BY ControlStructureID DESC LIMIT 1";
@@ -386,13 +553,8 @@
                                                 $ifValue = 0;
 
 
-
-
-
-
-
                                                 $lastRow = "SELECT * FROM variables ORDER BY VariableID DESC LIMIT 1";
-                                                $run_query_last = mysqli_query($con,$lastRow);
+                                                $run_query_last = mysqli_query($con, $lastRow);
 
                                                 while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
                                                 $VariableID_last = $lastrow['VariableID'];
@@ -418,10 +580,8 @@
                                                 $weight_local_variable = $LocalVariable_last;
 
 
-
-
                                                 $lastRow = "SELECT * FROM methods ORDER BY 	MethodID DESC LIMIT 1";
-                                                $run_query_last = mysqli_query($con,$lastRow);
+                                                $run_query_last = mysqli_query($con, $lastRow);
 
                                                 while ($lastrow = mysqli_fetch_assoc($run_query_last)) {
                                                 $MethodID_last = $lastrow['MethodID'];
@@ -441,9 +601,6 @@
                                                 $weight_void_returntype = $VoidReturnType_last;
                                                 $weight_primitive_datatype_parameter = $PrimitiveParameter_last;
                                                 $weight_composite_datatype_parameter = $CompositeParameter_last;
-
-
-
 
 
                                                 $i = 0; //increment to each loop
@@ -489,17 +646,6 @@
                                                 $splitAfterSemicolon = str_replace(';', ';', $split);
 
 
-
-
-
-
-
-
-
-
-
-
-
                                                 if (!$split == ''){
 
                                                 foreach ($split
@@ -509,18 +655,6 @@
                                                 $val;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                                                 $Wmrt = null;
                                                 $Npdtp = null;
                                                 $Ncdtp = null;
@@ -528,21 +662,19 @@
                                                 $NcdtpBefore = null;
                                                 $Cm = null;
 
-                                                for($x = 0; $x <= $row_count; $x++){
+                                                for ($x = 0; $x <= $row_count; $x++) {
 
 
-
-                                                    if (preg_match('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val)){
-
+                                                    if (preg_match('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val)) {
 
 
-                                                        if (preg_match('/protected void \w+\(.*?\) \{|private void \w+\(.*?\) \{| public void \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val)){
+                                                        if (preg_match('/protected void \w+\(.*?\) \{|private void \w+\(.*?\) \{| public void \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val)) {
 
                                                             $Wmrt = $weight_void_returntype;
 
                                                         }
 
-                                                        if (preg_match('/public (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{|private (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{|protected (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{/', $val)){
+                                                        if (preg_match('/public (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{|private (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{|protected (byte|short|int|long|float|double|char|String|boolean) \w+\(.*?\) \{/', $val)) {
 
                                                             $Wmrt = $weight_primitive_retuntype;
 
@@ -554,7 +686,6 @@
                                                             $Wmrt = $weight_composite_returntype;
 
                                                         }
-
 
 
                                                         $methodsCount = preg_match_all('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val, $counter);
@@ -576,13 +707,13 @@
 
                                                                             }
 
-                                                                            if(preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $methodAfter, $counter) == 0){
+                                                                            if (preg_match_all('/byte |short |int |long |float |double |char |String |boolean /', $methodAfter, $counter) == 0) {
 
                                                                                 $NcdtpBefore = 1;
 
                                                                             }
 
-                                                                            if(preg_match_all('/\(\)/', $methodAfter, $counter)){
+                                                                            if (preg_match_all('/\(\)/', $methodAfter, $counter)) {
 
                                                                                 $NpdtpBefore = 0;
                                                                                 $NcdtpBefore = 0;
@@ -596,7 +727,6 @@
                                                                 }
                                                             }
                                                         }
-
 
 
                                                     }
@@ -615,8 +745,6 @@
                                                     }
 
 
-
-
                                                 }
 
                                                 // -------- Weight due to return type - End --------
@@ -625,18 +753,17 @@
 
 
                                                 $total_Cm += $Cm;
-                                                if ($NcdtpBefore == 1){
+                                                if ($NcdtpBefore == 1) {
 
                                                     $Cm = $NcdtpBefore * $weight_composite_datatype_parameter;
                                                     $total_Cm += $Cm;
                                                 }
 
-                                                if (preg_match_all('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val, $counter) == 0){
+                                                if (preg_match_all('/protected \w+ \w+\(.*?\) \{|private \w+ \w+\(.*?\) \{| public \w+ \w+\(.*?\) \{|public static void main\(String.*?\) {/', $val, $counter) == 0) {
 
                                                     $Cm = 0;
 
                                                 }
-
 
 
                                                 $global_variable_count_total = 0;
@@ -796,8 +923,6 @@
                                                     }
 
 
-
-
                                                     $Wvs = ($global_variable_count_total * $weight_global_variable) + ($local_variable_count_total * $weight_local_variable);
 
                                                     $Npdtv = $primitive_datatype_variable_count_total;
@@ -807,16 +932,16 @@
                                                 }
 
 
-                                                if ($Wvs == 0){
+                                                if ($Wvs == 0) {
                                                     $Wvs = null;
                                                     $Npdtv = null;
                                                     $Ncdtv = null;
                                                 }
 
-                                                if ($Ncdtv == 0){
+                                                if ($Ncdtv == 0) {
                                                     $Ncdtv = null;
                                                 }
-                                                if ($Npdtv == 0){
+                                                if ($Npdtv == 0) {
                                                     $Npdtv = null;
                                                 }
 
@@ -841,7 +966,6 @@
                                                 $count_methods_3 = 0;
                                                 $count_methods_4 = 0;
                                                 $count_methods_5 = 0;
-
 
 
                                                 foreach ($keywords as $word) {
@@ -1078,18 +1202,13 @@
                                                 for ($x = 0; $x <= $row_count; $x++) {
 
 
-
-
-
                                                     //Matching Classes
                                                     $method_names_2 = (getContentsBetween($val, 'void', ') {'));
                                                     foreach ($method_names_2 as $methods_2) {
                                                         if (strpos($val, $methods_2)) {
 
 
-
-                                                            $count_methods_2 = substr_count($val,$methods_2);
-
+                                                            $count_methods_2 = substr_count($val, $methods_2);
 
 
                                                         }
@@ -1100,9 +1219,7 @@
                                                         if (strpos($val, $methods_3)) {
 
 
-
-                                                            $count_methods_3 = substr_count($val,$methods_3);
-
+                                                            $count_methods_3 = substr_count($val, $methods_3);
 
 
                                                         }
@@ -1114,9 +1231,7 @@
                                                         if (strpos($val, $methods_4)) {
 
 
-
-                                                            $count_methods_4 = substr_count($val,$methods_4);
-
+                                                            $count_methods_4 = substr_count($val, $methods_4);
 
 
                                                         }
@@ -1128,20 +1243,12 @@
                                                         if (strpos($val, $methods_5)) {
 
 
-
-                                                            $count_methods_5 = substr_count($val,$methods_5);
-
+                                                            $count_methods_5 = substr_count($val, $methods_5);
 
 
                                                         }
 
                                                     }
-
-
-
-
-
-
 
 
                                                     if (preg_match('/class\s*(\w+)/', $val) !== false) {
@@ -1308,22 +1415,8 @@
                                                 }
 
 
-
-
-
-
-
-
-
-
-
-
-
                                                 $previousCCS = 0;
                                                 $currentCCS = 0;
-
-
-
 
 
                                                 $conditional_words = array('if', 'for', 'while', 'switch', 'case');
@@ -1451,7 +1544,6 @@
                                                 $Ccs = ($Wtcs * $NC);
 
 
-
                                                 if ($NC == 0) {
 
                                                     $Ccspps = 0;
@@ -1531,22 +1623,36 @@
                                                 $total_cs += $Cs;
 
 
+
+
+                                                $Ci_last=0;
+
+                                                $lastRowinherit = "SELECT * FROM inheritancetotal";
+                                                $run_query_lastinherit = mysqli_query($con, $lastRowinherit);
+
+
+                                                while ($lastrow = mysqli_fetch_assoc($run_query_lastinherit)) {
+                                                    $inheri_tot_ID_last = $lastrow['inheri_tot_ID'];
+                                                    $inheritanceWord_last = $lastrow['inheritanceWord'];
+                                                    $Ci_tot_last = $lastrow['Ci_tot'];
+
+
+
+                                                    if (strpos($val, $inheritanceWord_last)) {
+
+                                                        $ci_final += $Ci_tot_last;
+
+                                                        $Ci_last = '<i class="flaticon2-check-mark"></i>';
+
+                                                    }
+
+                                                }
+
                                                 $TCps = $Cs + $Cv + $Cm + $currentCCS;
 
                                                 $total_TCps += $TCps;
 
                                                 $total_ccs += $currentCCS;
-
-
-
-
-
-
-
-
-
-
-
 
 
                                                 ?>
@@ -1556,7 +1662,7 @@
                                                     <td <?php if ($Cs > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Cs; ?></td>
                                                     <td <?php if ($Cv > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Cv; ?></td>
                                                     <td <?php if ($Cm > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Cm; ?></td>
-                                                    <td>0</td>
+                                                    <td <?php if ($Ci_last === '<i class="flaticon2-check-mark"></i>'){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $Ci_last; ?></td>
                                                     <td>0</td>
                                                     <td <?php if ($currentCCS > 0){ ?>style="color: #2c77f4; font-weight: bold; background-color: #e0e0e0"<?php } ?>><?php echo $currentCCS; ?></td>
                                                     <td style="color: #2A3746;font-weight: bold;"
@@ -1586,7 +1692,11 @@
                                                     }
 
                                                     }
-                                                    }}}}
+                                                    }
+                                                    }
+                                                    }
+                                                    }
+                                                    }
                                                     }
                                                     $_SESSION['row_count'] = $i;
                                                     ?>
@@ -1601,12 +1711,24 @@
                                                     <th><?php echo $total_cs; ?></th>
                                                     <th><?php echo $total_Cv; ?></th>
                                                     <th><?php echo $total_Cm; ?></th>
-                                                    <th>0</th>
+
+                                                    <?php
+
+                                                    $lastRow_final_in = "SELECT * FROM inheritancefinaltotal ORDER BY inherifinal_total_ID DESC LIMIT 1";
+                                                    $run_query_last_in = mysqli_query($con, $lastRow_final_in);
+
+                                                    while ($lastrow = mysqli_fetch_assoc($run_query_last_in)) {
+                                                    $inherifinal_total_ID_last = $lastrow['inherifinal_total_ID'];
+                                                    $cifinaltotal_last = $lastrow['cifinaltotal'];
+
+                                                    ?>
+                                                    <th><?php echo $cifinaltotal_last; ?></th>
+
                                                     <th>0</th>
                                                     <th><?php echo $total_ccs; ?></th>
                                                     <th style="font-weight: bold; font-size: x-large;"
-                                                        class="bg-dark kt-font-brand"><?php echo $total_TCps; ?></th>
-                                                </tr>
+                                                        class="bg-dark kt-font-brand"><?php echo $total_TCps + $cifinaltotal_last; ?></th>
+                                                </tr>       <?php } ?>
                                                 </tfoot>
                                             </table>
                                             <?php
@@ -1653,7 +1775,8 @@
             <?php }
             }
             }
-            }}
+            }
+            }
             }
             $query_disp_final_tot = "INSERT INTO finaltotal(FinalTotalValue) VALUES('$final_total')";
             mysqli_query($con, $query_disp_final_tot);

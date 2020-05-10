@@ -403,7 +403,6 @@ if ($handle = opendir('uploads')) {
                                                                         $classes = [];  //array to store class objects
                                                                         $inClasses = false;
                                                                         $parsed1 = null;
-                                                                        $parsed1=null;
                                                                         $parsed2=null;
                                                                         $pos=null;
                                                                         $pos1=null;
