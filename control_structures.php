@@ -380,7 +380,6 @@ if ($handle = opendir('uploads')) {
 
                                                                         $ifValue = 0;
 
-
                                                                         $entireCode = str_replace(';', ';', $trim);
 
 
