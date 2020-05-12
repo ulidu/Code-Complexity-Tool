@@ -362,13 +362,15 @@ if ($handle = opendir('uploads')) {
                                                                         $for_val = "for";
                                                                         $else_val = "else";
                                                                         $end_curlyBrace = "}";
+                                                                        $conditional_keys1_arr = array('if', 'case', 'switch', 'elseif', 'else if', 'for');
 
 
                                                                         $arrCCS = [];
-                                                                        $arr2 = [];
+                                                                        $ifPop = [];
                                                                         $elseArr = [];
                                                                         $inElse = false;
-                                                                        $elseCount = 0;
+                                                                        $insideElse = false;
+                                                                        $ccsArray = [];
 
 
                                                                         //Default Weights
@@ -544,59 +546,88 @@ if ($handle = opendir('uploads')) {
 
                                                                         }
 
+                                                                        //Push all control Structures to an array
 
-                                                                        if (stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false || stripos($val, $while_val) !== false) {
-
-                                                                            if (sizeof($arrCCS) >= 1) {
-                                                                                $var = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
-                                                                            } else {
-                                                                                $var = $Ccs;
-                                                                            }
-                                                                            array_push($arrCCS, $var);
-
-                                                                            if (!$inElse) {
-                                                                                array_push($arr2, $var);
-                                                                            }
-
-                                                                            $currentCCS = $arrCCS[sizeof($arrCCS) - 1];
-
-                                                                            if (sizeof($arrCCS) >= 2) {
-                                                                                $previousCCS = $arrCCS[sizeof($arrCCS) - 2];
+                                                                        $iMax = sizeof($conditional_keys1_arr);
+                                                                        for ($i = 0, $i < $iMax; $i++;) {
+                                                                            if (stripos($val, $conditional_keys1_arr[$i]) !== false) {
+                                                                                array_push($csArray, $conditional_keys1_arr[$i]);
                                                                             }
 
                                                                         }
+                                                                        //Find if the line inside an else part
+                                                                        if (stripos($val, $else_val) !== false && $inElse) {
+                                                                            $elseArr = [];
+                                                                        } else if (stripos($val, $else_val) !== false) {
 
-                                                                        if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
-                                                                            $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
-                                                                            $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
-                                                                        }
-
-                                                                        if (stripos($val, $else_val) !== false) {
                                                                             $inElse = true;
-
                                                                         }
-                                                                        if ((stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false || stripos($val, $while_val) !== false) && $inElse) {
-                                                                            if (sizeof($elseArr) >= 1) {
-                                                                                $var = $Ccs + $elseArr[sizeof($elseArr) - 1];
-                                                                            } else {
-                                                                                $var = $Ccs + $arr2[sizeof($arr2) - 1];
+
+                                                                        //Find the CCS and put into an array outside else part
+                                                                        if (!$inElse) {
+                                                                            if (stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false) {
+                                                                                if (sizeof($arrCCS) >= 1) {
+                                                                                    $var = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
+                                                                                } else {
+                                                                                    $var = $Ccs;
+                                                                                }
+                                                                                array_push($arrCCS, $var);
+                                                                                $currentCCS = $arrCCS[sizeof($arrCCS) - 1];
+
+                                                                                if (sizeof($arrCCS) >= 2) {
+                                                                                    $previousCCS = $arrCCS[sizeof($arrCCS) - 2];
+                                                                                }
+
                                                                             }
-                                                                            array_push($elseArr, $var);
-                                                                        }
-                                                                        if (sizeof($elseArr) >= 1 && stripos($val, $case_val) !== false && $inElse) {
-
-                                                                            $previousCCS = $elseArr[sizeof($elseArr) - 1];
-                                                                            $currentCCS = $Ccs + $elseArr[sizeof($elseArr) - 1];
-                                                                        }
-
-                                                                        if ($inElse && stripos($val, $switch_val) !== false) {
-                                                                            $previousCCS = $arr2[sizeof($arr2) - 1];
-                                                                            $currentCCS = $Ccs + $previousCCS;
 
                                                                             if (sizeof($arrCCS) >= 2 && (stripos($val, $case_val) !== false)) {
                                                                                 $previousCCS = $arrCCS[sizeof($arrCCS) - 1];
+
                                                                                 $currentCCS = $Ccs + $arrCCS[sizeof($arrCCS) - 1];
                                                                             }
+                                                                            //Find the CCS and put into an elseArray inside else part and a case
+                                                                        } else {
+                                                                            if ((stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false) && $inElse  === "case") {
+                                                                                if (sizeof($elseArr) >= 1) {
+                                                                                    $var = $Ccs + $elseArr[sizeof($elseArr) - 1] + 1;
+                                                                                    $previousCCS = $elseArr[sizeof($elseArr) - 1] + 1;
+                                                                                } else {
+                                                                                    $var = $Ccs + $ifPop[sizeof($ifPop) - 1] + 1;
+                                                                                    $previousCCS = $ifPop[sizeof($ifPop) - 1] + 1;
+                                                                                }
+                                                                                array_push($elseArr, $var);
+                                                                                $currentCCS = $elseArr[sizeof($elseArr) - 1];
+
+                                                                                if (sizeof($elseArr) >= 2) {
+                                                                                    // $previousCCS = $elseArr[sizeof($elseArr) - 2];
+                                                                                }
+
+                                                                                //Find the CCS and put into an elseArray inside else part
+                                                                            } elseif ((stripos($val, $if_val) !== false || stripos($val, $switch_val) !== false || stripos($val, $for_val) !== false) && $inElse) {
+
+                                                                                if (sizeof($elseArr) > 1) {
+                                                                                    $var = $Ccs + $elseArr[sizeof($elseArr) - 1];
+                                                                                } elseif (sizeof($elseArr) == 1) {
+                                                                                    $var = $Ccs + $ifPop[sizeof($ifPop) - 1];
+                                                                                } else {
+                                                                                    $var = $Ccs + $ifPop[sizeof($ifPop) - 1];
+                                                                                }
+                                                                                $previousCCS = $ifPop[sizeof($ifPop) - 1];
+                                                                                array_push($elseArr, $var);
+                                                                                $currentCCS = $elseArr[sizeof($elseArr) - 1];
+
+                                                                                if (sizeof($elseArr) > 2) {
+                                                                                    $previousCCS = $elseArr[sizeof($elseArr) - 2];
+                                                                                }
+
+                                                                            }
+                                                                            if (sizeof($elseArr) >= 1 && (stripos($val, $case_val) !== false)) {
+                                                                                $previousCCS = $elseArr[sizeof($elseArr) - 1];
+
+                                                                                $currentCCS = $Ccs + $elseArr[sizeof($elseArr) - 1];
+                                                                            }
+
+
                                                                         }
 
 
@@ -617,27 +648,27 @@ if ($handle = opendir('uploads')) {
                                                                             $i++;
 
 
-                                                                            if (stripos($val, $end_curlyBrace) !== false && $inElse && sizeof($elseArr) >= 1) {
+                                                                            if (stripos($val, $end_curlyBrace) !== false && $inElse) {
+                                                                                $inElse = false;
+                                                                                if (sizeof($elseArr) >= 1) {
+                                                                                    $poped = array_pop($elseArr);
+                                                                                    array_push($ifPop, $poped);
+                                                                                    if (sizeof($elseArr) == 0) {
+                                                                                        $inElse = false;
+                                                                                        $insideElse = false;
+                                                                                    }
+                                                                                }
 
-                                                                                array_pop($elseArr);
 
-                                                                                if (sizeof($elseArr) == 0) {
+                                                                            } else if (stripos($val, $end_curlyBrace) !== false) {
 
-                                                                                    $inElse = false;
-
+                                                                                if (!is_null($arrCCS) && sizeof($arrCCS) >= 1) {
+                                                                                    $poped = array_pop($arrCCS);
+                                                                                    array_push($ifPop, $poped);
                                                                                 }
 
                                                                             }
 
-                                                                            if (stripos($val, $end_curlyBrace) !== false) {
-
-                                                                                if (!is_null($arrCCS)) {
-
-                                                                                    array_pop($arrCCS);
-
-                                                                                }
-
-                                                                            }
 
                                                                             }
 
