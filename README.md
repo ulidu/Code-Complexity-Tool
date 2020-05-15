@@ -10,7 +10,7 @@
   <br><br>
   <img width=11% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
   <br>
-  <img src="https://raw.githubusercontent.com/itpmcde/Code-Complexity-Tool/master/assets/media/readme/cde.gif">
+  <img width=80% src="https://raw.githubusercontent.com/itpmcde/Code-Complexity-Tool/master/assets/media/readme/cde.gif">
   <br><br>
   <b>Screenshots</b><br><br>
   <kbd>
