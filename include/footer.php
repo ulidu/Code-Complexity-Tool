@@ -52,26 +52,15 @@
 <script src="assets/plugins/global/plugins.bundle.js" type="text/javascript"></script>
 <script src="assets/js/scripts.bundle.js" type="text/javascript"></script>
 
-<!--end::Global Theme Bundle -->
-
-
-<!--begin::Page Scripts(used by this page) -->
-<script src="assets/js/pages/dashboard.js" type="text/javascript"></script>
-
-<!--end::Page Scripts -->
-
-<!--begin::Page Scripts(used by login page) -->
-<script src="assets/js/pages/custom/login/login-general.js" type="text/javascript"></script>
-
-<!--begin::Page Vendors(used by total complexity page) -->
+<!--begin::Page Vendors(used by total complexity page)
 <script src="assets/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+-->
+
+<!-- MDBootstrap Datatables  -->
+<script type="text/javascript" src="assets/mdb/js/addons/datatables2.min.js"></script>
 
 <!--begin::Page Scripts(used by tables) -->
 <script src="assets/js/pages/crud/datatables/advanced/footer-callback.js" type="text/javascript"></script>
-
-<!--begin::Page Scripts(used by this profile) -->
-<script src="assets/js/pages/dashboard.js" type="text/javascript"></script>
-<script src="assets/js/pages/custom/user/profile.js" type="text/javascript"></script>
 
 <!--begin::Page Scripts(used by file upload) -->
 <script src="assets/js/pages/crud/file-upload/dropzonejs.js" type="text/javascript"></script>
@@ -79,7 +68,6 @@
 <!--begin::Page Scripts(used by sweetalert) -->
 <script src="assets/js/pages/components/extended/sweetalert2.js" type="text/javascript"></script>
 
-<script src="assets/js/pages/components/extended/toastr.js" type="text/javascript"></script>
 <script>
     let $button = $("#submit_content");
     $button.prop("disabled", true);

@@ -23,8 +23,12 @@ setcookie($cookie_name, $cookie_value,time() + (86400), "/"); // 86400 = 1 day
 		<!--end::Fonts -->
 
 
-        <!--begin::Page Vendors Styles(used by this page) -->
+        <!--begin::Page Vendors Styles(used by this page)
         <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+-->
+
+        <!-- MDBootstrap Datatables  -->
+        <link href="assets/mdb/css/addons/datatables2.min.css" rel="stylesheet">
 
         <!--begin::Page Custom Styles(used by login page) -->
         <link href="assets/css/pages/login/login-5.css" rel="stylesheet" type="text/css" />
