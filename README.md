@@ -10,9 +10,13 @@
   <br><br>
   <img width=11% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
   <br>
-  <img src="https://raw.githubusercontent.com/itpmcde/Code-Complexity-Tool/master/assets/media/readme/cde.gif">
+  <img width=55% src="https://raw.githubusercontent.com/itpmcde/Code-Complexity-Tool/master/assets/media/readme/cde.gif">
+  <br>
+  <br>
+  <b>Installation</b><br>
+  <p align=center>Just copy the folder into the root folder of the server<br>Import the SQL database file using phpMyAdmin (In the <b>database</b> folder)<br>
   <br><br>
-  <b>Screenshots</b><br><br>
+<b>Screenshots</b><br></p>
   <kbd>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/a.png">
   </kbd>
@@ -21,8 +25,11 @@
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/size.png">
   </kbd>
   <br><br>
-  <b>Installation</b><br>
-  <p align=center>Just copy the folder into www folder in WAMP Server. (or in any Server)</p><br>
+  <kbd>
+  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/3.png">
+  </kbd>
+  <br>
+  <br>
    <p align=center>2020 © CDE IT Solutions<br>
  <a href="https://github.com/itpmcde/Code-Complexity-Tool/graphs/contributors">Team</a>
   </p>
