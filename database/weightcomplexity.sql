@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 11, 2020 at 06:37 AM
+-- Generation Time: May 15, 2020 at 02:36 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.0
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `ccs` (
   `CcsID` int(200) NOT NULL AUTO_INCREMENT,
   `CcsValue` double NOT NULL,
   PRIMARY KEY (`CcsID`)
-) ENGINE=MyISAM AUTO_INCREMENT=764 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=796 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `ccs`
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `cs` (
   `CsID` int(200) NOT NULL AUTO_INCREMENT,
   `CsValue` double NOT NULL,
   PRIMARY KEY (`CsID`)
-) ENGINE=MyISAM AUTO_INCREMENT=309 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=317 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cs`
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `cv` (
   `CvID` int(200) NOT NULL AUTO_INCREMENT,
   `CvValue` double NOT NULL,
   PRIMARY KEY (`CvID`)
-) ENGINE=MyISAM AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cv`
@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `finaltotal` (
   `FinalTotalID` int(200) NOT NULL AUTO_INCREMENT,
   `FinalTotalValue` double NOT NULL,
   PRIMARY KEY (`FinalTotalID`)
-) ENGINE=MyISAM AUTO_INCREMENT=1197 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1230 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `finaltotal`
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `inheritancefinaltotal` (
   `inherifinal_total_ID` double NOT NULL AUTO_INCREMENT,
   `cifinaltotal` decimal(10,0) NOT NULL,
   PRIMARY KEY (`inherifinal_total_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=110 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=143 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -266,7 +266,7 @@ CREATE TABLE IF NOT EXISTS `inheritancetotal` (
   `inheritanceWord` varchar(200) NOT NULL,
   `Ci_tot` double NOT NULL,
   PRIMARY KEY (`inheri_tot_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=1332 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1395 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -327,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `totalcomplexity` (
   `totalcomplexityID` int(200) NOT NULL AUTO_INCREMENT,
   `totalcomplexityValue` double NOT NULL,
   PRIMARY KEY (`totalcomplexityID`)
-) ENGINE=MyISAM AUTO_INCREMENT=1355 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1388 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `totalcomplexity`
