@@ -14,9 +14,9 @@
   <br>
   <br>
   <b>Installation</b><br>
-  <p align=center>Just copy the folder into the root folder of the server<br>Import the SQL database file using phpMyAdmin (In the <b>database</b> folder)</p><br>
+  <p align=center>Just copy the folder into the root folder of the server<br>Import the SQL database file using phpMyAdmin (In the <b>database</b> folder)<br>
   <br>
-  <center><b>Screenshots</b></center><br><br>
+<b>Screenshots</b><br><br></p>
   <kbd>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/a.png">
   </kbd>
