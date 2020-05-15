@@ -8,7 +8,7 @@
   <a href="#">Coupling</a> |
   <a href="#">Control structures</a>
   <br><br>
-  <img width=15% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
+  <img width=11% src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/logos/Picture1.png">
   <br>
   <img src="https://raw.githubusercontent.com/itpmcde/Code-Complexity-Tool/master/assets/media/readme/cde.gif">
   <br><br>
