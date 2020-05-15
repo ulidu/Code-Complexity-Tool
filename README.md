@@ -22,7 +22,7 @@
   </kbd>
   <br><br>
   <b>Installation</b><br>
-  <p align=center>Just copy the folder into www folder in WAMP Server. (or in any Server)<br>Import the SQL database file using phpMyAdmin (in <b>database</b> folder)</p><br>
+  <p align=center>Just copy the folder into the root folder of the server<br>Import the SQL database file using phpMyAdmin (in the <b>database</b> folder)</p><br>
    <p align=center>2020 © CDE IT Solutions<br>
  <a href="https://github.com/itpmcde/Code-Complexity-Tool/graphs/contributors">Team</a>
   </p>
