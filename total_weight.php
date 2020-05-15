@@ -42,38 +42,46 @@ function getBetween($codeLine, $start, $end)
     $len = strpos($codeLine, $end, $ini) - $ini;
     return substr($codeLine, $ini, $len);
 }
+
 //To sort out the classes, direct inheritances and indirect inheritances using OOP
 class inheritance
 {
     public $name;
     public $indirect;
     public $superClass;
+
     function __construct()
     {
         $this->name = "";
         $this->indirect = 0;
         $this->superClass = null;
     }
+
     function set_name($name)
     {
         $this->name = $name;
     }
+
     function set_indirect($indirect)
     {
         $this->indirect = $indirect;
     }
+
     function set_extends($var)
     {
         $this->superClass = $var;
     }
+
     function get_extends()
     {
         return $this->superClass;
     }
+
     function get_name()
     {
         return $this->name;
     }
+
     function get_direct()
     {
         global $weight_no_ud_class; //weight due to zero user-defined class
@@ -85,12 +93,14 @@ class inheritance
         }
         return $ix;
     }
+
     function get_indirect()
     {
         global $weight_one_ud_class;//weight due to one user-defined class
-        return $this->indirect * $weight_one_ud_class   ;
+        return $this->indirect * $weight_one_ud_class;
     }
 }
+
 //Function to find No Of Indirect Inheritances
 function findNidi($extend)
 {
@@ -156,7 +166,6 @@ if ($handle = opendir('uploads')) {
             $entry_arr = array_filter($entry_arr_af);
 
 
-
             foreach ($entry_arr as $files) {
 
                 $content = file_get_contents('uploads/' . $entry);
@@ -181,21 +190,13 @@ if ($handle = opendir('uploads')) {
                 $_SESSION['filename'] = $entry;
 
 
-
-?>
-
-
-
-
-
-
+                ?>
 
 
                 <?php include 'include/total_weight_content.php'; ?>
 
 
-<?php
-
+                <?php
 
 
             }

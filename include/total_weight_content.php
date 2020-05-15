@@ -496,7 +496,6 @@
                                                         $create_queryinherit = mysqli_query($con, $queryinherit);
 
 
-
                                                     }
                                                     $queryinherit = "INSERT INTO inheritancefinaltotal(cifinaltotal) VALUES('$total_ci')";
                                                     $create_queryinherit = mysqli_query($con, $queryinherit);
@@ -1623,9 +1622,7 @@
                                                 $total_cs += $Cs;
 
 
-
-
-                                                $Ci_last=0;
+                                                $Ci_last = 0;
 
                                                 $lastRowinherit = "SELECT * FROM inheritancetotal";
                                                 $run_query_lastinherit = mysqli_query($con, $lastRowinherit);
@@ -1635,7 +1632,6 @@
                                                     $inheri_tot_ID_last = $lastrow['inheri_tot_ID'];
                                                     $inheritanceWord_last = $lastrow['inheritanceWord'];
                                                     $Ci_tot_last = $lastrow['Ci_tot'];
-
 
 
                                                     if (strpos($val, $inheritanceWord_last)) {
@@ -1728,7 +1724,7 @@
                                                     <th><?php echo $total_ccs; ?></th>
                                                     <th style="font-weight: bold; font-size: x-large;"
                                                         class="bg-dark kt-font-brand"><?php echo $total_TCps + $cifinaltotal_last; ?></th>
-                                                </tr>       <?php } ?>
+                                                </tr> <?php } ?>
                                                 </tfoot>
                                             </table>
                                             <?php
