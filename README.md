@@ -22,7 +22,7 @@
   </kbd>
   <br><br>
   <kbd>
-  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/size.png">
+  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/1.png">
   </kbd>
   <br><br>
   <kbd>
