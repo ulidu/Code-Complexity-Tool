@@ -16,7 +16,7 @@
   <b>Installation</b><br>
   <p align=center>Just copy the folder into the root folder of the server<br>Import the SQL database file using phpMyAdmin (In the <b>database</b> folder)</p><br>
   <br>
-  <b>Screenshots</b><br><br>
+  <center><b>Screenshots</b></center><br><br>
   <kbd>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/a.png">
   </kbd>
@@ -24,6 +24,7 @@
   <kbd>
   <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/size.png">
   </kbd>
+  <br>
   <br>
    <p align=center>2020 © CDE IT Solutions<br>
  <a href="https://github.com/itpmcde/Code-Complexity-Tool/graphs/contributors">Team</a>
