@@ -18,7 +18,7 @@
   <br><br>
 <b>Screenshots</b><br></p>
   <kbd>
-  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/a.png">
+  <img src="https://github.com/itpmcde/Code-Complexity-Tool/blob/master/assets/media/interface/2.png">
   </kbd>
   <br><br>
   <kbd>
