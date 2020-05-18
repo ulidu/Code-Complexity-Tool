@@ -1,8 +1,11 @@
 <?php
 
 if (!isset($_GET['reload'])) {
+
     echo '<meta http-equiv=Refresh content="0;url=total_weight.php?reload=1">';
+
 }
+
 
 ?>
 

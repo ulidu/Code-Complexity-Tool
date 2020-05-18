@@ -162,7 +162,7 @@
                             </svg>
                         </div>
                         <div class="col-lg-12">
-                            <div class="kt-iconbox__desc kt-font-success">
+                            <div id="loadedcheck" class="kt-iconbox__desc kt-font-success">
                                 <?php $lastRow_final = "SELECT * FROM ( SELECT * FROM finaltotal ORDER BY FinalTotalID DESC LIMIT 1) result ORDER BY FinalTotalID ASC";
                                 $run_query_last_final = mysqli_query($con, $lastRow_final);
 
