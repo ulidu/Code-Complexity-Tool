@@ -150,12 +150,21 @@ $ext = 'zip';
 
 if ($extract) {
     echo $GLOBALS['status']['success'];
-    unlink_recursive($dir_name, $ext);
+    $zipfiles = glob('uploads/*.zip'); //get all file names with extension .zip
+    foreach($zipfiles as $zips){
+        if(is_file($zips))
+            unlink($zips); //delete zip file
+    }
 
 } else {
     echo $GLOBALS['status']['error'];
 }
 
+$zipfiles = glob('uploads/*.zip'); //get all file names with extension .zip
+foreach($zipfiles as $zips){
+    if(is_file($zips))
+        unlink($zips); //delete zip file
+}
 
 if ($handle = opendir('uploads')) {
 
