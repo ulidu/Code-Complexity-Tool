@@ -105,6 +105,12 @@ setcookie($cookie_name, $cookie_value,time() + (86400), "/"); // 86400 = 1 day
                 }
             }
 
+            .pointerImageChart {cursor: pointer;}
+
+            #chart-container {
+                width: 100%;
+                height: auto;
+            }
 
         </style>
 

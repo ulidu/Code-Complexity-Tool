@@ -87,6 +87,13 @@ mysqli_query($con, $resetInheritfinal);
                 <h3 class="kt-subheader__title">Dashboard</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
 
+                <h3 style=" font-size: small" class="kt-animate-fade-in-up kt-subheader__title text-success"><?php
+                    $stat = "SELECT * FROM statistics";
+                    $run_query_stat = mysqli_query($con, $stat);
+
+                    $rows_stat = mysqli_num_rows($run_query_stat); ?><?php echo $rows_stat ?> Complexity Checks
+                    Completed So far</h3>
+                <span class="kt-subheader__separator kt-subheader__separator--v"></span>
 
                 <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
                     <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
@@ -97,6 +104,12 @@ mysqli_query($con, $resetInheritfinal);
             </div>
             <div class="kt-subheader__toolbar">
 
+                <a href="stats.php"><img class="pointerImageChart" onclick="" style="width: 31px" src="assets/media/icons/chart.gif"></a>
+
+
+                <a href="stats.php" class="btn btn-label-brand btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                    Statistics
+                </a>
 
                 <a href="change_weight.php" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
                     Change Default Weights
@@ -113,6 +126,7 @@ mysqli_query($con, $resetInheritfinal);
         <!--Begin::Dashboard 3-->
         <!--Begin::Row-->
         <div class="row">
+            <div class="col-lg-12">
             <!--begin::Portlet-->
             <div class="kt-portlet">
                 <div class="kt-portlet__head">
@@ -161,7 +175,7 @@ mysqli_query($con, $resetInheritfinal);
 
                 <!--end::Form-->
             </div>
-
+            </div>
             <!--end::Portlet--></div>
         <!--End::Row-->
         <div class="row">
@@ -201,6 +215,7 @@ mysqli_query($con, $resetInheritfinal);
 
         <!--Begin::Row-->
         <div class="row">
+            <div class="col-lg-12">
             <!--begin::Portlet-->
             <div class="kt-portlet">
                 <div class="kt-portlet__head">
@@ -245,7 +260,7 @@ mysqli_query($con, $resetInheritfinal);
             </div>
 
         </div>        <!--end::Portlet-->
-
+        </div>
 
         <!--End::Dashboard 3-->
     </div>

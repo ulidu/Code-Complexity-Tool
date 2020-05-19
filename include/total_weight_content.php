@@ -267,7 +267,17 @@
                                                 <h3 class="kt-portlet__head-title kt-font-brand">
                                                     Total Complexity of the Program by Statement : </h3>&nbsp;
                                                 <h3 class="kt-portlet__head-title kt-font-dark"><?php $file = $_SESSION['filename'];
-                                                    echo $file; ?>
+                                                    echo $file;
+
+
+                                                    if ($file != "") {
+                                                        $querystatin = "INSERT INTO statistics (statFilename,statComplexity) VALUES ('$file','$totalcomplexityValue_last') ON DUPLICATE KEY UPDATE statComplexity='$totalcomplexityValue_last'";
+
+                                                        $create_querystatin = mysqli_query($con, $querystatin);
+                                                    }
+
+
+                                                    ?>
                                                 </h3>
                                             </div>
 
