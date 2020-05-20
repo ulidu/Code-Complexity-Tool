@@ -514,6 +514,29 @@
                                                 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                 $lastRow = "SELECT * FROM controlstructures ORDER BY ControlStructureID DESC LIMIT 1";
                                                 $run_query_last = mysqli_query($con, $lastRow);
 
@@ -1662,6 +1685,10 @@
 
 
                                                 ?>
+
+
+
+
                                                 <tr>
                                                     <td><?php echo $count = $count + 1; ?></td>
                                                     <td style="text-align: left"><?php echo $val; ?></td>

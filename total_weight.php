@@ -13,6 +13,10 @@ if (!isset($_GET['reload'])) {
 <?php include 'include/aside.php'; ?>
 
 
+
+
+
+
 <?php
 function getContentsBetween($str, $startDelimiter, $endDelimiter)
 {
