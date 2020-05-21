@@ -52,9 +52,9 @@
 <script src="assets/plugins/global/plugins.bundle.js" type="text/javascript"></script>
 <script src="assets/js/scripts.bundle.js" type="text/javascript"></script>
 
-<!--begin::Page Vendors(used by total complexity page)
-<script src="assets/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
--->
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+
+<script src="https://unpkg.com/jspdf-autotable@3.5.3/dist/jspdf.plugin.autotable.js"></script>
 
 <!-- MDBootstrap Datatables  -->
 <script type="text/javascript" src="assets/mdb/js/addons/datatables2.min.js"></script>
@@ -75,6 +75,23 @@
     $('#paste_contents').bind("change keyup input", function () {
         $button.prop("disabled", (this.value == "") ? true : false);
     });
+</script>
+
+<script>
+    function generate() {
+
+        var doc = new jsPDF()
+
+        // Simple data example
+        var head = [['CDE Complexity Report']]
+
+        doc.autoTable({ head: head})
+
+        // Simple html example
+        doc.autoTable({ html: '#kt_table_1' })
+
+        doc.save('CDE_Complexity_Report.pdf')
+    }
 </script>
 
 <script>
